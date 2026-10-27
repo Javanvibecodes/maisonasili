@@ -1,0 +1,342 @@
+<main class="w-full pt-20 min-h-[calc(100vh-140px)] bg-surface-container-lowest">
+        <div class="flex flex-col w-full">
+            <!-- Editorial Intro & Curated Header -->
+            <section class="relative w-full px-6 lg:px-12 py-16 lg:py-24 bg-surface-container-lowest">
+                <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+                    <div class="lg:col-span-8 space-y-6">
+                        <div class="inline-flex items-center gap-3">
+                            <span class="text-tertiary text-xs font-semibold tracking-[0.28em] uppercase">The Pantry
+                                &amp; Cellar</span>
+                            <span class="w-12 h-[1px] bg-tertiary-container opacity-60"></span>
+                            <span class="text-on-surface-variant text-[11px] tracking-widest uppercase">Reserve Catalog
+                                No. 04</span>
+                        </div>
+                        <h1
+                            class="text-4xl sm:text-5xl lg:text-6xl font-headline font-light tracking-tight text-on-surface leading-[1.1]">
+                            The Maison Asili <span class="italic font-normal text-tertiary">Collection</span>
+                        </h1>
+                        <p class="text-base sm:text-lg text-on-surface-variant font-normal leading-relaxed max-w-2xl">
+                            Explore handcrafted botanicals, premium coffees, rare wild teas, hand-harvested spices, and
+                            cold-pressed finishing oils inspired by African agrarian traditions and perfected in our
+                            Berlin ateliers.
+                        </p>
+                    </div>
+                    <!-- Quick Metrics & Provenance Stamp -->
+                    <div
+                        class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col justify-end gap-6 bg-surface-container-lowest p-6 rounded-none shadow-sm">
+                        <div class="flex items-center justify-between">
+                            <div class="text-xs uppercase tracking-widest text-on-surface-variant">Sourcing Ethics</div>
+                            <span class="text-xs font-semibold tracking-wider text-tertiary">100% Direct Fair
+                                Trade</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="text-xs uppercase tracking-widest text-on-surface-variant">Harvest Season</div>
+                            <span class="text-xs font-semibold tracking-wider text-on-surface">2023/2024 Reserve</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="text-xs uppercase tracking-widest text-on-surface-variant">Shipping Atelier
+                            </div>
+                            <span class="text-xs font-semibold tracking-wider text-on-surface">Charlottenburg,
+                                Berlin</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Filter & Sort Command Bar -->
+            <section class="sticky top-20 z-30 w-full bg-surface-container-lowest shadow-sm px-6 lg:px-12 py-4">
+                <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                    <!-- Mobile: filter panel toggle + live counter -->
+                    <div class="flex lg:hidden items-center justify-between gap-4 w-full">
+                        <button
+                            class="flex items-center gap-2 px-4 py-2.5 border border-outline-variant bg-surface-container text-[11px] font-label uppercase tracking-[0.2em] font-semibold text-on-surface cursor-pointer"
+                            aria-controls="filterPanel" aria-expanded="false" data-filter-toggle type="button">
+                            <span class="material-symbols-outlined text-base">tune</span>
+                            Filters
+                        </button>
+                        <div class="text-xs uppercase tracking-wider text-on-surface-variant font-medium">
+                            <span class="text-on-surface font-bold" data-product-count>{{PRODUCT_COUNT}}</span> items
+                            available
+                        </div>
+                    </div>
+                    <!-- Controls: always visible on desktop, collapsible panel on mobile -->
+                    <div
+                        class="hidden lg:flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-4 space-y-3 lg:space-y-0 w-full lg:w-auto"
+                        id="filterPanel">
+                        <!-- Category Filter Pills -->
+                        {{FILTER_PILLS}}
+                        <!-- Controls: Live Counter, Price Ceiling Slider, Sort Select & Reset -->
+                        <div class="flex flex-wrap items-center gap-4 sm:gap-6 justify-between lg:justify-end">
+                            <!-- Live Counter -->
+                            <div
+                                class="hidden lg:block text-xs uppercase tracking-wider text-on-surface-variant font-medium">
+                                <span class="text-on-surface font-bold" id="productCounter"
+                                    data-product-count>{{PRODUCT_COUNT}}</span> items available
+                            </div>
+                            <!-- Price Range Filter Preset -->
+                            <div class="flex items-center gap-2 bg-surface-container px-3 py-1.5">
+                                <span
+                                    class="text-[11px] font-semibold uppercase tracking-wider text-on-surface-variant">Max:</span>
+                                <span class="text-xs font-bold text-on-surface" id="priceDisplay">&euro;{{MAX_PRICE}}</span>
+                                <input aria-label="Maximum price filter" class="w-20 accent-tertiary cursor-pointer"
+                                    id="priceRange" max="{{MAX_PRICE}}" min="10" step="1" type="range"
+                                    value="{{MAX_PRICE}}">
+                            </div>
+                            <!-- Sort Select -->
+                            <div class="flex items-center gap-2 bg-surface-container px-3 py-1.5">
+                                <span
+                                    class="text-[11px] font-semibold uppercase tracking-wider text-on-surface-variant">Sort:</span>
+                                <select
+                                    class="bg-transparent text-xs text-on-surface font-medium uppercase tracking-wider focus:outline-none cursor-pointer"
+                                    id="sortSelect">
+                                    <option value="featured">Featured</option>
+                                    <option value="newest">Newest</option>
+                                    <option value="price-asc">Price: Low to High</option>
+                                    <option value="price-desc">Price: High to Low</option>
+                                    <option value="alpha">Alphabetical</option>
+                                </select>
+                            </div>
+                            <!-- Reset -->
+                            <button
+                                class="text-[11px] uppercase tracking-[0.2em] font-semibold text-on-surface-variant hover:text-tertiary transition-colors cursor-pointer"
+                                id="resetFiltersBtn" type="button">Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Main Catalog Grid Area -->
+            <section class="w-full max-w-7xl mx-auto px-6 lg:px-12 py-12 bg-surface-container-lowest">
+                <!-- Empty State Container (Hidden by default) -->
+                <div class="hidden flex-col items-center justify-center py-24 text-center px-6 bg-[#F7F3EB]"
+                    id="emptyState">
+                    <span class="material-symbols-outlined text-4xl text-outline mb-4">search_off</span>
+                    <h3 class="text-xl font-headline font-normal tracking-wide text-on-surface mb-2">No Provisions
+                        Matching Criteria</h3>
+                    <p class="text-xs text-on-surface-variant max-w-md mb-6 leading-relaxed">
+                        Adjust your category selection or increase your price threshold to discover our handcrafted
+                        African botanicals and pantry staples.
+                    </p>
+                    <button
+                        class="px-6 py-2.5 bg-primary text-on-primary text-xs uppercase tracking-widest font-semibold hover:bg-tertiary transition-colors"
+                        id="resetFiltersBtn2" type="button">
+                        Reset All Filters
+                    </button>
+                </div>
+                <!-- Product Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8"
+                    id="productGrid">
+                    {{PRODUCT_GRID}}
+                </div>
+
+                <!-- Catalog Status Footer / Small Batch Note -->
+                <div
+                    class="mt-16 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 bg-surface-container-lowest p-6 shadow-sm">
+                    <div class="text-xs uppercase tracking-widest font-semibold text-on-surface">
+                        Showing all small-batch creations
+                    </div>
+                    <div class="text-xs text-on-surface-variant tracking-wider">
+                        Hand-packaged weekly in Charlottenburg • Temperature regulated transit
+                    </div>
+                    <a class="text-xs font-semibold uppercase tracking-widest text-tertiary hover:text-on-surface transition-colors flex items-center gap-1"
+                        data-path="wholesale-and-hospitality" href="#">
+                        Hospitality Inquiries <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+            </section>
+            <!-- Editorial Discovery Interlude -->
+            <section class="w-full py-16 px-6 lg:px-12 my-8">
+                <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-4 space-y-4">
+                        <span class="text-xs font-semibold uppercase tracking-widest text-tertiary">Feinkost
+                            Philosophy</span>
+                        <h2 class="text-2xl sm:text-3xl font-headline font-light text-on-surface leading-tight">
+                            Purity of Provenance. <br><span class="italic font-normal">Excellence in Execution.</span>
+                        </h2>
+                        <p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+                            Every harvest in our catalogue represents uncompromised micro-terroir transparency. We
+                            collaborate directly with women-led farming co-ops and generational herbalists across
+                            Eastern and Western Africa.
+                        </p>
+                    </div>
+                    <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="bg-surface-container-lowest p-6 flex flex-col justify-between h-48 shadow-sm">
+                            <span class="text-2xl font-headline font-semibold text-tertiary">01</span>
+                            <div>
+                                <div class="text-xs font-semibold uppercase tracking-wider text-on-surface mb-1">
+                                    Micro-Lot Harvests</div>
+                                <p class="text-[11px] text-on-surface-variant leading-relaxed">Never commingled. Each
+                                    lot is tracked to specific coordinates and cooperative mill logs.</p>
+                            </div>
+                        </div>
+                        <div class="bg-surface-container-lowest p-6 flex flex-col justify-between h-48 shadow-sm">
+                            <span class="text-2xl font-headline font-semibold text-tertiary">02</span>
+                            <div>
+                                <div class="text-xs font-semibold uppercase tracking-wider text-on-surface mb-1">
+                                    Cold-Extraction</div>
+                                <p class="text-[11px] text-on-surface-variant leading-relaxed">Oils are extracted
+                                    unheated below 32°C to preserve cellular structure and vital aroma.</p>
+                            </div>
+                        </div>
+                        <div class="bg-surface-container-lowest p-6 flex flex-col justify-between h-48 shadow-sm">
+                            <span class="text-2xl font-headline font-semibold text-tertiary">03</span>
+                            <div>
+                                <div class="text-xs font-semibold uppercase tracking-wider text-on-surface mb-1">Freshly
+                                    Roasted in Berlin</div>
+                                <p class="text-[11px] text-on-surface-variant leading-relaxed">Small 15kg batch drum
+                                    roasting weekly to ensure optimal rest profiles upon delivery.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- Interactive Client-side Script for Filtering & Sorting -->
+        <script>
+            (function initShopInteractivity() {
+                const categoryButtons = document.querySelectorAll('.category-pill');
+                const priceSlider = document.getElementById('priceRange');
+                const priceDisplay = document.getElementById('priceDisplay');
+                const sortSelect = document.getElementById('sortSelect');
+                const productGrid = document.getElementById('productGrid');
+                const productCounter = document.getElementById('productCounter');
+                const emptyState = document.getElementById('emptyState');
+                const resetFiltersBtn = document.getElementById('resetFiltersBtn');
+                const addToBagButtons = document.querySelectorAll('.add-to-bag-btn');
+
+                let currentCategory = 'all';
+                let currentMaxPrice = 50;
+                let currentSort = 'featured';
+
+                function getProducts() {
+                    return Array.from(productGrid.querySelectorAll('.product-item'));
+                }
+
+                function updateGrid() {
+                    const products = getProducts();
+                    let visibleCount = 0;
+
+                    products.forEach(card => {
+                        const itemCategory = card.getAttribute('data-category');
+                        const itemPrice = parseFloat(card.getAttribute('data-price') || '0');
+
+                        const matchesCategory = (currentCategory === 'all' || itemCategory === currentCategory);
+                        const matchesPrice = itemPrice <= currentMaxPrice;
+
+                        if (matchesCategory && matchesPrice) {
+                            card.classList.remove('hidden');
+                            visibleCount++;
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+
+                    // Update item count badge
+                    if (productCounter) {
+                        productCounter.textContent = visibleCount;
+                    }
+
+                    // Empty State handling
+                    if (visibleCount === 0) {
+                        emptyState.classList.remove('hidden');
+                        emptyState.classList.add('flex');
+                    } else {
+                        emptyState.classList.add('hidden');
+                        emptyState.classList.remove('flex');
+                    }
+
+                    // Sort visible items
+                    sortProducts(currentSort);
+                }
+
+                function sortProducts(criteria) {
+                    const products = getProducts();
+
+                    products.sort((a, b) => {
+                        const priceA = parseFloat(a.getAttribute('data-price') || '0');
+                        const priceB = parseFloat(b.getAttribute('data-price') || '0');
+                        const nameA = (a.getAttribute('data-name') || '').toLowerCase();
+                        const nameB = (b.getAttribute('data-name') || '').toLowerCase();
+
+                        if (criteria === 'price-asc') return priceA - priceB;
+                        if (criteria === 'price-desc') return priceB - priceA;
+                        if (criteria === 'alpha') return nameA.localeCompare(nameB);
+                        return 0; // Default: 'featured' preserved by DOM ordering
+                    });
+
+                    products.forEach(card => productGrid.appendChild(card));
+                }
+
+                // Category Buttons Listeners
+                categoryButtons.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        categoryButtons.forEach(b => {
+                            b.classList.remove('bg-on-surface', 'text-surface', 'font-semibold');
+                            b.classList.add('bg-surface-container', 'text-on-surface-variant', 'font-medium');
+                        });
+                        btn.classList.remove('bg-surface-container', 'text-on-surface-variant', 'font-medium');
+                        btn.classList.add('bg-on-surface', 'text-surface', 'font-semibold');
+
+                        currentCategory = btn.getAttribute('data-category') || 'all';
+                        updateGrid();
+                    });
+                });
+
+                // Price Slider Listener
+                if (priceSlider) {
+                    priceSlider.addEventListener('input', (e) => {
+                        currentMaxPrice = parseFloat(e.target.value);
+                        if (priceDisplay) {
+                            priceDisplay.textContent = '€' + currentMaxPrice;
+                        }
+                        updateGrid();
+                    });
+                }
+
+                // Sort Dropdown Listener
+                if (sortSelect) {
+                    sortSelect.addEventListener('change', (e) => {
+                        currentSort = e.target.value;
+                        sortProducts(currentSort);
+                    });
+                }
+
+                // Reset Filters Button Listener
+                if (resetFiltersBtn) {
+                    resetFiltersBtn.addEventListener('click', () => {
+                        currentCategory = 'all';
+                        currentMaxPrice = 50;
+                        currentSort = 'featured';
+
+                        if (priceSlider) priceSlider.value = '50';
+                        if (priceDisplay) priceDisplay.textContent = '€50';
+                        if (sortSelect) sortSelect.value = 'featured';
+
+                        categoryButtons.forEach(b => {
+                            if (b.getAttribute('data-category') === 'all') {
+                                b.classList.remove('bg-surface-container', 'text-on-surface-variant', 'font-medium');
+                                b.classList.add('bg-on-surface', 'text-surface', 'font-semibold');
+                            } else {
+                                b.classList.remove('bg-on-surface', 'text-surface', 'font-semibold');
+                                b.classList.add('bg-surface-container', 'text-on-surface-variant', 'font-medium');
+                            }
+                        });
+
+                        updateGrid();
+                    });
+                }
+
+                // Micro-interaction on Add to Bag buttons
+                addToBagButtons.forEach(button => {
+                    button.addEventListener('click', function () {
+                        const originalText = this.textContent;
+                        this.textContent = 'Added';
+                        this.classList.add('bg-tertiary', 'text-on-tertiary');
+                        setTimeout(() => {
+                            this.textContent = originalText;
+                            this.classList.remove('bg-tertiary', 'text-on-tertiary');
+                        }, 1500);
+                    });
+                });
+
+            })();
+        </script>
+    </main>

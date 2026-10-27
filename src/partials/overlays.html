@@ -1,0 +1,100 @@
+<!-- Search overlay — solid surface, no blur -->
+<div aria-label="Search Maison Asili" aria-modal="true" class="hidden fixed inset-0 z-[60] bg-surface-container-lowest overflow-y-auto"
+    data-search-overlay role="dialog">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="h-20 flex items-center justify-between gap-6 border-b border-outline-variant">
+            <span class="flex items-center gap-3">
+                <span
+                    class="w-9 h-9 rounded-full overflow-hidden bg-charcoal ring-1 ring-brand-gold/50 flex items-center justify-center">
+                    <img alt="" class="w-11 h-11 object-cover scale-[1.15]"
+                        src="{{BASE}}assets/img/img-59efbbe90f.jpg">
+                </span>
+                <span
+                    class="text-[10px] font-label uppercase tracking-[0.3em] text-tertiary font-semibold">Search the
+                    pantry</span>
+            </span>
+            <button aria-label="Close search" class="flex items-center gap-2 text-on-surface hover:text-tertiary transition-colors"
+                data-search-close type="button">
+                <span class="text-[10px] font-label uppercase tracking-[0.2em] hidden sm:inline">Close</span>
+                <span class="material-symbols-outlined text-2xl">close</span>
+            </button>
+        </div>
+
+        <div class="py-8 lg:py-12">
+            <div class="flex items-center gap-4 border-b-2 border-on-surface pb-4">
+                <span class="material-symbols-outlined text-3xl text-tertiary">search</span>
+                <input
+                    class="flex-1 min-w-0 bg-transparent text-2xl sm:text-4xl font-headline text-on-surface focus:outline-none placeholder:text-outline py-1"
+                    data-search-input placeholder="Coffee, tea, spices&hellip;" type="search">
+            </div>
+            <div
+                class="mt-4 flex items-center justify-between gap-4 text-[10px] font-label uppercase tracking-[0.24em] text-on-surface-variant">
+                <span data-search-status>Search product names, categories and descriptions.</span>
+            </div>
+
+            <div class="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-6" data-search-results></div>
+
+            <div class="hidden flex-col items-center text-center py-16" data-search-empty>
+                <span class="material-symbols-outlined text-4xl text-outline mb-4">search_off</span>
+                <h3 class="font-headline text-2xl text-on-surface mb-2">Nothing matches that search</h3>
+                <p class="text-xs text-on-surface-variant max-w-md leading-relaxed">Try &ldquo;coffee&rdquo;,
+                    &ldquo;spice blend&rdquo;, &ldquo;oil&rdquo; or &ldquo;botanical&rdquo; &mdash; or browse the full
+                    pantry instead.</p>
+                <a class="mt-6 px-6 py-3 bg-on-surface text-surface-container-lowest text-[11px] uppercase tracking-[0.22em] font-semibold hover:bg-primary transition-colors"
+                    href="{{BASE}}shop/index.html">Explore the Shop</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cart drawer -->
+<div class="fixed inset-0 z-[60] bg-on-surface/40 opacity-0 pointer-events-none transition-opacity duration-300"
+    data-cart-backdrop></div>
+<aside
+    class="fixed top-0 right-0 z-[61] w-full max-w-md h-full bg-surface-container-lowest shadow-2xl flex flex-col translate-x-full transition-transform duration-300 ease-in-out"
+    data-cart-drawer aria-label="Shopping bag">
+    <div class="p-6 flex items-center justify-between border-b border-outline-variant">
+        <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-xl">shopping_bag</span>
+            <h3 class="font-headline text-sm uppercase tracking-[0.2em] font-semibold text-on-surface">Your Bag (<span
+                    data-cart-count-drawer>0</span>)</h3>
+        </div>
+        <button aria-label="Close bag" class="p-2 text-on-surface hover:text-primary transition-colors"
+            data-cart-close type="button">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+    </div>
+
+    <div class="px-6 py-3 bg-warm-sand">
+        <div class="flex justify-between items-center text-[11px] font-label uppercase tracking-wider mb-1.5">
+            <span class="text-on-surface font-semibold">Complimentary shipping over &euro;60</span>
+            <span class="text-tertiary font-bold" data-shipping-status>&euro;60.00 away</span>
+        </div>
+        <div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+            <div class="h-full bg-tertiary w-0 transition-all duration-500" data-shipping-bar></div>
+        </div>
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-6 flex flex-col gap-5" data-cart-items></div>
+
+    <div class="p-6 bg-warm-sand mt-auto flex flex-col gap-4 border-t border-outline-variant">
+        <div class="flex items-center justify-between text-xs font-label uppercase tracking-wider">
+            <span class="text-on-surface-variant">Subtotal</span>
+            <span class="text-lg font-headline font-semibold text-on-surface" data-cart-subtotal>&euro;0.00</span>
+        </div>
+        <p class="text-[11px] text-on-surface-variant font-label">Prices include VAT. This demonstration store does not
+            process payments.</p>
+        <a class="w-full py-4 bg-on-surface text-surface-container-lowest text-xs font-label uppercase tracking-[0.25em] font-semibold text-center hover:bg-primary transition-colors"
+            href="{{BASE}}cart/index.html#checkout">
+            Proceed to Demo Checkout
+        </a>
+        <button class="text-center text-[11px] font-label uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors py-1"
+            data-cart-close type="button">
+            Continue Shopping
+        </button>
+    </div>
+</aside>
+
+<!-- Toast notifications -->
+<div aria-live="polite" class="fixed bottom-5 right-5 z-[70] flex flex-col gap-3 items-end max-w-[calc(100vw-2.5rem)]"
+    data-toast-root></div>

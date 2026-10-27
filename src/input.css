@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    overscroll-behavior: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  main > :first-child {
+    margin-top: 0 !important;
+  }
+
+  main > :last-child {
+    margin-bottom: 0 !important;
+  }
+
+  /* Editorial serif for headlines, clean sans for everything else */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: theme('fontFamily.headline');
+  }
+
+  ::selection {
+    background-color: #e8ddcc;
+    color: #171714;
+  }
+
+  :focus-visible {
+    outline: 2px solid #8a6a34;
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Graceful image fallback — keeps layout intact if an asset is missing */
+  .img-fallback {
+    background-color: #e8ddcc;
+    background-image: linear-gradient(135deg, #f1eadc 0%, #e4dac6 100%);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1eadc;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d6cfbe;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b69a62;
+}
+
+/* Restrained, accessible motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   Home Hero & Sticky Curtain Scroll Stacking
+   ========================================================================== */
+
+#hero-curtain {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 640px;
+  z-index: 10;
+  overflow: hidden;
+}
+
+#curtain-content {
+  position: relative;
+  z-index: 20;
+  background-color: #FAF8F5;
+  box-shadow: 0 -25px 60px rgba(0, 0, 0, 0.55);
+}
+
+/* ---------------- Minimal Transparent Header Over Hero ---------------- */
+#site-header {
+  background-color: rgba(250, 248, 245, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  color: #171714;
+}
+
+#site-header .nav-link {
+  color: rgba(23, 23, 20, 0.8);
+}
+
+#site-header .nav-link:hover {
+  color: #B69A62;
+}
+
+#site-header .header-brand-title {
+  color: #171714;
+}
+
+#site-header .header-action-btn {
+  color: #171714;
+}
+
+#site-header .header-action-btn:hover {
+  color: #B69A62;
+}
+
+/* Over Hero state on homepage */
+body[data-page="home"] #site-header.header-hero {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.15) 70%, transparent 100%);
+  background-color: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+body[data-page="home"] #site-header.header-hero .nav-link {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+body[data-page="home"] #site-header.header-hero .nav-link:hover {
+  color: #B69A62;
+}
+
+body[data-page="home"] #site-header.header-hero .header-brand-title {
+  color: #ffffff;
+}
+
+body[data-page="home"] #site-header.header-hero .header-action-btn {
+  color: #ffffff;
+}
+
+body[data-page="home"] #site-header.header-hero .header-action-btn:hover {
+  color: #B69A62;
+}
+
+/* Custom scrollbar hiding for horizontal carousel */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+

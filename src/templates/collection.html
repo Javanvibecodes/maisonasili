@@ -1,0 +1,164 @@
+<main class="w-full pt-28 bg-background">
+    <div class="flex flex-col w-full text-on-surface">
+        <!-- Breadcrumb & collection hero -->
+        <section class="max-w-7xl mx-auto w-full px-6 lg:px-12 pt-6 pb-12">
+            <nav aria-label="Breadcrumb"
+                class="flex items-center gap-2 text-[11px] font-label uppercase tracking-[0.2em] text-on-surface-variant">
+                <a class="hover:text-on-surface transition-colors" href="{{BASE}}index.html">Home</a>
+                <span class="text-outline-variant">/</span>
+                <a class="hover:text-on-surface transition-colors" href="{{BASE}}shop/index.html">Collections</a>
+                <span class="text-outline-variant">/</span>
+                <span class="text-on-surface font-semibold">{{NAME}}</span>
+            </nav>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center mt-8">
+                <div class="lg:col-span-6 flex flex-col items-start">
+                    <div class="inline-flex items-center gap-2.5 px-3 py-1 bg-tertiary-container mb-6">
+                        <span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                        <span class="font-label text-[11px] font-semibold tracking-[0.28em] uppercase text-on-tertiary-container">Collection
+                            {{INDEX}} &mdash; {{EYEBROW}}</span>
+                    </div>
+                    <h1 class="font-headline text-4xl sm:text-5xl font-light tracking-tight text-on-surface leading-[1.1] mb-4">
+                        {{NAME}}
+                    </h1>
+                    <p class="font-headline italic text-lg text-tertiary mb-6">{{TAGLINE}}</p>
+                    <p class="text-sm sm:text-base text-on-surface-variant font-light leading-relaxed mb-8">{{INTRO}}</p>
+                    <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-[11px] font-label uppercase tracking-[0.22em] text-on-surface-variant">
+                        <span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-tertiary">inventory_2</span>
+                            {{COUNT}} provisions</span>
+                        <span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-tertiary">local_offer</span>
+                            Prices shown incl. VAT</span>
+                    </div>
+                </div>
+                <div class="lg:col-span-6 relative">
+                    <div class="relative w-full aspect-[4/5] sm:aspect-[3/2] lg:aspect-[4/5] bg-surface-container overflow-hidden shadow-sm">
+                        <img class="w-full h-full object-cover" src="{{HERO_SRC}}" alt="{{HERO_ALT}}">
+                    </div>
+                    <div class="absolute -bottom-5 -left-5 hidden sm:block bg-charcoal px-5 py-4 shadow-lg">
+                        <span class="font-headline text-lg font-semibold text-brand-gold tracking-wide block leading-none">Maison
+                            Asili</span>
+                        <span class="text-[9px] tracking-[0.3em] uppercase text-white/70 font-label mt-1.5 block">Origin.
+                            Identity. Heritage.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filter bar -->
+        <section
+            class="sticky top-28 z-30 w-full bg-surface-container-lowest border-y border-outline-variant shadow-sm px-6 lg:px-12 py-4">
+            <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                <!-- Mobile: filter panel toggle + live counter -->
+                <div class="flex lg:hidden items-center justify-between gap-4 w-full">
+                    <button
+                        class="flex items-center gap-2 px-4 py-2.5 border border-outline-variant bg-surface-container text-[11px] font-label uppercase tracking-[0.2em] font-semibold text-on-surface cursor-pointer"
+                        aria-controls="filterPanel" aria-expanded="false" data-filter-toggle type="button">
+                        <span class="material-symbols-outlined text-base">tune</span>
+                        Filters
+                    </button>
+                    <div class="text-xs uppercase tracking-wider text-on-surface-variant font-medium">
+                        <span class="text-on-surface font-bold" data-product-count>{{COUNT}}</span> items
+                    </div>
+                </div>
+                <!-- Controls: always visible on desktop, collapsible panel on mobile -->
+                <div
+                    class="hidden lg:flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-4 space-y-3 lg:space-y-0 w-full lg:w-auto"
+                    id="filterPanel">
+                    <div class="flex items-center gap-2 overflow-x-auto pb-2 lg:pb-0 scrollbar-none">
+                        {{COLLECTION_PILLS}}
+                    </div>
+                    <div class="flex flex-wrap items-center gap-4 sm:gap-6 justify-between lg:justify-end">
+                        <div class="hidden lg:block text-xs uppercase tracking-wider text-on-surface-variant font-medium">
+                            <span class="text-on-surface font-bold" id="productCounter"
+                                data-product-count>{{COUNT}}</span> items available
+                        </div>
+                    <div class="flex items-center gap-2 bg-surface-container px-3 py-1.5">
+                        <span class="text-[11px] font-semibold uppercase tracking-wider text-on-surface-variant">Max:</span>
+                        <span class="text-xs font-bold text-on-surface" id="priceDisplay">&euro;{{MAX_PRICE}}</span>
+                        <input aria-label="Maximum price filter" class="w-20 accent-tertiary cursor-pointer"
+                            id="priceRange" max="{{MAX_PRICE}}" min="10" step="1" type="range" value="{{MAX_PRICE}}">
+                    </div>
+                    <div class="flex items-center gap-2 bg-surface-container px-3 py-1.5">
+                        <span class="text-[11px] font-semibold uppercase tracking-wider text-on-surface-variant">Sort:</span>
+                        <select
+                            class="bg-transparent text-xs text-on-surface font-medium uppercase tracking-wider focus:outline-none cursor-pointer"
+                            id="sortSelect">
+                            <option value="featured">Featured</option>
+                            <option value="newest">Newest</option>
+                            <option value="price-asc">Price: Low to High</option>
+                            <option value="price-desc">Price: High to Low</option>
+                            <option value="alpha">Alphabetical</option>
+                        </select>
+                    </div>
+                    <button
+                        class="text-[11px] uppercase tracking-[0.2em] font-semibold text-on-surface-variant hover:text-tertiary transition-colors"
+                        id="resetFiltersBtn" type="button">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product grid -->
+        <section class="w-full max-w-7xl mx-auto px-6 lg:px-12 py-12">
+            <div class="hidden flex-col items-center justify-center py-24 text-center px-6 bg-surface-container-lowest border border-outline-variant"
+                id="emptyState">
+                <span class="material-symbols-outlined text-4xl text-outline mb-4">search_off</span>
+                <h3 class="text-xl font-headline font-normal tracking-wide text-on-surface mb-2">Nothing in this
+                    collection matches</h3>
+                <p class="text-xs text-on-surface-variant max-w-md mb-6 leading-relaxed">
+                    Increase your price threshold to see the rest of the collection, or reset the filters to start
+                    again.
+                </p>
+                <button class="px-6 py-2.5 bg-primary text-on-primary text-xs uppercase tracking-widest font-semibold hover:bg-tertiary transition-colors"
+                    id="resetFiltersBtn2" type="button">
+                    Reset All Filters
+                </button>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8" id="productGrid">
+                {{PRODUCT_GRID}}
+            </div>
+        </section>
+
+        <!-- Editorial: culinary applications -->
+        <section class="w-full bg-warm-sand py-20 px-6 lg:px-12 mt-4">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+                <div class="lg:col-span-5 relative aspect-[4/3] lg:aspect-[4/5] overflow-hidden bg-surface-container">
+                    <img class="w-full h-full object-cover" src="{{EDITORIAL_IMG}}"
+                        alt="Culinary preparation with Maison Asili {{NAME}}">
+                </div>
+                <div class="lg:col-span-7 flex flex-col items-start">
+                    <span class="font-label text-xs uppercase tracking-[0.3em] text-tertiary font-semibold mb-3">In the
+                        Kitchen</span>
+                    <h2 class="font-headline text-3xl sm:text-4xl font-light text-on-surface tracking-tight mb-6">
+                        {{EDITORIAL_TITLE}}
+                    </h2>
+                    <p class="text-sm sm:text-base text-on-surface-variant font-light leading-relaxed mb-8">
+                        {{EDITORIAL_BODY}}
+                    </p>
+                    <ul class="w-full max-w-xl list-none mb-8">
+                        {{APPLICATIONS}}
+                    </ul>
+                    <a class="px-8 py-3.5 bg-on-surface text-surface-container-lowest font-label text-xs uppercase tracking-[0.22em] font-medium hover:bg-primary transition-colors"
+                        href="{{BASE}}shop/index.html">
+                        Find Your Next Favourite
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related collections -->
+        <section class="max-w-7xl mx-auto w-full px-6 lg:px-12 py-16">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                    <span class="font-label text-xs uppercase tracking-[0.3em] text-tertiary font-semibold block mb-2">Continue
+                        Exploring</span>
+                    <h2 class="font-headline text-2xl sm:text-3xl font-light text-on-surface tracking-tight">Related
+                        Collections</h2>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                {{RELATED_LINKS}}
+            </div>
+        </section>
+    </div>
+</main>

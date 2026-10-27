@@ -1,0 +1,106 @@
+<header class="fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300" id="site-header">
+    <!-- Main navigation -->
+    <div class="main-nav-bar max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-6 py-3.5 sm:py-4 transition-colors duration-300">
+        <!-- Brand -->
+        <a class="flex items-center gap-2.5 sm:gap-3 group shrink-0" data-nav="home" href="{{BASE}}index.html">
+            <span class="w-8 h-8 rounded-full overflow-hidden bg-charcoal flex items-center justify-center ring-1 ring-brand-gold/60 shrink-0">
+                <img alt="Maison Asili emblem" class="w-10 h-10 object-cover scale-110" src="{{BASE}}assets/img/img-59efbbe90f.jpg">
+            </span>
+            <span class="header-brand-title font-sans font-medium text-[13px] sm:text-[14px] tracking-[0.28em] uppercase leading-none transition-colors">
+                Maison Asili
+            </span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav aria-label="Primary" class="hidden lg:flex items-center gap-8 text-[11px] font-sans font-medium uppercase tracking-[0.2em]">
+            <a class="nav-link transition-colors py-1 relative hover:text-brand-gold after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-brand-gold hover:after:w-full after:transition-all" data-nav="shop" href="{{BASE}}shop/index.html">Shop</a>
+            <div class="relative" data-dropdown>
+                <button aria-controls="collections-menu" aria-expanded="false" class="nav-link transition-colors py-1 flex items-center gap-1.5 hover:text-brand-gold" data-dropdown-toggle type="button">
+                    Collections
+                    <span class="material-symbols-outlined text-sm transition-transform duration-200" data-dropdown-icon>expand_more</span>
+                </button>
+                <div class="hidden absolute left-1/2 -translate-x-1/2 top-full pt-4 w-[28rem]" id="collections-menu">
+                    <div class="bg-surface-container-lowest border border-outline-variant shadow-xl p-2 rounded-sm text-on-surface">
+                        <a class="group flex items-start gap-3.5 p-3 hover:bg-surface-container transition-colors" href="{{BASE}}collections/coffee/index.html">
+                            <span class="w-8 h-8 shrink-0 bg-surface-container flex items-center justify-center text-tertiary rounded-sm"><span class="material-symbols-outlined text-base">coffee</span></span>
+                            <span class="flex flex-col">
+                                <span class="font-sans text-xs font-semibold uppercase tracking-wider text-on-surface group-hover:text-tertiary transition-colors">Coffee</span>
+                                <span class="text-[10px] text-on-surface-variant font-sans">Small-batch single-origin roasts</span>
+                            </span>
+                        </a>
+                        <a class="group flex items-start gap-3.5 p-3 hover:bg-surface-container transition-colors" href="{{BASE}}collections/tea/index.html">
+                            <span class="w-8 h-8 shrink-0 bg-surface-container flex items-center justify-center text-tertiary rounded-sm"><span class="material-symbols-outlined text-base">emoji_food_beverage</span></span>
+                            <span class="flex flex-col">
+                                <span class="font-sans text-xs font-semibold uppercase tracking-wider text-on-surface group-hover:text-tertiary transition-colors">Tea</span>
+                                <span class="text-[10px] text-on-surface-variant font-sans">Rare leaves, tisanes and infusions</span>
+                            </span>
+                        </a>
+                        <a class="group flex items-start gap-3.5 p-3 hover:bg-surface-container transition-colors" href="{{BASE}}collections/spices/index.html">
+                            <span class="w-8 h-8 shrink-0 bg-surface-container flex items-center justify-center text-tertiary rounded-sm"><span class="material-symbols-outlined text-base">grain</span></span>
+                            <span class="flex flex-col">
+                                <span class="font-sans text-xs font-semibold uppercase tracking-wider text-on-surface group-hover:text-tertiary transition-colors">Spices</span>
+                                <span class="text-[10px] text-on-surface-variant font-sans">Ancient blends and whole spices</span>
+                            </span>
+                        </a>
+                        <a class="group flex items-start gap-3.5 p-3 hover:bg-surface-container transition-colors" href="{{BASE}}collections/botanicals/index.html">
+                            <span class="w-8 h-8 shrink-0 bg-surface-container flex items-center justify-center text-tertiary rounded-sm"><span class="material-symbols-outlined text-base">eco</span></span>
+                            <span class="flex flex-col">
+                                <span class="font-sans text-xs font-semibold uppercase tracking-wider text-on-surface group-hover:text-tertiary transition-colors">Botanicals</span>
+                                <span class="text-[10px] text-on-surface-variant font-sans">Elixirs, infusions and dried botanicals</span>
+                            </span>
+                        </a>
+                        <a class="group flex items-start gap-3.5 p-3 hover:bg-surface-container transition-colors" href="{{BASE}}collections/oils/index.html">
+                            <span class="w-8 h-8 shrink-0 bg-surface-container flex items-center justify-center text-tertiary rounded-sm"><span class="material-symbols-outlined text-base">water_drop</span></span>
+                            <span class="flex flex-col">
+                                <span class="font-sans text-xs font-semibold uppercase tracking-wider text-on-surface group-hover:text-tertiary transition-colors">Oils</span>
+                                <span class="text-[10px] text-on-surface-variant font-sans">Cold-pressed specialty oils</span>
+                            </span>
+                        </a>
+                        <a class="flex items-center justify-between px-3 py-2.5 mt-1 border-t border-outline-variant text-[10px] uppercase tracking-[0.2em] font-semibold text-on-surface hover:text-tertiary transition-colors" href="{{BASE}}shop/index.html">
+                            View the full pantry
+                            <span class="material-symbols-outlined text-sm">north_east</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <a class="nav-link transition-colors py-1 relative hover:text-brand-gold after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-brand-gold hover:after:w-full after:transition-all" data-nav="heritage" href="{{BASE}}heritage/index.html">Our Heritage</a>
+            <a class="nav-link transition-colors py-1 relative hover:text-brand-gold after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-brand-gold hover:after:w-full after:transition-all" data-nav="wholesale" href="{{BASE}}wholesale/index.html">Wholesale &amp; Hospitality</a>
+            <a class="nav-link transition-colors py-1 relative hover:text-brand-gold after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-brand-gold hover:after:w-full after:transition-all" data-nav="contact" href="{{BASE}}contact/index.html">Contact</a>
+        </nav>
+
+        <!-- Actions -->
+        <div class="flex items-center gap-4 sm:gap-5 shrink-0 header-actions">
+            <button aria-label="Search" class="header-action-btn hover:text-brand-gold transition-colors flex items-center" data-search-open type="button">
+                <span class="material-symbols-outlined text-[20px]">search</span>
+            </button>
+            <a aria-label="Shopping bag" class="header-action-btn relative hover:text-brand-gold transition-colors flex items-center" href="{{BASE}}cart/index.html">
+                <span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+                <span class="absolute -top-1.5 -right-2 bg-brand-gold text-charcoal text-[9px] font-bold w-4 h-4 min-w-[16px] rounded-full flex items-center justify-center leading-none opacity-0 transition-opacity" data-cart-count>0</span>
+            </a>
+            <button aria-label="Open menu" aria-expanded="false" class="header-action-btn lg:hidden flex items-center hover:text-brand-gold transition-colors" data-menu-toggle type="button">
+                <span class="material-symbols-outlined text-[24px]" data-menu-icon>menu</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="hidden lg:hidden bg-[#161714] border-t border-white/10 shadow-2xl text-white max-h-[85vh] overflow-y-auto" data-mobile-menu>
+        <nav aria-label="Mobile" class="max-w-7xl mx-auto px-6 py-6 flex flex-col gap-1 text-[12px] font-sans uppercase tracking-[0.18em]">
+            <a class="py-3 border-b border-white/10 text-white hover:text-brand-gold transition-colors font-medium" data-nav="shop" href="{{BASE}}shop/index.html">Shop All</a>
+            <span class="pt-5 pb-1 text-[10px] tracking-[0.3em] text-brand-gold font-semibold">Collections</span>
+            <a class="py-2.5 border-b border-white/10 text-white/85 hover:text-brand-gold transition-colors" href="{{BASE}}collections/coffee/index.html">Coffee</a>
+            <a class="py-2.5 border-b border-white/10 text-white/85 hover:text-brand-gold transition-colors" href="{{BASE}}collections/tea/index.html">Tea</a>
+            <a class="py-2.5 border-b border-white/10 text-white/85 hover:text-brand-gold transition-colors" href="{{BASE}}collections/spices/index.html">Spices</a>
+            <a class="py-2.5 border-b border-white/10 text-white/85 hover:text-brand-gold transition-colors" href="{{BASE}}collections/botanicals/index.html">Botanicals</a>
+            <a class="py-2.5 border-b border-white/10 text-white/85 hover:text-brand-gold transition-colors" href="{{BASE}}collections/oils/index.html">Oils</a>
+            <span class="pt-5 pb-1 text-[10px] tracking-[0.3em] text-brand-gold font-semibold">Maison</span>
+            <a class="py-2.5 border-b border-white/10 text-white/85 hover:text-brand-gold transition-colors" data-nav="heritage" href="{{BASE}}heritage/index.html">Our Heritage</a>
+            <a class="py-2.5 border-b border-white/10 text-white/85 hover:text-brand-gold transition-colors" data-nav="wholesale" href="{{BASE}}wholesale/index.html">Wholesale &amp; Hospitality</a>
+            <a class="py-2.5 border-b border-white/10 text-white/85 hover:text-brand-gold transition-colors" data-nav="contact" href="{{BASE}}contact/index.html">Contact</a>
+            <a class="py-2.5 border-b border-white/10 text-white/85 hover:text-brand-gold transition-colors" href="{{BASE}}cart/index.html">Shopping Bag</a>
+            <button class="mt-6 py-3.5 bg-brand-gold text-charcoal text-[11px] uppercase tracking-[0.22em] font-semibold hover:bg-white transition-colors text-center w-full shadow-md" data-search-open type="button">
+                Search the pantry
+            </button>
+        </nav>
+    </div>
+</header>

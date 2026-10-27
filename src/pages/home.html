@@ -1,0 +1,331 @@
+<main class="w-full bg-background relative" data-home-main>
+    <!-- 1. Sticky Hero Section with Edge-to-Edge Cinematic Video & Dynamic Responsive Overlay -->
+    <section class="sticky top-0 left-0 w-full h-screen min-h-[560px] sm:min-h-[660px] z-10 overflow-hidden flex flex-col justify-end bg-[#0B0F0B]" id="hero-curtain">
+        <!-- Video Backdrop: full bleed cover, bottle framed cleanly on mobile and desktop -->
+        <div class="absolute inset-0 w-full h-full overflow-hidden z-0">
+            <video autoplay loop muted playsinline
+                class="w-full h-full object-cover object-[70%_center] sm:object-[center_8%] transform scale-100 will-change-transform"
+                id="hero-bg-video">
+                <source src="{{BASE}}assets/video/botanical-infusion-forest.mp4" type="video/mp4">
+            </video>
+            <!-- Left-side dark gradient vignette on desktop: text is crisp and clear on left, right 45% is open for rotating bottle -->
+            <div class="hidden sm:block absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 via-50% to-transparent z-10 w-full lg:w-[68%] pointer-events-none"></div>
+            <!-- Mobile vignette: protects overlaid text on the lower half while keeping the bottle clear in the upper canopy -->
+            <div class="sm:hidden absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 via-55% to-black/20 z-10 pointer-events-none"></div>
+            <!-- Top subtle vignette under transparent header -->
+            <div class="absolute top-0 left-0 right-0 h-28 sm:h-32 bg-gradient-to-b from-black/70 sm:from-black/60 to-transparent z-10 pointer-events-none"></div>
+            <!-- Dynamic dimming overlay as curtain rises -->
+            <div class="absolute inset-0 bg-black/0 transition-opacity duration-300 z-15 pointer-events-none" id="hero-dimmer"></div>
+        </div>
+
+        <!-- Hero Content: Lowered Welcome to, Bold Maison Asili, and Dynamic Responsive Text Overlay directly on video -->
+        <div class="relative z-20 max-w-7xl mx-auto w-full px-5 sm:px-6 lg:px-12 pt-20 sm:pt-28 pb-8 sm:pb-12 lg:pb-14 flex flex-col justify-end">
+            <!-- Hero Typography & Action Block -->
+            <div class="max-w-2xl flex flex-col items-start">
+                <!-- Welcome to -->
+                <span class="font-sans font-light tracking-[0.16em] text-white/90 text-sm sm:text-base md:text-xl lg:text-2xl mb-1.5 sm:mb-2.5 select-none">
+                    Welcome to
+                </span>
+
+                <!-- MAISON ASILI (Bold with Asili in Gold) -->
+                <h1 class="font-sans font-extrabold uppercase tracking-tight text-[clamp(2.1rem,7.5vw,3.2rem)] sm:text-5xl lg:text-[clamp(2.4rem,5.5vw,5.2rem)] leading-[0.95] select-none mb-3 sm:mb-4 text-white">
+                    MAISON <span class="text-brand-gold">ASILI</span>
+                </h1>
+
+                <!-- Handcrafted text: reduced font size, NOT all-caps, only first letter of first word capitalized -->
+                <p class="font-sans font-light text-white/80 text-[11px] sm:text-xs md:text-sm tracking-normal mb-5 sm:mb-7 max-w-lg leading-relaxed">
+                    Handcrafted botanicals, rare oils, single-origin coffee.
+                </p>
+
+                <!-- Calls to Action (Side-by-side on mobile and desktop) -->
+                <div class="flex flex-row items-center gap-2.5 sm:gap-4 w-full sm:w-auto mb-5 sm:mb-6">
+                    <a class="flex-1 sm:flex-none px-4 sm:px-7 py-3 bg-brand-gold text-charcoal font-sans text-[10px] sm:text-xs uppercase tracking-[0.2em] font-semibold hover:bg-white hover:text-charcoal transition-all shadow-md text-center whitespace-nowrap"
+                        data-path="collections" href="#">
+                        Explore Our Collection
+                    </a>
+                    <a class="flex-1 sm:flex-none px-4 sm:px-7 py-3 bg-transparent border border-white/40 text-white font-sans text-[10px] sm:text-xs uppercase tracking-[0.2em] font-medium hover:bg-white/10 hover:border-white transition-all text-center whitespace-nowrap"
+                        data-path="our-heritage" href="#">
+                        Discover Our Heritage
+                    </a>
+                </div>
+
+                <!-- Scroll down indicator: raised to sit directly below the hero buttons -->
+                <div class="flex items-center text-white/70 hover:text-white transition-colors cursor-pointer select-none" id="scroll-prompt" onclick="var c = document.getElementById('curtain-content'); if(c) c.scrollIntoView({ behavior: 'smooth' });">
+                    <span class="text-[9px] sm:text-[10px] uppercase font-sans tracking-[0.3em] mr-2">Scroll to explore</span>
+                    <span class="material-symbols-outlined text-sm sm:text-base animate-bounce">arrow_downward</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rest of the page (The Curtain that rises on top of the hero section) -->
+    <div class="relative z-20 bg-surface-container-lowest text-on-surface shadow-[0_-25px_60px_rgba(0,0,0,0.55)] border-t border-brand-gold/40 rounded-t-[2.5rem] lg:rounded-t-[3.5rem] overflow-hidden" id="curtain-content">
+        <!-- 2. Brand Introduction Manifesto -->
+        <section class="w-full bg-surface-container-lowest py-20 px-6 lg:px-12">
+            <div class="max-w-4xl mx-auto flex flex-col items-center text-center">
+                <div class="w-14 h-14 mb-8 flex items-center justify-center rounded-full bg-surface-container">
+                    <img alt="Maison Asili Gold Crest" class="w-9 h-9 object-contain"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-E2bMOTKzhswgQ2xvSYy79i1SWLYTbQNnYM9wEuqNCY0n9lccecyNjbdo2VHKVw50Izof5vTxZrEnctxK4Dnxno7IbTct4Ks91isL50drD_qlxcuxVvpiwmZoHEM7t153FIXDUTidLG9t7wjUbGr2AVIFxCZTPkZ6kvMJBgcX96stOYf-gbyIAkav5bY0cKckjwxtcX1jb0xAgaA9h7XP-NHUobkKf69QxhxbvSCsobj8kXRrzWqJ">
+                </div>
+                <span class="font-sans text-xs uppercase tracking-[0.3em] text-tertiary font-semibold mb-3">Manifesto</span>
+                <h2 class="font-sans text-3xl sm:text-4xl lg:text-5xl font-light text-on-surface mb-8 tracking-tight uppercase">
+                    A New Standard of Feinkost
+                </h2>
+                <div class="w-12 h-0.5 bg-tertiary mb-10"></div>
+                <blockquote class="font-body text-base sm:text-lg lg:text-xl text-on-surface font-light leading-relaxed tracking-normal max-w-3xl">
+                    “A new standard of Feinkost has arrived in Berlin. Maison Asili masterfully bridges traditions,
+                    bringing the soul of rare African heritage botanicals into a refined Afro-Gourmet Fusion with
+                    exceptional flavours from around the world. Our artisanal, 100% natural cold-pressed specialty
+                    oils and premium spice blends are crafted without compromise. Designed for the passionate home
+                    chef and discerning soul food lover, they elevate everyday cuisine into an extraordinary
+                    culinary experience.”
+                </blockquote>
+                <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-on-surface-variant font-sans text-[11px] tracking-[0.25em] uppercase">
+                    <span>Handcrafted in Small Batches</span>
+                    <span class="text-tertiary">•</span>
+                    <span>Ethically Foraged</span>
+                    <span class="text-tertiary">•</span>
+                    <span>Pure Extraction</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Explore Our Collections — Immersive Vertical Full-Bleed Cards -->
+        <section class="w-full max-w-7xl mx-auto px-6 lg:px-12 py-16">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12">
+                <div>
+                    <h2 class="font-sans text-3xl sm:text-4xl lg:text-5xl font-light text-on-surface tracking-tight uppercase">
+                        Explore Our Collections
+                    </h2>
+                </div>
+                <a class="mt-4 md:mt-0 font-sans text-xs uppercase tracking-[0.2em] text-on-surface hover:text-tertiary transition-colors flex items-center gap-1.5 font-medium"
+                    data-path="collections" href="#">
+                    View All 5 Categories <span class="material-symbols-outlined text-sm">north_east</span>
+                </a>
+            </div>
+
+            <!-- 5 Immersive Full-Bleed Vertical Collection Cards -->
+            <div class="flex lg:grid lg:grid-cols-5 gap-4 lg:gap-5 overflow-x-auto lg:overflow-visible scrollbar-none snap-x snap-mandatory py-2 -mx-6 px-6 lg:mx-0 lg:px-0">
+                <!-- Category 1: Coffee -->
+                <a class="w-[260px] sm:w-[280px] lg:w-auto shrink-0 snap-start relative h-[400px] sm:h-[440px] lg:h-[520px] rounded-2xl overflow-hidden group shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-between p-6"
+                    data-path="coffee-reserve" href="#">
+                    <div class="absolute inset-0 z-0">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                            data-alt="Monochrome minimalist photography of whole roasted single origin high-altitude Mount Kenya Arabica beans inside a luxury ceramic bowl on white marble, sharp directional culinary lighting"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcMXWxD_VnL7XvVo6U_CMTVnR2xHYXuPC1dy4JzUNV-0F7YNJbpysf7tfsyTN_DBke4iSM3-Bj3Pd6Ha-jBLcqbH00Pg_r3VoZ4ImYTHnduQ3R6vpJfISaHI2m8Wel0RwAGXJlQqRUREVCqoDtmG6TdUleYjOj57lFCD7RjNNTObQtBJGBTCtTqAozSjYji_hj4jFJrqaBdjCeAtlegFLX_mvK2ndTLgLEweUcxiw">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/40"></div>
+                    </div>
+                    <span class="relative z-10 text-[10px] font-sans font-semibold tracking-[0.25em] text-white/80 uppercase">01 / 05</span>
+                    <div class="relative z-10 text-center my-auto">
+                        <h3 class="font-sans font-bold text-2xl lg:text-3xl uppercase tracking-wider text-white leading-tight mb-1">Coffee</h3>
+                        <p class="text-xs font-sans font-light tracking-widest text-white/75 uppercase">High-Altitude Terroir</p>
+                    </div>
+                    <div class="relative z-10 flex justify-center">
+                        <span class="px-6 py-2.5 rounded-full bg-white text-charcoal font-sans text-[11px] font-semibold uppercase tracking-[0.2em] shadow-lg group-hover:bg-brand-gold group-hover:text-charcoal transition-all">Explore</span>
+                    </div>
+                </a>
+
+                <!-- Category 2: Tea -->
+                <a class="w-[260px] sm:w-[280px] lg:w-auto shrink-0 snap-start relative h-[400px] sm:h-[440px] lg:h-[520px] rounded-2xl overflow-hidden group shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-between p-6"
+                    data-path="botanical-tea" href="#">
+                    <div class="absolute inset-0 z-0">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                            data-alt="Close up photograph of rare sun-dried African purple tea leaves, rooibos needle leaves and whole dried chamomile flowers in glass vial on white surface, natural sunlight"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdzP4F0Xjbuo-HXOsJvbwt-qjboTztGe6_1YoGD1EULHQfIkib3HT4watWLItSKRy5KlD3RK9-Xg8m3j3VXQNoVI3sCZSKxbLVwXHZSkABVdkZEKMPJ4WCP62Q6qJqyuUZEY2GA9lr4xZxidnKZmNMg4WGN9sGbQGaa5S0kC-vIMhfLxMOae2BWzWgCNvq-yUfgJUplvkM5h7nZrD0DyAKVJF1-WVnQ6b7FlBVL78">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/40"></div>
+                    </div>
+                    <span class="relative z-10 text-[10px] font-sans font-semibold tracking-[0.25em] text-white/80 uppercase">02 / 05</span>
+                    <div class="relative z-10 text-center my-auto">
+                        <h3 class="font-sans font-bold text-2xl lg:text-3xl uppercase tracking-wider text-white leading-tight mb-1">Tea</h3>
+                        <p class="text-xs font-sans font-light tracking-widest text-white/75 uppercase">Rare Leaves &amp; Tisanes</p>
+                    </div>
+                    <div class="relative z-10 flex justify-center">
+                        <span class="px-6 py-2.5 rounded-full bg-white text-charcoal font-sans text-[11px] font-semibold uppercase tracking-[0.2em] shadow-lg group-hover:bg-brand-gold group-hover:text-charcoal transition-all">Explore</span>
+                    </div>
+                </a>
+
+                <!-- Category 3: Spices -->
+                <a class="w-[260px] sm:w-[280px] lg:w-auto shrink-0 snap-start relative h-[400px] sm:h-[440px] lg:h-[520px] rounded-2xl overflow-hidden group shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-between p-6"
+                    data-path="spices-and-seasonings" href="#">
+                    <div class="absolute inset-0 z-0">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                            data-alt="Artisanal macro photography of hand-ground Zanzibar cloves, Ethiopian korarima cardamom, and rare grains of paradise crushed with mortar on stark white stone"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHoOZ-tlZUHq2_dAL_hMeBJgaKCxzyD0Z2x__bBB2qLk5lEfMD0ZHiGp99vo-791ud7l-42PAotI9XAEH9ev8x_jLvi-2H0w3b-gTgLvFRlckLrxl7n_FKAF566RbX4ZEo81-hYbw63G-VR-GzGQIvcAtOH2x-iA6Cfz1fVArko8djTdQZZ4eJhrAJQKNCowHT5koh0yw_K1ZQB46i2KQiTZDUNeEiVl25C9DPKzA">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/40"></div>
+                    </div>
+                    <span class="relative z-10 text-[10px] font-sans font-semibold tracking-[0.25em] text-white/80 uppercase">03 / 05</span>
+                    <div class="relative z-10 text-center my-auto">
+                        <h3 class="font-sans font-bold text-2xl lg:text-3xl uppercase tracking-wider text-white leading-tight mb-1">Spices</h3>
+                        <p class="text-xs font-sans font-light tracking-widest text-white/75 uppercase">Ancient Sacred Blends</p>
+                    </div>
+                    <div class="relative z-10 flex justify-center">
+                        <span class="px-6 py-2.5 rounded-full bg-white text-charcoal font-sans text-[11px] font-semibold uppercase tracking-[0.2em] shadow-lg group-hover:bg-brand-gold group-hover:text-charcoal transition-all">Explore</span>
+                    </div>
+                </a>
+
+                <!-- Category 4: Botanicals -->
+                <a class="w-[260px] sm:w-[280px] lg:w-auto shrink-0 snap-start relative h-[400px] sm:h-[440px] lg:h-[520px] rounded-2xl overflow-hidden group shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-between p-6"
+                    data-path="botanicals-and-elixirs" href="#">
+                    <div class="absolute inset-0 z-0">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                            data-alt="Still life photograph of foraged wild baobab fruit pulp, dried moringa flakes, and whole frankincense resin tears arranged cleanly on pure white ceramic plate"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTxxcMNYDzbCXyJisUjxrzL1CA0DOVHNoEnUvOZhATvm5ZWyxscIz3wB68r96IS5hetl4_w0fD2jxxMJgB6Dog_rtC02XNuK5wPLapTBDiO9QGENwZLzUZL7WWRFoFEpsV72v_wqLjhczL8QByEmW0DlUDA9mn24bc4CCC09uKB_86OQXOCM_DRhBMaE1RXXx35cQhJtWCpMSklFJx-89ZIovRPLhDFX2o4uOy0yU">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/40"></div>
+                    </div>
+                    <span class="relative z-10 text-[10px] font-sans font-semibold tracking-[0.25em] text-white/80 uppercase">04 / 05</span>
+                    <div class="relative z-10 text-center my-auto">
+                        <h3 class="font-sans font-bold text-2xl lg:text-3xl uppercase tracking-wider text-white leading-tight mb-1">Botanicals</h3>
+                        <p class="text-xs font-sans font-light tracking-widest text-white/75 uppercase">Elixirs &amp; Infusions</p>
+                    </div>
+                    <div class="relative z-10 flex justify-center">
+                        <span class="px-6 py-2.5 rounded-full bg-white text-charcoal font-sans text-[11px] font-semibold uppercase tracking-[0.2em] shadow-lg group-hover:bg-brand-gold group-hover:text-charcoal transition-all">Explore</span>
+                    </div>
+                </a>
+
+                <!-- Category 5: Oils -->
+                <a class="w-[260px] sm:w-[280px] lg:w-auto shrink-0 snap-start relative h-[400px] sm:h-[440px] lg:h-[520px] rounded-2xl overflow-hidden group shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-between p-6"
+                    data-path="cold-pressed-oils" href="#">
+                    <div class="absolute inset-0 z-0">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                            data-alt="Editorial photograph of golden cold-pressed marula oil and virgin sesame oil drizzling slowly from a precision glass pipette against pure white illuminated background"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAR2yaz4FS-HKfUbanyyrHpGgrbKc76PxmoHBsRM0Izm97TZkE8hK_D2Msp9bdqwD7yWbw7t50MKGs6HPxyItH5-QP3wzW67zZK-BGA2s35z-VEnvi_rwvW9QIpCvCPwYguFwTh0K24NCj6SCkTMDnRLvpzwh-pWaVfe9BwgRh_qostFZBk--MH76XyKlZBmjydGbxn2etL77uX8SmTE4hSVVvrHMRqBUS8CsCd6g">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/40"></div>
+                    </div>
+                    <span class="relative z-10 text-[10px] font-sans font-semibold tracking-[0.25em] text-white/80 uppercase">05 / 05</span>
+                    <div class="relative z-10 text-center my-auto">
+                        <h3 class="font-sans font-bold text-2xl lg:text-3xl uppercase tracking-wider text-white leading-tight mb-1">Oils</h3>
+                        <p class="text-xs font-sans font-light tracking-widest text-white/75 uppercase">Cold-Pressed Virgin</p>
+                    </div>
+                    <div class="relative z-10 flex justify-center">
+                        <span class="px-6 py-2.5 rounded-full bg-white text-charcoal font-sans text-[11px] font-semibold uppercase tracking-[0.2em] shadow-lg group-hover:bg-brand-gold group-hover:text-charcoal transition-all">Explore</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- 4. Featured Product Section — Horizontal Carousel with Category Tabs -->
+        <section class="w-full max-w-7xl mx-auto px-6 lg:px-12 py-16">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+                <div>
+                    <span class="font-sans text-[10px] uppercase tracking-[0.28em] text-tertiary font-semibold mb-2 block">Artisanal Provisions</span>
+                    <h2 class="font-sans text-3xl sm:text-4xl lg:text-5xl font-light text-on-surface tracking-tight uppercase">
+                        Selected for Your Table
+                    </h2>
+                </div>
+
+                <!-- Minimal Tabbed / Filtered Navigation -->
+                <div class="flex items-center gap-2 sm:gap-4 border-b border-outline-variant/40 pb-2 overflow-x-auto scrollbar-none whitespace-nowrap" id="carousel-tabs">
+                    <button class="product-tab font-sans text-xs uppercase tracking-[0.2em] px-3 py-1.5 text-charcoal font-semibold border-b-2 border-charcoal transition-all" data-tab="all" type="button">All</button>
+                    <button class="product-tab font-sans text-xs uppercase tracking-[0.2em] px-3 py-1.5 text-on-surface-variant/60 hover:text-on-surface transition-all border-b-2 border-transparent" data-tab="coffee" type="button">Coffee</button>
+                    <button class="product-tab font-sans text-xs uppercase tracking-[0.2em] px-3 py-1.5 text-on-surface-variant/60 hover:text-on-surface transition-all border-b-2 border-transparent" data-tab="tea" type="button">Tea</button>
+                    <button class="product-tab font-sans text-xs uppercase tracking-[0.2em] px-3 py-1.5 text-on-surface-variant/60 hover:text-on-surface transition-all border-b-2 border-transparent" data-tab="spices" type="button">Spices</button>
+                    <button class="product-tab font-sans text-xs uppercase tracking-[0.2em] px-3 py-1.5 text-on-surface-variant/60 hover:text-on-surface transition-all border-b-2 border-transparent" data-tab="botanicals" type="button">Botanicals</button>
+                    <button class="product-tab font-sans text-xs uppercase tracking-[0.2em] px-3 py-1.5 text-on-surface-variant/60 hover:text-on-surface transition-all border-b-2 border-transparent" data-tab="oils" type="button">Oils</button>
+                </div>
+            </div>
+
+            <!-- Product Carousel Track -->
+            <div class="relative">
+                <div class="flex gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 px-1" id="product-carousel">
+                    {{FEATURED_CAROUSEL}}
+                </div>
+
+                <!-- Minimal Pagination Progress Bar & Navigation Controls -->
+                <div class="flex items-center justify-between max-w-md mx-auto mt-8">
+                    <button aria-label="Previous products" class="w-9 h-9 rounded-full border border-outline-variant/60 flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors" id="carousel-prev" type="button">
+                        <span class="material-symbols-outlined text-lg">west</span>
+                    </button>
+                    <div class="w-48 h-1 bg-outline-variant/40 rounded-full relative overflow-hidden">
+                        <div class="h-full bg-charcoal rounded-full transition-all duration-150 w-1/4" id="carousel-progress-bar"></div>
+                    </div>
+                    <button aria-label="Next products" class="w-9 h-9 rounded-full border border-outline-variant/60 flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors" id="carousel-next" type="button">
+                        <span class="material-symbols-outlined text-lg">east</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Brand Pillars: "Rooted in Heritage. Crafted Without Compromise." -->
+        <section class="w-full bg-surface-container-low py-20 px-6 lg:px-12 my-8"
+            style="background-color: rgb(244, 239, 230);">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col items-center text-center max-w-3xl mx-auto mb-16">
+                    <span class="font-sans text-xs uppercase tracking-[0.3em] text-tertiary font-semibold mb-2">Our Guiding Pillars</span>
+                    <h2 class="font-sans text-3xl sm:text-4xl lg:text-5xl font-light text-on-surface tracking-tight mb-4 uppercase">
+                        Rooted in Heritage. Crafted Without Compromise.
+                    </h2>
+                    <p class="text-sm text-on-surface-variant font-light">Every jar, tin, and bottle embodies our
+                        devotion to African agronomy, Berlin craftsmanship, and culinary integrity.</p>
+                </div>
+                <div class="flex md:grid md:grid-cols-3 gap-6 md:gap-8 overflow-x-auto md:overflow-visible scrollbar-none snap-x snap-mandatory py-2 -mx-6 px-6 md:mx-0 md:px-0">
+                    <!-- Pillar 1 -->
+                    <div class="w-[280px] sm:w-[320px] md:w-auto shrink-0 snap-start bg-surface-container-lowest p-8 rounded-DEFAULT shadow-sm flex flex-col items-start">
+                        <div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center mb-6 text-tertiary">
+                            <span class="material-symbols-outlined text-2xl">spa</span>
+                        </div>
+                        <span class="font-sans text-[11px] uppercase tracking-[0.24em] text-tertiary font-semibold mb-2">Pillar I</span>
+                        <h3 class="font-sans text-xl font-medium text-on-surface mb-3">African Botanical Heritage</h3>
+                        <p class="text-xs sm:text-sm text-on-surface-variant font-light leading-relaxed">
+                            Direct partnerships with cooperative family growers across Kenya, Ethiopia, and Tanzania
+                            protect centuries of botanical intelligence and native biodiversity.
+                        </p>
+                    </div>
+                    <!-- Pillar 2 -->
+                    <div class="w-[280px] sm:w-[320px] md:w-auto shrink-0 snap-start bg-surface-container-lowest p-8 rounded-DEFAULT shadow-sm flex flex-col items-start">
+                        <div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center mb-6 text-tertiary">
+                            <span class="material-symbols-outlined text-2xl">precision_manufacturing</span>
+                        </div>
+                        <span class="font-sans text-[11px] uppercase tracking-[0.24em] text-tertiary font-semibold mb-2">Pillar II</span>
+                        <h3 class="font-sans text-xl font-medium text-on-surface mb-3">Artisanal Craftsmanship</h3>
+                        <p class="text-xs sm:text-sm text-on-surface-variant font-light leading-relaxed">
+                            Milled and bottled in small micro-batches in our Berlin Atelier. We refuse chemical
+                            stabilizers, fillers, or high-heat pressing to safeguard therapeutic volatiles.
+                        </p>
+                    </div>
+                    <!-- Pillar 3 -->
+                    <div class="w-[280px] sm:w-[320px] md:w-auto shrink-0 snap-start bg-surface-container-lowest p-8 rounded-DEFAULT shadow-sm flex flex-col items-start">
+                        <div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center mb-6 text-tertiary">
+                            <span class="material-symbols-outlined text-2xl">public</span>
+                        </div>
+                        <span class="font-sans text-[11px] uppercase tracking-[0.24em] text-tertiary font-semibold mb-2">Pillar III</span>
+                        <h3 class="font-sans text-xl font-medium text-on-surface mb-3">A World of Flavour</h3>
+                        <p class="text-xs sm:text-sm text-on-surface-variant font-light leading-relaxed">
+                            Conceived as a contemporary Afro-Gourmet dialogue, our ingredients are composed to
+                            inspire modern Michelin gastronomy as seamlessly as the soulful home hearth.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Bar -->
+        <section class="w-full max-w-7xl mx-auto px-6 lg:px-12 py-12">
+            <div class="w-full bg-surface-container-low rounded-DEFAULT p-8 lg:p-10 flex flex-col lg:flex-row items-center justify-between gap-8"
+                style="background-color: rgb(247, 245, 240);">
+                <div class="flex flex-col max-w-xl text-center lg:text-left">
+                    <span class="font-sans text-[10px] uppercase tracking-[0.26em] text-tertiary font-semibold mb-1">Gazette Privée</span>
+                    <h4 class="font-sans text-lg sm:text-xl font-medium text-on-surface mb-1">
+                        An Invitation to Our Table
+                    </h4>
+                    <p class="text-xs text-on-surface-variant font-light">
+                        Seasonal single-origin coffee arrivals, micro-batch cold-press oil pressings, and invites to Berlin tastings.
+                    </p>
+                </div>
+                <div class="w-full lg:w-auto flex-1 max-w-md">
+                    <form class="flex flex-col gap-2 w-full" data-demo-form="newsletter" novalidate>
+                        <div class="flex flex-col sm:flex-row gap-2 w-full">
+                            <input class="flex-1 px-4 py-3 bg-surface-container-lowest text-xs text-on-surface placeholder:text-outline rounded-DEFAULT focus:outline-none font-sans"
+                                placeholder="Enter your email address" name="email" required type="email">
+                            <button class="px-6 py-3 bg-on-surface text-surface-container-lowest font-sans text-xs uppercase tracking-[0.2em] font-medium rounded-DEFAULT hover:bg-primary transition-colors whitespace-nowrap"
+                                type="submit">
+                                Join Gazette
+                            </button>
+                        </div>
+                        <span class="text-[10px] text-outline font-sans block text-center lg:text-left">Unsubscribe at any time. We honor your digital peace.</span>
+                        <p class="text-xs leading-relaxed" data-form-message hidden></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
