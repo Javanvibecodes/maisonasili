@@ -6,7 +6,7 @@
   "scripts": {
     "assets": "node scripts/download-assets.js",
     "build": "node scripts/build.js && npm run build:css",
-    "build:css": "tailwindcss -i src/input.css -o public/assets/css/styles.css --minify",
+    "build:css": "npx tailwindcss -i src/input.css -o public/assets/css/styles.css --minify",
     "dev": "npm run build && node scripts/serve.js",
     "start": "node scripts/serve.js"
   },
