@@ -133,7 +133,7 @@ export default function HeritagePage() {
               <div className="relative h-64 w-full bg-surface-container">
                 <Image
                   src={assetPath(media.heritageArchive)}
-                  alt="Artisanal bakery hearth and bread"
+                  alt="Terracotta bowls of chilli, moringa, black pepper and hand-harvested salt"
                   fill
                   sizes="(min-width: 768px) 45vw, 100vw"
                   className="object-cover grayscale contrast-125"
@@ -152,7 +152,7 @@ export default function HeritagePage() {
               <div className="relative h-64 w-full bg-surface-container">
                 <Image
                   src={assetPath(media.editorial)}
-                  alt="Granite stone press and botanical oils"
+                  alt="Fresh and dried herbs, citrus peel and spices arranged on a dark surface"
                   fill
                   sizes="(min-width: 768px) 45vw, 100vw"
                   className="object-cover grayscale contrast-125"
@@ -190,7 +190,7 @@ export default function HeritagePage() {
                 <div className="relative h-72 w-full overflow-hidden bg-surface-container">
                   <Image
                     src={assetPath(media.culinary)}
-                    alt="Berlin street market at dawn"
+                    alt="Lime, hand-harvested salts and colourful spices on linen"
                     fill
                     sizes="(min-width: 768px) 45vw, 100vw"
                     className="object-cover grayscale"
@@ -241,7 +241,7 @@ export default function HeritagePage() {
                 <div className="relative h-80 w-full overflow-hidden bg-surface-container">
                   <Image
                     src={assetPath(media.pdpGift)}
-                    alt="Fine dining culinary presentation"
+                    alt="Hibiscus, pink peppercorns, dried orange peel and long pepper on wood"
                     fill
                     sizes="(min-width: 768px) 40vw, 100vw"
                     className="object-cover"
@@ -382,8 +382,8 @@ export default function HeritagePage() {
               <div className="overflow-hidden border border-stone-border bg-surface-container-low">
                 <div className="relative h-80 w-full bg-surface-container">
                   <Image
-                    src={assetPath(media.collectionTea)}
-                    alt="Lush East African tea and botanical terraced mountains"
+                    src={assetPath(media.heritageTea)}
+                    alt="Steaming cup of botanical tea with dried citrus, rose petals and loose-leaf tea"
                     fill
                     sizes="(min-width: 768px) 45vw, 100vw"
                     className="object-cover"

@@ -4,41 +4,84 @@ import * as React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCart } from '@/components/cart-provider';
-import { assetPath } from '@/lib/catalog';
-import { money } from '@/lib/format';
-
-const countries = [
-  'Germany',
-  'Austria',
-  'Switzerland',
-  'France',
-  'Netherlands',
-  'Belgium',
-  'United Kingdom',
-  'Italy',
-  'Spain',
-  'Other'
-];
+import { OrderRequestForm, type OrderSubmission } from '@/components/order-request-form';
+import { assetPath, collectionName } from '@/lib/catalog';
 
 export function CartPageContent() {
-  const { lines, count, subtotal, hydrated, setQty, remove, clear } = useCart();
-  const [checkoutOpen, setCheckoutOpen] = React.useState(false);
-  const [orderPlaced, setOrderPlaced] = React.useState(false);
+  const { lines, count, hydrated, setQty, remove, clear } = useCart();
+  const [submission, setSubmission] = React.useState<OrderSubmission | null>(null);
 
-  function handleCheckout(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const form = event.currentTarget;
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
-    }
-    setOrderPlaced(true);
+  function handleSubmitted(result: OrderSubmission) {
+    setSubmission(result);
+    clear();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   if (!hydrated) {
     return (
       <div className="mx-auto w-full max-w-7xl px-6 py-20 text-center text-sm text-on-surface-variant lg:px-12">
-        Loading your bag…
+        Loading your order cart…
+      </div>
+    );
+  }
+
+  if (submission) {
+    return (
+      <div className="mx-auto w-full max-w-4xl px-6 py-12 lg:px-12">
+        <section className="border border-tertiary/40 bg-surface-container-lowest px-6 py-12 sm:px-10">
+          <span aria-hidden="true" className="material-symbols-outlined mb-4 text-4xl text-tertiary">
+            mark_email_read
+          </span>
+          <h1 className="mb-3 font-headline text-3xl font-light text-on-surface sm:text-4xl">
+            Order Request Received
+          </h1>
+          <p className="mb-2 max-w-2xl text-sm leading-relaxed text-on-surface-variant">
+            Thank you — your wholesale order request has been received by Maison Asili. This is an acknowledgement of
+            your request, not a confirmed order.
+          </p>
+          <p className="mb-6 max-w-2xl text-xs leading-relaxed text-on-surface-variant">
+            {submission.acknowledgementSent
+              ? 'A copy has been sent to the email address you provided. Our team will follow up to confirm availability, trade pricing and fulfilment.'
+              : 'We could not send the acknowledgement email, but our team has your request and will follow up with you directly.'}
+          </p>
+
+          <div className="mb-8 inline-block border border-outline-variant bg-surface-container-low px-5 py-4">
+            <span className="block text-[10px] font-semibold uppercase tracking-[0.22em] text-on-surface-variant">
+              Your order reference
+            </span>
+            <span className="mt-1 block font-headline text-2xl text-primary">{submission.reference}</span>
+          </div>
+
+          <h2 className="mb-4 border-b border-outline-variant pb-3 font-headline text-lg font-semibold text-on-surface">
+            Products requested
+          </h2>
+          <ul className="mb-8 flex flex-col divide-y divide-outline-variant">
+            {submission.lines.map((line) => (
+              <li key={line.slug} className="flex items-center justify-between gap-4 py-3 text-sm">
+                <span className="text-on-surface">
+                  {line.product.name}
+                  <span className="ml-2 text-xs text-on-surface-variant">{line.product.size}</span>
+                </span>
+                <span className="shrink-0 text-xs uppercase tracking-wider text-on-surface-variant">× {line.qty}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <Link
+              href="/shop"
+              className="bg-on-surface px-6 py-3 text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-surface-container-lowest transition-colors hover:bg-primary"
+            >
+              Continue Exploring
+            </Link>
+            <Link
+              href="/contact"
+              className="border border-outline-variant px-6 py-3 text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-on-surface transition-colors hover:border-tertiary hover:text-tertiary"
+            >
+              Contact the Maison
+            </Link>
+          </div>
+        </section>
       </div>
     );
   }
@@ -53,12 +96,16 @@ export function CartPageContent() {
           Home
         </Link>
         <span className="text-outline-variant">/</span>
-        <span className="font-semibold text-on-surface">Shopping Bag</span>
+        <span className="font-semibold text-on-surface">Order Cart</span>
       </nav>
 
       <div className="mb-10 flex flex-col justify-between gap-4 border-b border-outline-variant pb-6 sm:flex-row sm:items-end">
         <div>
-          <h1 className="font-headline text-4xl font-light tracking-tight text-on-surface sm:text-5xl">Shopping Bag</h1>
+          <h1 className="font-headline text-4xl font-light tracking-tight text-on-surface sm:text-5xl">Order Cart</h1>
+          <p className="mt-2 max-w-2xl text-xs leading-relaxed text-on-surface-variant">
+            Build your wholesale selection, then submit it as an order request. Maison Asili will confirm availability,
+            trade pricing and fulfilment directly.
+          </p>
         </div>
         <p className="text-xs uppercase tracking-[0.2em] text-on-surface-variant">
           <span className="font-semibold text-on-surface">{count}</span> {count === 1 ? 'item' : 'items'} • saved in
@@ -96,13 +143,13 @@ export function CartPageContent() {
                         {line.product.name}
                       </Link>
                       <p className="mt-1 text-[11px] uppercase tracking-wider text-on-surface-variant">
-                        {line.product.size} • {line.product.eyebrow}
+                        {line.product.size} • {collectionName(line.product.category)}
                       </p>
                     </div>
                     <button
                       type="button"
                       onClick={() => remove(line.slug)}
-                      aria-label={`Remove ${line.product.name} from bag`}
+                      aria-label={`Remove ${line.product.name} from order cart`}
                       className="text-outline transition-colors hover:text-error"
                     >
                       <span aria-hidden="true" className="material-symbols-outlined text-lg">
@@ -130,12 +177,9 @@ export function CartPageContent() {
                         +
                       </button>
                     </div>
-                    <div className="text-right">
-                      <div className="text-[10px] uppercase tracking-wider text-on-surface-variant">
-                        {money(line.product.price)} each
-                      </div>
-                      <div className="font-headline text-lg font-semibold text-on-surface">{money(line.lineTotal)}</div>
-                    </div>
+                    <span className="text-[10px] uppercase tracking-wider text-on-surface-variant">
+                      Trade price confirmed on request
+                    </span>
                   </div>
                 </div>
               </div>
@@ -147,16 +191,16 @@ export function CartPageContent() {
               <span aria-hidden="true" className="material-symbols-outlined mb-4 text-4xl text-outline">
                 shopping_bag
               </span>
-              <h2 className="mb-2 font-headline text-2xl font-light text-on-surface">Your bag is waiting</h2>
+              <h2 className="mb-2 font-headline text-2xl font-light text-on-surface">Your order cart is empty</h2>
               <p className="mb-6 max-w-sm text-xs leading-relaxed text-on-surface-variant">
-                Nothing has been added yet. Explore the pantry — spice blends, botanical salts and rare teas — and add a
-                few provisions to see the bag in action.
+                Explore the collection and add the products and quantities you would like to request. No payment is
+                taken and no prices are shown on this website.
               </p>
               <Link
                 href="/shop"
                 className="bg-on-surface px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-surface-container-lowest transition-colors hover:bg-primary"
               >
-                Explore the Shop
+                Explore the Collection
               </Link>
             </div>
           ) : null}
@@ -168,7 +212,7 @@ export function CartPageContent() {
             <span aria-hidden="true" className="material-symbols-outlined text-sm">
               arrow_back
             </span>
-            Continue shopping
+            Continue Exploring
           </Link>
         </div>
 
@@ -177,223 +221,65 @@ export function CartPageContent() {
             <h2 className="mb-5 border-b border-outline-variant pb-4 font-headline text-sm font-semibold uppercase tracking-[0.2em] text-on-surface">
               Order Summary
             </h2>
-            <dl className="mb-5 flex flex-col gap-3 text-xs">
-              <div className="flex items-center justify-between">
-                <dt className="uppercase tracking-wider text-on-surface-variant">Subtotal</dt>
-                <dd className="font-semibold text-on-surface">{money(subtotal)}</dd>
-              </div>
-              <div className="flex items-center justify-between">
-                <dt className="uppercase tracking-wider text-on-surface-variant">Shipping</dt>
-                <dd className="text-on-surface-variant">Calculated at the next step</dd>
-              </div>
-              <div className="flex items-center justify-between border-t border-outline-variant pt-3">
-                <dt className="font-semibold uppercase tracking-wider text-on-surface">Estimated total</dt>
-                <dd className="font-headline text-xl font-semibold text-on-surface">{money(subtotal)}</dd>
-              </div>
-            </dl>
-            <p className="mb-5 text-[11px] leading-relaxed text-on-surface-variant">
-              Prices include VAT. This demonstration store does not process payments — no order will be placed.
+            {lines.length > 0 ? (
+              <ul className="mb-5 flex flex-col gap-3 text-xs">
+                {lines.map((line) => (
+                  <li key={line.slug} className="flex items-start justify-between gap-3">
+                    <span className="text-on-surface">
+                      {line.product.name}
+                      <span className="mt-0.5 block text-[10px] uppercase tracking-wider text-on-surface-variant">
+                        {line.product.size}
+                      </span>
+                    </span>
+                    <span className="shrink-0 font-semibold text-on-surface">× {line.qty}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="mb-5 text-xs leading-relaxed text-on-surface-variant">
+                No products have been added yet.
+              </p>
+            )}
+            <p className="mb-5 border-t border-outline-variant pt-4 text-[11px] leading-relaxed text-on-surface-variant">
+              This is a request for a trade quotation. No prices are displayed, no payment is collected and no order is
+              confirmed until Maison Asili has reviewed your request.
             </p>
-            <button
-              type="button"
-              disabled={lines.length === 0}
-              onClick={() => {
-                setCheckoutOpen(true);
-                setOrderPlaced(false);
-                window.setTimeout(() => {
-                  document.getElementById('checkout')?.scrollIntoView({ behavior: 'smooth' });
-                }, 30);
-              }}
-              className="w-full bg-on-surface py-4 text-xs font-semibold uppercase tracking-[0.25em] text-surface-container-lowest transition-colors hover:bg-primary disabled:cursor-not-allowed disabled:opacity-40"
+            <a
+              href="#order-request"
+              aria-disabled={lines.length === 0}
+              tabIndex={lines.length === 0 ? -1 : undefined}
+              className={`block w-full py-4 text-center text-xs font-semibold uppercase tracking-[0.25em] transition-colors ${
+                lines.length > 0
+                  ? 'bg-on-surface text-surface-container-lowest hover:bg-primary'
+                  : 'pointer-events-none bg-on-surface/40 text-surface-container-lowest'
+              }`}
             >
-              Proceed to Demo Checkout
-            </button>
+              Submit Order Request
+            </a>
             <div className="mt-5 flex items-start gap-3 border-t border-outline-variant pt-5">
               <span aria-hidden="true" className="material-symbols-outlined mt-0.5 text-base text-tertiary">
                 verified_user
               </span>
               <p className="text-[11px] leading-relaxed text-on-surface-variant">
-                <strong className="text-on-surface">Demonstration only.</strong> No payment details are collected, no
-                account is required and no order is transmitted.
+                Your selection is stored in this browser only. Business details are sent to Maison Asili solely to
+                respond to your request.
               </p>
             </div>
           </div>
         </aside>
       </div>
 
-      {checkoutOpen && !orderPlaced && lines.length > 0 ? (
-        <section id="checkout" className="mt-16 scroll-mt-32 border-t border-outline-variant pt-12">
-          <div className="mb-8">
+      {lines.length > 0 ? (
+        <section id="order-request" className="mt-16 scroll-mt-32 border-t border-outline-variant pt-12">
+          <div className="mb-8 max-w-2xl">
             <h2 className="font-headline text-3xl font-light tracking-tight text-on-surface">
-              Where would we send it?
+              Submit your wholesale order request
             </h2>
-            <p className="mt-2 max-w-xl text-xs leading-relaxed text-on-surface-variant">
-              The form below behaves exactly like a real checkout, but it runs entirely in your browser. Nothing is
-              submitted anywhere.
+            <p className="mt-2 text-xs leading-relaxed text-on-surface-variant">
+              Tell us who you are and how we can reach you. Required fields are marked with an asterisk.
             </p>
           </div>
-
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
-            <form className="flex flex-col gap-5 lg:col-span-7" noValidate onSubmit={handleCheckout}>
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                <label className="flex flex-col gap-2 sm:col-span-2">
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-on-surface">
-                    Full name <span className="text-tertiary">*</span>
-                  </span>
-                  <input
-                    name="name"
-                    type="text"
-                    required
-                    placeholder="Your full name"
-                    className="border border-outline-variant bg-surface-container-lowest px-4 py-3 text-sm text-on-surface placeholder:text-outline focus:border-tertiary focus:outline-none"
-                  />
-                </label>
-                <label className="flex flex-col gap-2 sm:col-span-2">
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-on-surface">
-                    Email <span className="text-tertiary">*</span>
-                  </span>
-                  <input
-                    name="email"
-                    type="email"
-                    required
-                    placeholder="you@example.com"
-                    className="border border-outline-variant bg-surface-container-lowest px-4 py-3 text-sm text-on-surface placeholder:text-outline focus:border-tertiary focus:outline-none"
-                  />
-                </label>
-                <label className="flex flex-col gap-2 sm:col-span-2">
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-on-surface">
-                    Delivery address <span className="text-tertiary">*</span>
-                  </span>
-                  <input
-                    name="address"
-                    type="text"
-                    required
-                    placeholder="Street and number"
-                    className="border border-outline-variant bg-surface-container-lowest px-4 py-3 text-sm text-on-surface placeholder:text-outline focus:border-tertiary focus:outline-none"
-                  />
-                </label>
-                <label className="flex flex-col gap-2">
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-on-surface">
-                    City <span className="text-tertiary">*</span>
-                  </span>
-                  <input
-                    name="city"
-                    type="text"
-                    required
-                    placeholder="City"
-                    className="border border-outline-variant bg-surface-container-lowest px-4 py-3 text-sm text-on-surface placeholder:text-outline focus:border-tertiary focus:outline-none"
-                  />
-                </label>
-                <label className="flex flex-col gap-2">
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-on-surface">
-                    Country <span className="text-tertiary">*</span>
-                  </span>
-                  <select
-                    name="country"
-                    required
-                    defaultValue=""
-                    className="border border-outline-variant bg-surface-container-lowest px-4 py-3 text-sm text-on-surface focus:border-tertiary focus:outline-none"
-                  >
-                    <option value="">Please select</option>
-                    {countries.map((country) => (
-                      <option key={country}>{country}</option>
-                    ))}
-                  </select>
-                </label>
-                <label className="flex flex-col gap-2 sm:col-span-2">
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-on-surface">
-                    Delivery notes{' '}
-                    <span className="font-normal normal-case tracking-normal text-on-surface-variant">(optional)</span>
-                  </span>
-                  <textarea
-                    name="notes"
-                    placeholder="Door code, preferred delivery day, gift message…"
-                    className="min-h-[110px] resize-y border border-outline-variant bg-surface-container-lowest px-4 py-3 text-sm text-on-surface placeholder:text-outline focus:border-tertiary focus:outline-none"
-                  />
-                </label>
-              </div>
-
-              <div className="mt-2 flex flex-col gap-3 sm:flex-row">
-                <button
-                  type="submit"
-                  className="bg-on-surface px-8 py-4 text-xs font-semibold uppercase tracking-[0.25em] text-surface-container-lowest transition-colors hover:bg-primary"
-                >
-                  Place Demo Order
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setCheckoutOpen(false)}
-                  className="border border-outline-variant px-8 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-on-surface transition-colors hover:border-tertiary hover:text-tertiary"
-                >
-                  Back to bag
-                </button>
-              </div>
-            </form>
-
-            <div className="lg:col-span-5">
-              <div className="border border-outline-variant bg-warm-sand p-6">
-                <h3 className="mb-4 font-headline text-sm font-semibold uppercase tracking-[0.2em] text-on-surface">
-                  In your bag
-                </h3>
-                <div className="flex flex-col gap-4 text-xs">
-                  {lines.map((line) => (
-                    <div key={line.slug} className="flex items-center justify-between gap-3">
-                      <span className="text-on-surface">
-                        {line.product.name} <span className="text-on-surface-variant">× {line.qty}</span>
-                      </span>
-                      <span className="font-semibold text-on-surface">{money(line.lineTotal)}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-5 flex items-center justify-between border-t border-outline-variant pt-4">
-                  <span className="text-[11px] uppercase tracking-wider text-on-surface-variant">Total</span>
-                  <span className="font-headline text-lg font-semibold text-on-surface">{money(subtotal)}</span>
-                </div>
-                <p className="mt-4 text-[11px] leading-relaxed text-on-surface-variant">
-                  No payment method is requested: this storefront is a frontend demonstration for client review.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-      ) : null}
-
-      {orderPlaced ? (
-        <section className="mt-16 border border-tertiary bg-surface-container-lowest px-6 py-14 text-center">
-          <span aria-hidden="true" className="material-symbols-outlined mb-4 text-4xl text-tertiary">
-            mark_email_read
-          </span>
-          <h2 className="mb-3 font-headline text-2xl font-light text-on-surface">
-            Thank you — the flow works end-to-end
-          </h2>
-          <p className="mx-auto mb-2 max-w-xl text-sm leading-relaxed text-on-surface-variant">
-            <strong className="text-on-surface">
-              This is a demonstration store. Your order has not been placed and no payment has been processed.
-            </strong>
-          </p>
-          <p className="mx-auto mb-6 max-w-xl text-xs leading-relaxed text-on-surface-variant">
-            Nothing was transmitted from your browser: no personal details, no payment data and no email. The bag will
-            stay as it is until you clear it.
-          </p>
-          <div className="flex flex-col justify-center gap-3 sm:flex-row">
-            <Link
-              href="/shop"
-              className="bg-on-surface px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-surface-container-lowest transition-colors hover:bg-primary"
-            >
-              Continue Shopping
-            </Link>
-            <button
-              type="button"
-              onClick={() => {
-                clear();
-                setOrderPlaced(false);
-                setCheckoutOpen(false);
-              }}
-              className="border border-outline-variant px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] transition-colors hover:border-tertiary hover:text-tertiary"
-            >
-              Clear the demonstration bag
-            </button>
-          </div>
+          <OrderRequestForm lines={lines} onSubmitted={handleSubmitted} />
         </section>
       ) : null}
     </div>

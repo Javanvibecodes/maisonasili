@@ -7,12 +7,12 @@ import { SiteHeader } from '@/components/site-header';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Maison Asili — Afro-Gourmet Luxury',
+    default: 'Maison Asili — Afro-Gourmet Product House',
     template: '%s — Maison Asili'
   },
   description:
-    'Purveyors of exceptional Afro-Gourmet botanical treasures, heritage spice blends, hand-harvested salts and botanical teas. Rooted in Africa. Born in Berlin.',
-  icons: { icon: '/assets/img/placeholder.svg' }
+    'An Afro-Gourmet product house rooted in Africa and born in Berlin. Heritage spice blends, botanical finishing salts and rare African teas for professional buyers and discerning tables.',
+  icons: { icon: '/assets/img/brand-logo-gold.jpg' }
 };
 
 export const viewport: Viewport = {

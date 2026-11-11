@@ -4,7 +4,6 @@ import * as React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { assetPath, products } from '@/lib/catalog';
-import { money } from '@/lib/format';
 
 export function SearchOverlay() {
   const [open, setOpen] = React.useState(false);
@@ -55,7 +54,7 @@ export function SearchOverlay() {
             <span className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-primary-container ring-1 ring-brand-gold/50">
               <Image src="/assets/img/img-59efbbe90f.jpg" alt="" width={44} height={44} className="h-11 w-11 scale-[1.15] object-cover" />
             </span>
-            <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-tertiary">Search the pantry</span>
+            <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-tertiary">Search the collection</span>
           </span>
           <button
             type="button"
@@ -87,7 +86,7 @@ export function SearchOverlay() {
           <div className="mt-4 flex items-center justify-between gap-4 text-[10px] uppercase tracking-[0.24em] text-on-surface-variant">
             <span>
               {term
-                ? `${results.length} ${results.length === 1 ? 'provision' : 'provisions'} matching “${query.trim()}”`
+                ? `${results.length} ${results.length === 1 ? 'product' : 'products'} matching “${query.trim()}”`
                 : 'Search product names, categories and descriptions.'}
             </span>
           </div>
@@ -113,7 +112,7 @@ export function SearchOverlay() {
                   <div className="p-4">
                     <h3 className="font-headline text-lg text-on-surface">{product.name}</h3>
                     <p className="mt-1 text-[11px] uppercase tracking-wider text-on-surface-variant">{product.subtitle}</p>
-                    <p className="mt-2 text-sm font-semibold text-tertiary">{money(product.price)}</p>
+                    <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-tertiary">Discover Product</p>
                   </div>
                 </Link>
               ))}
@@ -125,14 +124,14 @@ export function SearchOverlay() {
               </span>
               <h3 className="mb-2 font-headline text-2xl text-on-surface">Nothing matches that search</h3>
               <p className="max-w-md text-xs leading-relaxed text-on-surface-variant">
-                Try “spice”, “salt”, “tea” or “moringa” — or browse the full pantry instead.
+                Try “spice”, “salt”, “tea” or “moringa” — or browse the full collection instead.
               </p>
               <Link
                 href="/shop"
                 onClick={() => setOpen(false)}
                 className="mt-6 bg-on-surface px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-surface-container-lowest transition-colors hover:bg-primary"
               >
-                Explore the Shop
+                Explore the Collection
               </Link>
             </div>
           )}

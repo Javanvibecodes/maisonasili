@@ -3,14 +3,11 @@
 import * as React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FREE_SHIPPING_THRESHOLD, useCart } from '@/components/cart-provider';
+import { useCart } from '@/components/cart-provider';
 import { assetPath } from '@/lib/catalog';
-import { money } from '@/lib/format';
 
 export function CartDrawer() {
-  const { lines, count, subtotal, drawerOpen, closeDrawer, setQty, remove } = useCart();
-  const remaining = Math.max(0, FREE_SHIPPING_THRESHOLD - subtotal);
-  const progress = Math.min(100, (subtotal / FREE_SHIPPING_THRESHOLD) * 100);
+  const { lines, count, drawerOpen, closeDrawer, setQty, remove } = useCart();
 
   React.useEffect(() => {
     if (!drawerOpen) return;
@@ -31,7 +28,7 @@ export function CartDrawer() {
         }`}
       />
       <aside
-        aria-label="Shopping bag"
+        aria-label="Order cart"
         aria-hidden={!drawerOpen}
         className={`fixed right-0 top-0 z-[61] flex h-full w-full max-w-md flex-col bg-surface-container-lowest shadow-2xl transition-transform duration-300 ease-in-out ${
           drawerOpen ? 'translate-x-0' : 'translate-x-full'
@@ -43,13 +40,13 @@ export function CartDrawer() {
               shopping_bag
             </span>
             <h2 className="font-headline text-sm font-semibold uppercase tracking-[0.2em] text-on-surface">
-              Your Bag ({count})
+              Your Order Cart ({count})
             </h2>
           </div>
           <button
             type="button"
             onClick={closeDrawer}
-            aria-label="Close bag"
+            aria-label="Close order cart"
             className="p-2 text-on-surface transition-colors hover:text-primary"
           >
             <span aria-hidden="true" className="material-symbols-outlined text-2xl">
@@ -59,13 +56,9 @@ export function CartDrawer() {
         </div>
 
         <div className="bg-warm-sand px-6 py-3">
-          <div className="mb-1.5 flex items-center justify-between text-[11px] uppercase tracking-wider">
-            <span className="font-semibold text-on-surface">Complimentary shipping over €60</span>
-            <span className="font-bold text-tertiary">{remaining > 0 ? `${money(remaining)} away` : 'Applied'}</span>
-          </div>
-          <div className="h-1.5 w-full overflow-hidden rounded-full bg-surface-container-highest">
-            <div className="h-full bg-tertiary transition-all duration-500" style={{ width: `${progress}%` }} />
-          </div>
+          <p className="text-[11px] leading-relaxed text-on-surface-variant">
+            Trade pricing and availability are confirmed after Maison Asili reviews your request.
+          </p>
         </div>
 
         <div className="flex flex-1 flex-col gap-5 overflow-y-auto p-6">
@@ -74,13 +67,13 @@ export function CartDrawer() {
               <span aria-hidden="true" className="material-symbols-outlined mb-3 text-3xl text-outline">
                 shopping_bag
               </span>
-              <p className="text-sm text-on-surface-variant">Your bag is empty.</p>
+              <p className="text-sm text-on-surface-variant">Your order cart is empty.</p>
               <Link
                 href="/shop"
                 onClick={closeDrawer}
                 className="mt-5 bg-primary px-5 py-2.5 text-[11px] uppercase tracking-[0.2em] text-on-primary transition-colors hover:bg-tertiary"
               >
-                Explore the Shop
+                Explore the Collection
               </Link>
             </div>
           ) : (
@@ -111,7 +104,7 @@ export function CartDrawer() {
                     <button
                       type="button"
                       onClick={() => remove(line.slug)}
-                      aria-label={`Remove ${line.product.name}`}
+                      aria-label={`Remove ${line.product.name} from order cart`}
                       className="text-outline transition-colors hover:text-error"
                     >
                       <span aria-hidden="true" className="material-symbols-outlined text-base">
@@ -142,7 +135,9 @@ export function CartDrawer() {
                         +
                       </button>
                     </div>
-                    <span className="text-sm font-semibold text-on-surface">{money(line.lineTotal)}</span>
+                    <span className="text-[10px] uppercase tracking-wider text-on-surface-variant">
+                      qty {line.qty}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -151,24 +146,29 @@ export function CartDrawer() {
         </div>
 
         <div className="mt-auto flex flex-col gap-4 border-t border-outline-variant bg-warm-sand p-6">
-          <div className="flex items-center justify-between text-xs uppercase tracking-wider">
-            <span className="text-on-surface-variant">Subtotal</span>
-            <span className="font-headline text-lg font-semibold text-on-surface">{money(subtotal)}</span>
-          </div>
-          <p className="text-[11px] text-on-surface-variant">Prices include VAT. This demonstration store does not process payments.</p>
+          <p className="text-[11px] leading-relaxed text-on-surface-variant">
+            Your selection is a request for a trade quotation. No payment is taken and no order is confirmed on this
+            website.
+          </p>
           <Link
             href="/cart"
             onClick={closeDrawer}
-            className="w-full bg-on-surface py-4 text-center text-xs font-semibold uppercase tracking-[0.25em] text-surface-container-lowest transition-colors hover:bg-primary"
+            className={`w-full py-4 text-center text-xs font-semibold uppercase tracking-[0.25em] transition-colors ${
+              lines.length > 0
+                ? 'bg-on-surface text-surface-container-lowest hover:bg-primary'
+                : 'pointer-events-none bg-on-surface/40 text-surface-container-lowest'
+            }`}
+            aria-disabled={lines.length === 0}
+            tabIndex={lines.length === 0 ? -1 : undefined}
           >
-            Proceed to Demo Checkout
+            Review &amp; Submit Order Request
           </Link>
           <button
             type="button"
             onClick={closeDrawer}
             className="py-1 text-center text-[11px] uppercase tracking-widest text-on-surface-variant transition-colors hover:text-on-surface"
           >
-            Continue Shopping
+            Continue Exploring
           </button>
         </div>
       </aside>

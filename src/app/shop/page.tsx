@@ -3,9 +3,9 @@ import { ProductExplorer } from '@/components/product-explorer';
 import { products } from '@/lib/catalog';
 
 export const metadata: Metadata = {
-  title: 'Shop the Collection',
+  title: 'The Collection',
   description:
-    'Eight small-batch creations: heritage spice blends, botanical finishing salts and rare African teas, composed in our Berlin atelier.'
+    'Explore the Maison Asili collection: heritage spice blends, botanical finishing salts and rare African teas, composed in our Berlin atelier. Trade pricing available on request.'
 };
 
 const discoveryCards = [

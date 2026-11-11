@@ -15,6 +15,7 @@ module.exports = [
     intro:
       'Heritage spice blends composed for remarkable depth, aroma and natural umami. From the savannah fire of Bird’s Eye Chilli to the smoky warmth of Selim pepper, each blend is made for steaks, seafood, vegetables and the modern gourmet table.',
     media: 'collectionSpices',
+    editorialMedia: 'collectionSpicesEditorial',
     related: ['salts', 'tea'],
     editorialTitle: 'The shortest route from ordinary cooking to a memorable plate.',
     editorialBody:
@@ -36,6 +37,7 @@ module.exports = [
     intro:
       'Hand-harvested salts layered with moringa, pink pepper, hibiscus and citrus. These are finishing salts designed to bring mineral crispness, colour and aromatic lift to the final plate — never merely a substitute for seasoning.',
     media: 'collectionSalts',
+    editorialMedia: 'collectionSaltsEditorial',
     related: ['spices', 'tea'],
     editorialTitle: 'The last gesture before the table.',
     editorialBody:
@@ -57,6 +59,7 @@ module.exports = [
     intro:
       'Whole-leaf teas and botanical infusions chosen for aroma, colour and composure. From Kenyan purple tea to Malawian white tea, each blend is composed for the unhurried table and served with the same attention as the rest of the Maison Asili pantry.',
     media: 'collectionTea',
+    editorialMedia: 'collectionTeaEditorial',
     related: ['spices', 'salts'],
     editorialTitle: 'A slower ceremony for the modern table.',
     editorialBody:

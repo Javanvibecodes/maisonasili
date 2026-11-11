@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { DemoForm } from '@/components/demo-form';
+import { WholesaleForm } from '@/components/wholesale-form';
 import { assetPath, media } from '@/lib/catalog';
 
 export const metadata: Metadata = {
   title: 'Wholesale & Hospitality',
   description:
-    'Heritage spice blends, botanical finishing salts and rare African teas for delicatessens, restaurants, hotels and corporate gifting.'
+    'Maison Asili supplies heritage spice blends, botanical finishing salts and rare African teas to delicatessens, gourmet shops, restaurants, hotels, distributors and corporate gifting programmes. Request trade pricing.'
 };
 
 const segments = [
@@ -19,10 +19,6 @@ const segments = [
   ['redeem', 'Corporate Gifting', 'Considered gifts for clients, teams and diplomatic occasions.'],
   ['handshake', 'Selected Retail Partners', 'Long-term collaborations with stores that share our standards.']
 ];
-
-const inputClass =
-  'border border-outline-variant bg-surface-container-low px-4 py-3 text-sm text-on-surface placeholder:text-outline focus:border-tertiary focus:outline-none';
-const labelClass = 'text-[11px] font-semibold uppercase tracking-[0.2em] text-on-surface';
 
 export default function WholesalePage() {
   return (
@@ -66,7 +62,7 @@ export default function WholesalePage() {
             <div className="relative aspect-[4/5] w-full overflow-hidden bg-surface-container shadow-sm sm:aspect-[3/2] lg:aspect-[4/5]">
               <Image
                 src={assetPath(media.hero)}
-                alt="Maison Asili provisions staged for a professional kitchen"
+                alt="Vibrant mounds of Maison Asili spices and botanicals on slate"
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover"
@@ -125,130 +121,25 @@ export default function WholesalePage() {
                 Share a few details and we will prepare an overview of formats, ranges and next steps for your business
                 type.
               </p>
-              <div className="border border-outline-variant bg-tertiary-container p-5">
-                <p className="text-xs leading-relaxed text-on-tertiary-container">
-                  <strong>Demonstration form:</strong> your enquiry is validated in the browser and shown as a
-                  confirmation only — nothing is sent to Maison Asili yet.
+              <div className="border border-outline-variant bg-surface-container-low p-5">
+                <p className="text-xs leading-relaxed text-on-surface-variant">
+                  <strong className="text-on-surface">How it works:</strong> submit the enquiry below and we will reply
+                  with product formats, trade pricing and next steps for your business.
                 </p>
               </div>
+              <Link
+                href="/shop"
+                className="mt-6 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-on-surface transition-colors hover:text-tertiary"
+              >
+                Explore the Collection
+                <span aria-hidden="true" className="material-symbols-outlined text-sm">
+                  north_east
+                </span>
+              </Link>
             </div>
 
             <div className="border border-outline-variant bg-surface-container-lowest p-6 sm:p-8 lg:col-span-8">
-              <DemoForm kind="wholesale" className="flex flex-col gap-5">
-                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                  <label className="flex flex-col gap-2">
-                    <span className={labelClass}>
-                      Full name <span className="text-tertiary">*</span>
-                    </span>
-                    <input name="name" type="text" required placeholder="Your full name" className={inputClass} />
-                  </label>
-                  <label className="flex flex-col gap-2">
-                    <span className={labelClass}>
-                      Business name <span className="text-tertiary">*</span>
-                    </span>
-                    <input name="business" type="text" required placeholder="Company or venue" className={inputClass} />
-                  </label>
-                  <label className="flex flex-col gap-2">
-                    <span className={labelClass}>
-                      Email <span className="text-tertiary">*</span>
-                    </span>
-                    <input name="email" type="email" required placeholder="you@business.com" className={inputClass} />
-                  </label>
-                  <label className="flex flex-col gap-2">
-                    <span className={labelClass}>
-                      Phone{' '}
-                      <span className="font-normal normal-case tracking-normal text-on-surface-variant">(optional)</span>
-                    </span>
-                    <input name="phone" type="tel" placeholder="+49 …" className={inputClass} />
-                  </label>
-                  <label className="flex flex-col gap-2">
-                    <span className={labelClass}>
-                      Business type <span className="text-tertiary">*</span>
-                    </span>
-                    <select name="type" required defaultValue="" className={inputClass}>
-                      <option value="">Please select</option>
-                      <option>Delicatessen</option>
-                      <option>Gourmet food shop</option>
-                      <option>Hotel</option>
-                      <option>Restaurant</option>
-                      <option>Café</option>
-                      <option>Corporate gifting</option>
-                      <option>Selected retail partner</option>
-                      <option>Other</option>
-                    </select>
-                  </label>
-                  <label className="flex flex-col gap-2">
-                    <span className={labelClass}>
-                      Country <span className="text-tertiary">*</span>
-                    </span>
-                    <input name="country" type="text" required placeholder="Country of operation" className={inputClass} />
-                  </label>
-                </div>
-
-                <fieldset className="flex flex-col gap-3">
-                  <legend className={`${labelClass} mb-1`}>
-                    Product interests <span className="text-tertiary">*</span>
-                  </legend>
-                  <div className="flex flex-wrap gap-2">
-                    {['Spice blends', 'Salts', 'Teas', 'Gift ranges'].map((interest, index) => (
-                      <label
-                        key={interest}
-                        className="inline-flex cursor-pointer items-center gap-2 border border-outline-variant px-4 py-2.5 transition-colors hover:border-tertiary"
-                      >
-                        <input
-                          type="checkbox"
-                          name="interests"
-                          value={interest}
-                          required={index === 0}
-                          className="accent-tertiary"
-                        />
-                        <span className="text-xs text-on-surface">{interest}</span>
-                      </label>
-                    ))}
-                  </div>
-                </fieldset>
-
-                <label className="flex flex-col gap-2">
-                  <span className={labelClass}>
-                    Estimated order volume{' '}
-                    <span className="font-normal normal-case tracking-normal text-on-surface-variant">(optional)</span>
-                  </span>
-                  <select name="volume" className={inputClass} defaultValue="">
-                    <option value="">Not sure yet</option>
-                    <option>Trial order</option>
-                    <option>Monthly recurring</option>
-                    <option>Seasonal programme</option>
-                    <option>One-off event or gifting</option>
-                  </select>
-                </label>
-
-                <label className="flex flex-col gap-2">
-                  <span className={labelClass}>
-                    Message <span className="text-tertiary">*</span>
-                  </span>
-                  <textarea
-                    name="message"
-                    required
-                    placeholder="Tell us about your business, your guests and what you are looking for."
-                    className={`${inputClass} min-h-[140px] resize-y`}
-                  />
-                </label>
-
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-                  <button
-                    type="submit"
-                    className="bg-on-surface px-8 py-4 text-xs font-semibold uppercase tracking-[0.25em] text-surface-container-lowest transition-colors hover:bg-primary"
-                  >
-                    Submit Enquiry
-                  </button>
-                  <span className="text-[11px] text-on-surface-variant">
-                    or write to{' '}
-                    <a href="mailto:info@maisonasili.com" className="text-tertiary transition-colors hover:text-on-surface">
-                      info@maisonasili.com
-                    </a>
-                  </span>
-                </div>
-              </DemoForm>
+              <WholesaleForm />
             </div>
           </div>
         </section>

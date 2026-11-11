@@ -2,11 +2,10 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import { ProductCard } from '@/components/product-card';
+import { ProductShowcase } from '@/components/product-showcase';
 import { collections, type Product } from '@/lib/catalog';
-import { money } from '@/lib/format';
 
-type SortKey = 'featured' | 'newest' | 'price-asc' | 'price-desc' | 'alpha';
+type SortKey = 'featured' | 'newest' | 'alpha';
 
 interface ProductExplorerProps {
   products: Product[];
@@ -15,9 +14,7 @@ interface ProductExplorerProps {
 }
 
 export function ProductExplorer({ products, showCategories = true, initialCategory = 'all' }: ProductExplorerProps) {
-  const priceCap = React.useMemo(() => Math.max(...products.map((product) => product.price), 10), [products]);
   const [category, setCategory] = React.useState(initialCategory);
-  const [maxPrice, setMaxPrice] = React.useState(priceCap);
   const [sort, setSort] = React.useState<SortKey>('featured');
 
   const counts = React.useMemo(() => {
@@ -29,17 +26,9 @@ export function ProductExplorer({ products, showCategories = true, initialCatego
   }, [products]);
 
   const visible = React.useMemo(() => {
-    const filtered = products.filter(
-      (product) => (category === 'all' || product.category === category) && product.price <= maxPrice
-    );
+    const filtered = products.filter((product) => category === 'all' || product.category === category);
     const sorted = [...filtered];
     switch (sort) {
-      case 'price-asc':
-        sorted.sort((a, b) => a.price - b.price);
-        break;
-      case 'price-desc':
-        sorted.sort((a, b) => b.price - a.price);
-        break;
       case 'newest':
         sorted.sort((a, b) => b.added - a.added);
         break;
@@ -50,11 +39,10 @@ export function ProductExplorer({ products, showCategories = true, initialCatego
         sorted.sort((a, b) => b.added - a.added);
     }
     return sorted;
-  }, [products, category, maxPrice, sort]);
+  }, [products, category, sort]);
 
   function reset() {
     setCategory('all');
-    setMaxPrice(priceCap);
     setSort('featured');
   }
 
@@ -90,7 +78,7 @@ export function ProductExplorer({ products, showCategories = true, initialCatego
                 href="/shop"
                 className="whitespace-nowrap bg-surface-container px-4 py-2 text-xs font-medium uppercase tracking-wider text-on-surface-variant transition-colors hover:bg-surface-container-high hover:text-on-surface"
               >
-                All provisions
+                All products
               </Link>
               {collections.map((collection) => {
                 const active = category === collection.slug;
@@ -113,21 +101,7 @@ export function ProductExplorer({ products, showCategories = true, initialCatego
 
           <div className="flex flex-wrap items-center justify-between gap-4 sm:justify-end sm:gap-6">
             <div className="hidden text-xs font-medium uppercase tracking-wider text-on-surface-variant lg:block">
-              <span className="font-bold text-on-surface">{visible.length}</span> items available
-            </div>
-            <div className="flex items-center gap-2 bg-surface-container px-3 py-1.5">
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-on-surface-variant">Max:</span>
-              <span className="text-xs font-bold text-on-surface">{money(maxPrice)}</span>
-              <input
-                aria-label="Maximum price filter"
-                type="range"
-                min={10}
-                max={priceCap}
-                step={1}
-                value={maxPrice}
-                onChange={(event) => setMaxPrice(Number(event.target.value))}
-                className="w-20 cursor-pointer accent-tertiary"
-              />
+              <span className="font-bold text-on-surface">{visible.length}</span> products
             </div>
             <div className="flex items-center gap-2 bg-surface-container px-3 py-1.5">
               <label htmlFor="sort-select" className="text-[11px] font-semibold uppercase tracking-wider text-on-surface-variant">
@@ -141,8 +115,6 @@ export function ProductExplorer({ products, showCategories = true, initialCatego
               >
                 <option value="featured">Featured</option>
                 <option value="newest">Newest</option>
-                <option value="price-asc">Price: Low to High</option>
-                <option value="price-desc">Price: High to Low</option>
                 <option value="alpha">Alphabetical</option>
               </select>
             </div>
@@ -157,18 +129,17 @@ export function ProductExplorer({ products, showCategories = true, initialCatego
         </div>
       </section>
 
-      <div className="mx-auto w-full max-w-7xl px-6 py-12 lg:px-12">
+      <div className="mx-auto w-full max-w-7xl px-6 py-6 lg:px-12">
         {visible.length === 0 ? (
           <div className="flex flex-col items-center justify-center border border-outline-variant bg-surface-container-low px-6 py-24 text-center">
             <span aria-hidden="true" className="material-symbols-outlined mb-4 text-4xl text-outline">
               search_off
             </span>
             <h3 className="mb-2 font-headline text-xl font-normal tracking-wide text-on-surface">
-              No Provisions Matching Criteria
+              No Products Matching Criteria
             </h3>
             <p className="mb-6 max-w-md text-xs leading-relaxed text-on-surface-variant">
-              Adjust your category selection or increase your price threshold to discover our spice blends, botanical
-              salts and rare teas.
+              Adjust your category selection to discover our spice blends, botanical salts and rare teas.
             </p>
             <button
               type="button"
@@ -179,9 +150,15 @@ export function ProductExplorer({ products, showCategories = true, initialCatego
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8 xl:grid-cols-4">
-            {visible.map((product) => (
-              <ProductCard key={product.slug} product={product} />
+          <div>
+            {visible.map((product, index) => (
+              <ProductShowcase
+                key={product.slug}
+                product={product}
+                index={index}
+                reverse={index % 2 === 1}
+                priority={index === 0}
+              />
             ))}
           </div>
         )}

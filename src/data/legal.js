@@ -1,46 +1,66 @@
 /**
- * Placeholder legal pages — demo copy only. No addresses, registration
- * numbers or contact details are invented: fields that must come from the
- * client are explicitly marked as pending.
+ * Legal pages.
+ *
+ * These pages describe the wholesale ordering model truthfully. Details that
+ * only Maison Asili can supply (registered address, register number, VAT ID,
+ * telephone) are marked as pending rather than invented. The final wording must
+ * be reviewed by Maison Asili's legal adviser before publication.
  */
 module.exports = [
   {
     slug: 'privacy',
     title: 'Privacy Policy',
     intro:
-      'This privacy notice explains how a Maison Asili online store would handle personal data. It is placeholder wording for a frontend demonstration and has not been reviewed for a live launch.',
+      'This notice explains what personal data Maison Asili collects through this website, why it is collected and how it is handled.',
     sections: [
       {
         h: 'Who is responsible',
         p: [
-          'The Maison Asili entity responsible for data processing will be confirmed by the client before launch, together with the registered address and contact details.',
-          'Buyer enquiries during the demonstration period can be directed to info@maisonasili.com.'
+          'The Maison Asili entity responsible for data processing, together with its registered address, will be published here once confirmed.',
+          'Questions about privacy can be sent to info@maisonasili.com.'
         ]
       },
       {
-        h: 'Data processed in this demo',
+        h: 'Data we collect',
         p: [
-          'This website is a static frontend demonstration. It does not connect to a database, payment provider, newsletter service or analytics platform.',
-          'The contents of your shopping bag and your demo form entries are stored locally in your browser only. Clearing your browser storage removes them.'
+          'When you submit a wholesale order request or an enquiry, we collect the details you enter: your name, business name, email address, telephone number (if provided), country, city, business type, delivery address (if provided), website (if provided), preferred fulfilment information and any notes you add.',
+          'We also receive the products and quantities you selected. No payment details are collected because this website does not process payments.',
+          'Server logs may record technical information such as the time of a request and the IP address used to submit it, for security and abuse-prevention purposes.'
         ]
       },
       {
-        h: 'Newsletter and forms',
+        h: 'Why we use it',
         p: [
-          'Newsletter, contact and wholesale forms on this demonstration validate input locally and show a confirmation message. Nothing is transmitted or subscribed.',
-          'A live store would publish its newsletter consent wording, retention periods and withdrawal options here.'
+          'Your details are used to receive and respond to your order request or enquiry, to confirm availability, trade pricing and fulfilment, and to keep a record of the correspondence.',
+          'Processing is based on taking steps at your request before entering into a contract and on our legitimate interest in responding to business enquiries.'
+        ]
+      },
+      {
+        h: 'Order cart storage',
+        p: [
+          'The products and quantities in your order cart are stored in your own browser using local storage. They are not sent to Maison Asili until you submit an order request, and clearing your browser storage removes them.',
+          'This website does not use advertising cookies or third-party analytics.'
+        ]
+      },
+      {
+        h: 'Service providers',
+        p: [
+          'Order request and enquiry emails are delivered through Resend, a transactional email provider, and the website is hosted on Vercel. These providers process the information needed to deliver the service on our behalf.',
+          'We do not sell personal data.'
+        ]
+      },
+      {
+        h: 'Retention',
+        p: [
+          'Order requests and enquiries are retained as email correspondence for as long as needed to handle the request and any resulting business relationship, or as required by law.'
         ]
       },
       {
         h: 'Your rights',
         p: [
-          'Under applicable data protection law you may request access, correction, deletion, restriction and portability of your data, and you may object to processing.',
-          'The final policy will name the supervisory authority and detail the applicable procedures.'
+          'Under applicable data protection law you may request access to, correction of, or deletion of your personal data, restrict or object to its processing, and request data portability.',
+          'To exercise these rights, write to info@maisonasili.com. You also have the right to complain to a data protection supervisory authority.'
         ]
-      },
-      {
-        h: 'Updates',
-        p: ['This placeholder will be replaced with the final, legally reviewed privacy policy before any live launch.']
       }
     ]
   },
@@ -48,72 +68,73 @@ module.exports = [
     slug: 'terms',
     title: 'Terms & Conditions',
     intro:
-      'Placeholder terms of sale for the Maison Asili storefront demonstration. Commercial terms must be supplied and reviewed by the client before launch.',
+      'These terms describe how the Maison Asili website and wholesale order request process operate.',
     sections: [
       {
-        h: 'Scope',
+        h: 'Purpose of this website',
         p: [
-          'These terms would govern purchases made through the Maison Asili online store, including ordering, pricing, delivery, returns and liability.',
-          'No contract is formed through this demonstration: it does not accept orders or process payment.'
+          'This website presents the Maison Asili collection to professional buyers. It is a product catalogue and order-request platform, not a consumer checkout.',
+          'No prices are displayed, no payment is taken and no order is accepted through this website.'
         ]
       },
       {
-        h: 'Prices and availability',
+        h: 'Order requests',
         p: [
-          'All prices shown are placeholder values in EUR and include the displayed VAT note.',
-          'Product names, descriptions, weights, volumes and imagery are illustrative demo content for the storefront preview.'
+          'Submitting an order request does not create a contract or a binding order. It is a request for Maison Asili to confirm availability, trade pricing and fulfilment terms.',
+          'A contract is formed only when Maison Asili confirms the commercial terms with you in writing.'
         ]
       },
       {
-        h: 'Ordering and payment',
+        h: 'Products and information',
         p: [
-          'The demonstration checkout collects delivery details locally to show the intended flow, then confirms that no order has been placed and no payment has been processed.',
-          'The live store will describe accepted payment methods, confirmation steps and contractual partner here.'
+          'Product names, descriptions, ingredients, pack sizes and origins are provided in good faith from the information supplied to Maison Asili. Product photography is illustrative; natural variation in botanical ingredients may occur.',
+          'Trade pricing, pack formats, minimum quantities and availability are provided individually on request.'
         ]
       },
       {
-        h: 'Delivery and returns',
-        p: ['Dispatch windows, shipping costs, right of withdrawal and return instructions will be published here.'],
+        h: 'Delivery, returns and liability',
+        p: [
+          'Delivery, fulfilment and returns are agreed individually with each trade partner and confirmed in writing before dispatch.',
+          'Liability and governing-law provisions will be published once Maison Asili has confirmed its final commercial terms.'
+        ]
       },
       {
-        h: 'Liability and applicable law',
+        h: 'Intellectual property',
         p: [
-          'Final liability provisions, governing law and dispute resolution wording will be added once the commercial terms are confirmed.'
+          'The Maison Asili name, brand identity, photography, product descriptions and website content may not be reproduced for commercial use without written permission.'
         ]
       }
     ]
   },
   {
     slug: 'shipping',
-    title: 'Shipping & Returns',
+    title: 'Shipping & Fulfilment',
     intro:
-      'A placeholder outline of how shipping and returns would work for Maison Asili customers. Actual services and rates are still to be confirmed.',
+      'Maison Asili supplies professional buyers. Fulfilment, delivery and trade terms are agreed individually for each order request.',
     sections: [
       {
-        h: 'Dispatch',
+        h: 'Wholesale fulfilment',
         p: [
-          'Orders from a live Maison Asili store would be packed by hand in Berlin and dispatched on working days.',
-          'Any dispatch promise shown elsewhere on this demonstration is illustrative copy, not a service guarantee.'
+          'Products are prepared in Berlin. Delivery methods, lead times and any fulfilment costs are confirmed with each trade partner once availability and trade pricing have been agreed.',
+          'No shipping fees are calculated or charged through this website.'
         ]
       },
       {
-        h: 'Shipping rates',
+        h: 'Delivery details',
         p: [
-          'Domestic, EU and international rates will be listed here once the fulfilment partner and pricing are agreed.',
-          'The free shipping threshold shown in the bag is a demonstration figure only.'
+          'You can include a delivery address and preferred fulfilment information with your order request. These details help us prepare an accurate proposal; they do not confirm a delivery date.'
         ]
       },
       {
-        h: 'Returns',
+        h: 'Returns and discrepancies',
         p: [
-          'Food products are generally excluded from return once opened for hygiene reasons; unopened goods would be returnable within the statutory withdrawal period.',
-          'Final return instructions, addresses and refund timings will be published here.'
+          'Any issue with a delivered order should be reported to info@maisonasili.com so that it can be reviewed with you directly. Return and replacement terms are agreed individually with each trade partner.'
         ]
       },
       {
         h: 'Packaging',
         p: [
-          'Packaging decisions — recyclable, refillable and protective materials for oils and glass — will be described here.'
+          'Packaging is chosen to protect glass, oils and botanical products in transit. Specific packaging requirements can be discussed as part of your order request.'
         ]
       }
     ]
@@ -122,38 +143,32 @@ module.exports = [
     slug: 'impressum',
     title: 'Legal Notice / Impressum',
     intro:
-      'Legal disclosure required for a German commercial website. All identifying details below are placeholders pending information from Maison Asili.',
+      'Legal disclosure for this website. Details that only Maison Asili can confirm are marked as pending and will be published once available.',
     sections: [
       {
         h: 'Provider',
         p: [
           'Maison Asili',
-          'Street and number: [pending — to be supplied by Maison Asili]',
-          'Postcode and city: [pending — to be supplied by Maison Asili]',
+          'Street and number: [to be supplied by Maison Asili]',
+          'Postcode and city: [to be supplied by Maison Asili]',
           'Country: Germany'
         ]
       },
       {
         h: 'Represented by / Contact',
         p: [
-          'Authorised representative: [pending — to be supplied by Maison Asili]',
+          'Authorised representative: [to be supplied by Maison Asili]',
           'Email: info@maisonasili.com',
-          'Telephone: [pending — not yet provided]'
+          'Telephone: [to be supplied by Maison Asili]'
         ]
       },
       {
         h: 'Register entry',
-        p: ['Commercial register, register number, VAT identification number and responsible supervisory authority: [pending]']
+        p: ['Commercial register, register number, VAT identification number and responsible supervisory authority: [to be supplied by Maison Asili]']
       },
       {
         h: 'Editorial responsibility',
-        p: ['Person responsible for editorial content under press law: [pending — to be supplied by Maison Asili]']
-      },
-      {
-        h: 'Note',
-        p: [
-          'No company address, registration number or telephone number has been invented for this demonstration; every bracketed field must be completed before launch.'
-        ]
+        p: ['Person responsible for editorial content under press law: [to be supplied by Maison Asili]']
       }
     ]
   }

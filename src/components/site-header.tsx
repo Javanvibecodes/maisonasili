@@ -6,12 +6,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useCart } from '@/components/cart-provider';
 import { SearchOverlay } from '@/components/search-overlay';
-import { LanguagePanel, openLanguagePanel } from '@/components/language-panel';
 
 const navLinks = [
-  { href: '/shop', label: 'Shop' },
   { href: '/heritage', label: 'Our Heritage' },
-  { href: '/wholesale', label: 'Wholesale & Hospitality' },
+  { href: '/wholesale', label: 'Wholesale' },
   { href: '/contact', label: 'Contact' }
 ];
 
@@ -117,7 +115,7 @@ export function SiteHeader() {
                     href="/shop"
                     className="mt-1 flex items-center justify-between border-t border-outline-variant px-3 py-2.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-on-surface transition-colors hover:text-tertiary"
                   >
-                    View the full pantry
+                    View the full collection
                     <span aria-hidden="true" className="material-symbols-outlined text-sm">
                       north_east
                     </span>
@@ -137,21 +135,10 @@ export function SiteHeader() {
             ))}
           </nav>
 
-          <div className="flex shrink-0 items-center gap-5">
+          <div className="flex shrink-0 items-center gap-4 sm:gap-5">
             <button
               type="button"
-              aria-label="Language and translation options"
-              aria-haspopup="dialog"
-              onClick={openLanguagePanel}
-              className="flex items-center text-on-primary transition-colors hover:text-brand-gold"
-            >
-              <span aria-hidden="true" className="material-symbols-outlined text-[20px]">
-                translate
-              </span>
-            </button>
-            <button
-              type="button"
-              aria-label="Search the pantry"
+              aria-label="Search the collection"
               onClick={openSearch}
               className="flex items-center text-on-primary transition-colors hover:text-brand-gold"
             >
@@ -161,7 +148,7 @@ export function SiteHeader() {
             </button>
             <button
               type="button"
-              aria-label="Shopping bag"
+              aria-label={`Order cart${count > 0 ? `, ${count} ${count === 1 ? 'item' : 'items'}` : ''}`}
               onClick={openDrawer}
               className="relative flex items-center text-on-primary transition-colors hover:text-brand-gold"
             >
@@ -179,66 +166,78 @@ export function SiteHeader() {
             </button>
             <button
               type="button"
-              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+              aria-label={mobileOpen ? 'Close menu' : 'Open navigation menu'}
               aria-expanded={mobileOpen}
               onClick={() => setMobileOpen((open) => !open)}
               className="flex items-center text-on-primary transition-colors hover:text-brand-gold lg:hidden"
             >
-              <span aria-hidden="true" className="material-symbols-outlined text-[24px]">
+              <span aria-hidden="true" className="material-symbols-outlined text-[26px]">
                 {mobileOpen ? 'close' : 'menu'}
               </span>
             </button>
           </div>
         </div>
 
+        {/* Mobile Hamburger Navigation Menu */}
         <div className={`${mobileOpen ? 'block' : 'hidden'} max-h-[85vh] overflow-y-auto border-t border-brand-gold/20 bg-primary text-on-primary shadow-2xl lg:hidden`}>
-          <nav aria-label="Mobile" className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-6 text-[12px] uppercase tracking-[0.18em]">
-            <Link href="/shop" className="border-b border-brand-gold/15 py-3 font-medium text-on-primary transition-colors hover:text-brand-gold">
-              Shop All
+          <nav aria-label="Mobile Navigation" className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-6 text-[12px] uppercase tracking-[0.18em]">
+            <Link
+              href="/"
+              className="border-b border-brand-gold/15 py-3 font-semibold text-on-primary/95 transition-colors hover:text-brand-gold"
+            >
+              Home
             </Link>
-            <span className="pb-1 pt-5 text-[10px] font-semibold tracking-[0.3em] text-brand-gold">Collections</span>
+            <span className="pb-1 pt-4 text-[10px] font-semibold tracking-[0.3em] text-brand-gold">Collections</span>
             {collectionLinks.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="border-b border-brand-gold/15 py-2.5 text-on-primary/85 transition-colors hover:text-brand-gold"
+                className="flex items-center justify-between border-b border-brand-gold/15 py-2.5 text-on-primary/85 transition-colors hover:text-brand-gold"
               >
-                {item.label}
+                <span>{item.label}</span>
+                <span className="text-[10px] lowercase tracking-normal text-on-primary/50">{item.note}</span>
               </Link>
             ))}
-            <span className="pb-1 pt-5 text-[10px] font-semibold tracking-[0.3em] text-brand-gold">Maison</span>
+            <Link
+              href="/shop"
+              className="border-b border-brand-gold/15 py-2.5 font-medium text-brand-gold transition-colors hover:text-white"
+            >
+              All Provisions &rarr;
+            </Link>
+
+            <span className="pb-1 pt-4 text-[10px] font-semibold tracking-[0.3em] text-brand-gold">Maison</span>
             <Link href="/heritage" className="border-b border-brand-gold/15 py-2.5 text-on-primary/85 transition-colors hover:text-brand-gold">
               Our Heritage
             </Link>
             <Link href="/wholesale" className="border-b border-brand-gold/15 py-2.5 text-on-primary/85 transition-colors hover:text-brand-gold">
-              Wholesale &amp; Hospitality
+              Wholesale
             </Link>
             <Link href="/contact" className="border-b border-brand-gold/15 py-2.5 text-on-primary/85 transition-colors hover:text-brand-gold">
               Contact
             </Link>
             <Link href="/cart" className="border-b border-brand-gold/15 py-2.5 text-on-primary/85 transition-colors hover:text-brand-gold">
-              Shopping Bag
+              Order Cart {count > 0 ? `(${count})` : ''}
             </Link>
+
             <div className="mt-6 flex flex-col gap-2 sm:flex-row">
               <button
                 type="button"
                 onClick={openSearch}
                 className="flex-1 bg-brand-gold py-3.5 text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-charcoal shadow-md transition-colors hover:bg-surface-container-lowest"
               >
-                Search the pantry
+                Search the collection
               </button>
               <Link
                 href="/cart"
                 className="flex-1 border border-brand-gold/40 py-3.5 text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-on-primary transition-colors hover:border-brand-gold hover:text-brand-gold"
               >
-                View bag
+                View order cart
               </Link>
             </div>
           </nav>
         </div>
       </header>
       <SearchOverlay />
-      <LanguagePanel />
     </>
   );
 }

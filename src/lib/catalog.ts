@@ -5,17 +5,30 @@ import mediaSource from '@/data/media.json';
 
 export type Category = 'spices' | 'salts' | 'tea';
 
+export interface ProductStory {
+  heading?: string;
+  paragraphs: string[];
+  flavour?: string[];
+  beautifulWith?: string[];
+  touch?: string[];
+  craft?: string;
+  closing?: string;
+  sizeNote?: string;
+}
+
 export interface Product {
   slug: string;
   name: string;
   subtitle: string;
+  descriptor?: string;
   category: Category;
-  price: number;
   size: string;
   label: string;
   eyebrow: string;
   description: string;
+  story: ProductStory;
   ingredients: string[];
+  ingredientsNote?: string;
   productType: string;
   origin: string;
   image: string;
@@ -35,6 +48,7 @@ export interface Collection {
   eyebrow: string;
   intro: string;
   media: keyof typeof mediaSource;
+  editorialMedia: keyof typeof mediaSource;
   related: Category[];
   editorialTitle: string;
   editorialBody: string;
@@ -81,4 +95,6 @@ export function collectionName(category: string): string {
   return collections.find((collection) => collection.slug === category)?.name ?? category;
 }
 
-export const MAX_PRICE = Math.max(...products.map((product) => product.price));
+export function isCategory(value: string): value is Category {
+  return collections.some((collection) => collection.slug === value);
+}

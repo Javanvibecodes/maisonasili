@@ -2,18 +2,21 @@
   "name": "maison-asili-next",
   "version": "0.1.0",
   "private": true,
-  "description": "Maison Asili - luxury Afro-Gourmet e-commerce (Next.js + React)",
+  "description": "Maison Asili — Afro-Gourmet product house and wholesale order-request platform (Next.js + React)",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "build:static": "node scripts/build.js && npx tailwindcss -i src/input.css -o public/assets/css/styles.css --minify"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "framer-motion": "^14.12.0",
+    "lucide-react": "^1.72.0",
     "next": "^14.2.4",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "resend": "^6.38.0",
+    "server-only": "^0.0.1"
   },
   "devDependencies": {
     "@types/node": "^20.19.43",
