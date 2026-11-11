@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Web fonts (Public Sans, Cormorant Garamond, Material Symbols) are served as
+   static files from /public/assets/css/fonts.css and linked in the root layout. */
+
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    overscroll-behavior: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: theme('fontFamily.headline');
+  }
+
+  ::selection {
+    background-color: #d4b58c;
+    color: #210b36;
+  }
+
+  :focus-visible {
+    outline: 2px solid #7c5a2e;
+    outline-offset: 2px;
+  }
+
+  #site-header :focus-visible,
+  footer :focus-visible {
+    outline-color: #d4b58c;
+  }
+}
+
+@layer utilities {
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  .img-fallback {
+    background-color: #efe3d3;
+    background-image: linear-gradient(135deg, #f8f0e6 0%, #e8dccb 100%);
+  }
+
+  .editorial-lead::first-letter {
+    float: left;
+    font-family: theme('fontFamily.headline');
+    font-size: 3.4em;
+    line-height: 0.82;
+    padding-right: 0.12em;
+    padding-top: 0.06em;
+    color: #7c5a2e;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1e5d6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4b58c;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7c5a2e;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Home hero — the content panel scrolls up over the pinned video hero. */
+#hero-curtain {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 640px;
+  z-index: 10;
+  overflow: hidden;
+}
+
+#curtain-content {
+  position: relative;
+  z-index: 20;
+  background-color: #ffffff;
+  box-shadow: 0 -25px 60px rgba(33, 11, 54, 0.5);
+}
+
+html {
+  scroll-behavior: smooth;
+}

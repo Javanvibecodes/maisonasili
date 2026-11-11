@@ -16,9 +16,9 @@
                             The Maison Asili <span class="italic font-normal text-tertiary">Collection</span>
                         </h1>
                         <p class="text-base sm:text-lg text-on-surface-variant font-normal leading-relaxed max-w-2xl">
-                            Explore handcrafted botanicals, premium coffees, rare wild teas, hand-harvested spices, and
-                            cold-pressed finishing oils inspired by African agrarian traditions and perfected in our
-                            Berlin ateliers.
+                            Explore eight small-batch creations: heritage spice blends, botanical finishing salts and
+                            rare African teas, composed in our Berlin atelier and rooted in the continent’s finest
+                            growing regions.
                         </p>
                     </div>
                     <!-- Quick Metrics & Provenance Stamp -->
@@ -31,7 +31,7 @@
                         </div>
                         <div class="flex items-center justify-between">
                             <div class="text-xs uppercase tracking-widest text-on-surface-variant">Harvest Season</div>
-                            <span class="text-xs font-semibold tracking-wider text-on-surface">2023/2024 Reserve</span>
+                            <span class="text-xs font-semibold tracking-wider text-on-surface">Current Reserve</span>
                         </div>
                         <div class="flex items-center justify-between">
                             <div class="text-xs uppercase tracking-widest text-on-surface-variant">Shipping Atelier
@@ -106,14 +106,14 @@
             <!-- Main Catalog Grid Area -->
             <section class="w-full max-w-7xl mx-auto px-6 lg:px-12 py-12 bg-surface-container-lowest">
                 <!-- Empty State Container (Hidden by default) -->
-                <div class="hidden flex-col items-center justify-center py-24 text-center px-6 bg-[#F7F3EB]"
+                <div class="hidden flex-col items-center justify-center py-24 text-center px-6 bg-surface-container-low"
                     id="emptyState">
                     <span class="material-symbols-outlined text-4xl text-outline mb-4">search_off</span>
                     <h3 class="text-xl font-headline font-normal tracking-wide text-on-surface mb-2">No Provisions
                         Matching Criteria</h3>
                     <p class="text-xs text-on-surface-variant max-w-md mb-6 leading-relaxed">
-                        Adjust your category selection or increase your price threshold to discover our handcrafted
-                        African botanicals and pantry staples.
+                        Adjust your category selection or increase your price threshold to discover our spice blends,
+                        botanical salts and rare teas.
                     </p>
                     <button
                         class="px-6 py-2.5 bg-primary text-on-primary text-xs uppercase tracking-widest font-semibold hover:bg-tertiary transition-colors"
@@ -126,22 +126,6 @@
                     id="productGrid">
                     {{PRODUCT_GRID}}
                 </div>
-
-                <!-- Catalog Status Footer / Small Batch Note -->
-                <div
-                    class="mt-16 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 bg-surface-container-lowest p-6 shadow-sm">
-                    <div class="text-xs uppercase tracking-widest font-semibold text-on-surface">
-                        Showing all small-batch creations
-                    </div>
-                    <div class="text-xs text-on-surface-variant tracking-wider">
-                        Hand-packaged weekly in Charlottenburg • Temperature regulated transit
-                    </div>
-                    <a class="text-xs font-semibold uppercase tracking-widest text-tertiary hover:text-on-surface transition-colors flex items-center gap-1"
-                        data-path="wholesale-and-hospitality" href="#">
-                        Hospitality Inquiries <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                    </a>
-                </div>
-            </section>
             <!-- Editorial Discovery Interlude -->
             <section class="w-full py-16 px-6 lg:px-12 my-8">
                 <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -162,27 +146,27 @@
                             <span class="text-2xl font-headline font-semibold text-tertiary">01</span>
                             <div>
                                 <div class="text-xs font-semibold uppercase tracking-wider text-on-surface mb-1">
-                                    Micro-Lot Harvests</div>
-                                <p class="text-[11px] text-on-surface-variant leading-relaxed">Never commingled. Each
-                                    lot is tracked to specific coordinates and cooperative mill logs.</p>
+                                    Small-Batch Blending</div>
+                                <p class="text-[11px] text-on-surface-variant leading-relaxed">Every blend is composed
+                                    and packed by hand in micro-batches at our Berlin atelier.</p>
                             </div>
                         </div>
                         <div class="bg-surface-container-lowest p-6 flex flex-col justify-between h-48 shadow-sm">
                             <span class="text-2xl font-headline font-semibold text-tertiary">02</span>
                             <div>
                                 <div class="text-xs font-semibold uppercase tracking-wider text-on-surface mb-1">
-                                    Cold-Extraction</div>
-                                <p class="text-[11px] text-on-surface-variant leading-relaxed">Oils are extracted
-                                    unheated below 32°C to preserve cellular structure and vital aroma.</p>
+                                    Botanical Salts</div>
+                                <p class="text-[11px] text-on-surface-variant leading-relaxed">Hand-harvested salts are
+                                    layered with moringa, pink pepper, hibiscus and citrus zest.</p>
                             </div>
                         </div>
                         <div class="bg-surface-container-lowest p-6 flex flex-col justify-between h-48 shadow-sm">
                             <span class="text-2xl font-headline font-semibold text-tertiary">03</span>
                             <div>
-                                <div class="text-xs font-semibold uppercase tracking-wider text-on-surface mb-1">Freshly
-                                    Roasted in Berlin</div>
-                                <p class="text-[11px] text-on-surface-variant leading-relaxed">Small 15kg batch drum
-                                    roasting weekly to ensure optimal rest profiles upon delivery.</p>
+                                <div class="text-xs font-semibold uppercase tracking-wider text-on-surface mb-1">
+                                    Whole-Leaf Teas</div>
+                                <p class="text-[11px] text-on-surface-variant leading-relaxed">Kenyan purple tea and
+                                    Malawian white tea, blended with whole flowers and botanical infusions.</p>
                             </div>
                         </div>
                     </div>
@@ -203,7 +187,8 @@
                 const addToBagButtons = document.querySelectorAll('.add-to-bag-btn');
 
                 let currentCategory = 'all';
-                let currentMaxPrice = 50;
+                let maxPriceValue = priceSlider ? parseFloat(priceSlider.max) : 50;
+                let currentMaxPrice = maxPriceValue;
                 let currentSort = 'featured';
 
                 function getProducts() {
@@ -303,11 +288,11 @@
                 if (resetFiltersBtn) {
                     resetFiltersBtn.addEventListener('click', () => {
                         currentCategory = 'all';
-                        currentMaxPrice = 50;
+                        currentMaxPrice = maxPriceValue;
                         currentSort = 'featured';
 
-                        if (priceSlider) priceSlider.value = '50';
-                        if (priceDisplay) priceDisplay.textContent = '€50';
+                        if (priceSlider) priceSlider.value = String(maxPriceValue);
+                        if (priceDisplay) priceDisplay.textContent = '€' + maxPriceValue;
                         if (sortSelect) sortSelect.value = 'featured';
 
                         categoryButtons.forEach(b => {

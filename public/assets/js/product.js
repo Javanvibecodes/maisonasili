@@ -113,7 +113,7 @@
     wishBtn.addEventListener('click', function () {
       var on = wIcon.textContent.trim() === 'favorite';
       wIcon.textContent = on ? 'favorite_border' : 'favorite';
-      wIcon.style.color = on ? '' : '#A65E43';
+      wIcon.style.color = on ? '' : '#7C5A2E';
       if (window.MA_CART && window.MA_CART.toast) {
         window.MA_CART.toast(on ? 'Removed from your saved list.' : 'Saved to your list (demo).');
       }

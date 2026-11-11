@@ -2,311 +2,217 @@
    Source of truth: src/data/products.js */
 window.MA_CATALOG = [
   {
-    "slug": "kilimanjaro-peaberry-signature-roast",
-    "name": "Kilimanjaro Peaberry Signature Roast",
-    "category": "coffee",
-    "categoryName": "Coffee",
-    "price": 26,
-    "size": "250g Whole Bean",
-    "label": "Bestseller",
-    "eyebrow": "Estate Coffee • Tanzania",
-    "description": "Volcanic soil profile with bright blackcurrant acidity, dark cocoa finish, and jasmine blossom florals.",
-    "image": "assets/img/img-a9d043c5f0.jpg",
-    "path": "products/kilimanjaro-peaberry-signature-roast/index.html"
-  },
-  {
-    "slug": "kinkeliba-and-wild-mint-herbal-infusion",
-    "name": "Kinkeliba & Wild Mint Herbal Infusion",
-    "category": "tea",
-    "categoryName": "Tea",
-    "price": 22,
-    "size": "80g Loose Leaf",
-    "label": "Harvest 2024",
-    "eyebrow": "Reserve Tea • Senegal",
-    "description": "Venerated West African health tonic brewed for clarity, smooth woody warmth, and crisp spearmint undertones.",
-    "image": "assets/img/img-f33403a878.jpg",
-    "path": "products/kinkeliba-and-wild-mint-herbal-infusion/index.html"
-  },
-  {
-    "slug": "dukkah-heritage-spice-blend",
-    "name": "Dukkah Heritage Spice Blend",
+    "slug": "savannah-fire",
+    "name": "Savannah Fire",
+    "subtitle": "Premium African Steak Seasoning",
     "category": "spices",
-    "categoryName": "Spices",
+    "categoryName": "Spice Blends",
     "price": 18,
-    "size": "120g Tin",
-    "label": "Bestseller",
-    "eyebrow": "Artisan Spices • Egypt",
-    "description": "Stone-crushed roasted hazelnuts, golden sesame, whole cumin seeds, and citrusy toasted coriander.",
-    "image": "assets/img/img-73b0b3068a.jpg",
-    "path": "products/dukkah-heritage-spice-blend/index.html"
-  },
-  {
-    "slug": "cold-pressed-marula-and-sesame-finishing-oil",
-    "name": "Cold-Pressed Marula & Sesame Finishing Oil",
-    "category": "oils",
-    "categoryName": "Oils",
-    "price": 42,
-    "size": "250ml Glass",
-    "label": "Single Origin",
-    "eyebrow": "Finishing Oils • Namibia",
-    "description": "First cold-extraction wild marula kernel paired with toasted sesame for velvety nuttiness and complex depth.",
-    "image": "assets/img/img-6967f272c4.jpg",
-    "variants": [
-      {
-        "label": "100ml",
-        "price": 22
-      },
-      {
-        "label": "250ml",
-        "price": 42
-      },
-      {
-        "label": "500ml",
-        "price": 74
-      }
+    "size": "130 g Jar",
+    "label": "Signature Blend",
+    "eyebrow": "Artisan Spice Blend • Berlin",
+    "description": "Inspired by the untamed spirit of the African savannah, Savannah Fire combines vibrant African Bird's Eye Chilli, aromatic Grains of Paradise, delicate Fleur de Sel and smoked garlic into a bold, smoky seasoning with remarkable depth and natural umami. Crafted for exceptional steaks, grilled meats, game and vegetables, it brings African spice heritage to the modern gourmet table.",
+    "ingredients": [
+      "Bird's Eye Chilli (Peri-Peri)",
+      "Grains of Paradise",
+      "Fleur de Sel",
+      "Smoked Garlic",
+      "Selected Aromatic Spices"
     ],
-    "path": "products/cold-pressed-marula-and-sesame-finishing-oil/index.html"
+    "productType": "Premium African Steak Seasoning",
+    "image": "assets/img/products/savannah-fire.jpg",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "path": "products/savannah-fire/index.html"
   },
   {
-    "slug": "sun-dried-hibiscus-and-baobab-pods",
-    "name": "Sun-Dried Hibiscus & Baobab Pods",
-    "category": "botanicals",
-    "categoryName": "Botanicals",
+    "slug": "selim-and-paradise",
+    "name": "Selim & Paradise",
+    "subtitle": "West African Smoked Steak Rub",
+    "category": "spices",
+    "categoryName": "Spice Blends",
     "price": 19,
-    "size": "150g Pouch",
-    "label": "Harvest 2024",
-    "eyebrow": "Wild Botanicals • Sudan",
-    "description": "Tart, ruby-red calyces blended with wild baobab fruit pulp for invigorating tonics, cordials, and reduction sauces.",
-    "image": "assets/img/img-cd3d08d0f3.jpg",
-    "path": "products/sun-dried-hibiscus-and-baobab-pods/index.html"
-  },
-  {
-    "slug": "smoked-black-cardamom-and-grains-of-paradise",
-    "name": "Smoked Black Cardamom & Grains of Paradise",
-    "category": "spices",
-    "categoryName": "Spices",
-    "price": 24,
-    "size": "90g Jar",
-    "label": "Single Origin",
-    "eyebrow": "Rare Spices • Ghana",
-    "description": "Wood-smoked cardamom pods layered with the pungent, citrus-peppery snap of wild Guinean pepper.",
-    "image": "assets/img/img-e1b0f8f36c.jpg",
-    "path": "products/smoked-black-cardamom-and-grains-of-paradise/index.html"
-  },
-  {
-    "slug": "yirgacheffe-washed-heirloom-arabica",
-    "name": "Yirgacheffe Washed Heirloom Arabica",
-    "category": "coffee",
-    "categoryName": "Coffee",
-    "price": 29,
-    "size": "250g Whole Bean",
-    "label": "Bestseller",
-    "eyebrow": "Estate Coffee • Ethiopia",
-    "description": "High-altitude heirloom cultivars expressing refined bergamot tea notes, lemongrass, and sweet peach blossom.",
-    "image": "assets/img/img-99b8b6f410.jpg",
-    "path": "products/yirgacheffe-washed-heirloom-arabica/index.html"
-  },
-  {
-    "slug": "mount-kenya-silver-needle-white-tea",
-    "name": "Mount Kenya Silver Needle White Tea",
-    "category": "tea",
-    "categoryName": "Tea",
-    "price": 27,
-    "size": "50g Leaf Reserve",
-    "label": "Single Origin",
-    "eyebrow": "Reserve Tea • Kenya",
-    "description": "Early spring plucking composed solely of unopened downy leaf buds. Notes of melon rind and dry wildflower honey.",
-    "image": "assets/img/img-f0733fcbdd.jpg",
-    "path": "products/mount-kenya-silver-needle-white-tea/index.html"
-  },
-  {
-    "slug": "zanzibar-bourbon-vanilla-pods",
-    "name": "Zanzibar Bourbon Vanilla Pods",
-    "category": "spices",
-    "categoryName": "Spices",
-    "price": 38,
-    "size": "5 Whole Pods",
-    "label": "Harvest 2024",
-    "eyebrow": "Fine Spice • Zanzibar",
-    "description": "Aromatic vanilla beans exhibiting intense moisture content, dark cherry nuances, and warm wood notes.",
-    "image": "assets/img/img-8dfbec0e4c.jpg",
-    "path": "products/zanzibar-bourbon-vanilla-pods/index.html"
-  },
-  {
-    "slug": "first-press-toasted-argan-finishing-oil",
-    "name": "First Press Toasted Argan Finishing Oil",
-    "category": "oils",
-    "categoryName": "Oils",
-    "price": 46,
-    "size": "200ml Glass",
-    "label": "Bestseller",
-    "eyebrow": "Cold-Pressed Oils • Morocco",
-    "description": "Traditional slow-roasted argan kernels yielding an unctuous golden oil with intense hazelnut and brioche aromas.",
-    "image": "assets/img/img-c36dea6e8a.jpg",
-    "variants": [
-      {
-        "label": "100ml",
-        "price": 24
-      },
-      {
-        "label": "200ml",
-        "price": 46
-      },
-      {
-        "label": "500ml",
-        "price": 92
-      }
+    "size": "130 g Jar",
+    "label": "West African Reserve",
+    "eyebrow": "West African Spice Heritage",
+    "description": "Inspired by the ancient spice routes of West Africa, Selim & Paradise unites smoky Selim pepper with the warm aromatic character of Grains of Paradise, smoked paprika, coriander and garlic. Finished with smoked sea salt, this distinctive steak rub delivers remarkable smoky depth, peppery warmth and natural umami to premium meats and roasted vegetables.",
+    "ingredients": [
+      "Selim Pepper (Negro Pepper)",
+      "Grains of Paradise",
+      "Smoked Paprika",
+      "Coriander",
+      "Garlic",
+      "Smoked Sea Salt"
     ],
-    "path": "products/first-press-toasted-argan-finishing-oil/index.html"
+    "productType": "West African Smoked Steak Rub",
+    "image": "assets/img/products/selim-and-paradise.jpg",
+    "imageWidth": 1402,
+    "imageHeight": 1122,
+    "path": "products/selim-and-paradise/index.html"
   },
   {
-    "slug": "cederberg-mountain-wild-rooibos",
-    "name": "Cederberg Mountain Wild Rooibos",
-    "category": "tea",
-    "categoryName": "Tea",
-    "price": 21,
-    "size": "100g Loose Leaf",
-    "label": "Single Origin",
-    "eyebrow": "Reserve Tea • South Africa",
-    "description": "Harvested from uncultivated wild bushes in the high Cederberg range. Naturally caffeine-free with caramel and tobacco notes.",
-    "image": "assets/img/img-4845ee99e3.jpg",
-    "path": "products/cederberg-mountain-wild-rooibos/index.html"
+    "slug": "tropical-pink-pepper-salt",
+    "name": "Tropical Pink Pepper Salt",
+    "subtitle": "Flamingo Pink — Hand-Harvested Sea Salt",
+    "category": "salts",
+    "categoryName": "Salts",
+    "price": 16,
+    "size": "100 g Jar",
+    "label": "Flamingo Pink",
+    "eyebrow": "Hand-Harvested Sea Salt",
+    "description": "Tropical Pink Pepper Salt masterfully blends hand-harvested sea salt with the bright, fruity notes of premium pink peppercorns, vibrant hibiscus and delicate citrus zest. This elegant flamingo-pink blend adds colour, freshness and refined complexity to seafood, grilled fish, poultry, summer salads and gourmet creations.",
+    "ingredients": [
+      "Hand-Harvested Sea Salt",
+      "Pink Peppercorns",
+      "Hibiscus",
+      "Citrus Zest"
+    ],
+    "productType": "Hand-Harvested Sea Salt Blend",
+    "image": "assets/img/products/tropical-pink-pepper-salt.jpg",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "path": "products/tropical-pink-pepper-salt/index.html"
   },
   {
-    "slug": "grand-cru-berbere-spice-blend",
-    "name": "Grand Cru Berbere Spice Blend",
+    "slug": "swahili-coast",
+    "name": "Swahili Coast",
+    "subtitle": "Citrus & Hibiscus — Premium Seafood Spice Blend",
     "category": "spices",
-    "categoryName": "Spices",
+    "categoryName": "Spice Blends",
     "price": 17,
-    "size": "100g Tin",
-    "label": "Bestseller",
-    "eyebrow": "Artisan Spices • Ethiopia",
-    "description": "Twelve-spice composition featuring sun-ripened chillies, korarima cardamom, fenugreek, and holy basil.",
-    "image": "assets/img/img-02ca7c8131.jpg",
-    "path": "products/grand-cru-berbere-spice-blend/index.html"
-  },
-  {
-    "slug": "shade-dried-moringa-leaf-powder",
-    "name": "Shade-Dried Moringa Leaf Powder",
-    "category": "botanicals",
-    "categoryName": "Botanicals",
-    "price": 23,
-    "size": "100g Glass Jar",
-    "label": "Harvest 2024",
-    "eyebrow": "Wild Botanicals • Ghana",
-    "description": "Gently shade-dried to protect heat-sensitive vitamins and enzymes. Grassy, matcha-like freshness for smoothies and dressings.",
-    "image": "assets/img/img-8f4e7d2cdc.jpg",
-    "path": "products/shade-dried-moringa-leaf-powder/index.html"
-  },
-  {
-    "slug": "nyamasheke-honey-process-arabica",
-    "name": "Nyamasheke Honey Process Arabica",
-    "category": "coffee",
-    "categoryName": "Coffee",
-    "price": 28,
-    "size": "250g Whole Bean",
-    "label": "Single Origin",
-    "eyebrow": "Estate Coffee • Rwanda",
-    "description": "Lake Kivu regional profile offering layered brown sugar sweetness, red currant acidity, and black tea body.",
-    "image": "assets/img/img-5040f672ab.jpg",
-    "path": "products/nyamasheke-honey-process-arabica/index.html"
-  },
-  {
-    "slug": "kalahari-melon-seed-cold-pressed-oil",
-    "name": "Kalahari Melon Seed Cold-Pressed Oil",
-    "category": "oils",
-    "categoryName": "Oils",
-    "price": 36,
-    "size": "250ml Glass",
-    "label": "Single Origin",
-    "eyebrow": "Finishing Oils • Botswana",
-    "description": "Extraordinarily light culinary oil with a crisp cucumber-rind bouquet and high linoleic acid concentration.",
-    "image": "assets/img/img-48d320f3b0.jpg",
-    "variants": [
-      {
-        "label": "100ml",
-        "price": 19
-      },
-      {
-        "label": "250ml",
-        "price": 36
-      },
-      {
-        "label": "500ml",
-        "price": 64
-      }
+    "size": "100 g Jar",
+    "label": "Coastal Reserve",
+    "eyebrow": "East African Coastal Blend",
+    "description": "Inspired by the Swahili spice heritage of East Africa, Swahili Coast combines lively lime zest, ruby-red hibiscus, fragrant garlic, black pepper and aromatic coastal herbs. Its vibrant citrus-floral character and gentle peppery warmth bring a distinctive Afro-Gourmet touch to seafood, poultry, grilled vegetables, fragrant rice and coconut curries.",
+    "ingredients": [
+      "Lime Peel",
+      "Hibiscus",
+      "Garlic",
+      "Black Pepper",
+      "Rosemary",
+      "Thyme",
+      "Selected Aromatic Coastal Herbs and Spices"
     ],
-    "path": "products/kalahari-melon-seed-cold-pressed-oil/index.html"
+    "productType": "Premium Seafood Spice Blend",
+    "image": "assets/img/products/swahili-coast.jpg",
+    "imageWidth": 1254,
+    "imageHeight": 1254,
+    "path": "products/swahili-coast/index.html"
   },
   {
-    "slug": "virunga-national-park-espresso-roast",
-    "name": "Virunga National Park Espresso Roast",
-    "category": "coffee",
-    "categoryName": "Coffee",
-    "price": 25,
-    "size": "250g Whole Bean",
-    "label": "Harvest 2024",
-    "eyebrow": "Estate Coffee • DR Congo",
-    "description": "Cultivated along the Virunga volcanic ridge. Dense body featuring roasted hazelnut, dried fig, and dark treacle notes.",
-    "image": "assets/img/img-4320210dfc.jpg",
-    "path": "products/virunga-national-park-espresso-roast/index.html"
+    "slug": "emerald-moringa",
+    "name": "Emerald Moringa",
+    "subtitle": "African Salt Blend — Moringa & Lemon Zest",
+    "category": "salts",
+    "categoryName": "Salts",
+    "price": 18,
+    "size": "100 g Jar",
+    "label": "Great Rift Valley",
+    "eyebrow": "Kenyan Botanical Salt",
+    "description": "Inspired by the landscapes of Kenya's Great Rift Valley, Emerald Moringa brings together hand-harvested African salt, earthy moringa leaves and fragrant dried lemon zest, delicately layered with garlic and white pepper. This vibrant botanical finishing salt adds mineral crispness, citrus brightness and subtle savoury warmth to seafood, avocado, carpaccio and fine vegetables.",
+    "ingredients": [
+      "Hand-Harvested African Salt",
+      "Moringa Leaves",
+      "Dried Lemon Zest",
+      "Garlic",
+      "White Pepper"
+    ],
+    "productType": "African Salt Blend",
+    "image": "assets/img/products/emerald-moringa.jpg",
+    "imageWidth": 1254,
+    "imageHeight": 1254,
+    "path": "products/emerald-moringa/index.html"
   },
   {
-    "slug": "madagascar-wild-voatsiperifery-pepper",
-    "name": "Madagascar Wild Voatsiperifery Pepper",
-    "category": "spices",
-    "categoryName": "Spices",
-    "price": 27,
-    "size": "75g Jar",
-    "label": "Single Origin",
-    "eyebrow": "Artisan Spices • Madagascar",
-    "description": "Rare canopy-gathered wild pepper. Unmistakable fragrant pine, damp forest soil, and subtle citrus sweetness.",
-    "image": "assets/img/img-4a834eac6c.jpg",
-    "path": "products/madagascar-wild-voatsiperifery-pepper/index.html"
+    "slug": "royal-purple-elixir",
+    "name": "Royal Purple Elixir",
+    "subtitle": "Luxury African Botanical Tea | Mount Kenya",
+    "category": "tea",
+    "categoryName": "Botanical Teas",
+    "price": 24,
+    "size": "50 g Loose Leaf",
+    "label": "Mount Kenya",
+    "eyebrow": "Kenyan Purple Tea",
+    "description": "Born in the mist-kissed highlands of Mount Kenya, Royal Purple Elixir celebrates the distinctive character of Kenyan Purple Tea. Earthy moringa and ancient baobab meet vibrant hibiscus, delicate rose petals and sun-kissed orange peel in an exquisite botanical blend with floral elegance, fruity brightness and refined depth.",
+    "ingredients": [
+      "Kenyan Purple Tea",
+      "Moringa",
+      "Baobab",
+      "Hibiscus",
+      "Rose Petals",
+      "Orange Peel"
+    ],
+    "productType": "Premium Loose-Leaf Botanical Tea",
+    "image": "assets/img/products/royal-purple-elixir.jpg",
+    "imageWidth": 1024,
+    "imageHeight": 1024,
+    "path": "products/royal-purple-elixir/index.html"
   },
   {
-    "slug": "honeybush-and-wild-cape-botanical-flowers",
-    "name": "Honeybush & Wild Cape Botanical Flowers",
-    "category": "botanicals",
-    "categoryName": "Botanicals",
-    "price": 31,
-    "size": "90g Botanical Jar",
-    "label": "Harvest 2024",
-    "eyebrow": "Wild Botanicals • South Africa",
-    "description": "Fragrant yellow fynbos blossoms blended for vermouth macerations, tea ceremony cordials, and delicate pastry infusions.",
-    "image": "assets/img/img-6a537a73fb.jpg",
-    "path": "products/honeybush-and-wild-cape-botanical-flowers/index.html"
+    "slug": "mara-moon",
+    "name": "Mara Moon",
+    "subtitle": "Luxury Evening Botanical Tea",
+    "category": "tea",
+    "categoryName": "Botanical Teas",
+    "price": 24,
+    "size": "50 g Loose Leaf",
+    "label": "Evening Reserve",
+    "eyebrow": "South African Evening Blend",
+    "description": "Inspired by the tranquil beauty of African evenings, Mara Moon combines delicate Silver Needle white tea with naturally smooth South African green rooibos. Fragrant lavender, gentle chamomile and a whisper of coconut create a beautifully balanced botanical blend with soft floral notes, subtle sweetness and refined elegance.",
+    "ingredients": [
+      "Silver Needle White Tea",
+      "South African Green Rooibos",
+      "Lavender",
+      "Chamomile",
+      "Coconut"
+    ],
+    "productType": "Premium Loose-Leaf Botanical Tea",
+    "image": "assets/img/products/mara-moon.jpg",
+    "imageWidth": 896,
+    "imageHeight": 1200,
+    "path": "products/mara-moon/index.html"
+  },
+  {
+    "slug": "desert-gold",
+    "name": "Desert Gold",
+    "subtitle": "Malawian White Tea | Luxury Botanical Fusion",
+    "category": "tea",
+    "categoryName": "Botanical Teas",
+    "price": 26,
+    "size": "50 g Loose Leaf",
+    "label": "Malawi Reserve",
+    "eyebrow": "Malawian White Tea",
+    "description": "From the lush highlands of Malawi comes exquisite Silver Tip white tea, celebrated for its silky elegance and delicate character. Maison Asili reimagines this rare botanical through a refined fusion of fragrant orange blossoms, golden calendula and lemongrass, creating a harmonious blend of floral softness, subtle citrus brightness and graceful depth.",
+    "ingredients": [
+      "Malawian Silver Tip White Tea",
+      "Orange Blossoms",
+      "Calendula",
+      "Lemongrass"
+    ],
+    "productType": "Premium Loose-Leaf White Tea Blend",
+    "image": "assets/img/products/desert-gold.jpg",
+    "imageWidth": 1264,
+    "imageHeight": 843,
+    "path": "products/desert-gold/index.html"
   }
 ];
 window.MA_COLLECTIONS = [
   {
-    "slug": "coffee",
-    "name": "Coffee",
-    "tagline": "High-altitude, small-batch roasts",
-    "path": "collections/coffee/index.html"
-  },
-  {
-    "slug": "tea",
-    "name": "Tea",
-    "tagline": "Rare leaves, tisanes and infusions",
-    "path": "collections/tea/index.html"
-  },
-  {
     "slug": "spices",
-    "name": "Spices",
-    "tagline": "Ancient blends and whole spices",
+    "name": "Spice Blends",
+    "tagline": "Heritage blends, rubs and seasonings",
     "path": "collections/spices/index.html"
   },
   {
-    "slug": "botanicals",
-    "name": "Botanicals",
-    "tagline": "Elixirs, infusions and dried botanicals",
-    "path": "collections/botanicals/index.html"
+    "slug": "salts",
+    "name": "Salts",
+    "tagline": "Botanical salt blends and finishing salts",
+    "path": "collections/salts/index.html"
   },
   {
-    "slug": "oils",
-    "name": "Oils",
-    "tagline": "Cold-pressed specialty oils",
-    "path": "collections/oils/index.html"
+    "slug": "tea",
+    "name": "Botanical Teas",
+    "tagline": "Rare leaves, flowers and botanical infusions",
+    "path": "collections/tea/index.html"
   }
 ];

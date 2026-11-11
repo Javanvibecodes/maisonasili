@@ -5,7 +5,7 @@
         <div class="h-20 flex items-center justify-between gap-6 border-b border-outline-variant">
             <span class="flex items-center gap-3">
                 <span
-                    class="w-9 h-9 rounded-full overflow-hidden bg-charcoal ring-1 ring-brand-gold/50 flex items-center justify-center">
+                    class="w-9 h-9 rounded-full overflow-hidden bg-primary-container ring-1 ring-brand-gold/50 flex items-center justify-center">
                     <img alt="" class="w-11 h-11 object-cover scale-[1.15]"
                         src="{{BASE}}assets/img/img-59efbbe90f.jpg">
                 </span>
@@ -25,7 +25,7 @@
                 <span class="material-symbols-outlined text-3xl text-tertiary">search</span>
                 <input
                     class="flex-1 min-w-0 bg-transparent text-2xl sm:text-4xl font-headline text-on-surface focus:outline-none placeholder:text-outline py-1"
-                    data-search-input placeholder="Coffee, tea, spices&hellip;" type="search">
+                    data-search-input placeholder="Spice blends, salts, tea&hellip;" type="search">
             </div>
             <div
                 class="mt-4 flex items-center justify-between gap-4 text-[10px] font-label uppercase tracking-[0.24em] text-on-surface-variant">
@@ -37,8 +37,8 @@
             <div class="hidden flex-col items-center text-center py-16" data-search-empty>
                 <span class="material-symbols-outlined text-4xl text-outline mb-4">search_off</span>
                 <h3 class="font-headline text-2xl text-on-surface mb-2">Nothing matches that search</h3>
-                <p class="text-xs text-on-surface-variant max-w-md leading-relaxed">Try &ldquo;coffee&rdquo;,
-                    &ldquo;spice blend&rdquo;, &ldquo;oil&rdquo; or &ldquo;botanical&rdquo; &mdash; or browse the full
+                <p class="text-xs text-on-surface-variant max-w-md leading-relaxed">Try &ldquo;spice&rdquo;,
+                    &ldquo;salt&rdquo;, &ldquo;tea&rdquo; or &ldquo;moringa&rdquo; &mdash; or browse the full
                     pantry instead.</p>
                 <a class="mt-6 px-6 py-3 bg-on-surface text-surface-container-lowest text-[11px] uppercase tracking-[0.22em] font-semibold hover:bg-primary transition-colors"
                     href="{{BASE}}shop/index.html">Explore the Shop</a>
@@ -94,6 +94,66 @@
         </button>
     </div>
 </aside>
+
+<!-- Language & browser-translation panel -->
+<div class="hidden fixed inset-0 z-[65]" data-language-overlay>
+    <div class="absolute inset-0 bg-primary/65" data-language-close></div>
+    <div class="relative min-h-full flex items-center justify-center p-5 sm:p-8">
+        <div role="dialog" aria-modal="true" aria-labelledby="language-title"
+            class="w-full max-w-lg bg-surface-container-lowest border border-brand-gold/40 shadow-2xl p-6 sm:p-9">
+            <div class="flex items-start justify-between gap-6 pb-5 border-b border-outline-variant">
+                <div class="flex items-start gap-3.5">
+                    <span class="w-10 h-10 shrink-0 bg-surface-container flex items-center justify-center text-tertiary">
+                        <span class="material-symbols-outlined text-xl">translate</span>
+                    </span>
+                    <div>
+                        <span class="text-[10px] font-label uppercase tracking-[0.28em] text-tertiary font-semibold">Language</span>
+                        <h2 id="language-title" class="font-headline text-2xl font-semibold text-primary mt-1">Read Maison Asili in your language</h2>
+                    </div>
+                </div>
+                <button aria-label="Close language panel" class="p-1.5 text-on-surface hover:text-tertiary transition-colors" data-language-close type="button">
+                    <span class="material-symbols-outlined text-2xl">close</span>
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6">
+                <div class="border border-brand-gold/50 bg-surface-container-low px-4 py-3.5">
+                    <span class="text-[10px] font-label uppercase tracking-[0.22em] text-tertiary font-semibold block mb-1">Website language</span>
+                    <strong class="font-headline text-lg text-primary">English</strong>
+                    <span class="block text-[11px] text-on-surface-variant mt-0.5">Canonical source content</span>
+                </div>
+                <div class="border border-outline-variant bg-surface-container-low px-4 py-3.5">
+                    <span class="text-[10px] font-label uppercase tracking-[0.22em] text-tertiary font-semibold block mb-1">Your browser prefers</span>
+                    <strong class="font-headline text-lg text-primary" data-detected-language>English</strong>
+                    <span class="block text-[11px] text-on-surface-variant mt-0.5">Detected locally, never sent anywhere</span>
+                </div>
+            </div>
+
+            <p class="text-sm text-on-surface-variant leading-relaxed mt-5" data-language-message>
+                This website is published in English. Your browser can translate it using its built-in translation
+                feature.
+            </p>
+
+            <div class="mt-5 bg-surface-container-low border-l-2 border-brand-gold p-4">
+                <h3 class="text-[11px] font-label uppercase tracking-[0.22em] font-semibold text-primary mb-2">How to translate</h3>
+                <ul class="flex flex-col gap-2 text-xs text-on-surface-variant leading-relaxed list-none">
+                    <li><strong class="text-primary">Chrome / Edge:</strong> right-click the page and choose &ldquo;Translate to&hellip;&rdquo;, or use the translate icon in the address bar.</li>
+                    <li><strong class="text-primary">Safari:</strong> choose View &rarr; Translation.</li>
+                    <li><strong class="text-primary">Firefox:</strong> use the translation icon in the address bar.</li>
+                </ul>
+            </div>
+
+            <div class="mt-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <p class="text-[11px] text-outline leading-relaxed max-w-xs">
+                    Browser translation is controlled by your browser. Maison Asili does not force or automate the
+                    native translation prompt.
+                </p>
+                <button class="px-5 py-3 bg-primary text-on-primary text-[11px] font-label uppercase tracking-[0.22em] font-semibold hover:bg-brand-gold hover:text-primary transition-colors whitespace-nowrap"
+                    data-language-close type="button">Continue in English</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Toast notifications -->
 <div aria-live="polite" class="fixed bottom-5 right-5 z-[70] flex flex-col gap-3 items-end max-w-[calc(100vw-2.5rem)]"

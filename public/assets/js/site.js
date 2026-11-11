@@ -83,6 +83,7 @@
 
   function openSearch() {
     if (!overlay) return;
+    closeLanguage();
     overlay.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
     if (menu && !menu.classList.contains('hidden')) menu.classList.add('hidden');
@@ -101,9 +102,81 @@
   Array.prototype.forEach.call(document.querySelectorAll('[data-search-close]'), function (b) {
     b.addEventListener('click', closeSearch);
   });
+
+  /* --------------------------------- language / browser translation ---- */
+  /* The site is authored in English. We only read the visitor's browser
+     language preferences locally and point them to the browser's native
+     translation feature; no IP lookup or translation API is used. */
+  var languageOverlay = document.querySelector('[data-language-overlay]');
+  var languageMessage = document.querySelector('[data-language-message]');
+  var detectedLanguage = document.querySelector('[data-detected-language]');
+
+  function browserLanguage() {
+    var list =
+      navigator.languages && navigator.languages.length
+        ? navigator.languages
+        : [navigator.language || 'en'];
+    var raw = list[0] || 'en';
+    var code = raw.split('-')[0].toLowerCase();
+    var name = raw;
+    try {
+      if (typeof Intl !== 'undefined' && Intl.DisplayNames) {
+        name = new Intl.DisplayNames([raw], { type: 'language' }).of(code) || raw;
+      }
+    } catch (err) {
+      name = raw;
+    }
+    return { raw: raw, code: code, name: name, isEnglish: code === 'en' };
+  }
+
+  function updateLanguagePanel() {
+    var lang = browserLanguage();
+    if (detectedLanguage) detectedLanguage.textContent = lang.name + ' (' + lang.raw + ')';
+    if (languageMessage) {
+      languageMessage.textContent = lang.isEnglish
+        ? 'Your browser prefers English. You are already reading the canonical English edition of Maison Asili.'
+        : 'Your browser prefers ' +
+          lang.name +
+          '. Use your browser’s built-in translation feature to read Maison Asili in ' +
+          lang.name +
+          '. Product names, ingredients, pricing and checkout are controlled by the site and are not translated automatically.';
+    }
+  }
+
+  function openLanguage() {
+    if (!languageOverlay) return;
+    closeSearch();
+    if (menu && !menu.classList.contains('hidden')) menu.classList.add('hidden');
+    updateLanguagePanel();
+    languageOverlay.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    Array.prototype.forEach.call(document.querySelectorAll('[data-language-toggle]'), function (b) {
+      b.setAttribute('aria-expanded', 'true');
+    });
+  }
+
+  function closeLanguage() {
+    if (!languageOverlay) return;
+    languageOverlay.classList.add('hidden');
+    if (languageOverlay.classList.contains('hidden') && document.body.style.overflow === 'hidden') {
+      document.body.style.overflow = '';
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('[data-language-toggle]'), function (b) {
+      b.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-language-toggle]'), function (b) {
+    b.addEventListener('click', openLanguage);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-language-close]'), function (b) {
+    b.addEventListener('click', closeLanguage);
+  });
+
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
       closeSearch();
+      closeLanguage();
       closeDrawerIfOpen();
     }
   });
@@ -152,7 +225,7 @@
           BASE +
           p.path +
           '">' +
-          '<div class="w-full aspect-square bg-surface-container overflow-hidden"><img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="' +
+          '<div class="w-full aspect-square bg-surface-container overflow-hidden"><img class="w-full h-full object-contain p-4 group-hover:scale-[1.03] transition-transform duration-500" src="' +
           BASE +
           p.image +
           '" alt=""></div>' +
@@ -294,10 +367,10 @@
           btn.addEventListener('click', function () {
             var cat = btn.getAttribute('data-tab');
             tabs.forEach(function (t) {
-              t.classList.remove('text-charcoal', 'font-semibold', 'border-charcoal');
+              t.classList.remove('text-primary', 'font-semibold', 'border-brand-gold');
               t.classList.add('text-on-surface-variant/60', 'border-transparent');
             });
-            btn.classList.add('text-charcoal', 'font-semibold', 'border-charcoal');
+            btn.classList.add('text-primary', 'font-semibold', 'border-brand-gold');
             btn.classList.remove('text-on-surface-variant/60', 'border-transparent');
 
             var items = carousel.querySelectorAll('.product-item');

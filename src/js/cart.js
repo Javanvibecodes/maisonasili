@@ -123,6 +123,8 @@
     });
     var openBtn = document.querySelector('[data-checkout-open]');
     if (openBtn) openBtn.disabled = n === 0;
+    var noun = document.querySelector('[data-cart-page-count-noun]');
+    if (noun) noun.textContent = n === 1 ? 'item' : 'items';
   }
 
   /* --------------------------------------------------------- drawer UI */
@@ -146,7 +148,7 @@
             '<a class="w-20 h-24 shrink-0 bg-surface-container overflow-hidden" href="' +
             BASE +
             it.path +
-            '"><img class="w-full h-full object-cover" src="' +
+            '"><img class="w-full h-full object-contain p-1.5" src="' +
             BASE +
             it.image +
             '" alt=""></a>' +
@@ -217,7 +219,7 @@
           '<a class="w-24 h-28 shrink-0 bg-surface-container overflow-hidden" href="' +
           BASE +
           it.path +
-          '"><img class="w-full h-full object-cover" src="' +
+          '"><img class="w-full h-full object-contain p-2" src="' +
           BASE +
           it.image +
           '" alt=""></a>' +

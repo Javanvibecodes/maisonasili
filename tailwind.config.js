@@ -1,72 +1,81 @@
 /**
  * Maison Asili — design tokens.
  *
- * The source markup produced for this project uses a Material-3 style token
- * vocabulary (surface-container-*, on-surface, tertiary ...). Those token names
- * are kept so every supplied page keeps working, but their values are remapped
- * to the Maison Asili brand palette:
+ * The markup uses a Material-3 style token vocabulary (surface-container-*,
+ * on-surface, tertiary ...) kept from the supplied design so existing class
+ * names keep working, remapped to the current brand palette:
  *
- *   Deep charcoal #171714 · Warm ivory #F7F3EB · Antique gold #B69A62
- *   Sand #E8DDCC · Terracotta #A65E43 · Botanical olive #62664A · White #FFFFFF
+ *   Deep Plum    #210B36  (primary)
+ *   White        #FFFFFF  (surface / background)
+ *   Antique Gold #D4B58C  (accent / brand-gold)
+ *   Warm Sand    #F4EFE6  (secondary surfaces)
  *
- * A second group of "heritage" tokens (gold, warm-sand, stone-*) is used by the
- * Our Heritage editorial page and is kept for continuity.
+ * NOTE: this file must only contain Tailwind configuration. A previous
+ * conversion pasted Next.js options in here, which broke every brand token.
  */
 module.exports = {
   darkMode: 'class',
-  content: ['./public/**/*.html', './public/assets/js/**/*.js', './src/**/*.html'],
+  content: [
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/pages/**/*.html',
+    './src/templates/**/*.html',
+    './src/partials/**/*.html',
+    './public/**/*.html',
+    './public/assets/js/**/*.js'
+  ],
   theme: {
     extend: {
       colors: {
         /* ---- Brand accents ---- */
-        primary: '#A65E43', // terracotta
-        'on-primary': '#FFFFFF',
-        'primary-container': '#EFDDD4',
-        'on-primary-container': '#5C3123',
-        'inverse-primary': '#B69A62',
-        'primary-fixed': '#EFDDD4',
-        'primary-fixed-dim': '#E3CBBD',
-        'on-primary-fixed': '#3B1A0F',
-        'on-primary-fixed-variant': '#5C3123',
+        primary: '#210B36',
+        'on-primary': '#F8F0E6',
+        'primary-container': '#EDE4F3',
+        'on-primary-container': '#3B2452',
+        'inverse-primary': '#D4B58C',
+        'primary-fixed': '#EDE4F3',
+        'primary-fixed-dim': '#DCCDE8',
+        'on-primary-fixed': '#210B36',
+        'on-primary-fixed-variant': '#4A2E63',
 
-        secondary: '#62664A', // botanical olive
-        'on-secondary': '#FFFFFF',
-        'secondary-container': '#E5E6D5',
-        'on-secondary-container': '#33361F',
-        'inverse-secondary': '#62664A',
-        'secondary-fixed': '#E5E6D5',
-        'secondary-fixed-dim': '#CFD1BF',
-        'on-secondary-fixed': '#1E2110',
-        'on-secondary-fixed-variant': '#4A4C34',
+        secondary: '#D4B58C',
+        'on-secondary': '#210B36',
+        'secondary-container': '#F3E8D7',
+        'on-secondary-container': '#4A3D1F',
+        'inverse-secondary': '#D4B58C',
+        'secondary-fixed': '#F3E8D7',
+        'secondary-fixed-dim': '#E6D5B9',
+        'on-secondary-fixed': '#241C0D',
+        'on-secondary-fixed-variant': '#5C4A22',
 
-        tertiary: '#8A6A34', // antique gold, darkened for legible text on ivory
+        tertiary: '#7C5A2E',
         'on-tertiary': '#FFFFFF',
-        'tertiary-container': '#E8DDCC', // sand
+        'tertiary-container': '#F1E8DA',
         'on-tertiary-container': '#4A3D1F',
-        'tertiary-fixed': '#E8DDCC',
-        'tertiary-fixed-dim': '#D9C9A9',
+        'tertiary-fixed': '#F1E8DA',
+        'tertiary-fixed-dim': '#E2D3B9',
         'on-tertiary-fixed': '#2E2612',
         'on-tertiary-fixed-variant': '#5C4A22',
 
         /* ---- Surfaces ---- */
-        background: '#F7F3EB',
-        'on-background': '#171714',
-        surface: '#F7F3EB',
+        background: '#FFFFFF',
+        'on-background': '#171122',
+        surface: '#FFFFFF',
         'surface-bright': '#FFFFFF',
-        'surface-dim': '#E4DCCD',
-        'surface-variant': '#E8DDCC',
+        'surface-dim': '#E8E1D6',
+        'surface-variant': '#F4EFE6',
         'surface-container-lowest': '#FFFFFF',
-        'surface-container-low': '#F7F3EB',
-        'surface-container': '#F1EADC',
-        'surface-container-high': '#EAE1D0',
-        'surface-container-highest': '#E4DAC6',
-        'surface-tint': '#A65E43',
-        'on-surface': '#171714',
-        'on-surface-variant': '#4C4A42',
-        outline: '#7E7A6C',
-        'outline-variant': '#D6CFBE',
+        'surface-container-low': '#FAF7F2',
+        'surface-container': '#F5F0E8',
+        'surface-container-high': '#F0E9DF',
+        'surface-container-highest': '#EAE1D5',
+        'surface-tint': '#210B36',
+        'on-surface': '#171122',
+        'on-surface-variant': '#5A5264',
+        outline: '#8A8394',
+        'outline-variant': '#E2D9CE',
         'inverse-surface': '#2C2A25',
-        'inverse-on-surface': '#F7F3EB',
+        'inverse-on-surface': '#F8F0E6',
         'inverse-outline': '#44413A',
 
         /* ---- Feedback ---- */
@@ -89,9 +98,9 @@ module.exports = {
         'stone-border-light': '#EFEAE1',
 
         /* ---- Raw brand swatches ---- */
-        ivory: '#F7F3EB',
+        ivory: '#F8F0E6',
         charcoal: '#171714',
-        'brand-gold': '#B69A62',
+        'brand-gold': '#D4B58C',
         sand: '#E8DDCC',
         terra: '#A65E43',
         olive: '#62664A'

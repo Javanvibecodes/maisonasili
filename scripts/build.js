@@ -23,10 +23,37 @@ const imageMap = require(path.join(ROOT, 'src', 'data', 'image-map.json'));
 
 const warnings = [];
 
+/* ------------------------------------------------------- generated output */
+
+// public/products and public/collections are fully generated. Clearing them
+// prevents retired demonstration products from lingering after a rebuild.
+['products', 'collections'].forEach((dir) => {
+  const target = path.join(PUBLIC, dir);
+  if (fs.existsSync(target)) fs.rmSync(target, { recursive: true, force: true });
+});
+
+/** Copies each client photograph from /Product Images into the web asset tree. */
+function syncProductImages() {
+  products.forEach((p) => {
+    if (!p.imageSource || !p.image) return;
+    const source = path.join(ROOT, p.imageSource);
+    const target = path.join(PUBLIC, p.image);
+    if (!fs.existsSync(source)) {
+      warnings.push(`${p.slug}: supplied product image is missing — ${p.imageSource}`);
+      return;
+    }
+    fs.mkdirSync(path.dirname(target), { recursive: true });
+    fs.copyFileSync(source, target);
+  });
+}
+
+syncProductImages();
+
 /* ------------------------------------------------------------------ routes */
 
 const ROUTES = {
   home: 'index.html',
+  shop: 'shop/index.html',
   'shop-all': 'shop/index.html',
   collections: 'shop/index.html',
   coffee: 'collections/coffee/index.html',
@@ -35,6 +62,7 @@ const ROUTES = {
   'botanical-tea': 'collections/tea/index.html',
   spices: 'collections/spices/index.html',
   'spices-and-seasonings': 'collections/spices/index.html',
+  salts: 'collections/salts/index.html',
   botanicals: 'collections/botanicals/index.html',
   'botanicals-and-elixirs': 'collections/botanicals/index.html',
   oils: 'collections/oils/index.html',
@@ -145,6 +173,7 @@ const CATEGORY_STORAGE = {
   coffee: 'Store the sealed pouch in a cool, dark place. Best enjoyed within four weeks of opening for peak aroma.',
   tea: 'Keep sealed in a cool, dry cupboard, away from strong aromas and moisture.',
   spices: 'Reseal tightly after use and store in a cool, dark cupboard. Grind or crush to order.',
+  salts: 'Keep sealed in a cool, dry cupboard. Use a dry spoon to protect the mineral texture and botanical aroma.',
   botanicals: 'Store dry and sealed, away from direct light and humidity.',
   oils: 'Store upright with the cap closed, away from light and heat. Best used within a few weeks of opening.'
 };
@@ -153,47 +182,44 @@ const CATEGORY_STORAGE_ICON = {
   coffee: 'coffee',
   tea: 'emoji_food_beverage',
   spices: 'grain',
+  salts: 'spa',
   botanicals: 'spa',
   oils: 'water_drop'
 };
 
-/** Ambience imagery for a product gallery (product shot first). */
+/** Product gallery — only the client-supplied photograph is used. */
 function galleryFor(p) {
-  const c = collectionBySlug[p.category];
-  const ambience = [];
-  if (p.category === 'oils') {
-    ambience.push(media.pdpPress, media.pdpSeeds, media.pdpCloseup);
-  } else {
-    ambience.push(media.pdpSeeds, media.pdpPress);
-  }
-  if (c) ambience.push(media[c.media]);
-  ambience.push(media.hero);
-  return [p.image, ...ambience].filter((v, i, arr) => v && arr.indexOf(v) === i).slice(0, 4);
+  return [p.image];
 }
 
 /** Product card used by the shop grid, collection grids, search and home. */
 function productCard(p, base, opts = {}) {
   const href = `${base}products/${p.slug}/index.html`;
   const label = p.label
-    ? `<div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 text-[9px] font-semibold uppercase tracking-widest text-charcoal shadow-sm">${esc(p.label)}</div>`
+    ? `<div class="absolute top-3 left-3 bg-primary/95 backdrop-blur-sm px-2.5 py-1 text-[9px] font-semibold uppercase tracking-widest text-on-primary shadow-sm">${esc(p.label)}</div>`
     : '';
   const size = p.size
-    ? `<div class="absolute top-3 right-3 text-[9px] uppercase tracking-wider text-charcoal/70 bg-white/80 backdrop-blur-sm px-2 py-0.5">${esc(p.size)}</div>`
+    ? `<div class="absolute top-3 right-3 text-[9px] uppercase tracking-wider text-primary/80 bg-surface-container-lowest/90 backdrop-blur-sm px-2 py-0.5">${esc(p.size)}</div>`
     : '';
   const eyebrow = p.eyebrow
     ? `<span class="text-[10px] uppercase font-semibold tracking-[0.24em] text-tertiary block mb-1.5">${esc(p.eyebrow)}</span>`
     : `<span class="text-[10px] uppercase font-semibold tracking-[0.24em] text-tertiary block mb-1.5">${esc(p.category)}</span>`;
+  const subtitle = p.subtitle
+    ? `<p class="mt-1 text-[11px] leading-snug text-on-surface-variant">${esc(p.subtitle)}</p>`
+    : '';
+  const dimensions =
+    p.imageWidth && p.imageHeight ? ` width="${p.imageWidth}" height="${p.imageHeight}"` : '';
 
   const isCarousel = opts.carousel === true;
   const widthClasses = isCarousel ? 'w-[240px] sm:w-[280px] md:w-[320px] shrink-0 snap-start' : '';
 
-  return `<article class="product-item group flex flex-col bg-[#F9F7F2] overflow-hidden transition-all duration-300 ${widthClasses}"
+  return `<article class="product-item group flex flex-col bg-surface-container-lowest border border-outline-variant/70 overflow-hidden transition-all duration-300 hover:border-brand-gold/80 ${widthClasses}"
             data-added="${p.added}" data-category="${p.category}" data-name="${esc(p.name)}" data-price="${p.price}"
             data-slug="${p.slug}">
-            <div class="relative w-full aspect-[4/5] overflow-hidden bg-[#ECE8DF]">
+            <div class="relative w-full aspect-[4/3] overflow-hidden bg-surface-container">
                 <a class="block w-full h-full" href="${href}" tabindex="-1" aria-hidden="true">
-                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                        src="${base}${p.image}" alt="${esc(p.name)} — Maison Asili ${p.category}">
+                    <img class="w-full h-full object-contain p-4 sm:p-5 group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                        src="${base}${p.image}" alt="${esc(p.name)}${p.subtitle ? ' — ' + esc(p.subtitle) : ''}"${dimensions}>
                 </a>
                 ${label}
                 ${size}
@@ -201,13 +227,14 @@ function productCard(p, base, opts = {}) {
             <div class="p-5 flex flex-col flex-1 justify-between gap-3">
                 <div>
                     ${eyebrow}
-                    <h3 class="text-sm font-sans font-medium text-charcoal leading-snug group-hover:text-tertiary transition-colors">
+                    <h3 class="text-sm font-sans font-medium text-primary leading-snug group-hover:text-tertiary transition-colors">
                         <a href="${href}">${esc(p.name)}</a>
                     </h3>
-                    <div class="mt-1 text-sm font-normal text-charcoal/80">${money(p.price)}</div>
+                    ${subtitle}
+                    <div class="mt-2 text-sm font-normal text-primary/80">${money(p.price)}</div>
                 </div>
-                <div class="pt-2 flex items-center justify-between border-t border-outline-variant/30">
-                    <button class="add-to-bag-btn px-4 py-2 bg-charcoal text-white hover:bg-brand-gold hover:text-charcoal text-[10px] uppercase tracking-[0.18em] font-medium transition-colors w-full text-center"
+                <div class="pt-2 flex items-center justify-between border-t border-outline-variant/50">
+                    <button class="add-to-bag-btn px-4 py-2 bg-primary text-on-primary hover:bg-brand-gold hover:text-primary text-[10px] uppercase tracking-[0.18em] font-medium transition-colors w-full text-center"
                         data-add-to-cart="${p.slug}" type="button">
                         Add to Bag
                     </button>
@@ -293,6 +320,29 @@ function sizeSection(p, base) {
                         </div>`;
 }
 
+function ingredientsSection(p) {
+  const list = Array.isArray(p.ingredients) ? p.ingredients : [p.ingredients].filter(Boolean);
+  if (!list.length) return '';
+  const items = list
+    .map(
+      (ingredient) => `<li class="flex items-start gap-2.5">
+        <span class="text-brand-gold font-semibold leading-none mt-1">&mdash;</span>
+        <span>${esc(ingredient)}</span>
+      </li>`
+    )
+    .join('\n');
+
+  return `<section aria-labelledby="ingredients-heading" class="mb-6 border-l-2 border-brand-gold bg-surface-container-low px-5 py-4">
+    <div class="flex items-center gap-2.5 mb-3">
+        <span class="material-symbols-outlined text-base text-tertiary">spa</span>
+        <h2 id="ingredients-heading" class="text-[11px] font-label uppercase tracking-[0.25em] font-bold text-primary">Ingredients</h2>
+    </div>
+    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm text-on-surface-variant leading-relaxed">
+        ${items}
+    </ul>
+</section>`;
+}
+
 function accordion(id, icon, title, body, open) {
   return `<div class="py-4 border-t border-outline-variant">
                                 <button
@@ -345,23 +395,24 @@ function relatedFor(p, base) {
   return picks
     .map((r) => {
       const href = `${base}products/${r.slug}/index.html`;
-      return `<div class="group bg-surface-container-lowest p-5 shadow-sm flex flex-col justify-between transition-all duration-300 hover:shadow-md">
+      return `<div class="group bg-surface-container-lowest border border-outline-variant/70 p-5 shadow-sm flex flex-col justify-between transition-all duration-300 hover:border-brand-gold/80 hover:shadow-md">
                         <div class="relative w-full aspect-square bg-surface-container overflow-hidden mb-5 flex items-center justify-center overflow-hidden">
                             <a class="block w-full h-full" href="${href}" tabindex="-1" aria-hidden="true">
-                                <img class="w-full h-full object-contain p-6 transition-transform duration-500 group-hover:scale-105"
-                                    src="${base}${r.image}" alt="${esc(r.name)}">
+                                <img class="w-full h-full object-contain p-6 transition-transform duration-500 group-hover:scale-[1.03]"
+                                    src="${base}${r.image}" alt="${esc(r.name)}"${r.imageWidth ? ` width="${r.imageWidth}" height="${r.imageHeight}"` : ''}>
                             </a>
-                            ${r.label ? `<div class="absolute top-3 left-3 bg-surface-container-lowest px-2.5 py-1 text-[9px] font-label uppercase tracking-widest font-semibold shadow-sm">${esc(r.label)}</div>` : ''}
+                            ${r.label ? `<div class="absolute top-3 left-3 bg-primary px-2.5 py-1 text-[9px] font-label uppercase tracking-widest font-semibold text-on-primary shadow-sm">${esc(r.label)}</div>` : ''}
                         </div>
                         <div class="flex flex-col">
-                            <span class="text-[10px] font-label uppercase tracking-[0.2em] text-on-surface-variant">${esc(r.eyebrow)}</span>
-                            <h4 class="text-base font-headline font-semibold text-on-surface mt-1 group-hover:text-primary transition-colors">
+                            <span class="text-[10px] font-label uppercase tracking-[0.2em] text-tertiary">${esc(r.eyebrow)}</span>
+                            <h4 class="text-base font-headline font-semibold text-primary mt-1 group-hover:text-tertiary transition-colors">
                                 <a href="${href}">${esc(r.name)}</a>
                             </h4>
+                            ${r.subtitle ? `<p class="text-[11px] text-on-surface-variant mt-1">${esc(r.subtitle)}</p>` : ''}
                             <p class="text-xs text-on-surface-variant mt-1.5 line-clamp-2 leading-relaxed">${esc(r.description)}</p>
-                            <div class="flex items-center justify-between mt-5 pt-4">
-                                <span class="text-base font-headline font-semibold text-on-surface">${money(r.price)}</span>
-                                <button class="px-4 py-2 bg-on-surface text-surface-container-lowest text-[11px] font-label uppercase tracking-widest font-semibold hover:bg-primary transition-colors"
+                            <div class="flex items-center justify-between mt-5 pt-4 border-t border-outline-variant/50">
+                                <span class="text-base font-headline font-semibold text-primary">${money(r.price)}</span>
+                                <button class="px-4 py-2 bg-primary text-on-primary text-[11px] font-label uppercase tracking-widest font-semibold hover:bg-brand-gold hover:text-primary transition-colors"
                                     data-add-to-cart="${r.slug}" type="button">Quick Add</button>
                             </div>
                         </div>
@@ -379,7 +430,7 @@ function thumbsFor(gallery, base, name) {
                                 class="thumbnail-btn ${first ? 'ring-1 ring-on-surface' : 'opacity-70'} p-2 bg-surface-container-lowest transition-all hover:opacity-100 flex flex-col items-center gap-1.5 focus:outline-none"
                                 data-gallery-src="${base}${src}" type="button">
                                 <div class="w-full aspect-square overflow-hidden bg-surface-container flex items-center justify-center">
-                                    <img class="w-full h-full object-cover" src="${base}${src}" alt="${esc(name)} — view ${i + 1}">
+                                    <img class="w-full h-full object-contain p-2" src="${base}${src}" alt="${esc(name)} — view ${i + 1}">
                                 </div>
                                 <span class="text-[9px] font-label uppercase tracking-widest ${first ? 'text-on-surface' : 'text-on-surface-variant'} truncate">${labels[i] || 'Detail'}</span>
                             </button>`;
@@ -488,9 +539,9 @@ PAGES.forEach((cfg) => {
 
   buildPage({
     out: 'index.html',
-    title: 'Maison Asili — Afro-Gourmet Feinkost, Botanicals & Single-Origin Coffee',
+    title: 'Maison Asili — Afro-Gourmet Fusion, Heritage Spices, Salts & Botanical Teas',
     desc:
-      'Maison Asili — rooted in Africa, born in Berlin. Small-batch coffee, tea, spices, botanicals and cold-pressed oils for the discerning epicurean.',
+      'Maison Asili — rooted in Africa, born in Berlin. Afro-Gourmet Fusion spice blends, hand-harvested salt blends and luxury botanical teas for the discerning epicurean.',
     page: 'home',
     contentTpl: tpl,
     pageScripts: []
@@ -515,7 +566,8 @@ PAGES.forEach((cfg) => {
   buildPage({
     out: 'shop/index.html',
     title: 'Shop All — Maison Asili',
-    desc: 'The full Maison Asili pantry: coffee, tea, spices, botanicals and cold-pressed oils.',
+    desc:
+      'The Maison Asili pantry: heritage spice blends, hand-harvested salt blends and luxury botanical teas.',
     page: 'shop',
     contentTpl: tpl,
     pageScripts: ['filters.js']
@@ -565,7 +617,7 @@ collections.forEach((c) => {
     MAX_PRICE: String(Math.ceil(maxPrice)),
     EDITORIAL_TITLE: esc(c.editorialTitle),
     EDITORIAL_BODY: esc(c.editorialBody),
-    EDITORIAL_IMG: `{{BASE}}${media.culinary}`,
+    EDITORIAL_IMG: `{{BASE}}${(list[1] || list[0]).image}`,
     APPLICATIONS: applications,
     RELATED_LINKS: related,
     HREF: `{{BASE}}collections/${c.slug}/index.html`
@@ -589,23 +641,20 @@ const productTpl = read('src/pages/product.html');
 products.forEach((p) => {
   const c = collectionBySlug[p.category];
   const gallery = galleryFor(p);
-  const variants = p.variants || [];
-  const unitPrice = variants.length ? (variants[0].price / 100).toFixed(2) : null;
 
   const detailsBody = `<ul class="flex flex-col gap-2 list-none">
+                                        <li class="flex gap-2"><span class="text-tertiary">&mdash;</span><span>Product type: ${esc(p.productType || p.subtitle)}</span></li>
                                         <li class="flex gap-2"><span class="text-tertiary">&mdash;</span><span>Format: ${esc(p.size)}</span></li>
                                         <li class="flex gap-2"><span class="text-tertiary">&mdash;</span><span>Category: ${esc(c.name)}</span></li>
                                         <li class="flex gap-2"><span class="text-tertiary">&mdash;</span><span>Prepared and packed in Berlin in small batches</span></li>
-                                        <li class="flex gap-2"><span class="text-tertiary">&mdash;</span><span>Demonstration entry &mdash; final specification pending client confirmation</span></li>
+                                        <li class="flex gap-2"><span class="text-tertiary">&mdash;</span><span>Price shown is a demonstration value pending the live price list</span></li>
                                     </ul>`;
 
-  const originBody = `Provenance, harvest and batch documentation for this position will be
-                                        confirmed against the official Maison Asili catalogue before launch.
-                                        No origin, certification or quality claim is made on this demonstration
-                                        page.<br><br>Prepared and packed in Berlin.`;
+  const originBody = `${esc(p.origin || 'Origin and provenance are documented against the official Maison Asili catalogue.')}<br><br>Prepared and packed in Berlin.`;
 
-  // Editorial accordions — details / ingredients / origin / culinary uses / storage.
-  // `open` marks the first expanded panel; product.js wires the toggle.
+  // Editorial accordions — details / origin / storage.
+  // The ingredients are shown as a dedicated, scannable block beside the
+  // description rather than buried in an accordion.
   const accordion = (id, label, body, open) => `
                         <div class="border-t border-outline-variant">
                             <button class="accordion-toggle w-full flex items-center justify-between gap-4 py-4 text-left"
@@ -617,14 +666,14 @@ products.forEach((p) => {
                         </div>`;
 
   const ACCORDION_DETAILS = accordion('details', 'Details', detailsBody, true);
-  const ACCORDION_INGREDIENTS = accordion('ingredients', 'Ingredients & Composition', esc(p.ingredients), false);
   const ACCORDION_ORIGIN = accordion('origin', 'Origin & Provenance', originBody, false);
-  const ACCORDION_USES = accordion('uses', 'Culinary Uses', esc(p.uses), false);
   const ACCORDION_STORAGE = accordion('storage', 'Storage', esc(CATEGORY_STORAGE[p.category]), false);
 
   const tokens = {
     SLUG: p.slug,
     NAME: esc(p.name),
+    SUBTITLE: esc(p.subtitle),
+    PRODUCT_TYPE: esc(p.productType || p.subtitle),
     CATEGORY: esc(c.name),
     CATEGORY_HREF: `{{BASE}}collections/${c.slug}/index.html`,
     BREADCRUMB: `${`{{BASE}}collections/${c.slug}/index.html`}`,
@@ -632,17 +681,25 @@ products.forEach((p) => {
     SIZE: esc(p.size),
     SIZE_SECTION: sizeSection(p, '{{BASE}}'),
     EYEBROW: esc(p.eyebrow || `${c.name} • Maison Asili`),
-    LABEL_NOTE: p.label ? esc(p.label) : 'Demo Catalogue',
+    LABEL_NOTE: p.label ? esc(p.label) : 'Maison Asili',
     DESCRIPTION: esc(p.description),
+    INGREDIENTS_SECTION: ingredientsSection(p),
     GALLERY_MAIN: gallery[0],
-    THUMBS: thumbsFor(gallery, '{{BASE}}', p.name),
+    GALLERY_MAIN_WIDTH: p.imageWidth || '',
+    GALLERY_MAIN_HEIGHT: p.imageHeight || '',
+    GALLERY_MAIN_DIMENSIONS:
+      p.imageWidth && p.imageHeight ? `width="${p.imageWidth}" height="${p.imageHeight}"` : '',
+    THUMBS_BLOCK:
+      gallery.length > 1
+        ? `<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4" id="pdp-thumbnails">
+                        ${thumbsFor(gallery, '{{BASE}}', p.name)}
+                    </div>`
+        : '',
     CRAFT_BAR: craftBar(p),
     MICRO_A: `Small Batch &bull; ${esc(c.name)}`,
-    MICRO_B: 'Demonstration Catalogue',
+    MICRO_B: 'Maison Asili',
     ACCORDION_DETAILS,
-    ACCORDION_INGREDIENTS,
     ACCORDION_ORIGIN,
-    ACCORDION_USES,
     ACCORDION_STORAGE,
     STORAGE_ICON: CATEGORY_STORAGE_ICON[p.category],
     RELATED: relatedFor(p, '{{BASE}}'),
@@ -651,13 +708,75 @@ products.forEach((p) => {
 
   buildPage({
     out: `products/${p.slug}/index.html`,
-    title: `${p.name} — Maison Asili`,
-    desc: `${p.name} (${p.size}) — ${p.description}`,
+    title: `${p.name} — ${p.subtitle} | Maison Asili`,
+    desc: `${p.name} — ${p.subtitle}. ${p.description}`,
     page: 'shop',
     contentTpl: productTpl,
     tokens,
     pageScripts: ['product.js']
   });
+});
+
+/* ------------------------------------------------------- legacy redirects */
+// Retired collection and demonstration-product URLs still resolve, so old
+// bookmarks do not 404 after the catalogue update.
+function writeRedirect(outRel, href, label) {
+  write(
+    outRel,
+    `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>${esc(label)} — Maison Asili</title>
+<link rel="canonical" href="${href}">
+<meta http-equiv="refresh" content="0; url=${href}">
+<style>body{background:#F8F0E6;color:#210B36;font-family:Georgia,serif;display:grid;place-items:center;min-height:100vh;margin:0}a{color:#7C5A2E}</style>
+</head>
+<body>
+<p>This page has moved. <a href="${href}">Continue to Maison Asili</a>.</p>
+<script>location.replace(${JSON.stringify(href)});</script>
+</body>
+</html>`
+  );
+}
+
+const LEGACY_COLLECTION_REDIRECTS = {
+  coffee: '../../shop/index.html',
+  botanicals: '../salts/index.html',
+  oils: '../../shop/index.html'
+};
+
+Object.entries(LEGACY_COLLECTION_REDIRECTS).forEach(([slug, href]) => {
+  const current = collections.some((c) => c.slug === slug);
+  if (!current) writeRedirect(`collections/${slug}/index.html`, href, 'Collection');
+});
+
+const LEGACY_PRODUCT_SLUGS = [
+  'kilimanjaro-peaberry-signature-roast',
+  'kinkeliba-and-wild-mint-herbal-infusion',
+  'dukkah-heritage-spice-blend',
+  'cold-pressed-marula-and-sesame-finishing-oil',
+  'sun-dried-hibiscus-and-baobab-pods',
+  'smoked-black-cardamom-and-grains-of-paradise',
+  'yirgacheffe-washed-heirloom-arabica',
+  'mount-kenya-silver-needle-white-tea',
+  'zanzibar-bourbon-vanilla-pods',
+  'first-press-toasted-argan-finishing-oil',
+  'cederberg-mountain-wild-rooibos',
+  'grand-cru-berbere-spice-blend',
+  'shade-dried-moringa-leaf-powder',
+  'nyamasheke-honey-process-arabica',
+  'kalahari-melon-seed-cold-pressed-oil',
+  'virunga-national-park-espresso-roast',
+  'madagascar-wild-voatsiperifery-pepper',
+  'honeybush-and-wild-cape-botanical-flowers'
+];
+
+const currentSlugs = new Set(products.map((p) => p.slug));
+LEGACY_PRODUCT_SLUGS.forEach((slug) => {
+  if (!currentSlugs.has(slug)) writeRedirect(`products/${slug}/index.html`, '../../shop/index.html', 'Product');
 });
 
 /* ---------------------------------------------------------- legal pages */
@@ -692,6 +811,7 @@ legalPages.forEach((l) => {
 const clientCatalog = products.map((p) => ({
   slug: p.slug,
   name: p.name,
+  subtitle: p.subtitle,
   category: p.category,
   categoryName: collectionBySlug[p.category].name,
   price: p.price,
@@ -699,7 +819,11 @@ const clientCatalog = products.map((p) => ({
   label: p.label,
   eyebrow: p.eyebrow,
   description: p.description,
+  ingredients: p.ingredients,
+  productType: p.productType,
   image: p.image,
+  imageWidth: p.imageWidth,
+  imageHeight: p.imageHeight,
   /* optional size options — used by the cart to charge the selected variant */
   variants: p.variants,
   path: `products/${p.slug}/index.html`
