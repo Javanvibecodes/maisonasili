@@ -11,7 +11,7 @@ export default function NotFound() {
           The page you are looking for has been moved, renamed or never existed. Return to the collection and continue
           exploring.
         </p>
-        <div className="flex flex-col gap-3 sm:flex-row">
+        <div className="flex flex-row flex-wrap justify-center gap-3">
           <Link
             href="/shop"
             className="bg-primary px-7 py-3.5 text-xs font-medium uppercase tracking-[0.22em] text-on-primary transition-colors hover:bg-tertiary"

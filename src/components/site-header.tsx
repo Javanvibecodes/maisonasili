@@ -42,7 +42,7 @@ export function SiteHeader() {
     <>
       <header
         id="site-header"
-        className="fixed top-0 left-0 right-0 z-50 w-full border-b border-brand-gold/25 bg-primary text-on-primary"
+        className="fixed top-0 left-0 right-0 z-50 w-full border-b border-brand-gold/25 bg-black text-on-primary"
       >
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-6 px-6 lg:px-12">
           <Link href="/" className="group flex shrink-0 items-center gap-3" aria-label="Maison Asili — home">
@@ -179,7 +179,7 @@ export function SiteHeader() {
         </div>
 
         {/* Mobile Hamburger Navigation Menu */}
-        <div className={`${mobileOpen ? 'block' : 'hidden'} max-h-[85vh] overflow-y-auto border-t border-brand-gold/20 bg-primary text-on-primary shadow-2xl lg:hidden`}>
+        <div className={`${mobileOpen ? 'block' : 'hidden'} max-h-[85vh] overflow-y-auto border-t border-brand-gold/20 bg-black text-on-primary shadow-2xl lg:hidden`}>
           <nav aria-label="Mobile Navigation" className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-6 text-[12px] uppercase tracking-[0.18em]">
             <Link
               href="/"
@@ -219,17 +219,17 @@ export function SiteHeader() {
               Order Cart {count > 0 ? `(${count})` : ''}
             </Link>
 
-            <div className="mt-6 flex flex-col gap-2 sm:flex-row">
+            <div className="mt-6 flex flex-row gap-2">
               <button
                 type="button"
                 onClick={openSearch}
-                className="flex-1 bg-brand-gold py-3.5 text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-charcoal shadow-md transition-colors hover:bg-surface-container-lowest"
+                className="flex-1 bg-brand-gold px-1 py-3.5 text-center text-[9px] font-semibold uppercase leading-tight tracking-[0.08em] text-charcoal shadow-md transition-colors hover:bg-surface-container-lowest sm:text-[11px] sm:tracking-[0.22em]"
               >
                 Search the collection
               </button>
               <Link
                 href="/cart"
-                className="flex-1 border border-brand-gold/40 py-3.5 text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-on-primary transition-colors hover:border-brand-gold hover:text-brand-gold"
+                className="flex-1 border border-brand-gold/40 px-1 py-3.5 text-center text-[9px] font-semibold uppercase leading-tight tracking-[0.08em] text-on-primary transition-colors hover:border-brand-gold hover:text-brand-gold sm:text-[11px] sm:tracking-[0.22em]"
               >
                 View order cart
               </Link>

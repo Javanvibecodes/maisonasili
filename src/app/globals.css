@@ -68,21 +68,39 @@
   }
 }
 
+/* Page scrollbar — the native bar is hidden; <ScrollIndicator /> draws the slim
+   dark-grey rounded bar at z-20, under the fixed header (z-50) and footer (z-30). */
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* Nested scrollers (search results, cart drawer) keep the slim dark styling. */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1e5d6;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #d4b58c;
+  background-color: #4a4a4a;
+  border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #7c5a2e;
+  background-color: #6b6b6b;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -95,24 +113,10 @@
   }
 }
 
-/* Home hero — the hero stays fixed; the content panel scrolls up over it. */
-#hero-curtain {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  height: 100svh;
-  min-height: 640px;
-  z-index: 0;
-  overflow: hidden;
-}
-
+/* Home — the hero banner is a normal, full-width block; the page body follows it. */
 #curtain-content {
   position: relative;
-  z-index: 30;
   background-color: #ffffff;
-  box-shadow: 0 -25px 60px rgba(0, 0, 0, 0.35);
 }
 
 html {

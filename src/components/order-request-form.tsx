@@ -162,7 +162,7 @@ export function OrderRequestForm({ lines, onSubmitted }: OrderRequestFormProps) 
           Retailer information
         </legend>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <div className="grid grid-cols-2 gap-4 sm:gap-5">
           <label className="flex flex-col gap-2">
             <span className={labelClass}>
               Business name <span className="text-tertiary">*</span>
@@ -320,7 +320,7 @@ export function OrderRequestForm({ lines, onSubmitted }: OrderRequestFormProps) 
             <FieldError id="order-website-error" message={errors.website} />
           </label>
 
-          <label className="flex flex-col gap-2 sm:col-span-2">
+          <label className="col-span-2 flex flex-col gap-2">
             <span className={labelClass}>
               Delivery address{' '}
               <span className="font-normal normal-case tracking-normal text-on-surface-variant">(optional)</span>
@@ -338,7 +338,7 @@ export function OrderRequestForm({ lines, onSubmitted }: OrderRequestFormProps) 
             <FieldError id="order-delivery-address-error" message={errors.deliveryAddress} />
           </label>
 
-          <label className="flex flex-col gap-2 sm:col-span-2">
+          <label className="col-span-2 flex flex-col gap-2">
             <span className={labelClass}>
               Preferred fulfilment{' '}
               <span className="font-normal normal-case tracking-normal text-on-surface-variant">(optional)</span>
@@ -400,11 +400,11 @@ export function OrderRequestForm({ lines, onSubmitted }: OrderRequestFormProps) 
         </p>
       ) : null}
 
-      <div className="flex flex-col gap-4 border-t border-outline-variant pt-6 sm:flex-row sm:items-center">
+      <div className="flex flex-row items-center gap-3 border-t border-outline-variant pt-6 sm:gap-4">
         <button
           type="submit"
           disabled={submitting || lines.length === 0}
-          className="bg-on-surface px-8 py-4 text-xs font-semibold uppercase tracking-[0.25em] text-surface-container-lowest transition-colors hover:bg-primary disabled:cursor-not-allowed disabled:opacity-50"
+          className="bg-on-surface px-3 py-4 text-[9px] font-semibold uppercase leading-tight tracking-[0.1em] text-surface-container-lowest transition-colors hover:bg-primary disabled:cursor-not-allowed disabled:opacity-50 sm:px-8 sm:text-xs sm:tracking-[0.25em]"
         >
           {submitting ? 'Submitting request…' : 'Submit Wholesale Order Request'}
         </button>

@@ -34,10 +34,10 @@ export function AddToOrderCart({ product, variant = 'full' }: AddToOrderCartProp
 
   return (
     <div className={compact ? 'flex flex-col gap-3' : 'mb-6 flex flex-col gap-4'}>
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-stretch">
+      <div className="flex flex-row items-stretch gap-1.5 sm:gap-3">
         <div
-          className={`flex w-full items-center justify-between border border-outline-variant bg-warm-sand px-3 ${
-            compact ? 'py-1.5 sm:w-32' : 'py-2 sm:w-36'
+          className={`flex shrink-0 items-center justify-between border border-outline-variant bg-warm-sand px-1 sm:px-3 ${
+            compact ? 'w-20 py-1.5 sm:w-32' : 'w-24 py-2 sm:w-36'
           }`}
         >
           <button
@@ -80,8 +80,10 @@ export function AddToOrderCart({ product, variant = 'full' }: AddToOrderCartProp
         <button
           type="button"
           onClick={handleAdd}
-          className={`flex flex-1 items-center justify-center gap-2.5 whitespace-nowrap bg-primary font-bold uppercase tracking-[0.16em] text-on-primary shadow-md transition-colors hover:bg-brand-gold hover:text-primary ${
-            compact ? 'px-4 py-3 text-[10px] sm:px-5' : 'gap-3 px-4 py-4 text-[11px] tracking-[0.18em] sm:px-6'
+          className={`flex flex-1 items-center justify-center gap-1.5 whitespace-normal bg-primary text-center font-bold uppercase leading-tight text-on-primary shadow-md transition-colors hover:bg-brand-gold hover:text-primary sm:gap-2.5 sm:whitespace-nowrap ${
+            compact
+              ? 'px-2 py-3 text-[9px] tracking-[0.06em] sm:px-5 sm:text-[10px] sm:tracking-[0.16em]'
+              : 'gap-2 px-2 py-4 text-[9px] tracking-[0.06em] sm:gap-3 sm:px-6 sm:text-[11px] sm:tracking-[0.18em]'
           }`}
         >
           <span

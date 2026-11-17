@@ -97,7 +97,7 @@ export function WholesaleForm() {
       ) : null}
 
       <fieldset className="flex flex-col gap-5" disabled={submitting}>
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <div className="grid grid-cols-2 gap-4 sm:gap-5">
           <label className="flex flex-col gap-2">
             <span className={labelClass}>
               Full name <span className="text-tertiary">*</span>
@@ -260,11 +260,11 @@ export function WholesaleForm() {
         />
       </div>
 
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+      <div className="flex flex-row items-center gap-3 sm:gap-4">
         <button
           type="submit"
           disabled={submitting}
-          className="bg-on-surface px-8 py-4 text-xs font-semibold uppercase tracking-[0.25em] text-surface-container-lowest transition-colors hover:bg-primary disabled:cursor-not-allowed disabled:opacity-50"
+          className="bg-on-surface px-3 py-4 text-[9px] font-semibold uppercase leading-tight tracking-[0.1em] text-surface-container-lowest transition-colors hover:bg-primary disabled:cursor-not-allowed disabled:opacity-50 sm:px-8 sm:text-xs sm:tracking-[0.25em]"
         >
           {submitting ? 'Sending enquiry…' : 'Submit Enquiry'}
         </button>

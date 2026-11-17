@@ -18,6 +18,10 @@ build/
 graphify-out/
 *.zip
 temp-list.js
+.dev-server.log
+.dev-server.pid
+# Staging copy of the hero banner; the served asset lives in public/assets/img/
+/Hero Banner.jpeg
 
 # Logs
 npm-debug.log*

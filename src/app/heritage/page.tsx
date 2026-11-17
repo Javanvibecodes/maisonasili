@@ -1,454 +1,134 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
-import { assetPath, media } from '@/lib/catalog';
 
 export const metadata: Metadata = {
   title: 'Our Heritage',
-  description: '23 Years of Culinary Craftsmanship — from the Uckermark to Berlin, and the Afro-Gourmet dialogue.'
+  description:
+    'Origin. Identity. Heritage. Two decades of craft and a continent of origin — the story of Maison Asili, founded in Berlin by Susan Kiruku-Klann.'
 };
 
-const chapters = [
-  { href: '#chapter-1', label: 'I. The Hearth' },
-  { href: '#chapter-2', label: 'II. Kreuzberg' },
-  { href: '#chapter-3', label: 'III. Der Feinschmecker' },
-  { href: '#chapter-4', label: 'IV. SoLuna Brot & Oel' },
-  { href: '#chapter-5', label: 'V. The Afro-Gourmet' }
+const foundations = [
+  'In 2003, Susan brought her entrepreneurial vision to life, co-founding and building SoLuna Brot und Oel alongside her then-husband, the accomplished food artisan Peter Klann. Together, they spent five demanding years establishing an artisanal Feinkost enterprise that would become a recognized name in Berlin\u2019s culinary landscape.',
+  'Their work began in an old German farmhouse in Ringenwalde, Brandenburg, centered around a traditional clay oven. It later evolved into SoLuna\u2019s legendary Berlin-Kreuzberg location, where an impressive French Panyol wood-fired oven attracted food enthusiasts and lovers of traditional artisanal craftsmanship from all over the world.',
+  'At SoLuna, the philosophy extended far beyond wood-fired bread. Together, they developed a distinctive world of cold-pressed oils, specialty salts, raw spices, handmade sauces, traditional mojos, and pestos\u2014including a celebrated walnut pesto that gained a devoted following.',
+  'Working with certified organic and Demeter products, traditional preparation methods, and carefully selected natural ingredients, Susan deepened her culinary knowledge while actively contributing to every stage of building the enterprise.',
+  'Across Berlin\u2019s vibrant markets, Susan became the familiar face of SoLuna, bringing its artisanal creations directly to customers and cultivating relationships that extended far beyond the market stalls. It was here, amid the everyday rhythm of trade and personal encounters, that renowned food critic Katja Burghardt met and interviewed her, leading to SoLuna\u2019s first major recognition in DER FEINSCHMECKER, Germany\u2019s premier gourmet magazine. Further recognition followed in leading German and international culinary publications, alongside lasting relationships with prominent chefs and specialty retailers.',
+  'These formative years established the bedrock of Susan\u2019s culinary expertise, providing an understanding of ingredients, flavor equilibrium, sourcing, and traditional craftsmanship that would continue to evolve over the next two decades.'
 ];
 
-const metrics = [
-  ['2001', 'Genesis'],
-  ['14', 'Terroir Reserves'],
-  ['3×', 'Feinschmecker Plaudit'],
-  ['2', 'Atelier Capitals']
+const transition = [
+  'Following her chapter at SoLuna, Susan stepped into a period of personal and entrepreneurial exploration, keeping her connection to craftsmanship alive across different mediums. She returned directly to her roots, sourcing and curating authentic African arts, traditional textiles, original artwork, and hand-carved cultural artifacts, introducing their vibrant stories and textures directly to customers in independent regional marketplaces.',
+  'To expand her understanding of modern commerce, she also immersed herself in the fast-paced world of established retail stores. Working within high-volume retail environments provided valuable, hands-on insight into inventory flow, supply chains, and customer relationship management at scale.',
+  'Driven by a desire to bring the richness of African heritage to an international audience, Susan expanded into digital entrepreneurship, establishing her own online store. Her collection encompassed intricate textiles, clothing, original artworks, traditional carvings, and cultural objects. This chapter opened the door to digital marketing, international logistics, and relationships with customers across different continents. Navigating the nuances of cross-border e-commerce, global sourcing, and cross-continental customer care became another vital piece of her entrepreneurial education.',
+  'This diverse path\u2014from the slow precision of artisanal food production to the tactile beauty of African carvings and textiles, retail operations, and international digital commerce\u2014laid the perfect foundation for her next vision.'
 ];
 
-function ChapterHeading({
-  number,
-  years,
-  title
-}: {
-  number: string;
-  years: string;
-  title: string;
-}) {
+const terroir = [
+  'Africa\u2019s culinary landscape stretches far beyond historical trade routes. Its remarkable microclimates\u2014spanning high-altitude mist forests, arid deserts, volcanic slopes, and tropical coastlines\u2014nurture an extraordinary diversity of heritage ingredients, rare seeds, spices, teas, and botanical oils. MAISON ASILI was founded to explore and celebrate these remarkable ingredients, bringing their origins, character and culinary possibilities to an international audience.',
+  'In North Africa, the arid foothills of the Atlas Mountains yield precious argan kernels, delicate Barbary fig seeds, wild cumin, coriander, and traditional desert salts shaped by centuries of regional knowledge.',
+  'Across West Africa, the landscape shifts to the intense aromatic complexity of Selim pepper, grains of paradise, and umami-rich Dawadawa. From the forests of Ghana to the rich volcanic soils of Cameroon\u2014home to the celebrated Penja pepper\u2014the region offers an extraordinary depth of flavor.',
+  'In Central Africa, tropical forests contribute distinctive wild spices and heritage seeds, including prized bush mango kernels and njansang, deeply embedded in traditional food cultures.',
+  'East Africa brings the vibrant character of Kenya\u2019s fertile highlands, renowned for exceptional Arabica coffees and distinctive purple teas. The region\u2019s botanical diversity extends to moringa, hibiscus, macadamia, and traditional grains. Along the Swahili Coast and across the spice islands of Zanzibar, centuries of Indian Ocean exchange are reflected in fragrant cloves, cardamom, cinnamon, black pepper, and aromatic roots. Madagascar and the Indian Ocean islands add their own remarkable botanical heritage, from Bourbon vanilla and cloves to wild forest peppers and aromatic plants.',
+  'Further south, Southern Africa offers the rugged biodiversity of the Cape, home to rooibos and honeybush, alongside the sun-drenched savannas that yield marula oil, Kalahari melon seeds, and precious mongongo nuts. Its varied mountain landscapes and indigenous flora reveal another world of distinctive botanical oils and traditional ingredients.',
+  'From argan to marula, from Penja pepper to highland teas, these ingredients tell stories of specific soils, shifting climates, and generations of preserved agricultural knowledge. Some remain rare beyond their regions of origin. Others have been treasured in everyday cooking for centuries. Together, they reveal a continent of remarkable culinary depth, where ancient traditions continue to inspire new possibilities.'
+];
+
+const precision = [
+  'MAISON ASILI is the synthesis of this multifaceted journey. Taken from the Swahili word for "origin" or "roots," Asili represents a return to source, guided by modern precision and a deep respect for traditional craftsmanship.',
+  'Conceived and crafted in Berlin, MAISON ASILI explores Africa\u2019s diverse culinary landscape through a carefully curated world of heritage spices, specialty salts, distinctive teas, exceptional coffees, and cold-pressed botanical oils.',
+  'Our approach begins with the ingredient itself\u2014its origin, natural character, traditional uses, and potential in contemporary gastronomy. The knowledge gathered through decades of hands-on craftsmanship, sourcing, face-to-face market trading, retail expertise, and international commerce informs every stage of this journey. Careful selection, thoughtful preparation, and respect for the individual qualities of each ingredient remain at the heart of the Maison.'
+];
+
+const legacy = [
+  'From the wood-fired ovens of Brandenburg and the vibrant markets of Berlin to African arts, traditional textiles, international retail, and the borderless digital world, Susan Kiruku-Klann\u2019s path has been shaped by connection, craftsmanship, cultural exchange, and a continuous pursuit of knowledge.',
+  'MAISON ASILI brings these experiences together in a new chapter\u2014one rooted in African heritage, enriched by more than two decades of entrepreneurial experience, and inspired by the extraordinary culinary diversity of a continent.'
+];
+
+const closing = [
+  'A continuing journey of discovery, craftsmanship, and origins.',
+  'MAISON ASILI',
+  'Origin. Identity. Heritage.',
+  'Rooted in Africa. Born in Berlin. For the World.'
+];
+
+function SectionHeading({ title }: { title: string }) {
   return (
-    <>
-      <div className="mb-4 flex items-center gap-4">
-        <span className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">Chapter {number}</span>
-        <div className="h-[1px] flex-grow bg-stone-border" />
-        <span className="text-xs tracking-widest text-stone-muted">{years}</span>
-      </div>
-      <h2 className="mb-6 font-serif text-3xl text-stone-dark md:text-4xl">{title}</h2>
-    </>
+    <div className="mb-8">
+      <div className="mb-5 h-px w-10 bg-gold" />
+      <h2 className="font-serif text-2xl font-normal leading-tight text-stone-dark sm:text-3xl md:text-4xl">{title}</h2>
+    </div>
+  );
+}
+
+function Prose({ paragraphs }: { paragraphs: string[] }) {
+  return (
+    <div className="space-y-5 text-[15px] font-light leading-[1.85] text-stone-muted sm:text-base sm:leading-[1.9]">
+      {paragraphs.map((paragraph) => (
+        <p key={paragraph.slice(0, 60)}>{paragraph}</p>
+      ))}
+    </div>
   );
 }
 
 export default function HeritagePage() {
   return (
-    <main className="w-full bg-background">
-      <section className="mx-auto max-w-5xl px-6 pb-20 pt-16 text-center">
-        <div className="mb-6 flex justify-center">
-          <Image
-            src="/assets/img/img-59efbbe90f.jpg"
-            alt="Maison Asili Gold Crest"
-            width={64}
-            height={64}
-            className="h-16 w-16 rounded-full object-cover shadow-sm ring-1 ring-gold/30"
-          />
-        </div>
-        <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.3em] text-gold">
-          Est. 2001 — Berlin — Nairobi — Feinkost Archive
-        </p>
-        <h1 className="mx-auto mb-8 max-w-4xl font-serif text-4xl font-normal leading-[1.15] tracking-tight text-stone-dark md:text-5xl lg:text-6xl">
-          23 Years of Culinary Craftsmanship
-        </h1>
-        <div className="mx-auto mb-8 h-[1px] w-12 bg-gold" />
-        <p className="mx-auto max-w-2xl text-base font-normal leading-relaxed text-stone-muted md:text-lg">
-          A journey from the fertile loam of the Uckermark to the kinetic ateliers of Berlin, shaped by ancestral
-          botanical heritage, elemental craftsmanship, and an enduring devotion to extraordinary ingredients.
-        </p>
-      </section>
-
-      <section className="border-y border-stone-border bg-surface-container-low">
-        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-6 divide-y divide-stone-border px-6 py-8 text-center md:grid-cols-4 md:divide-x md:divide-y-0">
-          {metrics.map(([value, label]) => (
-            <div key={label} className="pt-2 md:pt-0">
-              <span className="mb-1 block font-serif text-2xl font-medium text-stone-dark lg:text-3xl">{value}</span>
-              <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-stone-muted">{label}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <nav className="sticky top-20 z-30 border-b border-stone-border bg-background">
-        <div className="scrollbar-none mx-auto max-w-6xl overflow-x-auto px-6">
-          <div className="flex items-center justify-start gap-8 whitespace-nowrap py-3.5 text-[10px] font-semibold uppercase tracking-[0.25em] text-stone-muted md:justify-center">
-            {chapters.map((chapter, index) => (
-              <span key={chapter.href} className="flex items-center gap-8">
-                {index > 0 ? <span className="text-stone-border">/</span> : null}
-                <a href={chapter.href} className="transition-colors hover:text-gold">
-                  {chapter.label}
-                </a>
-              </span>
-            ))}
-          </div>
-        </div>
-      </nav>
-
-      <div className="mx-auto max-w-5xl space-y-32 px-6 py-20">
-        <section className="scroll-mt-44" id="chapter-1">
-          <ChapterHeading number="01" years="2001 — 2006" title="From the Hearth of the Uckermark" />
-          <div className="mb-10 grid grid-cols-1 items-start gap-10 md:grid-cols-12">
-            <div className="space-y-5 font-normal leading-relaxed text-stone-muted md:col-span-7">
-              <p>
-                In the quiet expanses of Brandenburg&apos;s Uckermark, long before Berlin became a worldwide
-                gastronomical center, the journey began at a restored old farmhouse. A traditional clay oven bakery and
-                oil mill stood side by side here, where baking and culinary oil extraction were practiced not as
-                industry, but as elemental alchemy: raw fire, regional flour, pure spring water, and stone-cold
-                pressing.
-              </p>
-              <p>
-                Every harvest cycle taught patience. Slow sourdough fermentations lasting up to 36 hours and
-                small-batch seed pressing revealed how pure soil integrity directly translates into sensory depth. It
-                was here that our exacting standards for raw materials were permanently codified.
-              </p>
-            </div>
-            <div className="rounded-none border border-stone-border bg-surface-container-low p-6 md:col-span-5">
-              <span aria-hidden="true" className="material-symbols-outlined mb-3 text-3xl text-gold">
-                format_quote
-              </span>
-              <blockquote className="mb-4 font-serif text-lg italic leading-snug text-stone-dark">
-                &ldquo;When you touch pure grain or taste unfiltered oil freshly drawn from cold granite, you realize
-                taste cannot be manufactured—only revealed.&rdquo;
-              </blockquote>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-stone-muted">
-                — Founding Miller&apos;s Ledger, 2003
-              </p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 gap-8 pt-4 md:grid-cols-2">
-            <div className="overflow-hidden border border-stone-border bg-surface-container-low">
-              <div className="relative h-64 w-full bg-surface-container">
-                <Image
-                  src={assetPath(media.heritageArchive)}
-                  alt="Terracotta bowls of chilli, moringa, black pepper and hand-harvested salt"
-                  fill
-                  sizes="(min-width: 768px) 45vw, 100vw"
-                  className="object-cover grayscale contrast-125"
-                />
-              </div>
-              <div className="bg-surface-container-lowest p-6">
-                <h3 className="mb-1 text-sm font-semibold uppercase tracking-widest text-stone-dark">
-                  Unmilled Grains &amp; Seeds
-                </h3>
-                <p className="text-xs leading-relaxed text-stone-muted">
-                  Selecting heritage grain varieties and biodynamic oilseeds directly from organic Brandenburg estates.
-                </p>
-              </div>
-            </div>
-            <div className="overflow-hidden border border-stone-border bg-surface-container-low">
-              <div className="relative h-64 w-full bg-surface-container">
-                <Image
-                  src={assetPath(media.editorial)}
-                  alt="Fresh and dried herbs, citrus peel and spices arranged on a dark surface"
-                  fill
-                  sizes="(min-width: 768px) 45vw, 100vw"
-                  className="object-cover grayscale contrast-125"
-                />
-              </div>
-              <div className="bg-surface-container-lowest p-6">
-                <h3 className="mb-1 text-sm font-semibold uppercase tracking-widest text-stone-dark">
-                  Cold Granite Stone Press
-                </h3>
-                <p className="text-xs leading-relaxed text-stone-muted">
-                  Slow mechanical pressing preserving delicate polyphenols, fatty acids, and vibrant terroir profiles.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="scroll-mt-44 border-t border-stone-border pt-20" id="chapter-2">
-          <ChapterHeading number="02" years="2006 — 2014" title="Into the Kinetic Heart of Kreuzberg" />
-          <div className="mb-10 grid grid-cols-1 items-center gap-10 md:grid-cols-12">
-            <div className="space-y-5 leading-relaxed text-stone-muted md:col-span-6">
-              <p>
-                By the mid-2000s, the rural quietude met the creative velocity of Berlin-Kreuzberg. Establishing
-                morning presence at weekly farmers’ markets and artisanal halls, our sourdough loaves and specialty oils
-                quickly found an impassioned circle of connoisseurs, neighborhood elders, and innovative chefs.
-              </p>
-              <p>
-                Before dawn, loaves emerged from wood ovens, packed alongside bottles of freshly pressed walnut and
-                pumpkinseed oils. Kreuzberg was unfiltered, multicultural, and fiercely authentic—a crucible that
-                demanded undeniable quality and uncompromising craft.
-              </p>
-            </div>
-            <div className="md:col-span-6">
-              <div className="relative border border-stone-border bg-surface-container-low p-3">
-                <div className="relative h-72 w-full overflow-hidden bg-surface-container">
-                  <Image
-                    src={assetPath(media.culinary)}
-                    alt="Lime, hand-harvested salts and colourful spices on linen"
-                    fill
-                    sizes="(min-width: 768px) 45vw, 100vw"
-                    className="object-cover grayscale"
-                  />
-                </div>
-                <div className="absolute bottom-6 left-6 right-6 border border-stone-border bg-surface-container-lowest p-4 shadow-md">
-                  <span className="mb-1 block text-[10px] font-bold uppercase tracking-[0.25em] text-gold">
-                    Archive Document: 2008
-                  </span>
-                  <p className="text-xs font-medium text-stone-dark">
-                    Daily supply rounds to Lausitzer Platz and Markthalle Neun.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 gap-6 border border-stone-border bg-surface-container-low p-6 sm:grid-cols-2">
-            <div className="flex items-start gap-4">
-              <span className="font-serif text-2xl font-bold text-gold">01</span>
-              <div>
-                <h3 className="mb-1 text-xs font-semibold uppercase tracking-wider text-stone-dark">
-                  Lausitzer Platz Morning Rites
-                </h3>
-                <p className="text-xs leading-relaxed text-stone-muted">
-                  The communal queues of weekend visitors waiting for warm loaves and unrefined virgin cold oils.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <span className="font-serif text-2xl font-bold text-gold">02</span>
-              <div>
-                <h3 className="mb-1 text-xs font-semibold uppercase tracking-wider text-stone-dark">
-                  The Nocturnal B109 Run
-                </h3>
-                <p className="text-xs leading-relaxed text-stone-muted">
-                  Nightly routes transferring freshly harvested grain and presses from the countryside into the capital.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="scroll-mt-44 border-t border-stone-border pt-20" id="chapter-3">
-          <ChapterHeading number="03" years="2012 — 2019" title="Recognized by Der Feinschmecker" />
-          <div className="mb-8 grid grid-cols-1 items-center gap-10 md:grid-cols-12">
-            <div className="order-2 md:order-1 md:col-span-5">
-              <div className="border border-stone-border bg-surface-container-low p-3 text-center">
-                <div className="relative h-80 w-full overflow-hidden bg-surface-container">
-                  <Image
-                    src={assetPath(media.pdpGift)}
-                    alt="Hibiscus, pink peppercorns, dried orange peel and long pepper on wood"
-                    fill
-                    sizes="(min-width: 768px) 40vw, 100vw"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="mt-3 border-t border-stone-border bg-surface-container-lowest p-4">
-                  <span className="mb-2 inline-block bg-gold/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-gold">
-                    3× Feinschmecker Award
-                  </span>
-                  <p className="text-xs text-stone-muted">
-                    Selected among the premier culinary ateliers in the Federal Republic.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="order-1 space-y-5 leading-relaxed text-stone-muted md:order-2 md:col-span-7">
-              <p>
-                Critical national acclaim soon followed our quiet consistency. Germany’s leading gastronomy and
-                epicurean journal, <em className="text-stone-dark">Der Feinschmecker</em>, repeatedly highlighted our
-                atelier for unmatched purity, artisan integrity, and reverence for traditional extraction techniques.
-              </p>
-              <p>
-                Berlin’s emerging wave of Michelin-starred dining rooms and private embassies turned to our pantry for
-                table services, pairing our aromatic cold-pressed oils with contemporary culinary tasting menus.
-              </p>
-              <div className="grid grid-cols-2 gap-4 border-t border-stone-border pt-4">
-                <div>
-                  <span className="mb-1 block text-xs font-semibold uppercase tracking-wider text-stone-dark">
-                    Michelin Kitchens
-                  </span>
-                  <span className="text-xs text-stone-muted">Permanent fixtures in Berlin’s tasting menus.</span>
-                </div>
-                <div>
-                  <span className="mb-1 block text-xs font-semibold uppercase tracking-wider text-stone-dark">
-                    Diplomatic Menus
-                  </span>
-                  <span className="text-xs text-stone-muted">Curated provisions for international delegations.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="scroll-mt-44 border-t border-stone-border pt-20" id="chapter-4">
-          <ChapterHeading
-            number="04"
-            years="2019 — 2022"
-            title="Honoring the Legacy: From SoLuna Brot & Oel to Maison Asili"
-          />
-          <p className="mb-12 max-w-3xl font-normal leading-relaxed text-stone-muted">
-            An evolutionary transformation rooted in profound continuity. The heritage forged over two decades under
-            the name SoLuna Brot &amp; Oel evolved into its natural, elevated expression as Maison Asili—expanding our
-            culinary horizon from regional borders to the global African diaspora.
+    <main className="w-full bg-warm-ivory">
+      <section className="border-b border-stone-border-light px-6 pb-14 pt-16 text-center sm:pb-20 sm:pt-24">
+        <div className="mx-auto max-w-3xl">
+          <p className="mb-8 text-base" aria-hidden="true">
+            👇🏾
           </p>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            {[
-              {
-                eyebrow: 'Origin Foundation',
-                title: 'SoLuna Brot & Oel',
-                body:
-                  'The crucible of our mastery: twenty years perfecting slow wood-fired sourdough, stone-ground flours, and unadulterated cold-pressed virgin seed oils in Berlin.',
-                footer: 'Established 2001'
-              },
-              {
-                eyebrow: 'Swahili Etymology',
-                title: "The Meaning of 'Asili'",
-                body:
-                  'In Swahili, Asili signifies origin, ancestry, essence, and nature. It embodies the truth that fine food is an ancestral gift that connects land, lineage, and the human table.',
-                footer: 'Ancestral Identity'
-              },
-              {
-                eyebrow: 'Contemporary House',
-                title: 'Maison Asili',
-                body:
-                  'The synthesis of European epicurean discipline and African agricultural terroir: heritage spice blends, botanical salts, and rare African teas.',
-                footer: 'Active Horizon'
-              }
-            ].map((pillar, index) => (
-              <div
-                key={pillar.title}
-                className={`flex flex-col justify-between border p-8 ${
-                  index === 1
-                    ? 'relative border-2 border-gold/40 bg-surface-container-lowest shadow-sm'
-                    : 'border-stone-border bg-surface-container-low'
-                }`}
-              >
-                {index === 1 ? (
-                  <div className="absolute -top-3 left-6 bg-brand-gold px-3 py-0.5 text-[9px] font-bold uppercase tracking-widest text-primary">
-                    The Essence
-                  </div>
-                ) : null}
-                <div>
-                  <span className="mb-3 block text-[10px] font-bold uppercase tracking-[0.25em] text-gold">
-                    {pillar.eyebrow}
-                  </span>
-                  <h3 className="mb-3 font-serif text-xl text-stone-dark">{pillar.title}</h3>
-                  <p className="mb-6 text-xs leading-relaxed text-stone-muted">{pillar.body}</p>
-                </div>
-                <div className="border-t border-stone-border pt-4">
-                  <span className="text-[10px] font-semibold uppercase tracking-widest text-stone-muted">
-                    {pillar.footer}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
+          <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.42em] text-gold">MAISON ASILI</p>
+          <p className="mb-10 text-[10px] uppercase tracking-[0.3em] text-stone-muted sm:text-[11px]">
+            Origin. Identity. Heritage.
+          </p>
+          <h1 className="mx-auto max-w-2xl font-serif text-3xl font-normal leading-[1.2] tracking-tight text-stone-dark sm:text-4xl md:text-[2.75rem]">
+            Two Decades of Craft. A Continent of Origin.
+          </h1>
+          <div className="mx-auto mt-10 h-px w-12 bg-gold" />
+          <p className="mx-auto mt-10 max-w-2xl text-[15px] font-light leading-[1.9] text-stone-muted sm:text-base">
+            MAISON ASILI is born at the intersection of raw heritage and absolute culinary precision. Founded in Berlin
+            by Susan Kiruku-Klann, the house represents a sophisticated fusion of her African roots and over twenty years
+            of elite artisan food production, retail operations, and cross-border e-commerce.
+          </p>
+        </div>
+      </section>
+
+      <div className="mx-auto max-w-3xl space-y-16 px-6 py-16 sm:space-y-24 sm:py-24">
+        <section>
+          <SectionHeading title="The Foundations of Craft" />
+          <Prose paragraphs={foundations} />
         </section>
 
-        <section className="scroll-mt-44 border-t border-stone-border pt-20" id="chapter-5">
-          <ChapterHeading
-            number="05"
-            years="2022 & Beyond"
-            title="A New Chapter, A Wider World: The Afro-Gourmet Dialogue"
-          />
-          <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-12">
-            <div className="space-y-5 leading-relaxed text-stone-muted md:col-span-6">
-              <p>
-                Maison Asili now bridges two vibrant culinary worlds: the precision and connoisseur culture of Berlin,
-                and the unparalleled biodiversity of the African continent—from the volcanic soils of Mount Kenya to
-                the aromatic spice archipelagos of Zanzibar.
-              </p>
-              <p>
-                We collaborate with multi-generational smallholder farming families, wild harvesters, and regenerative
-                botanical cooperatives. Every provision in our archive is traceable, unblended, and hand-selected for
-                extraordinary complexity.
-              </p>
-              <div className="space-y-2 border-l-2 border-gold bg-surface-container-low p-5">
-                <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-gold">
-                  Direct Ethical Sourcing
-                </span>
-                <p className="text-xs text-stone-muted">
-                  100% single-origin provenance, preserving fair value equity at origin while maintaining European
-                  certified feinkost standards.
-                </p>
-              </div>
-            </div>
-            <div className="md:col-span-6">
-              <div className="overflow-hidden border border-stone-border bg-surface-container-low">
-                <div className="relative h-80 w-full bg-surface-container">
-                  <Image
-                    src={assetPath(media.heritageTea)}
-                    alt="Steaming cup of botanical tea with dried citrus, rose petals and loose-leaf tea"
-                    fill
-                    sizes="(min-width: 768px) 45vw, 100vw"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="bg-surface-container-lowest p-4 text-center">
-                  <span className="text-[10px] font-medium uppercase tracking-widest text-stone-muted">
-                    Mount Kenya Terroir Reserve • Elevation 2,100m
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
+        <section className="border-t border-stone-border-light pt-14 sm:pt-16">
+          <SectionHeading title="The Transition: Sourcing Heritage and Connecting Globally" />
+          <Prose paragraphs={transition} />
         </section>
 
-        <section className="mx-auto max-w-3xl border border-stone-border bg-surface-container-low p-10 text-center shadow-sm md:p-16">
-          <div className="mb-6 flex justify-center">
-            <Image
-              src="/assets/img/img-59efbbe90f.jpg"
-              alt="Maison Asili Crest"
-              width={56}
-              height={56}
-              className="h-14 w-14 rounded-full object-cover shadow-sm ring-1 ring-gold/40"
-            />
-          </div>
-          <div className="mx-auto mb-6 h-[1px] w-8 bg-gold" />
-          <blockquote className="mx-auto mb-8 max-w-xl font-serif text-xl italic leading-relaxed text-stone-dark md:text-2xl">
-            &ldquo;For those who have known my work over the years, welcome back. For those discovering Maison Asili
-            for the first time, welcome to the next chapter.&rdquo;
-          </blockquote>
-          <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gold">
-            The Founder — Maison Asili Feinkost
-          </div>
-          <div className="mt-1 text-[10px] uppercase tracking-widest text-stone-muted">Berlin &amp; Nairobi</div>
+        <section className="border-t border-stone-border-light pt-14 sm:pt-16">
+          <SectionHeading title="The African Terroir: A Continent of Uncharted Culinary Luxury" />
+          <Prose paragraphs={terroir} />
+        </section>
+
+        <section className="border-t border-stone-border-light pt-14 sm:pt-16">
+          <SectionHeading title="Where Heritage Meets Precision" />
+          <Prose paragraphs={precision} />
+        </section>
+
+        <section className="border-t border-stone-border-light pt-14 sm:pt-16">
+          <SectionHeading title="A Continuing Legacy" />
+          <Prose paragraphs={legacy} />
+        </section>
+
+        <section className="border-t border-stone-border-light pt-14 text-center sm:pt-20">
+          <p className="mx-auto max-w-xl font-serif text-xl font-normal leading-snug text-stone-dark sm:text-2xl">
+            {closing[0]}
+          </p>
+          <div className="mx-auto mt-10 h-px w-12 bg-gold" />
+          <p className="mt-10 text-[11px] font-semibold uppercase tracking-[0.42em] text-gold">{closing[1]}</p>
+          <p className="mt-4 text-[10px] uppercase tracking-[0.3em] text-stone-muted sm:text-[11px]">{closing[2]}</p>
+          <p className="mt-8 font-serif text-base italic tracking-wide text-tertiary sm:text-lg">{closing[3]}</p>
         </section>
       </div>
-
-      <section className="border-t border-stone-border bg-surface-container-low px-6 py-20 text-center">
-        <div className="mx-auto max-w-3xl">
-          <span className="mb-3 block text-[11px] font-semibold uppercase tracking-[0.3em] text-gold">
-            Discover the Provisions
-          </span>
-          <h2 className="mb-4 font-serif text-3xl text-stone-dark md:text-4xl">
-            Experience the Lineage: Taste Twenty-Three Years of Sensory Mastery
-          </h2>
-          <p className="mx-auto mb-8 max-w-xl text-sm font-normal text-stone-muted md:text-base">
-            Explore our collection of heritage spice blends, botanical finishing salts, and rare African teas,
-            handcrafted in small batches in Berlin.
-          </p>
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link
-              href="/shop"
-              className="w-full bg-stone-dark px-8 py-3.5 text-xs font-medium uppercase tracking-[0.2em] text-on-primary transition-colors duration-300 hover:bg-gold sm:w-auto"
-            >
-              Explore the Heritage Collection
-            </Link>
-            <Link
-              href="/wholesale"
-              className="w-full border border-stone-border bg-surface-container-lowest px-8 py-3.5 text-xs font-medium uppercase tracking-[0.2em] text-stone-dark transition-colors duration-300 hover:border-stone-dark sm:w-auto"
-            >
-              Private Tastings &amp; Sommelier
-            </Link>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }

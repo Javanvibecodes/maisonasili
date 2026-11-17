@@ -35,6 +35,11 @@ export interface Product {
   imageSource: string;
   imageWidth: number;
   imageHeight: number;
+  /** White-background pack shot shown as the second gallery view. */
+  packshot: string;
+  packshotSource: string;
+  packshotWidth: number;
+  packshotHeight: number;
   featured: boolean;
   added: number;
 }

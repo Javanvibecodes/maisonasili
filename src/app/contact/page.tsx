@@ -34,7 +34,7 @@ export default function ContactPage() {
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-12">
-          <div className="border border-outline-variant bg-surface-container-lowest p-6 sm:p-8 lg:col-span-7">
+          <div className="border border-outline-variant bg-surface-container-lowest p-4 sm:p-8 lg:col-span-7">
             <h2 className="mb-6 border-b border-outline-variant pb-4 font-headline text-sm font-semibold uppercase tracking-[0.2em] text-on-surface">
               Send a message
             </h2>

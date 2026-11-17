@@ -84,7 +84,7 @@ export default function WholesalePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-px border border-outline-variant bg-outline-variant sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-px border border-outline-variant bg-outline-variant lg:grid-cols-4">
             {segments.map(([icon, title, body]) => (
               <div key={title} className="flex flex-col gap-3 bg-surface-container-lowest p-6">
                 <span aria-hidden="true" className="material-symbols-outlined text-2xl text-tertiary">
@@ -138,7 +138,7 @@ export default function WholesalePage() {
               </Link>
             </div>
 
-            <div className="border border-outline-variant bg-surface-container-lowest p-6 sm:p-8 lg:col-span-8">
+            <div className="border border-outline-variant bg-surface-container-lowest p-4 sm:p-8 lg:col-span-8">
               <WholesaleForm />
             </div>
           </div>

@@ -90,7 +90,7 @@ export function LanguagePanel() {
             </button>
           </div>
 
-          <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <div className="mt-6 grid grid-cols-2 gap-3">
             <div className="border border-brand-gold/50 bg-surface-container-low px-4 py-3.5">
               <span className="mb-1 block text-[10px] font-semibold uppercase tracking-[0.22em] text-tertiary">
                 Website language
@@ -129,7 +129,7 @@ export function LanguagePanel() {
             </ul>
           </div>
 
-          <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-5 flex flex-row items-center justify-between gap-3">
             <p className="max-w-xs text-[11px] leading-relaxed text-outline">
               Browser translation is controlled by your browser. Maison Asili does not force or automate the native
               translation prompt.

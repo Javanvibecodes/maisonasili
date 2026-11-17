@@ -85,7 +85,7 @@ export function ContactForm() {
       ) : null}
 
       <fieldset className="flex flex-col gap-5" disabled={submitting}>
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <div className="grid grid-cols-2 gap-4 sm:gap-5">
           <label className="flex flex-col gap-2">
             <span className={labelClass}>
               Full name <span className="text-tertiary">*</span>

@@ -49,74 +49,36 @@ const featured = products
 export default function HomePage() {
   return (
     <main className="relative w-full">
-      {/* ── Fixed hero background ── */}
-      <section
-        id="hero-curtain"
-        className="fixed inset-0 flex flex-col justify-end overflow-hidden lg:min-h-[calc(100svh-5rem)]"
-        aria-hidden="false"
-      >
+      {/* ── Hero banner — shown in full at every width; the page body follows immediately ── */}
+      <section className="w-full bg-[#0b0906]" aria-label="Maison Asili — Origin. Identity. Heritage.">
         <Image
-          src="/assets/img/hero-products.jpg"
-          alt="Maison Asili product collection"
-          className="absolute inset-0 h-full w-full object-cover object-[70%_center] sm:object-[center_50%] lg:object-[center_45%]"
-          fill
+          src="/assets/img/hero-banner.jpeg"
+          alt="Maison Asili — Afro-Gourmet Fusion: spices, oils, teas and coffee. Origin. Identity. Heritage."
+          width={1920}
+          height={819}
           priority
+          sizes="100vw"
+          className="block h-auto w-full"
         />
-        {/* Subtle darkening overlays for text legibility */}
-        <div className="pointer-events-none absolute inset-0 z-10 hidden bg-gradient-to-r from-black/75 via-black/40 to-transparent sm:block lg:w-[68%]" />
-        <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/55 to-black/20 sm:hidden" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 w-full bg-gradient-to-b from-black/80 to-transparent" />
 
-        <div className="relative z-20 mx-auto flex w-full max-w-7xl flex-col items-start px-6 pb-6 pt-16 sm:px-8 sm:pb-8 sm:pt-20 lg:px-12 lg:pb-10 lg:pt-14">
-          <div className="relative max-w-xl sm:-ml-12 lg:-ml-14">
-            <h1 className="mb-3 select-none font-sans text-[clamp(1.9rem,6.5vw,2.8rem)] font-extrabold uppercase leading-[0.98] tracking-tight text-white sm:mb-4 sm:text-5xl lg:text-[clamp(2.4rem,5.5vw,5.2rem)]">
-              <span className="mb-1.5 block font-sans text-xs font-light normal-case tracking-[0.2em] text-white/90 sm:mb-3 sm:text-base md:text-xl lg:text-2xl">
-                Welcome to
-              </span>
-              MAISON <span className="text-brand-gold">ASILI</span>
-            </h1>
-
-            <p className="mb-5 max-w-lg font-sans text-xs font-light leading-relaxed text-white/85 sm:mb-8 sm:text-base md:text-lg">
-              Afro-Gourmet Fusion. Heritage Ingredients. Extraordinary Flavours.
-            </p>
-
-            <div className="mb-5 flex w-full flex-col items-stretch gap-2.5 sm:mb-6 sm:w-auto sm:flex-row sm:items-center sm:gap-4">
-              <Link
-                href="/shop"
-                className="whitespace-nowrap rounded-sm bg-brand-gold px-5 py-3 text-center font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-charcoal shadow-md transition-all hover:bg-white hover:text-charcoal sm:px-7 sm:text-xs"
-              >
-                Explore the Collection
-              </Link>
-              <Link
-                href="/heritage"
-                className="whitespace-nowrap rounded-sm border border-brand-gold/40 bg-transparent px-5 py-3 text-center font-sans text-[10px] font-medium uppercase tracking-[0.2em] text-white transition-all hover:border-brand-gold hover:bg-brand-gold/10 sm:px-7 sm:text-xs"
-              >
-                Discover Our Heritage
-              </Link>
-            </div>
-
-            <p className="mb-4 font-headline text-xs italic tracking-wide text-brand-gold sm:mb-6 sm:text-base">
-              Rooted in Africa. Born in Berlin. For the World.
-            </p>
-
-            <a
-              href="#curtain-content"
-              className="flex cursor-pointer select-none items-center text-white/75 transition-colors hover:text-white"
-            >
-              <span className="mr-2 text-[9px] uppercase tracking-[0.28em] sm:text-[10px]">Scroll to explore</span>
-              <span aria-hidden="true" className="material-symbols-outlined animate-bounce text-sm sm:text-base">
-                arrow_downward
-              </span>
-            </a>
-          </div>
+        <div className="flex w-full flex-row items-stretch gap-2 px-4 py-5 sm:items-center sm:justify-center sm:gap-3 sm:px-8 sm:py-6 lg:px-12">
+          <Link
+            href="/shop"
+            className="flex-1 whitespace-nowrap rounded-sm bg-brand-gold px-2 py-3 text-center font-sans text-[9px] font-semibold uppercase leading-tight tracking-[0.1em] text-charcoal shadow-md transition-all hover:bg-white hover:text-charcoal sm:flex-none sm:px-7 sm:text-xs sm:tracking-[0.2em]"
+          >
+            Explore the Collection
+          </Link>
+          <Link
+            href="/heritage"
+            className="flex-1 whitespace-nowrap rounded-sm border border-brand-gold/40 bg-transparent px-2 py-3 text-center font-sans text-[9px] font-medium uppercase leading-tight tracking-[0.1em] text-white transition-all hover:border-brand-gold hover:bg-brand-gold/10 sm:flex-none sm:px-7 sm:text-xs sm:tracking-[0.2em]"
+          >
+            Discover Our Heritage
+          </Link>
         </div>
       </section>
 
-      {/* Spacer so the fixed hero takes up visual space in the document flow */}
-      <div className="h-screen min-h-[560px]" aria-hidden="true" />
-
-      {/* ── Content layer — scrolls up over the hero ── */}
-      <div id="curtain-content" className="relative z-30 overflow-hidden rounded-t-[2rem] border-t border-brand-gold/40 bg-surface-container-lowest text-on-surface sm:rounded-t-[2.5rem] lg:rounded-t-[3.5rem]">
+      {/* ── Content layer ── */}
+      <div id="curtain-content" className="relative bg-surface-container-lowest text-on-surface">
         {/* Intro Editorial */}
         <section className="w-full px-5 py-14 sm:px-8 sm:py-20 lg:px-12">
           <div className="mx-auto max-w-4xl">
@@ -244,16 +206,16 @@ export default function HomePage() {
                 collection and submit a wholesale order request — we will follow up with availability and trade pricing.
               </p>
             </div>
-            <div className="flex w-full max-w-md flex-1 flex-col gap-2.5 sm:flex-row sm:gap-3 lg:w-auto">
+            <div className="flex w-full max-w-md flex-1 flex-row gap-2 sm:gap-3 lg:w-auto">
               <Link
                 href="/wholesale"
-                className="whitespace-nowrap rounded-sm bg-primary px-5 py-3 text-center font-sans text-[11px] font-medium uppercase tracking-[0.2em] text-on-primary transition-colors hover:bg-brand-gold hover:text-primary sm:text-xs"
+                className="flex-1 whitespace-nowrap rounded-sm bg-primary px-2 py-3 text-center font-sans text-[9px] font-medium uppercase leading-tight tracking-[0.1em] text-on-primary transition-colors hover:bg-brand-gold hover:text-primary sm:flex-none sm:px-5 sm:text-xs sm:tracking-[0.2em]"
               >
                 Wholesale Enquiry
               </Link>
               <Link
                 href="/shop"
-                className="whitespace-nowrap rounded-sm border border-outline-variant px-5 py-3 text-center font-sans text-[11px] font-medium uppercase tracking-[0.2em] text-on-surface transition-colors hover:border-tertiary hover:text-tertiary sm:text-xs"
+                className="flex-1 whitespace-nowrap rounded-sm border border-outline-variant px-2 py-3 text-center font-sans text-[9px] font-medium uppercase leading-tight tracking-[0.1em] text-on-surface transition-colors hover:border-tertiary hover:text-tertiary sm:flex-none sm:px-5 sm:text-xs sm:tracking-[0.2em]"
               >
                 Explore the Collection
               </Link>

@@ -67,10 +67,10 @@ export function CartPageContent() {
             ))}
           </ul>
 
-          <div className="flex flex-col gap-3 sm:flex-row">
+          <div className="flex flex-row gap-2 sm:gap-3">
             <Link
               href="/shop"
-              className="bg-on-surface px-6 py-3 text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-surface-container-lowest transition-colors hover:bg-primary"
+              className="flex-1 bg-on-surface px-2 py-3 text-center text-[9px] font-semibold uppercase leading-tight tracking-[0.1em] text-surface-container-lowest transition-colors hover:bg-primary sm:flex-none sm:px-6 sm:text-[11px] sm:tracking-[0.22em]"
             >
               Continue Exploring
             </Link>
@@ -119,11 +119,11 @@ export function CartPageContent() {
             {lines.map((line) => (
               <div
                 key={line.slug}
-                className="flex flex-col gap-4 border border-outline-variant bg-surface-container-lowest p-4 sm:flex-row sm:items-center"
+                className="flex flex-row items-center gap-3 border border-outline-variant bg-surface-container-lowest p-3 sm:gap-4 sm:p-4"
               >
                 <Link
                   href={`/product/${line.slug}`}
-                  className="flex h-28 w-full shrink-0 items-center justify-center bg-surface-container-low p-3 sm:w-28"
+                  className="flex h-20 w-20 shrink-0 items-center justify-center bg-surface-container-low p-2 sm:h-28 sm:w-28 sm:p-3"
                 >
                   <Image
                     src={assetPath(line.product.image)}

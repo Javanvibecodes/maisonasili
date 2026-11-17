@@ -70,7 +70,7 @@ export function ProductStory({ product }: { product: Product }) {
           >
             Beautiful With
           </h3>
-          <ul className="mt-4 grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+          <ul className="mt-4 grid grid-cols-2 gap-x-4 sm:gap-x-8">
             {story.beautifulWith.map((pairing) => (
               <li
                 key={pairing}
