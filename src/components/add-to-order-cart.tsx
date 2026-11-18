@@ -45,7 +45,7 @@ export function AddToOrderCart({ product, variant = 'full' }: AddToOrderCartProp
             aria-label={`Decrease quantity of ${product.name}`}
             onClick={() => updateQty(qty - 1)}
             className={`flex items-center justify-center font-semibold text-on-surface transition-colors hover:text-primary ${
-              compact ? 'h-7 w-7 text-sm' : 'h-8 w-8 text-base'
+              compact ? 'h-10 w-10 text-base sm:h-7 sm:w-7 sm:text-sm' : 'h-10 w-10 text-base sm:h-8 sm:w-8'
             }`}
           >
             −
@@ -71,7 +71,7 @@ export function AddToOrderCart({ product, variant = 'full' }: AddToOrderCartProp
             aria-label={`Increase quantity of ${product.name}`}
             onClick={() => updateQty(qty + 1)}
             className={`flex items-center justify-center font-semibold text-on-surface transition-colors hover:text-primary ${
-              compact ? 'h-7 w-7 text-sm' : 'h-8 w-8 text-base'
+              compact ? 'h-10 w-10 text-base sm:h-7 sm:w-7 sm:text-sm' : 'h-10 w-10 text-base sm:h-8 sm:w-8'
             }`}
           >
             +
@@ -80,10 +80,10 @@ export function AddToOrderCart({ product, variant = 'full' }: AddToOrderCartProp
         <button
           type="button"
           onClick={handleAdd}
-          className={`flex flex-1 items-center justify-center gap-1.5 whitespace-normal bg-primary text-center font-bold uppercase leading-tight text-on-primary shadow-md transition-colors hover:bg-brand-gold hover:text-primary sm:gap-2.5 sm:whitespace-nowrap ${
+          className={`flex flex-1 items-center justify-center gap-1.5 whitespace-normal bg-primary text-center font-bold uppercase leading-tight text-on-primary shadow-md transition-colors sm:hover:bg-brand-gold sm:hover:text-primary active:bg-primary sm:gap-2.5 sm:whitespace-nowrap ${
             compact
-              ? 'px-2 py-3 text-[9px] tracking-[0.06em] sm:px-5 sm:text-[10px] sm:tracking-[0.16em]'
-              : 'gap-2 px-2 py-4 text-[9px] tracking-[0.06em] sm:gap-3 sm:px-6 sm:text-[11px] sm:tracking-[0.18em]'
+              ? 'px-2 py-3 text-[10px] tracking-[0.05em] sm:px-5 sm:text-[10px] sm:tracking-[0.16em]'
+              : 'gap-2 px-2 py-4 text-[10px] tracking-[0.05em] sm:gap-3 sm:px-6 sm:text-[11px] sm:tracking-[0.18em]'
           }`}
         >
           <span

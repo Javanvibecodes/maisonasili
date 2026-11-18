@@ -7,14 +7,14 @@ import { assetPath, media } from '@/lib/catalog';
 export const metadata: Metadata = {
   title: 'Wholesale & Hospitality',
   description:
-    'Maison Asili supplies heritage spice blends, botanical finishing salts and rare African teas to delicatessens, gourmet shops, restaurants, hotels, distributors and corporate gifting programmes. Request trade pricing.'
+    'Maison Asili supplies heritage spice blends, botanical finishing salts, rare African teas and cold-pressed culinary oils to delicatessens, gourmet shops, restaurants, hotels, distributors and corporate gifting programmes. Request trade pricing.'
 };
 
 const segments = [
   ['storefront', 'Delicatessens', 'Shelf-ready provisions with an editorial story your customers can repeat.'],
-  ['shopping_basket', 'Gourmet Food Shops', 'Curated ranges across spice, salt and tea categories.'],
+  ['shopping_basket', 'Gourmet Food Shops', 'Curated ranges across spice, salt, tea and oil categories.'],
   ['hotel', 'Hotels & Breakfast', 'Consistent formats for room, breakfast and minibar service.'],
-  ['restaurant', 'Restaurants', 'Finishing salts, spice blends and teas for the pass and the plate.'],
+  ['restaurant', 'Restaurants', 'Finishing salts, spice blends, oils and teas for the pass and the plate.'],
   ['local_cafe', 'Cafés', 'Single-origin African tea service with retail caddies to take home.'],
   ['redeem', 'Corporate Gifting', 'Considered gifts for clients, teams and diplomatic occasions.'],
   ['handshake', 'Selected Retail Partners', 'Long-term collaborations with stores that share our standards.']
@@ -42,7 +42,8 @@ export default function WholesalePage() {
             </h1>
             <p className="mb-6 text-sm font-light leading-relaxed text-on-surface-variant sm:text-base">
               Maison Asili supplies the ingredients that make a menu memorable: heritage spice blends, botanical
-              finishing salts and rare African teas for rooms that care about every detail on the plate.
+              finishing salts, rare African teas and cold-pressed culinary oils for rooms that care about every detail
+              on the plate.
             </p>
             <p className="mb-8 text-xs font-light leading-relaxed text-on-surface-variant sm:text-sm">
               Whether you run a delicatessen, a restaurant, a hotel breakfast service or a corporate gifting programme,
@@ -102,8 +103,8 @@ export default function WholesalePage() {
                 <h3 className="font-headline text-lg font-semibold text-white">Talk to us directly</h3>
                 <p className="text-xs leading-relaxed text-white/70">
                   Buyer enquiries:{' '}
-                  <a href="mailto:info@maisonasili.com" className="text-brand-gold transition-colors hover:text-white">
-                    info@maisonasili.com
+                  <a href="mailto:enquiry@maisonasili.com" className="text-brand-gold transition-colors hover:text-white">
+                    enquiry@maisonasili.com
                   </a>
                 </p>
               </div>

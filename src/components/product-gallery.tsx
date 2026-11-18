@@ -31,15 +31,15 @@ export function ProductGallery({ product }: { product: Product }) {
     <div>
       <div className="relative overflow-hidden bg-warm-sand">
         <span aria-hidden="true" className="absolute inset-3 z-10 border border-brand-gold/35 sm:inset-6" />
-        <div className="relative flex aspect-[4/3] items-center justify-center p-5 sm:p-12 lg:aspect-[4/5] lg:p-14">
+        <div className="relative aspect-square w-full">
           <Image
             key={current.src}
             src={assetPath(current.src)}
             alt={`${product.name} — ${current.label}`}
-            width={current.width}
-            height={current.height}
+            fill
+            sizes="(min-width: 1024px) 55vw, 100vw"
             priority
-            className="h-full w-full object-contain"
+            className="object-cover"
           />
         </div>
 
@@ -47,13 +47,13 @@ export function ProductGallery({ product }: { product: Product }) {
           type="button"
           onClick={() => setActive((index) => (index + 1) % views.length)}
           aria-label="Show next image"
-          className="absolute bottom-4 right-4 z-20 hidden h-10 w-10 items-center justify-center rounded-full border border-brand-gold/40 bg-white/90 text-primary shadow-md transition-colors hover:bg-primary hover:text-on-primary sm:bottom-6 sm:right-6 sm:flex"
+          className="absolute bottom-4 right-4 z-20 hidden h-10 w-10 items-center justify-center rounded-full border border-brand-gold/40 bg-background/90 text-primary shadow-md transition-colors hover:bg-primary hover:text-on-primary sm:bottom-6 sm:right-6 sm:flex"
         >
           <span aria-hidden="true" className="material-symbols-outlined text-lg">
             chevron_right
           </span>
         </button>
-        <span className="absolute bottom-6 left-6 z-20 hidden text-[10px] font-semibold uppercase tracking-[0.24em] text-tertiary sm:block">
+        <span className="absolute bottom-6 left-6 z-20 hidden rounded-full bg-black/45 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.2em] text-white/90 backdrop-blur-sm sm:block">
           {active + 1} / {views.length}
         </span>
       </div>
@@ -66,7 +66,7 @@ export function ProductGallery({ product }: { product: Product }) {
             onClick={() => setActive(index)}
             aria-label={`Show ${view.label}`}
             aria-pressed={active === index}
-            className={`h-12 w-10 shrink-0 border bg-warm-ivory p-0.5 transition-colors sm:h-24 sm:w-20 sm:p-1.5 ${
+            className={`h-14 w-12 shrink-0 border bg-warm-ivory p-0.5 transition-colors sm:h-24 sm:w-20 sm:p-1.5 ${
               active === index
                 ? 'border-primary'
                 : 'border-outline-variant hover:border-brand-gold'

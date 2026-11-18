@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -11,8 +12,8 @@ import { cn } from "@/lib/utils";
 export interface InteractiveTravelCardProps {
   /** The main title for the card, e.g., "Sapa Valley" */
   title: string;
-  /** A subtitle or location, e.g., "Vietnam" */
-  subtitle: string;
+  /** A subtitle or location, e.g., "Vietnam". Optional — omit to show only the title. */
+  subtitle?: string;
   /** The URL for the background image. */
   imageUrl: string;
   /** The text for the primary action button, e.g., "Book your trip" */
@@ -23,6 +24,8 @@ export interface InteractiveTravelCardProps {
   onActionClick?: () => void;
   /** Optional additional class names for custom styling. */
   className?: string;
+  /** Optional inline style for the background image (e.g. object-position). */
+  imageStyle?: React.CSSProperties;
 }
 
 /**
@@ -33,7 +36,7 @@ export const InteractiveTravelCard = React.forwardRef<
   InteractiveTravelCardProps
 >(
   (
-    { title, subtitle, imageUrl, actionText, href, onActionClick, className },
+    { title, subtitle, imageUrl, actionText, href, onActionClick, className, imageStyle },
     ref
   ) => {
     // --- 3D Tilt Animation Logic ---
@@ -74,8 +77,9 @@ export const InteractiveTravelCard = React.forwardRef<
           transformStyle: "preserve-3d",
         }}
         className={cn(
-          // Base styles for the card container, using theme variables for border
-          "relative h-[22rem] w-full rounded-2xl bg-transparent shadow-2xl border border-border/30 sm:h-[26rem]",
+          // Portrait 3:4 card. The ratio only applies while the height is auto,
+          // so callers can still pin a fixed height through `className`.
+          "relative aspect-[3/4] w-full rounded-2xl bg-transparent shadow-2xl border border-border/30",
           className ?? ''
         )}
       >
@@ -87,10 +91,13 @@ export const InteractiveTravelCard = React.forwardRef<
           className="absolute inset-3 grid h-[calc(100%-1.5rem)] w-[calc(100%-1.5rem)] grid-rows-[1fr_auto] rounded-xl shadow-lg sm:inset-4 sm:h-[calc(100%-2rem)] sm:w-[calc(100%-2rem)]"
         >
           {/* Background Image */}
-          <img
+          <Image
             src={imageUrl}
-            alt={`${title}, ${subtitle}`}
-            className="absolute inset-0 h-full w-full rounded-xl object-cover"
+            alt={subtitle ? `${title}, ${subtitle}` : title}
+            fill
+            sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 80vw"
+            style={imageStyle}
+            className="rounded-xl object-cover"
           />
           
           {/* Darkening overlay for better text contrast over the image */}
@@ -102,18 +109,20 @@ export const InteractiveTravelCard = React.forwardRef<
             {/* Header section with text */}
             <div className="flex items-start justify-between">
               <div>
-                <motion.h2 
+                <motion.h2
                   style={{ transform: "translateZ(50px)" }}
-                  className="font-sans text-xl font-bold uppercase tracking-wider sm:text-2xl"
+                  className="font-sans text-xl font-bold uppercase tracking-wider text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] sm:text-2xl"
                 >
                   {title}
                 </motion.h2>
-                <motion.p 
-                  style={{ transform: "translateZ(40px)" }}
-                  className="text-xs font-light text-white/85 sm:text-sm"
-                >
-                  {subtitle}
-                </motion.p>
+                {subtitle ? (
+                  <motion.p
+                    style={{ transform: "translateZ(40px)" }}
+                    className="text-xs font-light text-white/85 drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)] sm:text-sm"
+                  >
+                    {subtitle}
+                  </motion.p>
+                ) : null}
               </div>
             </div>
 
@@ -130,7 +139,9 @@ export const InteractiveTravelCard = React.forwardRef<
                 className={cn(
                   "block w-full rounded-lg py-2.5 text-center text-xs font-semibold uppercase tracking-[0.2em] text-white transition-colors sm:py-3 sm:text-sm",
                   // Glassmorphism styling for the button, designed to work over a dark image overlay
-                  "bg-white/15 backdrop-blur-md ring-1 ring-inset ring-white/25 hover:bg-white/25"
+                  "bg-white/15 backdrop-blur-md ring-1 ring-inset ring-white/25 hover:bg-white/25",
+                  // Lift it off the photograph so it reads clearly at a glance
+                  "shadow-[0_6px_18px_rgba(0,0,0,0.45)]"
                 )}
               >
                 {actionText}

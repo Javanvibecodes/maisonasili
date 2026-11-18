@@ -45,14 +45,14 @@ export function ProductShowcase({
           >
             {number}
           </span>
-          <div className="relative flex aspect-[4/3] items-center justify-center p-6 sm:p-10 lg:aspect-[4/5] lg:p-12">
+          <div className="relative aspect-square w-full">
             <Image
               src={assetPath(product.image)}
               alt={`${product.name} — ${product.subtitle}`}
-              width={product.imageWidth}
-              height={product.imageHeight}
+              fill
+              sizes="(min-width: 1024px) 45vw, 100vw"
               priority={priority}
-              className="h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
             />
           </div>
           <span

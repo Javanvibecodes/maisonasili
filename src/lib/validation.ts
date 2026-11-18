@@ -29,7 +29,7 @@ export const CONTACT_SUBJECTS = [
   'Something else'
 ] as const;
 
-export const WHOLESALE_INTERESTS = ['Spice blends', 'Salts', 'Botanical teas', 'Gift ranges'] as const;
+export const WHOLESALE_INTERESTS = ['Spice blends', 'Salts', 'Botanical teas', 'Culinary oils', 'Gift ranges'] as const;
 
 export const WHOLESALE_VOLUMES = [
   'Trial order',

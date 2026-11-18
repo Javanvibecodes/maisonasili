@@ -16,7 +16,8 @@ const navLinks = [
 const collectionLinks = [
   { href: '/collections/spices', label: 'Spice Blends', note: 'Heritage blends, rubs and seasonings', icon: 'grain' },
   { href: '/collections/salts', label: 'Salts', note: 'Botanical salt blends and finishing salts', icon: 'spa' },
-  { href: '/collections/tea', label: 'Botanical Teas', note: 'Rare leaves, flowers and infusions', icon: 'emoji_food_beverage' }
+  { href: '/collections/tea', label: 'Botanical Teas', note: 'Rare leaves, flowers and infusions', icon: 'emoji_food_beverage' },
+  { href: '/collections/oils', label: 'Culinary Oils', note: 'Cold-pressed oils for cooking and finishing', icon: 'water_drop' }
 ];
 
 function openSearch() {
@@ -42,21 +43,21 @@ export function SiteHeader() {
     <>
       <header
         id="site-header"
-        className="fixed top-0 left-0 right-0 z-50 w-full border-b border-brand-gold/25 bg-black text-on-primary"
+        className="fixed top-0 left-0 right-0 z-50 w-full border-b border-brand-gold/25 bg-primary text-on-primary"
       >
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-6 px-6 lg:px-12">
           <Link href="/" className="group flex shrink-0 items-center gap-3" aria-label="Maison Asili — home">
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-primary-container ring-1 ring-brand-gold/60">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center sm:h-10 sm:w-10">
               <Image
-                src="/assets/img/img-59efbbe90f.jpg"
+                src="/assets/img/logo.png"
                 alt=""
-                width={40}
-                height={40}
-                className="h-10 w-10 scale-110 object-cover"
+                width={48}
+                height={48}
+                className="h-full w-full object-contain"
                 priority
               />
             </span>
-            <span className="text-[13px] font-medium uppercase leading-none tracking-[0.28em] text-on-primary transition-colors group-hover:text-brand-gold sm:text-[14px]">
+            <span className="text-[11px] font-medium uppercase leading-none tracking-[0.2em] text-on-primary transition-colors group-hover:text-brand-gold sm:text-[13px] sm:tracking-[0.28em]">
               Maison Asili
             </span>
           </Link>
@@ -135,12 +136,12 @@ export function SiteHeader() {
             ))}
           </nav>
 
-          <div className="flex shrink-0 items-center gap-4 sm:gap-5">
+          <div className="flex shrink-0 items-center gap-1 text-on-primary sm:gap-3">
             <button
               type="button"
               aria-label="Search the collection"
               onClick={openSearch}
-              className="flex items-center text-on-primary transition-colors hover:text-brand-gold"
+              className="flex h-10 w-10 items-center justify-center text-on-primary transition-colors hover:text-brand-gold"
             >
               <span aria-hidden="true" className="material-symbols-outlined text-[20px]">
                 search
@@ -150,7 +151,7 @@ export function SiteHeader() {
               type="button"
               aria-label={`Order cart${count > 0 ? `, ${count} ${count === 1 ? 'item' : 'items'}` : ''}`}
               onClick={openDrawer}
-              className="relative flex items-center text-on-primary transition-colors hover:text-brand-gold"
+              className="relative flex h-10 w-10 items-center justify-center text-on-primary transition-colors hover:text-brand-gold"
             >
               <span aria-hidden="true" className="material-symbols-outlined text-[20px]">
                 shopping_bag
@@ -169,7 +170,7 @@ export function SiteHeader() {
               aria-label={mobileOpen ? 'Close menu' : 'Open navigation menu'}
               aria-expanded={mobileOpen}
               onClick={() => setMobileOpen((open) => !open)}
-              className="flex items-center text-on-primary transition-colors hover:text-brand-gold lg:hidden"
+              className="flex h-10 w-10 items-center justify-center text-on-primary transition-colors hover:text-brand-gold lg:hidden"
             >
               <span aria-hidden="true" className="material-symbols-outlined text-[26px]">
                 {mobileOpen ? 'close' : 'menu'}
@@ -179,11 +180,11 @@ export function SiteHeader() {
         </div>
 
         {/* Mobile Hamburger Navigation Menu */}
-        <div className={`${mobileOpen ? 'block' : 'hidden'} max-h-[85vh] overflow-y-auto border-t border-brand-gold/20 bg-black text-on-primary shadow-2xl lg:hidden`}>
+        <div className={`${mobileOpen ? 'block' : 'hidden'} max-h-[85vh] overflow-y-auto border-t border-brand-gold/20 bg-primary text-on-primary shadow-2xl lg:hidden`}>
           <nav aria-label="Mobile Navigation" className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-6 text-[12px] uppercase tracking-[0.18em]">
             <Link
               href="/"
-              className="border-b border-brand-gold/15 py-3 font-semibold text-on-primary/95 transition-colors hover:text-brand-gold"
+              className="border-b border-brand-gold/15 py-3.5 font-semibold text-on-primary/95 transition-colors hover:text-brand-gold"
             >
               Home
             </Link>
@@ -223,7 +224,7 @@ export function SiteHeader() {
               <button
                 type="button"
                 onClick={openSearch}
-                className="flex-1 bg-brand-gold px-1 py-3.5 text-center text-[9px] font-semibold uppercase leading-tight tracking-[0.08em] text-charcoal shadow-md transition-colors hover:bg-surface-container-lowest sm:text-[11px] sm:tracking-[0.22em]"
+                className="flex-1 bg-brand-gold px-1 py-3.5 text-center text-[9px] font-semibold uppercase leading-tight tracking-[0.08em] text-charcoal shadow-md transition-colors sm:hover:bg-surface-container-lowest active:bg-brand-gold sm:text-[11px] sm:tracking-[0.22em]"
               >
                 Search the collection
               </button>

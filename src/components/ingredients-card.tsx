@@ -13,7 +13,7 @@ export function IngredientsCard({ product }: { product: Product }) {
   return (
     <section
       aria-labelledby={headingId}
-      className="relative overflow-hidden bg-primary text-on-primary shadow-[0_18px_40px_-24px_rgba(33,11,54,0.65)]"
+      className="relative overflow-hidden bg-primary text-on-primary shadow-[0_18px_40px_-24px_rgba(56,10,54,0.6)]"
     >
       <span aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-brand-gold/60" />
       <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-px bg-brand-gold/40" />

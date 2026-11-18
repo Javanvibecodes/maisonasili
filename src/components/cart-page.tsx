@@ -70,7 +70,7 @@ export function CartPageContent() {
           <div className="flex flex-row gap-2 sm:gap-3">
             <Link
               href="/shop"
-              className="flex-1 bg-on-surface px-2 py-3 text-center text-[9px] font-semibold uppercase leading-tight tracking-[0.1em] text-surface-container-lowest transition-colors hover:bg-primary sm:flex-none sm:px-6 sm:text-[11px] sm:tracking-[0.22em]"
+              className="flex-1 bg-on-surface px-2 py-3 text-center text-[9px] font-semibold uppercase leading-tight tracking-[0.1em] text-surface-container-lowest transition-colors sm:hover:bg-primary active:bg-on-surface sm:flex-none sm:px-6 sm:text-[11px] sm:tracking-[0.22em]"
             >
               Continue Exploring
             </Link>
@@ -163,7 +163,7 @@ export function CartPageContent() {
                         type="button"
                         aria-label={`Decrease quantity of ${line.product.name}`}
                         onClick={() => setQty(line.slug, line.qty - 1)}
-                        className="flex h-9 w-9 items-center justify-center text-on-surface transition-colors hover:text-primary"
+                        className="flex h-11 w-11 items-center justify-center text-on-surface transition-colors hover:text-primary sm:h-9 sm:w-9"
                       >
                         −
                       </button>
@@ -172,7 +172,7 @@ export function CartPageContent() {
                         type="button"
                         aria-label={`Increase quantity of ${line.product.name}`}
                         onClick={() => setQty(line.slug, line.qty + 1)}
-                        className="flex h-9 w-9 items-center justify-center text-on-surface transition-colors hover:text-primary"
+                        className="flex h-11 w-11 items-center justify-center text-on-surface transition-colors hover:text-primary sm:h-9 sm:w-9"
                       >
                         +
                       </button>
@@ -198,7 +198,7 @@ export function CartPageContent() {
               </p>
               <Link
                 href="/shop"
-                className="bg-on-surface px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-surface-container-lowest transition-colors hover:bg-primary"
+                className="bg-on-surface px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-surface-container-lowest transition-colors sm:hover:bg-primary active:bg-on-surface"
               >
                 Explore the Collection
               </Link>
@@ -250,7 +250,7 @@ export function CartPageContent() {
               tabIndex={lines.length === 0 ? -1 : undefined}
               className={`block w-full py-4 text-center text-xs font-semibold uppercase tracking-[0.25em] transition-colors ${
                 lines.length > 0
-                  ? 'bg-on-surface text-surface-container-lowest hover:bg-primary'
+                  ? 'bg-on-surface text-surface-container-lowest sm:hover:bg-primary active:bg-on-surface'
                   : 'pointer-events-none bg-on-surface/40 text-surface-container-lowest'
               }`}
             >

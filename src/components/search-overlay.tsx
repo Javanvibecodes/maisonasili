@@ -51,8 +51,8 @@ export function SearchOverlay() {
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
         <div className="flex h-20 items-center justify-between gap-6 border-b border-outline-variant">
           <span className="flex items-center gap-3">
-            <span className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-primary-container ring-1 ring-brand-gold/50">
-              <Image src="/assets/img/img-59efbbe90f.jpg" alt="" width={44} height={44} className="h-11 w-11 scale-[1.15] object-cover" />
+            <span className="flex h-9 w-9 items-center justify-center">
+              <Image src="/assets/img/logo.png" alt="" width={44} height={44} className="h-full w-full object-contain" />
             </span>
             <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-tertiary">Search the collection</span>
           </span>
@@ -79,7 +79,7 @@ export function SearchOverlay() {
               type="search"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Spice blends, salts, tea…"
+              placeholder="Spice blends, salts, teas, oils…"
               className="min-w-0 flex-1 bg-transparent py-1 font-headline text-2xl text-on-surface placeholder:text-outline focus:outline-none sm:text-4xl"
             />
           </div>
@@ -124,7 +124,7 @@ export function SearchOverlay() {
               </span>
               <h3 className="mb-2 font-headline text-2xl text-on-surface">Nothing matches that search</h3>
               <p className="max-w-md text-xs leading-relaxed text-on-surface-variant">
-                Try “spice”, “salt”, “tea” or “moringa” — or browse the full collection instead.
+                Try “spice”, “salt”, “tea”, “oil” or “moringa” — or browse the full collection instead.
               </p>
               <Link
                 href="/shop"

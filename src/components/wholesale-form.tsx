@@ -264,14 +264,14 @@ export function WholesaleForm() {
         <button
           type="submit"
           disabled={submitting}
-          className="bg-on-surface px-3 py-4 text-[9px] font-semibold uppercase leading-tight tracking-[0.1em] text-surface-container-lowest transition-colors hover:bg-primary disabled:cursor-not-allowed disabled:opacity-50 sm:px-8 sm:text-xs sm:tracking-[0.25em]"
+          className="bg-on-surface px-3 py-4 text-[9px] font-semibold uppercase leading-tight tracking-[0.1em] text-surface-container-lowest transition-colors sm:hover:bg-primary active:bg-on-surface disabled:cursor-not-allowed disabled:opacity-50 sm:px-8 sm:text-xs sm:tracking-[0.25em]"
         >
           {submitting ? 'Sending enquiry…' : 'Submit Enquiry'}
         </button>
         <span className="text-[11px] text-on-surface-variant">
           or write to{' '}
-          <a href="mailto:info@maisonasili.com" className="text-tertiary transition-colors hover:text-on-surface">
-            info@maisonasili.com
+          <a href="mailto:enquiry@maisonasili.com" className="text-tertiary transition-colors hover:text-on-surface">
+            enquiry@maisonasili.com
           </a>
         </span>
       </div>

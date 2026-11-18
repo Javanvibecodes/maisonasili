@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ProductExplorer } from '@/components/product-explorer';
+import { ProductCard } from '@/components/product-card';
 import {
   assetPath,
   collections,
@@ -59,7 +59,7 @@ export default function CollectionPage({ params }: CollectionPageProps) {
             <h1 className="mb-4 font-headline text-4xl font-light leading-[1.1] tracking-tight text-on-surface sm:text-5xl">
               {collection.name}
             </h1>
-            <p className="mb-8 text-sm font-light leading-relaxed text-on-surface-variant sm:text-base">
+            <p className="mb-8 max-w-xl text-sm font-light leading-relaxed text-on-surface-variant sm:text-base">
               {collection.intro}
             </p>
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.22em] text-on-surface-variant">
@@ -71,22 +71,24 @@ export default function CollectionPage({ params }: CollectionPageProps) {
               </span>
               <span className="flex items-center gap-2">
                 <span aria-hidden="true" className="material-symbols-outlined text-sm text-tertiary">
-                  local_offer
+                  local_shipping
                 </span>
-                Prices shown incl. VAT
+                Trade pricing on request
               </span>
             </div>
           </div>
 
-          <div className="relative lg:col-span-6">
-            <div className="relative aspect-[4/3] w-full overflow-hidden bg-surface-container shadow-sm sm:aspect-[3/2]">
+          {/* Hero image is desktop-only: at small widths the full-bleed square
+              pushes the collection title far below the fold. */}
+          <div className="relative hidden lg:col-span-6 lg:block">
+            <div className="relative aspect-square w-full overflow-hidden bg-surface-container shadow-sm">
               {heroSrc ? (
                 <Image
                   src={assetPath(heroSrc)}
                   alt={`Maison Asili ${collection.name}`}
                   fill
                   sizes="(min-width: 1024px) 50vw, 100vw"
-                  className="object-contain p-8 sm:p-10 lg:p-12"
+                  className="object-cover"
                 />
               ) : null}
             </div>
@@ -94,48 +96,11 @@ export default function CollectionPage({ params }: CollectionPageProps) {
         </div>
       </section>
 
-      <ProductExplorer products={items} showCategories={false} initialCategory={collection.slug} />
-
-      <section className="mt-4 w-full bg-warm-sand px-6 py-20 lg:px-12">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-16">
-          <div className="relative aspect-[4/3] overflow-hidden bg-surface-container lg:col-span-5">
-            {items[0] ? (
-              <Image
-                src={assetPath(items[0].image)}
-                alt={`Maison Asili ${collection.name}`}
-                fill
-                sizes="(min-width: 1024px) 40vw, 100vw"
-                className="object-contain p-8 lg:p-10"
-              />
-            ) : null}
-          </div>
-          <div className="flex flex-col items-start lg:col-span-7">
-            <h2 className="mb-6 font-headline text-3xl font-light tracking-tight text-on-surface sm:text-4xl">
-              {collection.editorialTitle}
-            </h2>
-            <p className="mb-8 text-sm font-light leading-relaxed text-on-surface-variant sm:text-base">
-              {collection.editorialBody}
-            </p>
-            <ul className="mb-8 w-full max-w-xl list-none">
-              {collection.applications.map((application) => (
-                <li
-                  key={application}
-                  className="flex items-center gap-3 border-b border-stone-border py-2.5 text-sm text-on-surface-variant last:border-b-0"
-                >
-                  <span aria-hidden="true" className="material-symbols-outlined text-base text-tertiary">
-                    check
-                  </span>
-                  {application}
-                </li>
-              ))}
-            </ul>
-            <Link
-              href="/shop"
-              className="bg-on-surface px-8 py-3.5 text-xs font-medium uppercase tracking-[0.22em] text-surface-container-lowest transition-colors hover:bg-primary"
-            >
-              Find Your Next Favourite
-            </Link>
-          </div>
+      <section className="mx-auto w-full max-w-7xl px-6 pb-4 lg:px-12">
+        <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4">
+          {items.map((product) => (
+            <ProductCard key={product.slug} product={product} />
+          ))}
         </div>
       </section>
 
@@ -168,15 +133,15 @@ export default function CollectionPage({ params }: CollectionPageProps) {
           ))}
           <Link
             href="/shop"
-            className="flex flex-col justify-between border border-outline-variant bg-primary p-6 text-on-primary transition-colors hover:border-brand-gold"
+            className="group flex flex-col justify-between border border-outline-variant bg-surface-container-lowest p-6 transition-colors hover:border-brand-gold"
           >
             <div>
-              <h3 className="font-headline text-xl">All Provisions</h3>
-              <p className="mt-2 text-xs leading-relaxed text-on-primary/70">
+              <h3 className="font-headline text-xl text-on-surface group-hover:text-tertiary">All Provisions</h3>
+              <p className="mt-2 text-xs leading-relaxed text-on-surface-variant">
                 Browse every small-batch creation in the Maison Asili catalogue.
               </p>
             </div>
-            <span className="mt-6 flex items-center gap-1.5 text-[11px] uppercase tracking-[0.2em] text-brand-gold">
+            <span className="mt-6 flex items-center gap-1.5 text-[11px] uppercase tracking-[0.2em] text-on-surface">
               View all
               <span aria-hidden="true" className="material-symbols-outlined text-sm">
                 north_east

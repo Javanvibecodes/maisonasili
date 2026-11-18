@@ -139,12 +139,12 @@ export function ProductExplorer({ products, showCategories = true, initialCatego
               No Products Matching Criteria
             </h3>
             <p className="mb-6 max-w-md text-xs leading-relaxed text-on-surface-variant">
-              Adjust your category selection to discover our spice blends, botanical salts and rare teas.
+              Adjust your category selection to discover our spice blends, botanical salts, rare teas and culinary oils.
             </p>
             <button
               type="button"
               onClick={reset}
-              className="bg-primary px-6 py-2.5 text-xs font-semibold uppercase tracking-widest text-on-primary transition-colors hover:bg-tertiary"
+              className="bg-primary px-6 py-2.5 text-xs font-semibold uppercase tracking-widest text-on-primary transition-colors sm:hover:bg-tertiary active:bg-primary"
             >
               Reset All Filters
             </button>

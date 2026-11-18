@@ -2,7 +2,7 @@ import { collectionName, getProduct, type Product } from '@/lib/catalog';
 import type { EnquiryInput, OrderRequestInput } from '@/lib/validation';
 
 const BRAND = {
-  plum: '#210B36',
+  plum: '#380A36',
   gold: '#D4B58C',
   sand: '#F4EFE6',
   ink: '#171122',
@@ -10,7 +10,7 @@ const BRAND = {
   line: '#E2D9CE'
 } as const;
 
-const CONTACT_EMAIL = 'info@maisonasili.com';
+const CONTACT_EMAIL = 'enquiry@maisonasili.com';
 
 export interface ResolvedOrderLine {
   product: Product;

@@ -14,7 +14,7 @@ export default function NotFound() {
         <div className="flex flex-row flex-wrap justify-center gap-3">
           <Link
             href="/shop"
-            className="bg-primary px-7 py-3.5 text-xs font-medium uppercase tracking-[0.22em] text-on-primary transition-colors hover:bg-tertiary"
+            className="bg-primary px-7 py-3.5 text-xs font-medium uppercase tracking-[0.22em] text-on-primary transition-colors sm:hover:bg-tertiary active:bg-primary"
           >
             Explore the Collection
           </Link>

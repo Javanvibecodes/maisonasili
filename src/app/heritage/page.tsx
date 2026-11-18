@@ -74,9 +74,6 @@ export default function HeritagePage() {
     <main className="w-full bg-warm-ivory">
       <section className="border-b border-stone-border-light px-6 pb-14 pt-16 text-center sm:pb-20 sm:pt-24">
         <div className="mx-auto max-w-3xl">
-          <p className="mb-8 text-base" aria-hidden="true">
-            👇🏾
-          </p>
           <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.42em] text-gold">MAISON ASILI</p>
           <p className="mb-10 text-[10px] uppercase tracking-[0.3em] text-stone-muted sm:text-[11px]">
             Origin. Identity. Heritage.

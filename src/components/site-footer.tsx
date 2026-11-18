@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { SearchTrigger } from '@/components/search-trigger';
 
@@ -8,16 +7,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-5 pb-10 pt-12 sm:px-8 sm:pb-14 sm:pt-16 lg:px-12 lg:pt-20">
         <div className="mb-10 grid grid-cols-1 gap-8 sm:mb-16 sm:gap-12 md:grid-cols-2 lg:grid-cols-6">
           <div className="flex flex-col items-start sm:pr-6 lg:col-span-2">
-            <div className="mb-4 inline-flex bg-primary-container p-3 ring-1 ring-brand-gold/30 sm:mb-5 sm:p-4">
-              <Image
-                src="/assets/img/img-59efbbe90f.jpg"
-                alt="Maison Asili — Origin. Identity. Heritage."
-                width={144}
-                height={144}
-                className="h-24 w-24 object-cover sm:h-32 sm:w-32 lg:h-36 lg:w-36"
-              />
-            </div>
-            <p className="mb-2 font-headline text-sm italic text-brand-gold sm:mb-3 sm:text-base">
+            <p className="mb-3 font-headline text-base italic text-brand-gold sm:mb-4 sm:text-lg">
               Rooted in Africa. Born in Berlin. For the World.
             </p>
             <p className="max-w-sm text-[11px] leading-relaxed text-on-primary/70 sm:text-xs">
@@ -74,8 +64,8 @@ export function SiteFooter() {
                   </Link>
                 </li>
                 <li>
-                  <a href="mailto:info@maisonasili.com" className="break-all transition-colors hover:text-brand-gold">
-                    info@maisonasili.com
+                  <a href="mailto:enquiry@maisonasili.com" className="break-all transition-colors hover:text-brand-gold">
+                    enquiry@maisonasili.com
                   </a>
                 </li>
                 <li>
@@ -97,7 +87,7 @@ export function SiteFooter() {
             </p>
             <Link
               href="/wholesale"
-              className="inline-flex w-fit items-center gap-2 rounded-sm bg-brand-gold px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-charcoal transition-colors hover:bg-on-primary"
+              className="inline-flex w-fit items-center gap-2 rounded-sm bg-brand-gold px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-charcoal transition-colors sm:hover:bg-on-primary active:bg-brand-gold"
             >
               Start an Enquiry
               <span aria-hidden="true" className="material-symbols-outlined text-sm">

@@ -3,7 +3,7 @@ import collectionsSource from '@/data/collections';
 import legalSource from '@/data/legal';
 import mediaSource from '@/data/media.json';
 
-export type Category = 'spices' | 'salts' | 'tea';
+export type Category = 'spices' | 'salts' | 'tea' | 'oils';
 
 export interface ProductStory {
   heading?: string;
@@ -21,6 +21,8 @@ export interface Product {
   name: string;
   subtitle: string;
   descriptor?: string;
+  /** Short one-line description of the product shown on collection cards. */
+  microDescription: string;
   category: Category;
   size: string;
   label: string;

@@ -2,13 +2,11 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CollectionCards } from '@/components/collection-cards';
-import { FeaturedProductsCarousel } from '@/components/featured-products-carousel';
-import { collections, products } from '@/lib/catalog';
 
 export const metadata: Metadata = {
   title: 'Maison Asili — Afro-Gourmet Product House',
   description:
-    'An Afro-Gourmet product house rooted in Africa and born in Berlin: heritage spice blends, botanical salts and rare African teas. Explore the collection and enquire about wholesale.'
+    'An Afro-Gourmet product house rooted in Africa and born in Berlin: heritage spice blends, botanical salts, rare African teas and cold-pressed culinary oils. Explore the collection and enquire about wholesale.'
 };
 
 const pillarIcons = ['spa', 'precision_manufacturing', 'public'];
@@ -31,31 +29,16 @@ const pillars = [
   }
 ];
 
-// A daily seed keeps the trio stable for each build while rotating the selection.
-const dailySeed = new Date().toISOString().slice(0, 10);
-
-const featured = products
-  .map((product) => ({
-    product,
-    rank: [...`${product.slug}-${dailySeed}`].reduce(
-      (acc, char) => (acc * 31 + char.charCodeAt(0)) % 1000003,
-      7
-    )
-  }))
-  .sort((a, b) => a.rank - b.rank)
-  .slice(0, 3)
-  .map((entry) => entry.product);
-
 export default function HomePage() {
   return (
     <main className="relative w-full">
       {/* ── Hero banner — shown in full at every width; the page body follows immediately ── */}
       <section className="w-full bg-[#0b0906]" aria-label="Maison Asili — Origin. Identity. Heritage.">
         <Image
-          src="/assets/img/hero-banner.jpeg"
+          src="/assets/img/hero-banner-actual.jpg"
           alt="Maison Asili — Afro-Gourmet Fusion: spices, oils, teas and coffee. Origin. Identity. Heritage."
-          width={1920}
-          height={819}
+          width={2752}
+          height={1536}
           priority
           sizes="100vw"
           className="block h-auto w-full"
@@ -64,13 +47,13 @@ export default function HomePage() {
         <div className="flex w-full flex-row items-stretch gap-2 px-4 py-5 sm:items-center sm:justify-center sm:gap-3 sm:px-8 sm:py-6 lg:px-12">
           <Link
             href="/shop"
-            className="flex-1 whitespace-nowrap rounded-sm bg-brand-gold px-2 py-3 text-center font-sans text-[9px] font-semibold uppercase leading-tight tracking-[0.1em] text-charcoal shadow-md transition-all hover:bg-white hover:text-charcoal sm:flex-none sm:px-7 sm:text-xs sm:tracking-[0.2em]"
+            className="flex min-h-[44px] flex-1 items-center justify-center whitespace-nowrap rounded-sm bg-brand-gold px-2 py-3 text-center font-sans text-[10px] font-semibold uppercase leading-tight tracking-[0.08em] text-charcoal shadow-md transition-colors hover:bg-white hover:text-charcoal sm:flex-none sm:px-7 sm:text-xs sm:tracking-[0.2em]"
           >
             Explore the Collection
           </Link>
           <Link
             href="/heritage"
-            className="flex-1 whitespace-nowrap rounded-sm border border-brand-gold/40 bg-transparent px-2 py-3 text-center font-sans text-[9px] font-medium uppercase leading-tight tracking-[0.1em] text-white transition-all hover:border-brand-gold hover:bg-brand-gold/10 sm:flex-none sm:px-7 sm:text-xs sm:tracking-[0.2em]"
+            className="flex min-h-[44px] flex-1 items-center justify-center whitespace-nowrap rounded-sm border border-brand-gold/40 bg-transparent px-2 py-3 text-center font-sans text-[10px] font-medium uppercase leading-tight tracking-[0.08em] text-white transition-colors hover:border-brand-gold hover:bg-brand-gold/10 sm:flex-none sm:px-7 sm:text-xs sm:tracking-[0.2em]"
           >
             Discover Our Heritage
           </Link>
@@ -82,17 +65,11 @@ export default function HomePage() {
         {/* Intro Editorial */}
         <section className="w-full px-5 py-14 sm:px-8 sm:py-20 lg:px-12">
           <div className="mx-auto max-w-4xl">
-            <div className="mb-8 flex flex-col items-center text-center sm:mb-10">
-              <div className="mb-5 flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-surface-container ring-1 ring-brand-gold/40 sm:mb-7 sm:h-14 sm:w-14">
-                <Image
-                  src="/assets/img/img-59efbbe90f.jpg"
-                  alt="Maison Asili Gold Crest"
-                  width={72}
-                  height={72}
-                  className="h-8 w-8 object-contain sm:h-9 sm:w-9"
-                />
-              </div>
-              <div className="h-0.5 w-10 bg-brand-gold sm:w-12" />
+            <div className="mb-9 flex flex-col items-center text-center sm:mb-11">
+              <p className="font-headline text-2xl font-medium uppercase leading-none tracking-[0.32em] text-gold sm:text-3xl sm:tracking-[0.4em]">
+                House of Asili
+              </p>
+              <div className="mt-6 h-px w-12 bg-gold/40 sm:mt-7 sm:w-16" />
             </div>
             <div className="mx-auto max-w-3xl space-y-4 font-body text-sm font-light leading-relaxed tracking-normal text-on-surface-variant sm:space-y-6 sm:text-base lg:text-lg">
               <p className="editorial-lead">
@@ -119,48 +96,13 @@ export default function HomePage() {
 
         {/* Collections Section */}
         <section className="mx-auto w-full max-w-7xl px-5 py-12 sm:px-8 sm:py-16 lg:px-12">
-          <div className="mb-6 flex flex-col justify-between gap-2 sm:mb-12 sm:flex-row sm:items-end">
-            <div>
-              <h2 className="font-sans text-2xl font-light uppercase tracking-tight text-on-surface sm:text-4xl lg:text-5xl">
-                Explore Our Collections
-              </h2>
-            </div>
-            <Link
-              href="/shop"
-              className="flex items-center gap-1.5 font-sans text-[11px] font-medium uppercase tracking-[0.2em] text-on-surface transition-colors hover:text-tertiary sm:text-xs"
-            >
-              View All {collections.length} Collections
-              <span aria-hidden="true" className="material-symbols-outlined text-sm">
-                north_east
-              </span>
-            </Link>
+          <div className="mb-6 sm:mb-10">
+            <h2 className="font-sans text-2xl font-light uppercase tracking-tight text-on-surface sm:text-4xl lg:text-5xl">
+              Explore Our Collections
+            </h2>
           </div>
 
           <CollectionCards />
-        </section>
-
-        {/* Featured Products Section */}
-        <section className="w-full px-5 py-12 sm:px-8 sm:py-16 lg:px-12">
-          <div className="mx-auto max-w-7xl">
-            <div className="mb-6 flex flex-col justify-between gap-2 sm:mb-12 sm:flex-row sm:items-end">
-              <div>
-                <h2 className="font-sans text-2xl font-light uppercase tracking-tight text-on-surface sm:text-4xl lg:text-5xl">
-                  Selected for Your Table
-                </h2>
-              </div>
-              <Link
-                href="/shop"
-                className="flex items-center gap-1.5 font-sans text-[11px] font-medium uppercase tracking-[0.2em] text-on-surface transition-colors hover:text-tertiary sm:text-xs"
-              >
-                View all provisions
-                <span aria-hidden="true" className="material-symbols-outlined text-sm">
-                  north_east
-                </span>
-              </Link>
-            </div>
-
-            <FeaturedProductsCarousel products={featured} />
-          </div>
         </section>
 
         {/* Heritage Pillars */}
@@ -209,13 +151,13 @@ export default function HomePage() {
             <div className="flex w-full max-w-md flex-1 flex-row gap-2 sm:gap-3 lg:w-auto">
               <Link
                 href="/wholesale"
-                className="flex-1 whitespace-nowrap rounded-sm bg-primary px-2 py-3 text-center font-sans text-[9px] font-medium uppercase leading-tight tracking-[0.1em] text-on-primary transition-colors hover:bg-brand-gold hover:text-primary sm:flex-none sm:px-5 sm:text-xs sm:tracking-[0.2em]"
+                className="flex min-h-[44px] flex-1 items-center justify-center whitespace-nowrap rounded-sm bg-primary px-2 py-3 text-center font-sans text-[10px] font-medium uppercase leading-tight tracking-[0.08em] text-on-primary transition-colors sm:hover:bg-brand-gold sm:hover:text-primary active:bg-primary sm:flex-none sm:px-5 sm:text-xs sm:tracking-[0.2em]"
               >
                 Wholesale Enquiry
               </Link>
               <Link
                 href="/shop"
-                className="flex-1 whitespace-nowrap rounded-sm border border-outline-variant px-2 py-3 text-center font-sans text-[9px] font-medium uppercase leading-tight tracking-[0.1em] text-on-surface transition-colors hover:border-tertiary hover:text-tertiary sm:flex-none sm:px-5 sm:text-xs sm:tracking-[0.2em]"
+                className="flex min-h-[44px] flex-1 items-center justify-center whitespace-nowrap rounded-sm border border-outline-variant px-2 py-3 text-center font-sans text-[10px] font-medium uppercase leading-tight tracking-[0.08em] text-on-surface transition-colors hover:border-tertiary hover:text-tertiary sm:flex-none sm:px-5 sm:text-xs sm:tracking-[0.2em]"
               >
                 Explore the Collection
               </Link>

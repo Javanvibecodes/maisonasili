@@ -71,7 +71,7 @@ export function CartDrawer() {
               <Link
                 href="/shop"
                 onClick={closeDrawer}
-                className="mt-5 bg-primary px-5 py-2.5 text-[11px] uppercase tracking-[0.2em] text-on-primary transition-colors hover:bg-tertiary"
+                className="mt-5 bg-primary px-5 py-2.5 text-[11px] uppercase tracking-[0.2em] text-on-primary transition-colors sm:hover:bg-tertiary active:bg-primary"
               >
                 Explore the Collection
               </Link>
@@ -155,7 +155,7 @@ export function CartDrawer() {
             onClick={closeDrawer}
             className={`w-full py-4 text-center text-xs font-semibold uppercase tracking-[0.25em] transition-colors ${
               lines.length > 0
-                ? 'bg-on-surface text-surface-container-lowest hover:bg-primary'
+                ? 'bg-on-surface text-surface-container-lowest sm:hover:bg-primary active:bg-on-surface'
                 : 'pointer-events-none bg-on-surface/40 text-surface-container-lowest'
             }`}
             aria-disabled={lines.length === 0}

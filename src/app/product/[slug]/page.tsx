@@ -3,10 +3,10 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { AddToOrderCart } from '@/components/add-to-order-cart';
 import { IngredientsCard } from '@/components/ingredients-card';
+import { ProductCard } from '@/components/product-card';
 import { ProductGallery } from '@/components/product-gallery';
-import { ProductShowcase } from '@/components/product-showcase';
 import { ProductStory } from '@/components/product-story';
-import { collectionName, getProduct, products } from '@/lib/catalog';
+import { collectionName, getProduct, products, type Product } from '@/lib/catalog';
 
 interface ProductPageProps {
   params: { slug: string };
@@ -25,13 +25,30 @@ export function generateMetadata({ params }: ProductPageProps): Metadata {
   };
 }
 
+/**
+ * Mixes the rest of this collection with creations from the other
+ * collections so the closing grid never singles out the current collection.
+ */
+function buildSuggestions(primary: Product[], secondary: Product[], limit = 8): Product[] {
+  const result: Product[] = [];
+  let index = 0;
+  while (result.length < limit && (index < primary.length || index < secondary.length)) {
+    if (index < primary.length) result.push(primary[index]);
+    if (result.length < limit && index < secondary.length) result.push(secondary[index]);
+    index += 1;
+  }
+  return result;
+}
+
 export default function ProductPage({ params }: ProductPageProps) {
   const product = getProduct(params.slug);
   if (!product) notFound();
 
-  const related = products.filter(
+  const restOfCollection = products.filter(
     (item) => item.slug !== product.slug && item.category === product.category
   );
+  const otherCollections = products.filter((item) => item.category !== product.category);
+  const suggestions = buildSuggestions(restOfCollection, otherCollections);
 
   return (
     <main className="w-full bg-background">
@@ -56,6 +73,7 @@ export default function ProductPage({ params }: ProductPageProps) {
         </nav>
       </div>
 
+      {/* Photograph on the left, the composition on the right. */}
       <section className="mx-auto w-full max-w-7xl px-6 pb-14 pt-8 lg:px-12 lg:pb-20">
         <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">
@@ -63,10 +81,13 @@ export default function ProductPage({ params }: ProductPageProps) {
           </div>
 
           <div className="flex flex-col lg:col-span-5">
-            <div className="flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.3em] text-tertiary">
+            <Link
+              href={`/collections/${product.category}`}
+              className="flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.3em] text-tertiary transition-colors hover:text-primary"
+            >
               <span aria-hidden="true" className="h-px w-8 bg-brand-gold" />
               <span>{collectionName(product.category)}</span>
-            </div>
+            </Link>
 
             <h1 className="mt-5 font-headline text-4xl font-light leading-[1.05] tracking-tight text-primary sm:text-5xl">
               {product.name}
@@ -78,7 +99,11 @@ export default function ProductPage({ params }: ProductPageProps) {
               </p>
             ) : null}
 
-            <dl className="mt-7 grid grid-cols-2 gap-x-4 gap-y-3 border-y border-outline-variant py-5 text-sm sm:gap-x-6">
+            <div className="mt-8">
+              <IngredientsCard product={product} />
+            </div>
+
+            <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 border-t border-outline-variant pt-6 text-sm">
               <div>
                 <dt className="text-[10px] font-semibold uppercase tracking-[0.22em] text-on-surface-variant">
                   Size / pack
@@ -87,75 +112,53 @@ export default function ProductPage({ params }: ProductPageProps) {
               </div>
               <div>
                 <dt className="text-[10px] font-semibold uppercase tracking-[0.22em] text-on-surface-variant">
-                  Product type
-                </dt>
-                <dd className="mt-1 text-on-surface">{product.productType}</dd>
-              </div>
-              <div className="col-span-2">
-                <dt className="text-[10px] font-semibold uppercase tracking-[0.22em] text-on-surface-variant">
                   Origin
                 </dt>
                 <dd className="mt-1 text-on-surface">{product.origin}</dd>
               </div>
             </dl>
+          </div>
+        </div>
+      </section>
 
-            <div className="mt-7">
+      {/* The full story, read in a single comfortable column. */}
+      <section className="border-t border-outline-variant/70 bg-surface-container-lowest">
+        <div className="mx-auto w-full max-w-3xl px-6 py-14 lg:px-12 lg:py-20">
+          <ProductStory product={product} />
+        </div>
+      </section>
+
+      {/* Order controls close the story rather than opening the page. */}
+      <section id="order" className="border-t border-outline-variant/70 bg-surface-container-low">
+        <div className="mx-auto w-full max-w-7xl px-6 py-14 lg:px-12 lg:py-16">
+          <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.34em] text-tertiary">Order</p>
+              <h2 className="mt-3 font-headline text-3xl font-light leading-tight tracking-tight text-primary sm:text-4xl">
+                {product.name}
+              </h2>
+              <p className="mt-3 text-[11px] uppercase tracking-[0.22em] text-on-surface-variant">
+                {product.size} • {collectionName(product.category)}
+              </p>
+            </div>
+            <div className="lg:col-span-7">
               <AddToOrderCart product={product} />
             </div>
-
-            <p className="mt-5 border-t border-outline-variant/60 pt-4 text-[11px] leading-relaxed text-on-surface-variant">
-              Trade pricing, pack formats and minimum quantities are confirmed on request.{' '}
-              <Link href="/wholesale" className="font-semibold text-tertiary underline underline-offset-2 hover:text-primary">
-                Learn about wholesale
-              </Link>
-              .
-            </p>
           </div>
         </div>
       </section>
 
-      <section className="border-t border-outline-variant/70 bg-surface-container-lowest">
-        <div className="mx-auto w-full max-w-7xl px-6 py-14 lg:px-12 lg:py-20">
-          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-7 xl:col-span-8">
-              <ProductStory product={product} />
-            </div>
-            <aside className="lg:col-span-5 xl:col-span-4">
-              <div className="lg:sticky lg:top-28">
-                <IngredientsCard product={product} />
-              </div>
-            </aside>
-          </div>
-        </div>
-      </section>
-
-      {related.length > 0 ? (
+      {suggestions.length > 0 ? (
         <section className="mx-auto w-full max-w-7xl px-6 py-16 lg:px-12 lg:py-20">
-          <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
-            <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-tertiary">Continue Exploring</p>
-              <h2 className="mt-3 font-headline text-3xl font-light tracking-tight text-on-surface sm:text-4xl">
-                More from {collectionName(product.category)}
-              </h2>
-            </div>
-            <Link
-              href={`/collections/${product.category}`}
-              className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-[0.2em] text-on-surface transition-colors hover:text-tertiary"
-            >
-              View {collectionName(product.category)}
-              <span aria-hidden="true" className="material-symbols-outlined text-sm">
-                north_east
-              </span>
-            </Link>
+          <div className="mb-10">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-tertiary">Continue Exploring</p>
+            <h2 className="mt-3 font-headline text-3xl font-light tracking-tight text-on-surface sm:text-4xl">
+              More Afro-Gourmet Creations
+            </h2>
           </div>
-          <div>
-            {related.map((item, index) => (
-              <ProductShowcase
-                key={item.slug}
-                product={item}
-                index={index}
-                reverse={index % 2 === 1}
-              />
+          <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4">
+            {suggestions.map((item) => (
+              <ProductCard key={item.slug} product={item} />
             ))}
           </div>
         </section>

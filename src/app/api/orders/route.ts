@@ -78,7 +78,7 @@ export async function POST(request: Request) {
       console.error('[orders] email delivery is not configured:', error.message);
       return failure(
         503,
-        'Online order requests are not available yet because email delivery has not been configured. Please write to info@maisonasili.com in the meantime.'
+        'Online order requests are not available yet because email delivery has not been configured. Please write to enquiry@maisonasili.com in the meantime.'
       );
     }
 

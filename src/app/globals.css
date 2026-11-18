@@ -10,6 +10,8 @@
   body {
     margin: 0;
     padding: 0;
+    /* No sideways drift from wide carousels or media on small screens. */
+    overflow-x: clip;
   }
 
   body {
@@ -28,7 +30,7 @@
 
   ::selection {
     background-color: #d4b58c;
-    color: #210b36;
+    color: #380a36;
   }
 
   :focus-visible {
@@ -116,7 +118,7 @@ html::-webkit-scrollbar {
 /* Home — the hero banner is a normal, full-width block; the page body follows it. */
 #curtain-content {
   position: relative;
-  background-color: #ffffff;
+  background-color: #f8f0e6;
 }
 
 html {

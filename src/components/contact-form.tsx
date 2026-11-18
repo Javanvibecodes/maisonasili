@@ -161,7 +161,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={submitting}
-        className="self-start bg-on-surface px-8 py-4 text-xs font-semibold uppercase tracking-[0.25em] text-surface-container-lowest transition-colors hover:bg-primary disabled:cursor-not-allowed disabled:opacity-50"
+        className="self-start bg-on-surface px-8 py-4 text-xs font-semibold uppercase tracking-[0.25em] text-surface-container-lowest transition-colors sm:hover:bg-primary active:bg-on-surface disabled:cursor-not-allowed disabled:opacity-50"
       >
         {submitting ? 'Sending message…' : 'Send Message'}
       </button>

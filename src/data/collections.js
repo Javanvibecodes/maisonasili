@@ -2,7 +2,7 @@
  * Maison Asili — collection definitions.
  * Drives the collection pages, the home page collection cards, the shop filters
  * and the related-category links. Copy is brand-level and stays within the
- * client-approved range of spice blends, salt blends and botanical teas.
+ * client-approved range of spice blends, salt blends, botanical teas and culinary oils.
  */
 module.exports = [
   {
@@ -16,7 +16,7 @@ module.exports = [
       'Heritage spice blends composed for remarkable depth, aroma and natural umami. From the savannah fire of Bird’s Eye Chilli to the smoky warmth of Selim pepper, each blend is made for steaks, seafood, vegetables and the modern gourmet table.',
     media: 'collectionSpices',
     editorialMedia: 'collectionSpicesEditorial',
-    related: ['salts', 'tea'],
+    related: ['salts', 'oils'],
     editorialTitle: 'The shortest route from ordinary cooking to a memorable plate.',
     editorialBody:
       'Toast, crush and finish at the last moment: the difference is immediate. Build a rub for exceptional steaks, season seafood with citrus and hibiscus, or let a smoked blend carry the depth of a slow-roasted vegetable. These are kitchen ingredients, composed to be used.',
@@ -38,7 +38,7 @@ module.exports = [
       'Hand-harvested salts layered with moringa, pink pepper, hibiscus and citrus. These are finishing salts designed to bring mineral crispness, colour and aromatic lift to the final plate — never merely a substitute for seasoning.',
     media: 'collectionSalts',
     editorialMedia: 'collectionSaltsEditorial',
-    related: ['spices', 'tea'],
+    related: ['spices', 'oils'],
     editorialTitle: 'The last gesture before the table.',
     editorialBody:
       'A finishing salt should do more than season. Scatter it over grilled fish, avocado, carpaccio or fine vegetables and let the mineral texture, citrus brightness and botanical aroma arrive intact. Add it at the end, with a generous hand and a light touch.',
@@ -60,7 +60,7 @@ module.exports = [
       'Whole-leaf teas and botanical infusions chosen for aroma, colour and composure. From Kenyan purple tea to Malawian white tea, each blend is composed for the unhurried table and served with the same attention as the rest of the Maison Asili pantry.',
     media: 'collectionTea',
     editorialMedia: 'collectionTeaEditorial',
-    related: ['spices', 'salts'],
+    related: ['spices', 'oils'],
     editorialTitle: 'A slower ceremony for the modern table.',
     editorialBody:
       'Tea asks for patience and rewards it. Infuse by the pot for long afternoons, build clear iced brews for warm evenings, or pour a quiet cup at the end of the day. The leaves are whole, the flowers are whole, and the ritual is yours to keep.',
@@ -69,6 +69,28 @@ module.exports = [
       'Iced and cold-brew infusions',
       'Evening and after-dinner blends',
       'Pastry and dessert pairings'
+    ]
+  },
+  {
+    slug: 'oils',
+    index: '04',
+    name: 'Culinary Oils',
+    navName: 'Oils',
+    tagline: 'Cold-pressed oils for cooking and finishing',
+    eyebrow: 'The Oil Press',
+    intro:
+      'Cold-pressed oils pressed from whole Kenya AA macadamia nuts, infused with precious botanicals. Made to finish a plate, dress a salad or carry the aroma of Madagascar Bourbon vanilla to the table.',
+    media: 'collectionOils',
+    editorialMedia: 'collectionOilsEditorial',
+    related: ['spices', 'salts'],
+    editorialTitle: 'The last drop that finishes the plate.',
+    editorialBody:
+      'A finishing oil is a seasoning in liquid form. A few drops over seafood, salad or dessert carry aroma further than any dry spice can. Keep the bottle at the table, use it sparingly, and let the oil arrive uncooked.',
+    applications: [
+      'Finishing seafood, salads and vegetables',
+      'Pastry, desserts and chocolate',
+      'Gentle searing and roasting',
+      'Vinaigrettes and marinades'
     ]
   }
 ];

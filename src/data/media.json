@@ -1,16 +1,17 @@
 {
-  "logo": "assets/img/img-59efbbe90f.jpg",
-  "hero": "assets/img/editorial/spice-mounds.jpg",
+  "logo": "assets/img/logo.png",
+  "hero": "assets/img/editorial/wholesale-hero.jpg",
   "heritageArchive": "assets/img/editorial/terracotta-bowls.jpg",
   "editorial": "assets/img/editorial/herbs-and-spices.jpg",
   "culinary": "assets/img/editorial/spices-and-salts.jpg",
   "pdpGift": "assets/img/editorial/spices-on-wood.jpg",
   "heritageTea": "assets/img/editorial/steaming-tea.jpg",
-  "collectionSpices": "assets/img/products/savannah-fire.jpg",
-  "collectionSalts": "assets/img/products/tropical-pink-pepper-salt.jpg",
-  "collectionTea": "assets/img/products/royal-purple-elixir.jpg",
+  "collectionSpices": "assets/img/collections/spices.jpg",
+  "collectionSalts": "assets/img/collections/salts.jpg",
+  "collectionTea": "assets/img/collections/tea.jpg",
   "collectionSpicesEditorial": "assets/img/editorial/herbs-and-spices.jpg",
   "collectionSaltsEditorial": "assets/img/editorial/spices-and-salts.jpg",
   "collectionTeaEditorial": "assets/img/editorial/tea-blends.jpg",
-  "videoBotanical": "assets/video/botanical-infusion-forest.mp4"
+  "collectionOils": "assets/img/collections/oils.jpg",
+  "collectionOilsEditorial": "assets/img/products/bourbon-orchid.jpg"
 }

@@ -404,7 +404,7 @@ export function OrderRequestForm({ lines, onSubmitted }: OrderRequestFormProps) 
         <button
           type="submit"
           disabled={submitting || lines.length === 0}
-          className="bg-on-surface px-3 py-4 text-[9px] font-semibold uppercase leading-tight tracking-[0.1em] text-surface-container-lowest transition-colors hover:bg-primary disabled:cursor-not-allowed disabled:opacity-50 sm:px-8 sm:text-xs sm:tracking-[0.25em]"
+          className="bg-on-surface px-3 py-4 text-[9px] font-semibold uppercase leading-tight tracking-[0.1em] text-surface-container-lowest transition-colors sm:hover:bg-primary active:bg-on-surface disabled:cursor-not-allowed disabled:opacity-50 sm:px-8 sm:text-xs sm:tracking-[0.25em]"
         >
           {submitting ? 'Submitting request…' : 'Submit Wholesale Order Request'}
         </button>

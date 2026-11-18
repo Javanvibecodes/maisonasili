@@ -22,16 +22,21 @@ function splitRecipients(value: string | undefined): string[] {
 
 export function orderNotificationRecipients(): string[] {
   const configured = splitRecipients(process.env.ORDER_NOTIFICATION_EMAIL);
-  return configured.length > 0 ? configured : ['info@maisonasili.com'];
+  return configured.length > 0 ? configured : ['martinjavan011@gmail.com'];
 }
 
 export function enquiryNotificationRecipients(): string[] {
   const configured = splitRecipients(process.env.ENQUIRY_NOTIFICATION_EMAIL);
-  return configured.length > 0 ? configured : orderNotificationRecipients();
+  return configured.length > 0 ? configured : ['martinjavan011@gmail.com'];
 }
 
 function emailFrom(): string {
-  return process.env.ORDER_FROM_EMAIL?.trim() ?? '';
+  return (
+    process.env.ORDER_FROM_EMAIL?.trim() ||
+    process.env.ENQUIRY_FROM_EMAIL?.trim() ||
+    process.env.RESEND_FROM_EMAIL?.trim() ||
+    'Maison Asili <enquiry@maisonasili.com>'
+  );
 }
 
 /**

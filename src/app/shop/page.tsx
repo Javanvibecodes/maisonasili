@@ -1,87 +1,61 @@
 import type { Metadata } from 'next';
-import { ProductExplorer } from '@/components/product-explorer';
-import { products } from '@/lib/catalog';
+import Link from 'next/link';
+import { ProductCard } from '@/components/product-card';
+import { collections, productsInCollection } from '@/lib/catalog';
 
 export const metadata: Metadata = {
   title: 'The Collection',
   description:
-    'Explore the Maison Asili collection: heritage spice blends, botanical finishing salts and rare African teas, composed in our Berlin atelier. Trade pricing available on request.'
+    'Explore the Maison Asili collection: heritage spice blends, botanical finishing salts, rare African teas and cold-pressed culinary oils, composed in our Berlin atelier. Trade pricing available on request.'
 };
-
-const discoveryCards = [
-  {
-    index: '01',
-    title: 'Small-Batch Blending',
-    body: 'Every blend is composed and packed by hand in micro-batches at our Berlin atelier.'
-  },
-  {
-    index: '02',
-    title: 'Botanical Salts',
-    body: 'Hand-harvested salts are layered with moringa, pink pepper, hibiscus and citrus zest.'
-  },
-  {
-    index: '03',
-    title: 'Whole-Leaf Teas',
-    body: 'Kenyan purple tea and Malawian white tea, blended with whole flowers and botanical infusions.'
-  }
-];
 
 export default function ShopPage() {
   return (
-    <main className="min-h-[calc(100vh-140px)] w-full bg-surface-container-lowest">
-      <section className="relative w-full px-6 py-16 lg:px-12 lg:py-24">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-end gap-12 lg:grid-cols-12">
-          <div className="space-y-6 lg:col-span-8">
-            <h1 className="font-headline text-4xl font-light leading-[1.1] tracking-tight text-on-surface sm:text-5xl lg:text-6xl">
-              The Maison Asili <span className="font-normal italic text-tertiary">Collection</span>
-            </h1>
-            <p className="max-w-2xl text-base font-normal leading-relaxed text-on-surface-variant sm:text-lg">
-              Explore eight small-batch creations: heritage spice blends, botanical finishing salts and rare African
-              teas, composed in our Berlin atelier and rooted in the continent’s finest growing regions.
-            </p>
-          </div>
-
-          <div className="flex flex-col justify-end gap-6 bg-surface-container-lowest p-6 shadow-sm sm:flex-row lg:col-span-4 lg:flex-col">
-            {[
-              ['Sourcing Ethics', '100% Direct Fair Trade'],
-              ['Harvest Season', 'Current Reserve'],
-              ['Shipping Atelier', 'Charlottenburg, Berlin']
-            ].map(([label, value]) => (
-              <div key={label} className="flex items-center justify-between">
-                <div className="text-xs uppercase tracking-widest text-on-surface-variant">{label}</div>
-                <span className="text-xs font-semibold tracking-wider text-on-surface">{value}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+    <main className="min-h-[calc(100vh-140px)] w-full bg-background">
+      <section className="mx-auto w-full max-w-7xl px-6 pb-10 pt-12 lg:px-12 lg:pb-14 lg:pt-20">
+        <h1 className="max-w-2xl font-headline text-4xl font-light leading-[1.1] tracking-tight text-on-surface sm:text-5xl lg:text-6xl">
+          The Maison Asili <span className="font-normal italic text-tertiary">Collection</span>
+        </h1>
+        <p className="mt-5 max-w-2xl text-sm leading-relaxed text-on-surface-variant sm:text-base">
+          Ten small-batch creations across four collections: heritage spice blends, botanical finishing salts, rare
+          African teas and cold-pressed culinary oils.
+        </p>
       </section>
 
-      <ProductExplorer products={products} />
+      {collections.map((collection) => {
+        const items = productsInCollection(collection.slug);
 
-      <section className="my-8 w-full px-6 py-16 lg:px-12">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 lg:grid-cols-12">
-          <div className="space-y-4 lg:col-span-4">
-            <h2 className="font-headline text-2xl font-light leading-tight text-on-surface sm:text-3xl">
-              Purity of Provenance. <br />
-              <span className="font-normal italic">Excellence in Execution.</span>
-            </h2>
-            <p className="text-xs leading-relaxed text-on-surface-variant sm:text-sm">
-              Every harvest in our catalogue represents uncompromised micro-terroir transparency. We collaborate
-              directly with women-led farming co-ops and generational herbalists across Eastern and Western Africa.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 lg:col-span-8">
-            {discoveryCards.map((card) => (
-              <div key={card.index} className="flex h-48 flex-col justify-end bg-surface-container-lowest p-6 shadow-sm">
-                <div>
-                  <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-on-surface">{card.title}</div>
-                  <p className="text-[11px] leading-relaxed text-on-surface-variant">{card.body}</p>
-                </div>
+        return (
+          <section key={collection.slug} id={collection.slug} className="mx-auto w-full max-w-7xl px-6 pb-12 lg:px-12 lg:pb-16">
+            <div className="mb-6 flex flex-wrap items-end justify-between gap-3 border-t border-outline-variant pt-7">
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-tertiary">
+                  {items.length} {items.length === 1 ? 'provision' : 'provisions'}
+                </p>
+                <h2 className="mt-2 font-headline text-2xl font-light tracking-tight text-on-surface sm:text-3xl">
+                  {collection.name}
+                </h2>
+                <p className="mt-1.5 text-xs leading-relaxed text-on-surface-variant">{collection.tagline}</p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+              <Link
+                href={`/collections/${collection.slug}`}
+                className="flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.2em] text-on-surface transition-colors hover:text-tertiary"
+              >
+                Explore
+                <span aria-hidden="true" className="material-symbols-outlined text-sm">
+                  north_east
+                </span>
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4">
+              {items.map((product) => (
+                <ProductCard key={product.slug} product={product} />
+              ))}
+            </div>
+          </section>
+        );
+      })}
     </main>
   );
 }

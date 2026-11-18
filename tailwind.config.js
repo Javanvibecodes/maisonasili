@@ -5,15 +5,18 @@
  * on-surface, tertiary ...) kept from the supplied design so existing class
  * names keep working, remapped to the current brand palette:
  *
- *   Deep Plum    #210B36  (primary)
- *   White        #FFFFFF  (surface / background)
+ *   Royal Plum   #380A36  (primary)
+ *   Ivory        #F8F0E6  (surface / background)
  *   Antique Gold #D4B58C  (accent / brand-gold)
- *   Warm Sand    #F4EFE6  (secondary surfaces)
+ *   Warm Sand    #F0E6D6  (secondary surfaces)
  *
  * NOTE: this file must only contain Tailwind configuration. A previous
  * conversion pasted Next.js options in here, which broke every brand token.
  */
 module.exports = {
+  future: {
+    hoverOnlyWhenSupported: true
+  },
   darkMode: 'class',
   content: [
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
@@ -23,18 +26,18 @@ module.exports = {
     extend: {
       colors: {
         /* ---- Brand accents ---- */
-        primary: '#210B36',
+        primary: '#380A36',
         'on-primary': '#F8F0E6',
-        'primary-container': '#EDE4F3',
-        'on-primary-container': '#3B2452',
+        'primary-container': '#F1E5EC',
+        'on-primary-container': '#4A2446',
         'inverse-primary': '#D4B58C',
-        'primary-fixed': '#EDE4F3',
-        'primary-fixed-dim': '#DCCDE8',
-        'on-primary-fixed': '#210B36',
-        'on-primary-fixed-variant': '#4A2E63',
+        'primary-fixed': '#F1E5EC',
+        'primary-fixed-dim': '#E0CEDA',
+        'on-primary-fixed': '#380A36',
+        'on-primary-fixed-variant': '#5C2E57',
 
         secondary: '#D4B58C',
-        'on-secondary': '#210B36',
+        'on-secondary': '#380A36',
         'secondary-container': '#F3E8D7',
         'on-secondary-container': '#4A3D1F',
         'inverse-secondary': '#D4B58C',
@@ -53,22 +56,22 @@ module.exports = {
         'on-tertiary-fixed-variant': '#5C4A22',
 
         /* ---- Surfaces ---- */
-        background: '#FFFFFF',
-        'on-background': '#171122',
-        surface: '#FFFFFF',
-        'surface-bright': '#FFFFFF',
-        'surface-dim': '#E8E1D6',
-        'surface-variant': '#F4EFE6',
-        'surface-container-lowest': '#FFFFFF',
-        'surface-container-low': '#FAF7F2',
-        'surface-container': '#F5F0E8',
-        'surface-container-high': '#F0E9DF',
-        'surface-container-highest': '#EAE1D5',
-        'surface-tint': '#210B36',
-        'on-surface': '#171122',
-        'on-surface-variant': '#5A5264',
-        outline: '#8A8394',
-        'outline-variant': '#E2D9CE',
+        background: '#F8F0E6',
+        'on-background': '#1F1722',
+        surface: '#F8F0E6',
+        'surface-bright': '#FCF8F2',
+        'surface-dim': '#E9DED0',
+        'surface-variant': '#F2E9DC',
+        'surface-container-lowest': '#FCF8F2',
+        'surface-container-low': '#F5EDE1',
+        'surface-container': '#F0E6D8',
+        'surface-container-high': '#EADFD0',
+        'surface-container-highest': '#E4D7C5',
+        'surface-tint': '#380A36',
+        'on-surface': '#1F1722',
+        'on-surface-variant': '#574F5C',
+        outline: '#8B848F',
+        'outline-variant': '#E0D5C6',
         'inverse-surface': '#2C2A25',
         'inverse-on-surface': '#F8F0E6',
         'inverse-outline': '#44413A',
@@ -83,14 +86,14 @@ module.exports = {
         gold: '#9E7B3B',
         'gold-light': '#C9A86A',
         'gold-dark': '#7A5E26',
-        'warm-sand': '#F4EFE6',
-        'warm-alabaster': '#F7F5F0',
-        'warm-ivory': '#FAF8F5',
+        'warm-sand': '#F0E6D6',
+        'warm-alabaster': '#FAF4EC',
+        'warm-ivory': '#FCF8F2',
         'stone-dark': '#181716',
         'stone-charcoal': '#2A2825',
         'stone-muted': '#68645E',
-        'stone-border': '#E5DFD5',
-        'stone-border-light': '#EFEAE1',
+        'stone-border': '#E0D5C6',
+        'stone-border-light': '#EDE4D7',
 
         /* ---- Raw brand swatches ---- */
         ivory: '#F8F0E6',
