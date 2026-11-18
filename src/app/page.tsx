@@ -33,7 +33,7 @@ export default function HomePage() {
   return (
     <main className="relative w-full">
       {/* ── Hero banner — shown in full at every width; the page body follows immediately ── */}
-      <section className="w-full bg-[#0b0906]" aria-label="Maison Asili — Origin. Identity. Heritage.">
+      <section className="w-full bg-primary" aria-label="Maison Asili — Origin. Identity. Heritage.">
         <Image
           src="/assets/img/hero-banner-actual.jpg"
           alt="Maison Asili — Afro-Gourmet Fusion: spices, oils, teas and coffee. Origin. Identity. Heritage."
