@@ -101,7 +101,7 @@ export function SiteFooter() {
         </div>
 
         <div className="flex flex-row flex-wrap items-center justify-between gap-3 border-t border-brand-gold/20 pt-6 text-[10px] uppercase tracking-wider text-on-primary/60 sm:pt-8 sm:text-[11px]">
-          <div>© 2026 Maison Asili • Berlin • Nairobi</div>
+          <div>© 2026 Maison Asili • Berlin</div>
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
             <Link href="/privacy" className="transition-colors hover:text-brand-gold">
               Privacy Policy
