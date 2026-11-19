@@ -37,7 +37,7 @@ export interface Product {
   imageSource: string;
   imageWidth: number;
   imageHeight: number;
-  /** White-background pack shot shown as the second gallery view. */
+  /** White-background pack shot shown as the first gallery view and on product cards. */
   packshot: string;
   packshotSource: string;
   packshotWidth: number;

@@ -8,10 +8,10 @@ export function ProductCard({ product }: { product: Product }) {
       <div className="relative aspect-square w-full overflow-hidden bg-surface-container">
         <Link href={`/product/${product.slug}`} tabIndex={-1} aria-hidden="true" className="block h-full w-full">
           <Image
-            src={assetPath(product.image)}
+            src={assetPath(product.packshot)}
             alt={`${product.name} — ${product.subtitle}`}
-            width={product.imageWidth}
-            height={product.imageHeight}
+            width={product.packshotWidth}
+            height={product.packshotHeight}
             sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 68vw"
             className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
           />

@@ -11,16 +11,16 @@ import { assetPath, type Product } from '@/lib/catalog';
 export function ProductGallery({ product }: { product: Product }) {
   const views = [
     {
-      src: product.image,
-      width: product.imageWidth,
-      height: product.imageHeight,
-      label: 'Styled photograph'
-    },
-    {
       src: product.packshot,
       width: product.packshotWidth,
       height: product.packshotHeight,
       label: 'Product pack shot'
+    },
+    {
+      src: product.image,
+      width: product.imageWidth,
+      height: product.imageHeight,
+      label: 'Styled photograph'
     }
   ];
 
@@ -30,7 +30,6 @@ export function ProductGallery({ product }: { product: Product }) {
   return (
     <div>
       <div className="relative overflow-hidden bg-warm-sand">
-        <span aria-hidden="true" className="absolute inset-3 z-10 border border-brand-gold/35 sm:inset-6" />
         <div className="relative aspect-square w-full">
           <Image
             key={current.src}
