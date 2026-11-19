@@ -22,12 +22,12 @@ function splitRecipients(value: string | undefined): string[] {
 
 export function orderNotificationRecipients(): string[] {
   const configured = splitRecipients(process.env.ORDER_NOTIFICATION_EMAIL);
-  return configured.length > 0 ? configured : ['martinjavan011@gmail.com'];
+  return configured.length > 0 ? configured : ['info@maisonasili.com'];
 }
 
 export function enquiryNotificationRecipients(): string[] {
   const configured = splitRecipients(process.env.ENQUIRY_NOTIFICATION_EMAIL);
-  return configured.length > 0 ? configured : ['martinjavan011@gmail.com'];
+  return configured.length > 0 ? configured : ['info@maisonasili.com'];
 }
 
 function emailFrom(): string {
@@ -35,7 +35,7 @@ function emailFrom(): string {
     process.env.ORDER_FROM_EMAIL?.trim() ||
     process.env.ENQUIRY_FROM_EMAIL?.trim() ||
     process.env.RESEND_FROM_EMAIL?.trim() ||
-    'Maison Asili <enquiry@maisonasili.com>'
+    'Maison Asili <info@maisonasili.com>'
   );
 }
 

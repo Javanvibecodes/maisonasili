@@ -64,8 +64,8 @@ export function SiteFooter() {
                   </Link>
                 </li>
                 <li>
-                  <a href="mailto:enquiry@maisonasili.com" className="break-all transition-colors hover:text-brand-gold">
-                    enquiry@maisonasili.com
+                  <a href="mailto:info@maisonasili.com" className="break-all transition-colors hover:text-brand-gold">
+                    info@maisonasili.com
                   </a>
                 </li>
                 <li>

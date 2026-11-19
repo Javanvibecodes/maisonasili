@@ -103,8 +103,8 @@ export default function WholesalePage() {
                 <h3 className="font-headline text-lg font-semibold text-white">Talk to us directly</h3>
                 <p className="text-xs leading-relaxed text-white/70">
                   Buyer enquiries:{' '}
-                  <a href="mailto:enquiry@maisonasili.com" className="text-brand-gold transition-colors hover:text-white">
-                    enquiry@maisonasili.com
+                  <a href="mailto:info@maisonasili.com" className="text-brand-gold transition-colors hover:text-white">
+                    info@maisonasili.com
                   </a>
                 </p>
               </div>

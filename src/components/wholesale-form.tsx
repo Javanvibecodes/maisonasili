@@ -270,8 +270,8 @@ export function WholesaleForm() {
         </button>
         <span className="text-[11px] text-on-surface-variant">
           or write to{' '}
-          <a href="mailto:enquiry@maisonasili.com" className="text-tertiary transition-colors hover:text-on-surface">
-            enquiry@maisonasili.com
+          <a href="mailto:info@maisonasili.com" className="text-tertiary transition-colors hover:text-on-surface">
+            info@maisonasili.com
           </a>
         </span>
       </div>

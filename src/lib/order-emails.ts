@@ -10,7 +10,7 @@ const BRAND = {
   line: '#E2D9CE'
 } as const;
 
-const CONTACT_EMAIL = 'enquiry@maisonasili.com';
+const CONTACT_EMAIL = 'info@maisonasili.com';
 
 export interface ResolvedOrderLine {
   product: Product;

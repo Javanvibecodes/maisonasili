@@ -56,10 +56,10 @@ export default function ContactPage() {
                       Buyer &amp; general enquiries
                     </span>
                     <a
-                      href="mailto:enquiry@maisonasili.com"
+                      href="mailto:info@maisonasili.com"
                       className="font-medium text-on-surface transition-colors hover:text-tertiary"
                     >
-                      enquiry@maisonasili.com
+                      info@maisonasili.com
                     </a>
                   </div>
                 </div>
