@@ -29,7 +29,7 @@ export function ProductGallery({ product }: { product: Product }) {
 
   return (
     <div>
-      <div className="relative overflow-hidden bg-warm-sand">
+      <div className="relative overflow-hidden bg-white">
         <div className="relative aspect-square w-full">
           <Image
             key={current.src}
@@ -38,7 +38,7 @@ export function ProductGallery({ product }: { product: Product }) {
             fill
             sizes="(min-width: 1024px) 55vw, 100vw"
             priority
-            className="object-cover"
+            className="object-contain"
           />
         </div>
 
@@ -65,10 +65,8 @@ export function ProductGallery({ product }: { product: Product }) {
             onClick={() => setActive(index)}
             aria-label={`Show ${view.label}`}
             aria-pressed={active === index}
-            className={`h-14 w-12 shrink-0 border bg-warm-ivory p-0.5 transition-colors sm:h-24 sm:w-20 sm:p-1.5 ${
-              active === index
-                ? 'border-primary'
-                : 'border-outline-variant hover:border-brand-gold'
+            className={`h-14 w-12 shrink-0 bg-white p-0.5 transition-opacity sm:h-24 sm:w-20 sm:p-1.5 ${
+              active === index ? 'opacity-100' : 'opacity-55 hover:opacity-80'
             }`}
           >
             <Image

@@ -7,6 +7,9 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 60 * 60 * 24 * 30 // 30 days
   },
+  redirects: async () => [
+    { source: '/wholesale', destination: '/enquiries', permanent: true }
+  ],
   headers: async () => [
     {
       source: '/assets/fonts/:path*',

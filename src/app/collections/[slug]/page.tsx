@@ -73,7 +73,7 @@ export default function CollectionPage({ params }: CollectionPageProps) {
                 <span aria-hidden="true" className="material-symbols-outlined text-sm text-tertiary">
                   local_shipping
                 </span>
-                Trade pricing on request
+                Small-Batch Pre-Launch — Private &amp; Trade Enquiries
               </span>
             </div>
           </div>
@@ -81,7 +81,7 @@ export default function CollectionPage({ params }: CollectionPageProps) {
           {/* Hero image is desktop-only: at small widths the full-bleed square
               pushes the collection title far below the fold. */}
           <div className="relative hidden lg:col-span-6 lg:block">
-            <div className="relative aspect-square w-full overflow-hidden bg-surface-container shadow-sm">
+            <div className="relative aspect-square w-full overflow-hidden bg-white">
               {heroSrc ? (
                 <Image
                   src={assetPath(heroSrc)}

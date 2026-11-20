@@ -35,7 +35,7 @@ module.exports = [
     tagline: 'Botanical salt blends and finishing salts',
     eyebrow: 'The Salt Cellar',
     intro:
-      'Hand-harvested salts layered with moringa, pink pepper, hibiscus and citrus. These are finishing salts designed to bring mineral crispness, colour and aromatic lift to the final plate — never merely a substitute for seasoning.',
+      'Beyond seasoning lies the art of finishing. Our salts bring together distinctive African botanicals, vibrant spices and carefully selected ingredients to create expressive blends that awaken the senses and bring character to the final plate. Each composition celebrates the beauty of its ingredients, adding colour, aroma and depth to contemporary cuisine.',
     media: 'collectionSalts',
     editorialMedia: 'collectionSaltsEditorial',
     related: ['spices', 'oils'],
@@ -57,7 +57,7 @@ module.exports = [
     tagline: 'Rare leaves, flowers and botanical infusions',
     eyebrow: 'The Tea Room',
     intro:
-      'Whole-leaf teas and botanical infusions chosen for aroma, colour and composure. From Kenyan purple tea to Malawian white tea, each blend is composed for the unhurried table and served with the same attention as the rest of the Maison Asili pantry.',
+      'Our botanical teas celebrate the richness and diversity of African teas and botanicals. Drawing on distinctive leaves, flowers, fruits and plants, we bring together carefully selected ingredients to create blends with individual character, colour and depth. Each blend is an invitation to discover something distinctive, inspired by the natural treasures and botanical heritage of Africa.',
     media: 'collectionTea',
     editorialMedia: 'collectionTeaEditorial',
     related: ['spices', 'oils'],
@@ -79,7 +79,7 @@ module.exports = [
     tagline: 'Cold-pressed oils for cooking and finishing',
     eyebrow: 'The Oil Press',
     intro:
-      'Cold-pressed oils pressed from whole Kenya AA macadamia nuts, infused with precious botanicals. Made to finish a plate, dress a salad or carry the aroma of Madagascar Bourbon vanilla to the table.',
+      'Our culinary oils bring together carefully selected oils and distinctive botanical ingredients, crafted to add character and depth to contemporary cuisine. From the delicate richness of cold-pressed macadamia oil, made from premium Kenya AA macadamia nuts, to the aromatic warmth of Madagascar Bourbon vanilla, each oil offers its own distinctive expression and culinary possibilities.',
     media: 'collectionOils',
     editorialMedia: 'collectionOilsEditorial',
     related: ['spices', 'salts'],

@@ -113,7 +113,7 @@ export function OrderRequestForm({ lines, onSubmitted }: OrderRequestFormProps) 
         setErrors(result?.errors ?? {});
         setFormError(
           result?.message ??
-            'We could not submit your order request. Your order cart has been kept — please try again in a moment.'
+            'We could not submit your enquiry. Your enquiry selection has been kept — please try again in a moment.'
         );
         const firstField = result?.errors ? Object.keys(result.errors)[0] : undefined;
         const firstId = firstField ? fieldIds[firstField] : undefined;
@@ -128,7 +128,7 @@ export function OrderRequestForm({ lines, onSubmitted }: OrderRequestFormProps) 
       });
     } catch {
       setFormError(
-        'We could not reach the Maison Asili server. Your order cart has been kept — please check your connection and try again.'
+        'We could not reach the Maison Asili server. Your enquiry selection has been kept — please check your connection and try again.'
       );
     } finally {
       setSubmitting(false);
@@ -406,7 +406,7 @@ export function OrderRequestForm({ lines, onSubmitted }: OrderRequestFormProps) 
           disabled={submitting || lines.length === 0}
           className="bg-on-surface px-3 py-4 text-[9px] font-semibold uppercase leading-tight tracking-[0.1em] text-surface-container-lowest transition-colors sm:hover:bg-primary active:bg-on-surface disabled:cursor-not-allowed disabled:opacity-50 sm:px-8 sm:text-xs sm:tracking-[0.25em]"
         >
-          {submitting ? 'Submitting request…' : 'Submit Wholesale Order Request'}
+          {submitting ? 'Submitting request…' : 'Submit Enquiry'}
         </button>
         <p className="max-w-sm text-[11px] leading-relaxed text-on-surface-variant">
           Submitting this form does not place an order. Maison Asili will confirm availability, trade pricing and

@@ -92,7 +92,7 @@ export function AddToOrderCart({ product, variant = 'full' }: AddToOrderCartProp
           >
             add_shopping_cart
           </span>
-          <span>Add to Order Cart</span>
+          <span>Add to Enquiry Selection</span>
         </button>
       </div>
 
@@ -105,9 +105,9 @@ export function AddToOrderCart({ product, variant = 'full' }: AddToOrderCartProp
       >
         {added ? (
           <>
-            {qty} × {product.name} added to your order cart.{' '}
+            {qty} × {product.name} added to your enquiry selection.{' '}
             <Link href="/cart" className="font-semibold underline underline-offset-2 hover:text-primary">
-              Review your order cart
+              Review your enquiry selection
             </Link>
           </>
         ) : null}
@@ -119,10 +119,11 @@ export function AddToOrderCart({ product, variant = 'full' }: AddToOrderCartProp
             request_quote
           </span>
           <div className="text-xs">
-            <p className="font-semibold text-on-surface">Trade pricing on request</p>
+            <p className="font-semibold text-on-surface">Small-Batch Pre-Launch — Private &amp; Trade Enquiries</p>
             <p className="mt-0.5 text-[11px] leading-relaxed text-on-surface-variant">
-              Add the quantities you need and submit a wholesale order request. Maison Asili will confirm availability,
-              trade pricing and fulfilment with you directly.
+              Your selection is a direct order enquiry. We will confirm availability, pricing, and collection or
+              delivery options with you personally—or visit us at our Berlin market stalls. No payment is taken on this
+              website.
             </p>
           </div>
         </div>

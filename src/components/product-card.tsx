@@ -4,8 +4,8 @@ import { assetPath, type Product } from '@/lib/catalog';
 
 export function ProductCard({ product }: { product: Product }) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-outline-variant/60 bg-surface-container-lowest shadow-sm transition-[border-color,box-shadow] duration-300 hover:border-brand-gold/80 hover:shadow-md">
-      <div className="relative aspect-square w-full overflow-hidden bg-surface-container">
+    <article className="group flex h-full flex-col bg-surface-container-lowest">
+      <div className="relative aspect-square w-full overflow-hidden bg-white">
         <Link href={`/product/${product.slug}`} tabIndex={-1} aria-hidden="true" className="block h-full w-full">
           <Image
             src={assetPath(product.packshot)}
@@ -13,7 +13,7 @@ export function ProductCard({ product }: { product: Product }) {
             width={product.packshotWidth}
             height={product.packshotHeight}
             sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 68vw"
-            className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+            className="h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.03]"
           />
         </Link>
       </div>

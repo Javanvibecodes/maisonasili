@@ -101,7 +101,3 @@ export function productsInCollection(slug: string): Product[] {
 export function collectionName(category: string): string {
   return collections.find((collection) => collection.slug === category)?.name ?? category;
 }
-
-export function isCategory(value: string): value is Category {
-  return collections.some((collection) => collection.slug === value);
-}

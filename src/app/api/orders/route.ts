@@ -88,7 +88,7 @@ export async function POST(request: Request) {
     );
     return failure(
       502,
-      'We could not deliver your order request just now. Your order cart has been kept — please try again in a moment.'
+      'We could not deliver your enquiry just now. Your enquiry selection has been kept — please try again in a moment.'
     );
   }
 
@@ -115,7 +115,7 @@ export async function POST(request: Request) {
     reference: context.reference,
     acknowledgementSent,
     message: acknowledgementSent
-      ? 'Your wholesale order request has been received. An acknowledgement has been sent to your email address.'
-      : 'Your wholesale order request has been received. We could not send the acknowledgement email, but our team has your request and will follow up directly.'
+      ? 'Your enquiry has been received. An acknowledgement has been sent to your email address.'
+      : 'Your enquiry has been received. We could not send the acknowledgement email, but we have your request and will follow up directly.'
   });
 }

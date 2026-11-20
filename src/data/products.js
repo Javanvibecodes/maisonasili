@@ -23,7 +23,7 @@ module.exports = [
     slug: 'savannah-fire',
     name: 'Savannah Fire',
     subtitle: 'Premium African Steak Seasoning',
-    microDescription: "Smoky African steak seasoning with bird's eye chilli, grains of paradise and smoked garlic, made for grilled meats.",
+    microDescription: "Smoky African steak seasoning with Bird's Eye Chilli, grains of paradise and smoked garlic, made for grilled meats.",
     category: 'spices',
     size: '130 g Jar',
     label: 'Signature Blend',
@@ -62,7 +62,7 @@ module.exports = [
       'Smoked Garlic'
     ],
     ingredientsNote:
-      'The original recipe also refers to carefully selected spices whose identities are still being confirmed. Full formulation available on request.',
+      'Completed with our signature blend of traditional African spices. Full allergen details available upon request.',
     productType: 'Premium African Steak Seasoning',
     origin: 'African botanicals, blended in Berlin.',
     image: 'assets/img/products/savannah-fire.jpg',
@@ -120,7 +120,7 @@ module.exports = [
       craft: 'Small-batch crafted. Carefully selected natural ingredients. No artificial additives or preservatives.'
     },
     ingredients: [
-      'Selim Pepper (Negro Pepper)',
+      'Selim Pepper (Grains of Selim)',
       'Grains of Paradise',
       'Smoked Paprika',
       'Coriander',
@@ -143,29 +143,34 @@ module.exports = [
   {
     slug: 'tropical-pink-pepper-salt',
     name: 'Tropical Pink Pepper Salt',
-    subtitle: 'Flamingo Pink',
+    subtitle: 'Flamingo Pink — Hand-Harvested Sea Salt',
     microDescription: 'Hand-harvested sea salt with pink peppercorn, hibiscus and citrus zest for seafood, salads and grilled fish.',
     category: 'salts',
-    size: '100 g Jar',
+    size: '70 g Jar',
     label: 'Flamingo Pink',
     eyebrow: 'Hand-Harvested Sea Salt',
     description:
       'Tropical Pink Pepper Salt masterfully blends hand-harvested sea salt with the bright, fruity notes of premium pink peppercorns, vibrant hibiscus and delicate citrus zest. This elegant flamingo-pink blend adds colour, freshness and refined complexity to seafood, grilled fish, poultry, summer salads and gourmet creations.',
     story: {
+      heading: 'The Sun-Kissed Horizon of the Coast',
       paragraphs: [
-        'Tropical Pink Pepper Salt masterfully blends hand-harvested sea salt with the bright, fruity notes of premium pink peppercorns, vibrant hibiscus and a delicate touch of citrus zest.',
-        'This elegant flamingo-pink blend brings a beautiful splash of colour and refined complexity to every dish.',
-        'Crafted for exceptional seafood, grilled fish, poultry, fresh summer salads, carpaccio, avocado and goat cheese, it delivers a vibrant tropical finish with remarkable freshness and natural elegance.'
+        'Where the wild tropical breeze sweeps across coastal shores, a captivating fusion of warmth and minerality is born.',
+        'Tropical Pink Pepper Salt is a vibrant Afro-Gourmet Fusion creation that masterfully pairs pure, hand-harvested sea salt with the bright, fruity notes of premium pink peppercorns, delicate hibiscus, and the uplifting citrus zest of sun-ripened fruits.',
+        'The result is an exquisite, multi-layered finishing salt with a beautiful interplay of mineral crispness, floral elegance, and a gentle, creeping warmth. The refreshing pop of the pink peppercorn dances gracefully with the subtle tartness of hibiscus, while the citrus zest cuts through with crisp, sun-drenched brightness.',
+        'Created for the art of finishing, Tropical Pink Pepper Salt transforms the simplest plates into a memorable culinary landscape. A delicate scatter awakens the creamy richness of ripe avocado and goat cheese, lends an elegant botanical contrast to beef or salmon carpaccio, and crowns grilled seafood, delicate white fish, and fresh summer salads with a vibrant burst of flavor and visual poetry.',
+        'More than a seasoning. A final flourish that captures the natural elegance of the tropics.'
       ],
-      flavour: ['Fruity', 'Zesty', 'Floral', 'Subtle Heat', 'Crisp Brightness'],
+      flavour: ['Fruity Peppercorn', 'Zesty Citrus', 'Floral Hibiscus', 'Subtle Heat', 'Crisp Brightness'],
       beautifulWith: [
-        'Seafood',
-        'Grilled Fish',
-        'Poultry',
-        'Summer Salads',
-        'Carpaccio',
-        'Avocado',
-        'Goat Cheese'
+        'Gourmet Carpaccio',
+        'Creamy Avocado',
+        'Fresh Summer Salads',
+        'Goat Cheese',
+        'Grilled Seafood',
+        'Roasted Poultry'
+      ],
+      touch: [
+        'Sprinkle lightly over your finished dish just before serving to preserve its delicate crunch, vibrant flamingo-pink colour, and aromatic freshness. Never cook it in — let its beautiful texture and tropical character shine directly on the plate.'
       ],
       craft: 'Handcrafted in small batches using carefully selected ingredients.'
     },
@@ -251,7 +256,7 @@ module.exports = [
   {
     slug: 'emerald-moringa',
     name: 'Emerald Moringa',
-    subtitle: 'Moringa & Lemon Zest',
+    subtitle: 'African Salt Blend — Moringa & Lemon Zest',
     microDescription: 'A green finishing salt of moringa, lemon zest and white pepper for avocado, carpaccio and fine vegetables.',
     category: 'salts',
     size: '100 g Jar',
@@ -355,7 +360,7 @@ module.exports = [
     slug: 'mara-moon',
     name: 'Mara Moon',
     subtitle: 'Luxury Evening Botanical Tea',
-    microDescription: "A caffeine-free evening blend of white tea, green rooibos, lavender and chamomile with soft coconut sweetness.",
+    microDescription: "A soothing evening blend of Silver Needle white tea, green rooibos, lavender and chamomile with soft coconut sweetness.",
     category: 'tea',
     size: '50 g Loose Leaf',
     label: 'Evening Reserve',
@@ -394,7 +399,7 @@ module.exports = [
   {
     slug: 'desert-gold',
     name: 'Desert Gold',
-    subtitle: 'Malawian White Tea',
+    subtitle: 'Malawian White Tea | Luxury Botanical Fusion',
     microDescription: 'Malawian Silver Tip white tea with orange blossom, calendula and lemongrass for a delicate golden infusion.',
     category: 'tea',
     size: '50 g Loose Leaf',

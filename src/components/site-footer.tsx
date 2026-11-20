@@ -33,8 +33,8 @@ export function SiteFooter() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/wholesale" className="transition-colors hover:text-brand-gold">
-                    Wholesale
+                  <Link href="/enquiries" className="transition-colors hover:text-brand-gold">
+                    Enquiries
                   </Link>
                 </li>
                 <li>
@@ -47,7 +47,7 @@ export function SiteFooter() {
                 </li>
                 <li>
                   <Link href="/cart" className="transition-colors hover:text-brand-gold">
-                    Order Cart
+                    Enquiry Selection
                   </Link>
                 </li>
               </ul>
@@ -59,8 +59,8 @@ export function SiteFooter() {
               </h2>
               <ul className="flex flex-col gap-2.5 text-xs tracking-wide text-on-primary/70 sm:gap-3">
                 <li>
-                  <Link href="/wholesale" className="transition-colors hover:text-brand-gold">
-                    Wholesale &amp; Hospitality
+                  <Link href="/enquiries" className="transition-colors hover:text-brand-gold">
+                    Enquiries &amp; Partnerships
                   </Link>
                 </li>
                 <li>
@@ -79,14 +79,14 @@ export function SiteFooter() {
 
           <div className="flex flex-col lg:col-span-2">
             <h2 className="mb-3 font-headline text-xs font-semibold uppercase tracking-[0.2em] text-brand-gold sm:mb-5">
-              Trade Enquiries
+              Private &amp; Trade Enquiries
             </h2>
             <p className="mb-4 text-xs leading-relaxed text-on-primary/70">
-              For wholesale, hospitality and corporate gifting enquiries, tell us about your business and we will
-              prepare a proposal.
+              For private gourmet buyers, Berlin market visitors, chefs and specialty boutiques alike — tell us what you
+              are looking for and we will prepare an answer personally.
             </p>
             <Link
-              href="/wholesale"
+              href="/enquiries"
               className="inline-flex w-fit items-center gap-2 rounded-sm bg-brand-gold px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-charcoal transition-colors sm:hover:bg-on-primary active:bg-brand-gold"
             >
               Start an Enquiry
@@ -95,7 +95,7 @@ export function SiteFooter() {
               </span>
             </Link>
             <p className="mt-3 text-[10px] leading-relaxed text-on-primary/60 sm:mt-4 sm:text-[11px]">
-              Trade pricing and availability are provided on request.
+              Small-Batch Pre-Launch — Private &amp; Trade Enquiries
             </p>
           </div>
         </div>

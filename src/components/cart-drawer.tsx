@@ -28,7 +28,7 @@ export function CartDrawer() {
         }`}
       />
       <aside
-        aria-label="Order cart"
+        aria-label="Enquiry selection"
         aria-hidden={!drawerOpen}
         className={`fixed right-0 top-0 z-[61] flex h-full w-full max-w-md flex-col bg-surface-container-lowest shadow-2xl transition-transform duration-300 ease-in-out ${
           drawerOpen ? 'translate-x-0' : 'translate-x-full'
@@ -40,13 +40,13 @@ export function CartDrawer() {
               shopping_bag
             </span>
             <h2 className="font-headline text-sm font-semibold uppercase tracking-[0.2em] text-on-surface">
-              Your Order Cart ({count})
+              Your Enquiry Selection ({count})
             </h2>
           </div>
           <button
             type="button"
             onClick={closeDrawer}
-            aria-label="Close order cart"
+            aria-label="Close enquiry selection"
             className="p-2 text-on-surface transition-colors hover:text-primary"
           >
             <span aria-hidden="true" className="material-symbols-outlined text-2xl">
@@ -57,7 +57,7 @@ export function CartDrawer() {
 
         <div className="bg-warm-sand px-6 py-3">
           <p className="text-[11px] leading-relaxed text-on-surface-variant">
-            Trade pricing and availability are confirmed after Maison Asili reviews your request.
+            Small-Batch Pre-Launch — Private &amp; Trade Enquiries
           </p>
         </div>
 
@@ -67,7 +67,7 @@ export function CartDrawer() {
               <span aria-hidden="true" className="material-symbols-outlined mb-3 text-3xl text-outline">
                 shopping_bag
               </span>
-              <p className="text-sm text-on-surface-variant">Your order cart is empty.</p>
+              <p className="text-sm text-on-surface-variant">Your enquiry selection is empty.</p>
               <Link
                 href="/shop"
                 onClick={closeDrawer}
@@ -104,7 +104,7 @@ export function CartDrawer() {
                     <button
                       type="button"
                       onClick={() => remove(line.slug)}
-                      aria-label={`Remove ${line.product.name} from order cart`}
+                      aria-label={`Remove ${line.product.name} from enquiry selection`}
                       className="text-outline transition-colors hover:text-error"
                     >
                       <span aria-hidden="true" className="material-symbols-outlined text-base">
@@ -147,8 +147,8 @@ export function CartDrawer() {
 
         <div className="mt-auto flex flex-col gap-4 border-t border-outline-variant bg-warm-sand p-6">
           <p className="text-[11px] leading-relaxed text-on-surface-variant">
-            Your selection is a request for a trade quotation. No payment is taken and no order is confirmed on this
-            website.
+            Your selection is a direct order enquiry. We will confirm availability, pricing, and collection or delivery
+            options with you personally—or visit us at our Berlin market stalls. No payment is taken on this website.
           </p>
           <Link
             href="/cart"
@@ -161,7 +161,7 @@ export function CartDrawer() {
             aria-disabled={lines.length === 0}
             tabIndex={lines.length === 0 ? -1 : undefined}
           >
-            Review &amp; Submit Order Request
+            Review &amp; Submit Enquiry
           </Link>
           <button
             type="button"

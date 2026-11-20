@@ -6,7 +6,7 @@ import { collections, productsInCollection } from '@/lib/catalog';
 export const metadata: Metadata = {
   title: 'The Collection',
   description:
-    'Explore the Maison Asili collection: heritage spice blends, botanical finishing salts, rare African teas and cold-pressed culinary oils, composed in our Berlin atelier. Trade pricing available on request.'
+    'Explore the Maison Asili collection: heritage spice blends, botanical finishing salts, rare African teas and cold-pressed culinary oils, composed in our Berlin atelier. Private and trade enquiries welcome.'
 };
 
 export default function ShopPage() {

@@ -9,7 +9,7 @@ import { SearchOverlay } from '@/components/search-overlay';
 
 const navLinks = [
   { href: '/heritage', label: 'Our Heritage' },
-  { href: '/wholesale', label: 'Wholesale' },
+  { href: '/enquiries', label: 'Enquiries' },
   { href: '/contact', label: 'Contact' }
 ];
 
@@ -149,7 +149,7 @@ export function SiteHeader() {
             </button>
             <button
               type="button"
-              aria-label={`Order cart${count > 0 ? `, ${count} ${count === 1 ? 'item' : 'items'}` : ''}`}
+              aria-label={`Enquiry selection${count > 0 ? `, ${count} ${count === 1 ? 'item' : 'items'}` : ''}`}
               onClick={openDrawer}
               className="relative flex h-10 w-10 items-center justify-center text-on-primary transition-colors hover:text-brand-gold"
             >
@@ -210,14 +210,14 @@ export function SiteHeader() {
             <Link href="/heritage" className="border-b border-brand-gold/15 py-2.5 text-on-primary/85 transition-colors hover:text-brand-gold">
               Our Heritage
             </Link>
-            <Link href="/wholesale" className="border-b border-brand-gold/15 py-2.5 text-on-primary/85 transition-colors hover:text-brand-gold">
-              Wholesale
+            <Link href="/enquiries" className="border-b border-brand-gold/15 py-2.5 text-on-primary/85 transition-colors hover:text-brand-gold">
+              Enquiries
             </Link>
             <Link href="/contact" className="border-b border-brand-gold/15 py-2.5 text-on-primary/85 transition-colors hover:text-brand-gold">
               Contact
             </Link>
             <Link href="/cart" className="border-b border-brand-gold/15 py-2.5 text-on-primary/85 transition-colors hover:text-brand-gold">
-              Order Cart {count > 0 ? `(${count})` : ''}
+              Enquiry Selection {count > 0 ? `(${count})` : ''}
             </Link>
 
             <div className="mt-6 flex flex-row gap-2">
@@ -232,7 +232,7 @@ export function SiteHeader() {
                 href="/cart"
                 className="flex-1 border border-brand-gold/40 px-1 py-3.5 text-center text-[9px] font-semibold uppercase leading-tight tracking-[0.08em] text-on-primary transition-colors hover:border-brand-gold hover:text-brand-gold sm:text-[11px] sm:tracking-[0.22em]"
               >
-                View order cart
+                View enquiry selection
               </Link>
             </div>
           </nav>

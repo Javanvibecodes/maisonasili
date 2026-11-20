@@ -6,10 +6,18 @@ import { CollectionCards } from '@/components/collection-cards';
 export const metadata: Metadata = {
   title: 'Maison Asili — Afro-Gourmet Product House',
   description:
-    'An Afro-Gourmet product house rooted in Africa and born in Berlin: heritage spice blends, botanical salts, rare African teas and cold-pressed culinary oils. Explore the collection and enquire about wholesale.'
+    'An Afro-Gourmet product house rooted in Africa and born in Berlin: heritage spice blends, botanical salts, rare African teas and cold-pressed culinary oils. Explore the collection and send a private or trade enquiry.'
 };
 
 const pillarIcons = ['spa', 'precision_manufacturing', 'public'];
+
+/**
+ * Upcoming Berlin market dates and locations.
+ * Add confirmed entries here once contracts are signed, e.g.
+ * { name: 'Markthalle Neun', dates: 'Every Thursday' }.
+ * Nothing is rendered while the list is empty.
+ */
+const berlinMarkets: { name: string; dates: string }[] = [];
 
 const pillars = [
   {
@@ -73,23 +81,16 @@ export default function HomePage() {
             </div>
             <div className="mx-auto max-w-3xl space-y-4 font-body text-sm font-light leading-relaxed tracking-normal text-on-surface-variant sm:space-y-6 sm:text-base lg:text-lg">
               <p className="editorial-lead">
-                Born in Berlin and deeply rooted in Africa's rich agricultural and culinary heritage,{' '}
-                <strong className="font-semibold text-primary">MAISON ASILI presents an exquisite world of Afro-Gourmet Fusion.</strong>{' '}
-                From exceptional small-batch coffees and distinctive teas to rare botanicals, heritage spices, artisan
-                culinary oils, and gourmet salts, our collections bring together the richness of African terroirs and
-                the sophistication of international gastronomy.
+                Maison Asili brings together distinctive African spices, rare botanicals, botanical salts, fine teas and
+                carefully crafted culinary oils. Inspired by ingredients, traditions and flavours from across the
+                continent, each creation is an expression of discovery, craftsmanship and contemporary Afro-Gourmet
+                Fusion.
               </p>
               <p>
-                Built upon more than two decades of artisanal culinary experience, MAISON ASILI unites uncompromising
-                gourmet standards with carefully selected ingredients of exceptional provenance,{' '}
-                <strong className="font-semibold text-primary">blending traditional knowledge with contemporary creativity.</strong>
+                From familiar favourites to ingredients yet to be discovered, our collection invites you to explore new
+                dimensions of flavour, awaken the senses and experience the richness of Africa's culinary heritage.
               </p>
-              <p>
-                Every MAISON ASILI creation celebrates origin, purity, authenticity, and the art of flavour. Through
-                imaginative combinations of heritage aromatics, rare botanicals, natural umami, and refined culinary
-                techniques, we transform exceptional ingredients into{' '}
-                <strong className="font-semibold text-primary">distinctive gourmet experiences that transcend borders and traditions.</strong>
-              </p>
+              <p className="font-semibold text-primary">Rooted in Africa. Born in Berlin. For the World.</p>
             </div>
           </div>
         </section>
@@ -136,24 +137,38 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Wholesale CTA */}
+        {/* Experience in Berlin */}
         <section className="mx-auto w-full max-w-7xl px-5 py-10 sm:px-8 sm:py-12 lg:px-12">
           <div className="flex w-full flex-col items-center justify-between gap-6 rounded-xl bg-surface-container-low p-6 sm:gap-8 sm:p-8 lg:flex-row lg:p-10">
             <div className="flex max-w-xl flex-col text-center lg:text-left">
               <h2 className="mb-1 font-sans text-base font-medium text-on-surface sm:text-lg lg:text-xl">
-                For Retailers, Restaurants &amp; Hotels
+                Experience Maison Asili in Berlin
               </h2>
               <p className="text-xs font-light leading-relaxed text-on-surface-variant">
-                Maison Asili supplies delicatessens, gourmet shops, restaurants, hotels and distributors. Explore the
-                collection and submit a wholesale order request — we will follow up with availability and trade pricing.
+                Ahead of our online store launch, our small-batch spice blends, botanical salts, rare teas, and
+                cold-pressed oils are available exclusively through private order enquiries at{' '}
+                <a href="mailto:info@maisonasili.com" className="font-medium text-primary underline underline-offset-2">
+                  info@maisonasili.com
+                </a>{' '}
+                and select Berlin market pop-ups. Upcoming Berlin market dates and locations will be announced shortly.
               </p>
+              {berlinMarkets.length > 0 ? (
+                <ul className="mt-4 flex flex-col gap-1.5 text-xs text-on-surface-variant">
+                  {berlinMarkets.map((market) => (
+                    <li key={market.name} className="flex flex-wrap items-baseline gap-x-2">
+                      <span className="font-semibold text-on-surface">{market.name}</span>
+                      <span>{market.dates}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
             </div>
             <div className="flex w-full max-w-md flex-1 flex-row gap-2 sm:gap-3 lg:w-auto">
               <Link
-                href="/wholesale"
+                href="/enquiries"
                 className="flex min-h-[44px] flex-1 items-center justify-center whitespace-nowrap rounded-sm bg-primary px-2 py-3 text-center font-sans text-[10px] font-medium uppercase leading-tight tracking-[0.08em] text-on-primary transition-colors sm:hover:bg-brand-gold sm:hover:text-primary active:bg-primary sm:flex-none sm:px-5 sm:text-xs sm:tracking-[0.2em]"
               >
-                Wholesale Enquiry
+                Private &amp; Trade Enquiries
               </Link>
               <Link
                 href="/shop"

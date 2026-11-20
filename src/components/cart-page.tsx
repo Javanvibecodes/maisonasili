@@ -20,7 +20,7 @@ export function CartPageContent() {
   if (!hydrated) {
     return (
       <div className="mx-auto w-full max-w-7xl px-6 py-20 text-center text-sm text-on-surface-variant lg:px-12">
-        Loading your order cart…
+        Loading your enquiry selection…
       </div>
     );
   }
@@ -33,15 +33,15 @@ export function CartPageContent() {
             mark_email_read
           </span>
           <h1 className="mb-3 font-headline text-3xl font-light text-on-surface sm:text-4xl">
-            Order Request Received
+            Enquiry Received
           </h1>
           <p className="mb-2 max-w-2xl text-sm leading-relaxed text-on-surface-variant">
-            Thank you — your wholesale order request has been received by Maison Asili. This is an acknowledgement of
-            your request, not a confirmed order.
+            Thank you — your enquiry has been received by Maison Asili. This is an acknowledgement of your request, not
+            a confirmed order.
           </p>
           <p className="mb-6 max-w-2xl text-xs leading-relaxed text-on-surface-variant">
             {submission.acknowledgementSent
-              ? 'A copy has been sent to the email address you provided. Our team will follow up to confirm availability, trade pricing and fulfilment.'
+              ? 'A copy has been sent to the email address you provided. We will follow up to confirm availability, pricing, and collection or delivery options with you personally.'
               : 'We could not send the acknowledgement email, but our team has your request and will follow up with you directly.'}
           </p>
 
@@ -96,15 +96,17 @@ export function CartPageContent() {
           Home
         </Link>
         <span className="text-outline-variant">/</span>
-        <span className="font-semibold text-on-surface">Order Cart</span>
+        <span className="font-semibold text-on-surface">Enquiry Selection</span>
       </nav>
 
       <div className="mb-10 flex flex-col justify-between gap-4 border-b border-outline-variant pb-6 sm:flex-row sm:items-end">
         <div>
-          <h1 className="font-headline text-4xl font-light tracking-tight text-on-surface sm:text-5xl">Order Cart</h1>
+          <h1 className="font-headline text-4xl font-light tracking-tight text-on-surface sm:text-5xl">
+            Enquiry Selection
+          </h1>
           <p className="mt-2 max-w-2xl text-xs leading-relaxed text-on-surface-variant">
-            Build your wholesale selection, then submit it as an order request. Maison Asili will confirm availability,
-            trade pricing and fulfilment directly.
+            Your selection is a direct order enquiry. We will confirm availability, pricing, and collection or delivery
+            options with you personally—or visit us at our Berlin market stalls. No payment is taken on this website.
           </p>
         </div>
         <p className="text-xs uppercase tracking-[0.2em] text-on-surface-variant">
@@ -149,7 +151,7 @@ export function CartPageContent() {
                     <button
                       type="button"
                       onClick={() => remove(line.slug)}
-                      aria-label={`Remove ${line.product.name} from order cart`}
+                      aria-label={`Remove ${line.product.name} from enquiry selection`}
                       className="text-outline transition-colors hover:text-error"
                     >
                       <span aria-hidden="true" className="material-symbols-outlined text-lg">
@@ -178,7 +180,7 @@ export function CartPageContent() {
                       </button>
                     </div>
                     <span className="text-[10px] uppercase tracking-wider text-on-surface-variant">
-                      Trade price confirmed on request
+                      Small-Batch Pre-Launch — Private &amp; Trade Enquiries
                     </span>
                   </div>
                 </div>
@@ -191,7 +193,7 @@ export function CartPageContent() {
               <span aria-hidden="true" className="material-symbols-outlined mb-4 text-4xl text-outline">
                 shopping_bag
               </span>
-              <h2 className="mb-2 font-headline text-2xl font-light text-on-surface">Your order cart is empty</h2>
+              <h2 className="mb-2 font-headline text-2xl font-light text-on-surface">Your enquiry selection is empty</h2>
               <p className="mb-6 max-w-sm text-xs leading-relaxed text-on-surface-variant">
                 Explore the collection and add the products and quantities you would like to request. No payment is
                 taken and no prices are shown on this website.
@@ -241,8 +243,8 @@ export function CartPageContent() {
               </p>
             )}
             <p className="mb-5 border-t border-outline-variant pt-4 text-[11px] leading-relaxed text-on-surface-variant">
-              This is a request for a trade quotation. No prices are displayed, no payment is collected and no order is
-              confirmed until Maison Asili has reviewed your request.
+              Your selection is a direct order enquiry. We will confirm availability, pricing, and collection or delivery
+              options with you personally—or visit us at our Berlin market stalls. No payment is taken on this website.
             </p>
             <a
               href="#order-request"
@@ -254,15 +256,15 @@ export function CartPageContent() {
                   : 'pointer-events-none bg-on-surface/40 text-surface-container-lowest'
               }`}
             >
-              Submit Order Request
+              Submit Enquiry
             </a>
             <div className="mt-5 flex items-start gap-3 border-t border-outline-variant pt-5">
               <span aria-hidden="true" className="material-symbols-outlined mt-0.5 text-base text-tertiary">
                 verified_user
               </span>
               <p className="text-[11px] leading-relaxed text-on-surface-variant">
-                Your selection is stored in this browser only. Business details are sent to Maison Asili solely to
-                respond to your request.
+                Your selection is stored in this browser only. The details you submit are sent to Maison Asili solely to
+                respond to your enquiry.
               </p>
             </div>
           </div>
@@ -273,7 +275,7 @@ export function CartPageContent() {
         <section id="order-request" className="mt-16 scroll-mt-32 border-t border-outline-variant pt-12">
           <div className="mb-8 max-w-2xl">
             <h2 className="font-headline text-3xl font-light tracking-tight text-on-surface">
-              Submit your wholesale order request
+              Submit your order enquiry
             </h2>
             <p className="mt-2 text-xs leading-relaxed text-on-surface-variant">
               Tell us who you are and how we can reach you. Required fields are marked with an asterisk.
