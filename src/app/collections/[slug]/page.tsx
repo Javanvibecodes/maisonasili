@@ -1,13 +1,10 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ProductCard } from '@/components/product-card';
 import {
-  assetPath,
   collections,
   getCollection,
-  media,
   productsInCollection
 } from '@/lib/catalog';
 
@@ -34,11 +31,10 @@ export default function CollectionPage({ params }: CollectionPageProps) {
 
   const items = productsInCollection(collection.slug);
   const related = collections.filter((item) => item.slug !== collection.slug);
-  const heroSrc = media[collection.media] ?? items[0]?.image;
 
   return (
     <main className="w-full bg-background">
-      <section className="mx-auto w-full max-w-7xl px-6 pb-12 pt-6 lg:px-12">
+      <section className="mx-auto w-full max-w-7xl px-6 pb-8 pt-6 lg:px-12">
         <nav
           aria-label="Breadcrumb"
           className="flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-on-surface-variant"
@@ -54,43 +50,26 @@ export default function CollectionPage({ params }: CollectionPageProps) {
           <span className="font-semibold text-on-surface">{collection.name}</span>
         </nav>
 
-        <div className="mt-8 grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-16">
-          <div className="flex flex-col items-start lg:col-span-6">
-            <h1 className="mb-4 font-headline text-4xl font-light leading-[1.1] tracking-tight text-on-surface sm:text-5xl">
-              {collection.name}
-            </h1>
-            <p className="mb-8 max-w-xl text-sm font-light leading-relaxed text-on-surface-variant sm:text-base">
-              {collection.intro}
-            </p>
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.22em] text-on-surface-variant">
-              <span className="flex items-center gap-2">
-                <span aria-hidden="true" className="material-symbols-outlined text-sm text-tertiary">
-                  inventory_2
-                </span>
-                {items.length} provisions
+        <div className="mx-auto max-w-3xl pt-8 pb-4 text-center">
+          <h1 className="mb-4 font-headline text-4xl font-light leading-[1.1] tracking-tight text-on-surface sm:text-5xl">
+            {collection.name}
+          </h1>
+          <p className="mx-auto mb-8 max-w-2xl text-sm font-light leading-relaxed text-on-surface-variant sm:text-base">
+            {collection.intro}
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.22em] text-on-surface-variant">
+            <span className="flex items-center gap-2">
+              <span aria-hidden="true" className="material-symbols-outlined text-sm text-tertiary">
+                inventory_2
               </span>
-              <span className="flex items-center gap-2">
-                <span aria-hidden="true" className="material-symbols-outlined text-sm text-tertiary">
-                  local_shipping
-                </span>
-                Small-Batch Pre-Launch — Private &amp; Trade Enquiries
+              {items.length} provisions
+            </span>
+            <span className="flex items-center gap-2">
+              <span aria-hidden="true" className="material-symbols-outlined text-sm text-tertiary">
+                local_shipping
               </span>
-            </div>
-          </div>
-
-          <div className="relative lg:col-span-6">
-            <div className="relative aspect-[4/3] sm:aspect-square w-full overflow-hidden bg-white">
-              {heroSrc ? (
-                <Image
-                  src={assetPath(heroSrc)}
-                  alt={`Maison Asili ${collection.name}`}
-                  fill
-                  priority
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                  className="object-cover"
-                />
-              ) : null}
-            </div>
+              Small-Batch Pre-Launch — Private &amp; Trade Enquiries
+            </span>
           </div>
         </div>
       </section>
