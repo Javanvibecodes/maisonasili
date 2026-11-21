@@ -9,8 +9,6 @@ export const metadata: Metadata = {
     'An Afro-Gourmet product house rooted in Africa and born in Berlin: heritage spice blends, botanical salts, rare African teas and cold-pressed culinary oils. Explore the collection and send a private or trade enquiry.'
 };
 
-const pillarIcons = ['spa', 'precision_manufacturing', 'public'];
-
 /**
  * Upcoming Berlin market dates and locations.
  * Add confirmed entries here once contracts are signed, e.g.
@@ -18,24 +16,6 @@ const pillarIcons = ['spa', 'precision_manufacturing', 'public'];
  * Nothing is rendered while the list is empty.
  */
 const berlinMarkets: { name: string; dates: string }[] = [];
-
-const pillars = [
-  {
-    title: 'African Botanical Heritage',
-    body:
-      'Direct partnerships with cooperative family growers across Kenya, Ethiopia, and Tanzania protect centuries of botanical intelligence and native biodiversity.'
-  },
-  {
-    title: 'Artisanal Craftsmanship',
-    body:
-      'Milled and bottled in small micro-batches in our Berlin Atelier. We refuse chemical stabilizers, fillers, or high-heat pressing to safeguard therapeutic volatiles.'
-  },
-  {
-    title: 'A World of Flavour',
-    body:
-      'Conceived as a contemporary Afro-Gourmet dialogue, our ingredients are composed to inspire modern Michelin gastronomy as seamlessly as the soulful home hearth.'
-  }
-];
 
 export default function HomePage() {
   return (
@@ -104,37 +84,6 @@ export default function HomePage() {
           </div>
 
           <CollectionCards />
-        </section>
-
-        {/* Heritage Pillars */}
-        <section className="my-6 w-full bg-surface-container-low px-5 py-14 sm:my-8 sm:px-8 sm:py-20 lg:px-12">
-          <div className="mx-auto max-w-7xl">
-            <div className="mx-auto mb-10 flex max-w-3xl flex-col items-center text-center sm:mb-16">
-              <h2 className="mb-3 font-sans text-2xl font-light uppercase tracking-tight text-on-surface sm:mb-4 sm:text-4xl lg:text-5xl">
-                Rooted in Heritage. Crafted Without Compromise.
-              </h2>
-              <p className="text-xs font-light text-on-surface-variant sm:text-sm">
-                Every jar, tin, and bottle embodies our devotion to African agronomy, Berlin craftsmanship, and
-                culinary integrity.
-              </p>
-            </div>
-            <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 scrollbar-none sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:pb-0 md:gap-8">
-              {pillars.map((pillar, index) => (
-                <div
-                  key={pillar.title}
-                  className="flex w-[72vw] max-w-[280px] shrink-0 snap-center flex-col items-start rounded-xl bg-surface-container-lowest p-6 shadow-sm sm:w-auto sm:max-w-none sm:snap-align-none sm:rounded-none sm:p-8"
-                >
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-surface-container text-tertiary sm:mb-6 sm:h-12 sm:w-12">
-                    <span aria-hidden="true" className="material-symbols-outlined text-xl sm:text-2xl">
-                      {pillarIcons[index]}
-                    </span>
-                  </div>
-                  <h3 className="mb-2 font-sans text-base font-medium text-on-surface sm:mb-3 sm:text-xl">{pillar.title}</h3>
-                  <p className="text-[11px] font-light leading-relaxed text-on-surface-variant sm:text-xs md:text-sm">{pillar.body}</p>
-                </div>
-              ))}
-            </div>
-          </div>
         </section>
 
         {/* Experience in Berlin */}
