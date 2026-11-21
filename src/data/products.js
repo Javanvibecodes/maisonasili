@@ -132,7 +132,7 @@ module.exports = [
     packshot: 'assets/img/products/savannah-fire-packshot.jpg',
     packshotSource: 'Savannah new.jpeg',
     packshotWidth: 896,
-    packshotHeight: 1200,
+    packshotHeight: 896,
     imageWidth: 896,
     imageHeight: 1200,
     featured: true,
