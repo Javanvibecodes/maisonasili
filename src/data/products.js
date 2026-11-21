@@ -129,7 +129,7 @@ module.exports = [
       'Completed with our signature blend of traditional African spices. Small-batch crafted in Berlin.',
     productType: 'Premium African Steak Seasoning',
     origin: 'African botanicals, blended in Berlin.',
-    image: 'assets/img/products/savannah-fire.jpg',
+    image: 'assets/img/products/savannah-fire-scenic.jpg',
     imageSource: 'Savannah scenic.jpg',
     packshot: 'assets/img/products/savannah-fire-packshot.jpg',
     packshotSource: 'Savannah new.jpeg',

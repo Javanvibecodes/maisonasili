@@ -86,6 +86,24 @@ export default function HomePage() {
           <CollectionCards />
         </section>
 
+        {/* A World of Flavour */}
+        <section className="my-6 w-full bg-surface-container-low px-5 py-12 sm:my-8 sm:px-8 sm:py-16 lg:px-12">
+          <div className="mx-auto max-w-4xl text-center">
+            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-surface-container text-tertiary sm:mb-6 sm:h-14 sm:w-14">
+              <span aria-hidden="true" className="material-symbols-outlined text-2xl sm:text-3xl">
+                public
+              </span>
+            </div>
+            <h2 className="mb-4 font-sans text-2xl font-light uppercase tracking-tight text-on-surface sm:text-3xl lg:text-4xl">
+              A World of Flavour
+            </h2>
+            <p className="mx-auto max-w-2xl text-sm font-light leading-relaxed text-on-surface-variant sm:text-base">
+              Conceived as a contemporary Afro-Gourmet dialogue, our ingredients are composed to inspire modern
+              Michelin gastronomy as seamlessly as the soulful home hearth.
+            </p>
+          </div>
+        </section>
+
         {/* Experience in Berlin */}
         <section className="mx-auto w-full max-w-7xl px-5 py-10 sm:px-8 sm:py-12 lg:px-12">
           <div className="flex w-full flex-col items-center justify-between gap-6 rounded-xl bg-surface-container-low p-6 sm:gap-8 sm:p-8 lg:flex-row lg:p-10">
