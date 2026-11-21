@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import { Fragment } from 'react';
 
 export const metadata: Metadata = {
   title: 'Our Heritage',
@@ -91,35 +92,59 @@ export default function HeritagePage() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-3xl space-y-16 px-6 py-16 sm:space-y-24 sm:py-24">
+      <div className="mx-auto max-w-3xl lg:max-w-5xl space-y-16 px-6 py-16 sm:space-y-24 sm:py-24">
         <section>
           <SectionHeading title="The Foundations of Craft" />
-          <div className={proseClass}>
-            {foundations.slice(0, 4).map((paragraph) => (
-              <p key={paragraph.slice(0, 60)}>{paragraph}</p>
-            ))}
-            <div className="py-1">
-              <Image
-                src="/assets/img/editorial/soluna-archive.jpg"
-                alt="SoLuna Brot und Oel business card and the 2005 DER FEINSCHMECKER feature from Ringenwalde, Brandenburg."
-                width={896}
-                height={1200}
-                sizes="(min-width: 768px) 720px, 100vw"
-                className="block h-auto w-full"
-              />
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12 items-start">
+            <div className={`lg:col-span-7 ${proseClass}`}>
+              {foundations.map((paragraph, index) => (
+                <Fragment key={paragraph.slice(0, 40)}>
+                  <p>{paragraph}</p>
+                  {index === 3 ? (
+                    <div className="lg:hidden my-6">
+                      <figure className="relative overflow-hidden border border-stone-border bg-surface-container-lowest p-2 shadow-sm">
+                        <Image
+                          src="/assets/img/editorial/soluna-archive.jpg"
+                          alt="SoLuna Brot und Öl business card and the 2005 DER FEINSCHMECKER feature from Ringenwalde, Brandenburg."
+                          width={896}
+                          height={1200}
+                          sizes="(min-width: 768px) 600px, 100vw"
+                          className="block h-auto w-full"
+                        />
+                        <figcaption className="mt-2.5 px-1 pb-1 text-[11px] italic leading-snug text-stone-muted">
+                          SoLuna Brot und Öl business card and the 2005 DER FEINSCHMECKER feature from Ringenwalde, Brandenburg.
+                        </figcaption>
+                      </figure>
+                    </div>
+                  ) : null}
+                </Fragment>
+              ))}
             </div>
-            {foundations.slice(4).map((paragraph) => (
-              <p key={paragraph.slice(0, 60)}>{paragraph}</p>
-            ))}
+
+            <div className="hidden lg:col-span-5 lg:block lg:sticky lg:top-28">
+              <figure className="relative overflow-hidden border border-stone-border bg-surface-container-lowest p-2 shadow-sm">
+                <Image
+                  src="/assets/img/editorial/soluna-archive.jpg"
+                  alt="SoLuna Brot und Öl business card and the 2005 DER FEINSCHMECKER feature from Ringenwalde, Brandenburg."
+                  width={896}
+                  height={1200}
+                  sizes="(min-width: 1024px) 420px, 100vw"
+                  className="block h-auto w-full"
+                />
+                <figcaption className="mt-2.5 px-1 pb-1 text-[11px] italic leading-snug text-stone-muted">
+                  SoLuna Brot und Öl business card and the 2005 DER FEINSCHMECKER feature from Ringenwalde, Brandenburg.
+                </figcaption>
+              </figure>
+            </div>
           </div>
         </section>
 
-        <section className="border-t border-stone-border-light pt-14 sm:pt-16">
+        <section className="border-t border-stone-border-light pt-14 sm:pt-16 max-w-3xl">
           <SectionHeading title="The Transition: Sourcing Heritage and Connecting Globally" />
           <Prose paragraphs={transition} />
         </section>
 
-        <section className="border-t border-stone-border-light pt-14 sm:pt-16">
+        <section className="border-t border-stone-border-light pt-14 sm:pt-16 max-w-3xl">
           <SectionHeading title="A Continent of Rich Culinary Heritage" />
           <div className={proseClass}>
             <p>{terroirIntro}</p>
@@ -132,12 +157,12 @@ export default function HeritagePage() {
           </div>
         </section>
 
-        <section className="border-t border-stone-border-light pt-14 sm:pt-16">
+        <section className="border-t border-stone-border-light pt-14 sm:pt-16 max-w-3xl">
           <SectionHeading title="Where Heritage Meets Precision" />
           <Prose paragraphs={precision} />
         </section>
 
-        <section className="border-t border-stone-border-light pt-14 sm:pt-16">
+        <section className="border-t border-stone-border-light pt-14 sm:pt-16 max-w-3xl">
           <SectionHeading title="A Continuing Legacy" />
           <Prose paragraphs={legacy} />
         </section>
@@ -147,9 +172,6 @@ export default function HeritagePage() {
           <p className="mt-10 text-[11px] font-semibold uppercase tracking-[0.42em] text-gold">MAISON ASILI</p>
           <p className="mt-4 text-[10px] uppercase tracking-[0.3em] text-stone-muted sm:text-[11px]">
             Origin. Identity. Heritage.
-          </p>
-          <p className="mt-8 font-serif text-base italic tracking-wide text-tertiary sm:text-lg">
-            Rooted in Africa. Born in Berlin. For the World.
           </p>
         </section>
       </div>

@@ -1,5 +1,19 @@
 import type { Product } from '@/lib/catalog';
 
+function renderIngredient(text: string) {
+  const parts = text.split(/(\*\*.*?\*\*)/g);
+  return parts.map((part, i) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return (
+        <strong key={i} className="font-semibold text-white">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    return part;
+  });
+}
+
 /**
  * Dedicated product ingredients panel.
  *
@@ -49,7 +63,7 @@ export function IngredientsCard({ product }: { product: Product }) {
               >
                 {String(index + 1).padStart(2, '0')}
               </span>
-              <span className="text-[15px] leading-relaxed text-on-primary/90">{ingredient}</span>
+              <span className="text-[15px] leading-relaxed text-on-primary/90">{renderIngredient(ingredient)}</span>
             </li>
           ))}
         </ol>

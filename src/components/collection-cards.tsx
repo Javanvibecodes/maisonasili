@@ -2,13 +2,13 @@
 
 import * as React from 'react';
 import { InteractiveTravelCard } from '@/components/interactive-travel-card';
-import { collections, getProduct, assetPath } from '@/lib/catalog';
+import { collections, assetPath } from '@/lib/catalog';
 
-const collectionImageSlugs: Record<string, string> = {
-  spices: 'selim-and-paradise',
-  salts: 'tropical-pink-pepper-salt',
-  tea: 'royal-purple-elixir',
-  oils: 'liquid-gold',
+const collectionCoverImages: Record<string, string> = {
+  spices: 'assets/img/products/selim-and-paradise.jpg',
+  salts: 'assets/img/products/tropical-pink-pepper-salt.jpg',
+  tea: 'assets/img/products/royal-purple-elixir.jpg',
+  oils: 'assets/img/collections/oils.jpg',
 };
 
 // The tea banner photograph sits a little off-centre; nudge the crop 25px to
@@ -45,8 +45,10 @@ export function CollectionCards() {
         className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 pt-1 scrollbar-none sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:pb-0 lg:grid-cols-4 lg:gap-8"
       >
         {collections.map((collection) => {
-          const product = getProduct(collectionImageSlugs[collection.slug] ?? '');
-          const imageUrl = product ? assetPath(product.image) : '/assets/img/collections/spices.jpg';
+          const imageSrc =
+            collectionCoverImages[collection.slug] ??
+            'assets/img/collections/spices.jpg';
+          const imageUrl = assetPath(imageSrc);
 
           return (
             <div

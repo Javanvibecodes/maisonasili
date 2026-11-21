@@ -125,6 +125,8 @@ module.exports = [
       'Fleur de Sel',
       'Smoked Garlic'
     ],
+    ingredientsNote:
+      'Completed with our signature blend of traditional African spices. Small-batch crafted in Berlin.',
     productType: 'Premium African Steak Seasoning',
     origin: 'African botanicals, blended in Berlin.',
     image: 'assets/img/products/savannah-fire.jpg',
@@ -331,6 +333,15 @@ module.exports = [
         'More than a tea. A celebration of origin, identity, and heritage.'
       ],
       closing: 'Rooted in Africa. Born in Berlin. For the World.',
+      flavour: [
+        'Floral Rose',
+        'Bright Hibiscus',
+        'Sun-Kissed Citrus',
+        'Velvety Berry Depth'
+      ],
+      touch: [
+        'Infuse 1 heaped teaspoon (approx. 2.5 g) per 250 ml cup in freshly boiled water cooled slightly to 85–90 °C. Steep for 4–5 minutes until a luminous ruby-red liquor develops. Enjoy pure, or serve over ice with a twist of fresh orange peel.'
+      ],
       sizeNote: 'Premium Loose-Leaf Botanical Tea'
     },
     ingredients: [
@@ -372,7 +383,17 @@ module.exports = [
         'Fragrant lavender, gentle chamomile and a whisper of coconut unfold into a beautifully balanced composition of soft floral notes, subtle sweetness and refined elegance.',
         'A luxurious botanical escape, crafted to transform the quiet moments of your evening into a soothing sensory ritual.'
       ],
-      closing: 'Rooted in Africa. Born in Berlin. For the World.'
+      closing: 'Rooted in Africa. Born in Berlin. For the World.',
+      flavour: [
+        'Delicate White Tea',
+        'Honeyed Green Rooibos',
+        'Soothing Lavender',
+        'Gentle Chamomile',
+        'Soft Coconut'
+      ],
+      touch: [
+        'Steep 1 heaped teaspoon (approx. 2.5 g) per 250 ml cup in freshly boiled water cooled to 75–80 °C for 3–4 minutes to preserve the delicate sweetness of Silver Needle white tea. Enjoy warm before bedtime without milk.'
+      ]
     },
     ingredients: [
       'Silver Needle White Tea',
@@ -414,6 +435,15 @@ module.exports = [
         'More than a tea. A golden expression of origin, identity and heritage.'
       ],
       closing: 'Rooted in Africa. Born in Berlin. For the World.',
+      flavour: [
+        'Silky White Tea',
+        'Fragrant Orange Blossom',
+        'Golden Calendula',
+        'Bright Lemongrass'
+      ],
+      touch: [
+        'Steep 1 heaped teaspoon (approx. 2.5 g) per 250 ml cup in freshly boiled water cooled to 75–80 °C for 3–4 minutes to preserve the silky floral character of Malawian Silver Tip white tea. Enjoy pure, warm or chilled.'
+      ],
       sizeNote: 'Premium Loose-Leaf White Tea Blend'
     },
     ingredients: ['Malawian Silver Tip White Tea', 'Orange Blossoms', 'Calendula', 'Lemongrass'],
@@ -453,7 +483,8 @@ module.exports = [
         'At Maison Asili, we celebrate exceptional ingredients, honouring their origins while bringing them to life through contemporary Afro-Gourmet Fusion.',
       closing: 'Origin. Identity. Heritage.'
     },
-    ingredients: ['Madagascar Bourbon Vanilla', 'Cold-Pressed Macadamia Nut Oil'],
+    ingredients: ['Madagascar Bourbon Vanilla', 'Cold-Pressed **Macadamia** Nut Oil'],
+    ingredientsNote: 'Small-batch crafted in Berlin. Allergen notice: Contains macadamia nut oil.',
     productType: 'Vanilla Finishing Oil',
     origin: 'Madagascar vanilla, pressed with Kenya AA macadamia oil.',
     image: 'assets/img/products/bourbon-orchid.jpg',
@@ -490,7 +521,8 @@ module.exports = [
         'At Maison Asili, we celebrate exceptional ingredients, honouring their origins while bringing them to life through contemporary Afro-Gourmet Fusion.',
       closing: 'Origin. Identity. Heritage.'
     },
-    ingredients: ['100% Cold-Pressed Kenya AA Macadamia Oil'],
+    ingredients: ['100% Cold-Pressed Kenya AA **Macadamia** Oil'],
+    ingredientsNote: 'Small-batch crafted in Berlin. Allergen notice: Contains macadamia nut oil.',
     productType: 'Cold-Pressed Macadamia Oil',
     origin: 'Kenya AA macadamia nuts, bottled in Berlin.',
     image: 'assets/img/products/liquid-gold.jpg',

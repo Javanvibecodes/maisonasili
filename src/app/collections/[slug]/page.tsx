@@ -78,15 +78,14 @@ export default function CollectionPage({ params }: CollectionPageProps) {
             </div>
           </div>
 
-          {/* Hero image is desktop-only: at small widths the full-bleed square
-              pushes the collection title far below the fold. */}
-          <div className="relative hidden lg:col-span-6 lg:block">
-            <div className="relative aspect-square w-full overflow-hidden bg-white">
+          <div className="relative lg:col-span-6">
+            <div className="relative aspect-[4/3] sm:aspect-square w-full overflow-hidden bg-white">
               {heroSrc ? (
                 <Image
                   src={assetPath(heroSrc)}
                   alt={`Maison Asili ${collection.name}`}
                   fill
+                  priority
                   sizes="(min-width: 1024px) 50vw, 100vw"
                   className="object-cover"
                 />

@@ -78,7 +78,8 @@ module.exports = [
       {
         h: 'Products and information',
         p: [
-          'Product names, descriptions, ingredients, pack sizes and origins are provided in good faith. Product photography is illustrative; natural variation in botanical ingredients may occur.'
+          'Product names, descriptions, ingredients, pack sizes and origins are provided in good faith. Product photography is illustrative; natural variation in botanical ingredients may occur.',
+          'Allergen information is provided on each product page and confirmed prior to order dispatch.'
         ]
       },
       {
@@ -149,7 +150,10 @@ module.exports = [
       },
       {
         h: 'Contact',
-        p: ['Email: info@maisonasili.com']
+        p: [
+          'Email: info@maisonasili.com',
+          'Contact Form: https://maisonasili.com/contact'
+        ]
       },
       {
         h: 'Responsible for editorial content',

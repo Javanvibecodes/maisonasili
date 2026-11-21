@@ -19,6 +19,32 @@ export function generateMetadata({ params }: LegalPageProps): Metadata {
   return { title: page.title, description: page.intro };
 }
 
+function formatLegalParagraph(text: string) {
+  if (text.startsWith('Email: ')) {
+    const email = text.replace('Email: ', '');
+    return (
+      <>
+        Email:{' '}
+        <a href={`mailto:${email}`} className="text-tertiary underline transition-colors hover:text-primary">
+          {email}
+        </a>
+      </>
+    );
+  }
+  if (text.startsWith('Contact Form: ')) {
+    const url = text.replace('Contact Form: ', '');
+    return (
+      <>
+        Contact Form:{' '}
+        <Link href="/contact" className="text-tertiary underline transition-colors hover:text-primary">
+          {url}
+        </Link>
+      </>
+    );
+  }
+  return text;
+}
+
 export default function LegalPage({ params }: LegalPageProps) {
   const page = legalPages.find((item) => item.slug === params.slug);
   if (!page) notFound();
@@ -48,7 +74,7 @@ export default function LegalPage({ params }: LegalPageProps) {
               <h2 className="mb-3 font-headline text-xl font-semibold text-on-surface">{section.h}</h2>
               <div className="flex flex-col gap-3 text-sm leading-relaxed text-on-surface-variant">
                 {section.p.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
+                  <p key={paragraph}>{formatLegalParagraph(paragraph)}</p>
                 ))}
               </div>
             </section>

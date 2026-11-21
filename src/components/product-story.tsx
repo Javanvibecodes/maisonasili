@@ -23,14 +23,14 @@ export function ProductStory({ product }: { product: Product }) {
         </h2>
       ) : null}
 
-      <div className="mt-7 space-y-5 text-[15px] leading-[1.9] text-on-surface-variant sm:text-base">
+      <div className="mt-7 space-y-5 text-[15px] leading-[1.9] text-on-surface sm:text-base">
         {story.paragraphs.map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>
         ))}
       </div>
 
       {story.sizeNote ? (
-        <p className="mt-6 text-[11px] font-semibold uppercase tracking-[0.24em] text-on-surface-variant">
+        <p className="mt-6 text-[11px] font-semibold uppercase tracking-[0.24em] text-on-surface/80">
           {story.sizeNote}
         </p>
       ) : null}
@@ -74,7 +74,7 @@ export function ProductStory({ product }: { product: Product }) {
             {story.beautifulWith.map((pairing) => (
               <li
                 key={pairing}
-                className="flex items-center gap-3 border-b border-outline-variant/70 py-2.5 text-sm text-on-surface-variant last:border-b-0"
+                className="flex items-center gap-3 border-b border-outline-variant/70 py-2.5 text-sm text-on-surface last:border-b-0"
               >
                 <span aria-hidden="true" className="h-1 w-1 shrink-0 rounded-full bg-brand-gold" />
                 {pairing}
@@ -93,9 +93,11 @@ export function ProductStory({ product }: { product: Product }) {
             id={`touch-${product.slug}`}
             className="text-[10px] font-semibold uppercase tracking-[0.34em] text-tertiary"
           >
-            The Maison Asili Touch
+            {product.category === 'tea'
+              ? 'The Maison Asili Touch (Brewing Ritual)'
+              : 'The Maison Asili Touch'}
           </h3>
-          <div className="mt-4 space-y-3 text-sm leading-relaxed text-on-surface-variant">
+          <div className="mt-4 space-y-3 text-sm leading-relaxed text-on-surface sm:text-[15px]">
             {story.touch.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
@@ -104,7 +106,7 @@ export function ProductStory({ product }: { product: Product }) {
       ) : null}
 
       {story.craft ? (
-        <p className="mt-10 border-t border-outline-variant pt-6 font-headline text-base italic leading-relaxed text-on-surface-variant">
+        <p className="mt-10 border-t border-outline-variant pt-6 font-headline text-base italic leading-relaxed text-on-surface">
           {story.craft}
         </p>
       ) : null}
