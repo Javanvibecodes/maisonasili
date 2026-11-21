@@ -5,7 +5,7 @@ import { InteractiveTravelCard } from '@/components/interactive-travel-card';
 import { collections, assetPath } from '@/lib/catalog';
 
 const collectionCoverImages: Record<string, string> = {
-  spices: 'assets/img/collections/spices.jpg',
+  spices: 'assets/img/products/selim-and-paradise.jpg',
   salts: 'assets/img/products/tropical-pink-pepper-salt.jpg',
   tea: 'assets/img/products/royal-purple-elixir.jpg',
   oils: 'assets/img/collections/oils.jpg',
