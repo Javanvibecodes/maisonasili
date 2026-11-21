@@ -20,63 +20,6 @@
 
 module.exports = [
   {
-    slug: 'savannah-fire',
-    name: 'Savannah Fire',
-    subtitle: 'Premium African Steak Seasoning',
-    microDescription: "Smoky African steak seasoning with Bird's Eye Chilli, grains of paradise and smoked garlic, made for grilled meats.",
-    category: 'spices',
-    size: '130 g Jar',
-    label: 'Signature Blend',
-    eyebrow: 'Artisan Spice Blend • Berlin',
-    description:
-      "Inspired by the untamed spirit of the African savannah, Savannah Fire combines vibrant African Bird's Eye Chilli, aromatic Grains of Paradise, delicate Fleur de Sel and smoked garlic into a bold, smoky seasoning with remarkable depth and natural umami. Crafted for exceptional steaks, grilled meats, game and vegetables, it brings African spice heritage to the modern gourmet table.",
-    story: {
-      heading: 'The Soul of Fire. The Art of Flavour.',
-      paragraphs: [
-        'Across the vast African savannah, where golden grasslands meet endless horizons, fire has long been at the heart of cooking, gathering and sharing food.',
-        "Inspired by this timeless connection, Savannah Fire brings together the vibrant warmth of African Bird's Eye Chilli, the aromatic complexity of Grains of Paradise, delicate Fleur de Sel and the deep, savoury character of smoked garlic.",
-        'A carefully balanced Afro-Gourmet Fusion creation that celebrates the individuality of every ingredient. Here, heat is not the destination. The chilli awakens the palate, the spices unfold their fragrant warmth, and the gentle smokiness enhances rather than conceals the natural character of the food.',
-        'From beautifully seared steaks and slow-roasted lamb to succulent game and flame-grilled vegetables, Savannah Fire transforms familiar ingredients into an extraordinary experience of taste.',
-        'More than a seasoning. A celebration of African spice heritage, where ancient flavours are awakened through contemporary culinary craftsmanship.'
-      ],
-      flavour: ['Smoky Depth', 'Aromatic Warmth', 'Vibrant Chilli', 'Savoury Umami', 'Lingering Heat'],
-      beautifulWith: [
-        'Ribeye Steak',
-        'Beef Fillet',
-        'Lamb',
-        'Venison',
-        'Gourmet Burgers',
-        'BBQ',
-        'Flame-Grilled Vegetables'
-      ],
-      touch: [
-        'Gently massage into your chosen cut before grilling, searing or roasting. Allow the spices to develop a fragrant, beautifully seasoned crust while preserving the natural character of the meat.',
-        'For an elegant finishing touch, add a few drops of premium cold-pressed macadamia oil.'
-      ],
-      craft: 'Small-batch crafted. Carefully selected natural ingredients. No artificial additives or preservatives.'
-    },
-    ingredients: [
-      "African Bird's Eye Chilli (Peri-Peri)",
-      'Grains of Paradise',
-      'Fleur de Sel',
-      'Smoked Garlic'
-    ],
-    ingredientsNote:
-      'Completed with our signature blend of traditional African spices. Full allergen details available upon request.',
-    productType: 'Premium African Steak Seasoning',
-    origin: 'African botanicals, blended in Berlin.',
-    image: 'assets/img/products/savannah-fire.jpg',
-    imageSource: 'New Images/Savannah Scenic.jpg',
-    packshot: 'assets/img/products/savannah-fire-packshot.jpg',
-    packshotSource: 'New Images/Savannah white.jpg',
-    packshotWidth: 2048,
-    packshotHeight: 2048,
-    imageWidth: 1024,
-    imageHeight: 1024,
-    featured: true,
-    added: 8
-  },
-  {
     slug: 'selim-and-paradise',
     name: 'Selim & Paradise',
     subtitle: 'West African Smoked Steak Rub',
@@ -139,6 +82,61 @@ module.exports = [
     imageHeight: 1024,
     featured: true,
     added: 7
+  },
+  {
+    slug: 'savannah-fire',
+    name: 'Savannah Fire',
+    subtitle: 'Premium African Steak Seasoning',
+    microDescription: "Smoky African steak seasoning with Bird's Eye Chilli, grains of paradise and smoked garlic, made for grilled meats.",
+    category: 'spices',
+    size: '130 g Jar',
+    label: 'Signature Blend',
+    eyebrow: 'Artisan Spice Blend • Berlin',
+    description:
+      "Inspired by the untamed spirit of the African savannah, Savannah Fire combines vibrant African Bird's Eye Chilli, aromatic Grains of Paradise, delicate Fleur de Sel and smoked garlic into a bold, smoky seasoning with remarkable depth and natural umami. Crafted for exceptional steaks, grilled meats, game and vegetables, it brings African spice heritage to the modern gourmet table.",
+    story: {
+      heading: 'The Soul of Fire. The Art of Flavour.',
+      paragraphs: [
+        'Across the vast African savannah, where golden grasslands meet endless horizons, fire has long been at the heart of cooking, gathering and sharing food.',
+        "Inspired by this timeless connection, Savannah Fire brings together the vibrant warmth of African Bird's Eye Chilli, the aromatic complexity of Grains of Paradise, delicate Fleur de Sel and the deep, savoury character of smoked garlic.",
+        'A carefully balanced Afro-Gourmet Fusion creation that celebrates the individuality of every ingredient. Here, heat is not the destination. The chilli awakens the palate, the spices unfold their fragrant warmth, and the gentle smokiness enhances rather than conceals the natural character of the food.',
+        'From beautifully seared steaks and slow-roasted lamb to succulent game and flame-grilled vegetables, Savannah Fire transforms familiar ingredients into an extraordinary experience of taste.',
+        'More than a seasoning. A celebration of African spice heritage, where ancient flavours are awakened through contemporary culinary craftsmanship.'
+      ],
+      flavour: ['Smoky Depth', 'Aromatic Warmth', 'Vibrant Chilli', 'Savoury Umami', 'Lingering Heat'],
+      beautifulWith: [
+        'Ribeye Steak',
+        'Beef Fillet',
+        'Lamb',
+        'Venison',
+        'Gourmet Burgers',
+        'BBQ',
+        'Flame-Grilled Vegetables'
+      ],
+      touch: [
+        'Gently massage into your chosen cut before grilling, searing or roasting. Allow the spices to develop a fragrant, beautifully seasoned crust while preserving the natural character of the meat.',
+        'For an elegant finishing touch, add a few drops of premium cold-pressed macadamia oil.'
+      ],
+      craft: 'Small-batch crafted. Carefully selected natural ingredients. No artificial additives or preservatives.'
+    },
+    ingredients: [
+      "African Bird's Eye Chilli (Peri-Peri)",
+      'Grains of Paradise',
+      'Fleur de Sel',
+      'Smoked Garlic'
+    ],
+    productType: 'Premium African Steak Seasoning',
+    origin: 'African botanicals, blended in Berlin.',
+    image: 'assets/img/products/savannah-fire.jpg',
+    imageSource: 'New Images/Savannah Scenic.jpg',
+    packshot: 'assets/img/products/savannah-fire-packshot.jpg',
+    packshotSource: 'New Images/Savannah white.jpg',
+    packshotWidth: 2048,
+    packshotHeight: 2048,
+    imageWidth: 1024,
+    imageHeight: 1024,
+    featured: true,
+    added: 8
   },
   {
     slug: 'tropical-pink-pepper-salt',
@@ -348,9 +346,9 @@ module.exports = [
     image: 'assets/img/products/royal-purple-elixir.jpg',
     imageSource: 'New Images/Royal Scenic.jpg',
     packshot: 'assets/img/products/royal-purple-elixir-packshot.jpg',
-    packshotSource: 'New Images/Royal white.jpg',
-    packshotWidth: 2048,
-    packshotHeight: 2048,
+    packshotSource: 'New Purple.jpeg',
+    packshotWidth: 1024,
+    packshotHeight: 1024,
     imageWidth: 1024,
     imageHeight: 1024,
     featured: true,

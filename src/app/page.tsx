@@ -71,7 +71,7 @@ export default function HomePage() {
       {/* ── Content layer ── */}
       <div id="curtain-content" className="relative bg-surface-container-lowest text-on-surface">
         {/* Intro Editorial */}
-        <section className="w-full px-5 py-14 sm:px-8 sm:py-20 lg:px-12">
+        <section className="w-full px-5 pb-7 pt-14 sm:px-8 sm:py-20 lg:px-12">
           <div className="mx-auto max-w-4xl">
             <div className="mb-9 flex flex-col items-center text-center sm:mb-11">
               <p className="font-headline text-2xl font-medium uppercase leading-none tracking-[0.32em] text-gold sm:text-3xl sm:tracking-[0.4em]">
@@ -96,7 +96,7 @@ export default function HomePage() {
         </section>
 
         {/* Collections Section */}
-        <section className="mx-auto w-full max-w-7xl px-5 py-12 sm:px-8 sm:py-16 lg:px-12">
+        <section className="mx-auto w-full max-w-7xl px-5 pb-12 pt-6 sm:px-8 sm:py-16 lg:px-12">
           <div className="mb-6 sm:mb-10">
             <h2 className="font-sans text-2xl font-light uppercase tracking-tight text-on-surface sm:text-4xl lg:text-5xl">
               Explore Our Collections

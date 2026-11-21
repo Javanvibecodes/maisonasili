@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Our Heritage',
@@ -7,48 +8,48 @@ export const metadata: Metadata = {
 };
 
 const foundations = [
-  'In 2003, Susan brought her entrepreneurial vision to life, co-founding and building SoLuna Brot und Oel alongside her then-husband, the accomplished food artisan Peter Klann. Together, they spent five demanding years establishing an artisanal Feinkost enterprise that would become a recognized name in Berlin\u2019s culinary landscape.',
-  'Their work began in an old German farmhouse in Ringenwalde, Brandenburg, centered around a traditional clay oven. It later evolved into SoLuna Brot und Oel\u2019s Berlin-Kreuzberg location, where an impressive French Panyol wood-fired oven attracted food enthusiasts and lovers of traditional artisanal craftsmanship from all over the world.',
-  'At SoLuna Brot und Oel, the philosophy extended far beyond wood-fired bread. Together, they developed a distinctive world of cold-pressed oils, specialty salts, raw spices, handmade sauces, traditional mojos, and pestos\u2014including a celebrated walnut pesto that gained a devoted following.',
-  'Working with certified organic and Demeter products, traditional preparation methods, and carefully selected natural ingredients, Susan deepened her culinary knowledge while actively contributing to every stage of building the enterprise.',
-  'Across Berlin\u2019s vibrant markets, Susan became the familiar face of SoLuna Brot und Oel, bringing its artisanal creations directly to customers and cultivating relationships that extended far beyond the market stalls. It was here, at her own market stand, that renowned food critic Katja Burghardt met and interviewed her directly, leading to SoLuna Brot und Oel\u2019s first major recognition in DER FEINSCHMECKER, Germany\u2019s premier gourmet magazine. Further recognition followed in leading German and international culinary publications, alongside lasting connections with Michelin-starred chefs and specialty retailers.',
-  'These formative years established the bedrock of Susan\u2019s culinary expertise, providing an understanding of ingredients, flavor equilibrium, sourcing, and traditional craftsmanship that would continue to evolve over the next two decades.'
+  'In 2003, Susan brought her entrepreneurial vision to life by co-founding and building SoLuna Brot und Öl Kiruku-Klann GbR alongside Peter Klann. Together, they established an artisanal food enterprise that brought traditional craftsmanship and distinctive gourmet products to the Berlin food scene.',
+  'Their work began in an old German farmhouse in Ringenwalde, Brandenburg, centred around a traditional clay oven. The enterprise later developed into a Berlin-Kreuzberg location, where a French Panyol wood-fired oven became central to its artisanal bread-making.',
+  'At SoLuna, the philosophy extended beyond bread. The product range included cold-pressed oils, specialty salts, raw spices, handmade sauces, traditional mojos and pestos, including a walnut pesto that gained a devoted following. Working with carefully selected natural ingredients and certified organic and Demeter products, Susan developed a practical understanding of flavour, quality and artisanal food production.',
+  "Across Berlin's vibrant markets, Susan represented SoLuna Brot und Oel directly to customers at her market stand. It was right there at the stand that renowned food critic Katja Burghardt met and interviewed her, which directly led to SoLuna Brot und Oel's feature in DER FEINSCHMECKER, Germany's premier gourmet magazine, alongside recognition in other culinary publications and connections with Michelin-starred chefs and specialty retailers.",
+  'These formative years established a strong foundation in culinary craftsmanship, ingredient selection, sourcing, flavour development and direct customer relationships. They also gave Susan first-hand experience of the standards and relationships that shape the gourmet food world.'
 ];
 
 const transition = [
-  'Following her chapter at SoLuna Brot und Oel, Susan stepped into a period of personal and entrepreneurial exploration, keeping her connection to craftsmanship alive across different mediums. She returned directly to her roots, sourcing and curating authentic African arts, traditional textiles, original artwork, and hand-carved cultural artifacts, presenting and curating these collections face to face with customers in independent regional marketplaces.',
-  'To expand her understanding of modern commerce, she also immersed herself in the structured commercial world of established retail stores. Working within these high-volume retail environments provided valuable, hands-on insight into inventory flow, supply chains, and customer relationship management at scale.',
-  'Driven by a desire to bring the richness of African heritage to an international audience, Susan expanded into digital entrepreneurship, establishing her own online store. Her collection encompassed intricate textiles, clothing, original artworks, traditional carvings, and cultural objects. This chapter opened the door to digital marketing, international logistics, and relationships with customers across different continents. Navigating the nuances of cross-border e-commerce, global sourcing, and one-to-one international online client care became another vital piece of her entrepreneurial education.',
-  'This diverse path\u2014from the slow precision of artisanal food production to the tactile beauty of African carvings and textiles, retail operations, and international digital commerce\u2014laid the perfect foundation for her next vision.'
+  'Following her chapter at SoLuna, Susan explored new mediums by sourcing authentic African arts, textiles, paintings and hand-carved pieces directly from her roots, connecting with collectors face-to-face at regional markets. This was paired with valuable experience in structured commercial retail, teaching her key lessons in product presentation, consistency and customer expectations that shape her work today.',
+  'She then brought her curated collection online, maintaining personal, one-to-one service and care for international clients across borders. This blend of artisanal craft, commercial retail discipline and global client connection laid the groundwork for her next chapter.',
+  "From food production and market trading to cultural collections, commercial retail and international e-commerce, each chapter broadened Susan's entrepreneurial experience and deepened her understanding of sourcing, craftsmanship and connecting people with distinctive products."
 ];
 
-const terroir = [
-  'Africa\u2019s culinary landscape stretches far beyond historical trade routes. Its remarkable microclimates\u2014spanning high-altitude mist forests, arid deserts, volcanic slopes, and tropical coastlines\u2014nurture an extraordinary diversity of heritage ingredients, rare seeds, spices, teas, and botanical oils. MAISON ASILI was founded to explore and celebrate these remarkable ingredients, bringing their origins, character and culinary possibilities to an international audience.',
-  'In North Africa, the arid foothills of the Atlas Mountains yield precious argan kernels, delicate Barbary fig seeds, wild cumin, coriander, and traditional desert salts shaped by centuries of regional knowledge.',
-  'Across West Africa, the landscape shifts to the intense aromatic complexity of Selim pepper, grains of paradise, and umami-rich Dawadawa. From the forests of Ghana to the rich volcanic soils of Cameroon\u2014home to the celebrated Penja pepper\u2014the region offers an extraordinary depth of flavor.',
-  'In Central Africa, tropical forests contribute distinctive wild spices and heritage seeds, including prized bush mango kernels and njansang, deeply embedded in traditional food cultures.',
-  'East Africa brings the vibrant character of Kenya\u2019s fertile highlands, renowned for exceptional Arabica coffees and distinctive purple teas. The region\u2019s botanical diversity extends to moringa, hibiscus, macadamia, and traditional grains. Along the Swahili Coast and across the spice islands of Zanzibar, centuries of Indian Ocean exchange are reflected in fragrant cloves, cardamom, cinnamon, black pepper, and aromatic roots. Madagascar and the Indian Ocean islands add their own remarkable botanical heritage, from Bourbon vanilla and cloves to wild forest peppers and aromatic plants.',
-  'Further south, Southern Africa offers the rugged biodiversity of the Cape, home to rooibos and honeybush, alongside the sun-drenched savannas that yield marula oil, Kalahari melon seeds, and precious mongongo nuts. Its varied mountain landscapes and indigenous flora reveal another world of distinctive botanical oils and traditional ingredients.',
-  'From argan to marula, from Penja pepper to highland teas, these ingredients tell stories of specific soils, shifting climates, and generations of preserved agricultural knowledge. Some remain rare beyond their regions of origin. Others have been treasured in everyday cooking for centuries. Together, they reveal a continent of remarkable culinary depth, where ancient traditions continue to inspire new possibilities.'
+const terroirIntro =
+  "Africa's extraordinary diversity of landscapes and microclimates gives rise to a remarkable wealth of natural ingredients, each shaped by its own environment, traditions and generations of knowledge. From the argan kernels and desert salts of North Africa to the aromatic grains of paradise of West Africa, the wild spices of Central Africa, the highland coffees and Swahili Coast spices of East Africa, the precious Bourbon vanilla of Madagascar, and the rooibos and marula oil of Southern Africa, the continent reveals an exceptional depth of culinary and botanical heritage.";
+
+const terroirRegions = [
+  'North Africa: Argan kernels, Barbary fig seeds, wild cumin, coriander and desert salts from the Atlas Mountains.',
+  "West Africa: Selim pepper, grains of paradise, Dawadawa and Cameroon's renowned Penja pepper.",
+  'Central Africa: Wild spices, bush mango kernels and njansang, ingredients rooted in regional food traditions.',
+  'East Africa: Kenyan Arabica coffees, purple teas, moringa and the aromatic spices of the Swahili Coast, including Zanzibar.',
+  'Madagascar: Bourbon vanilla and other distinctive island botanicals.',
+  'Southern Africa: Rooibos, honeybush, marula oil, Kalahari melon seeds and mongongo nuts.'
 ];
+
+const terroirOutro =
+  'Together, these ingredients tell stories of distinctive landscapes, agricultural knowledge and culinary traditions passed down through generations. Some are treasured locally yet remain little known internationally; others have travelled across continents while retaining their unmistakable character. They represent a rich and diverse heritage with extraordinary possibilities for contemporary gastronomy.';
 
 const precision = [
-  'MAISON ASILI is the synthesis of this multifaceted journey. Taken from the Swahili word for "origin" or "roots," Asili represents a return to source, guided by modern precision and a deep respect for traditional craftsmanship.',
-  'Conceived and crafted in Berlin, MAISON ASILI explores Africa\u2019s diverse culinary landscape through a carefully curated world of heritage spices, specialty salts, distinctive teas, exceptional coffees, and cold-pressed botanical oils.',
-  'Our approach begins with the ingredient itself\u2014its origin, natural character, traditional uses, and potential in contemporary gastronomy. The knowledge gathered through decades of hands-on craftsmanship, sourcing, face-to-face market trading, retail expertise, and international commerce informs every stage of this journey. Careful selection, thoughtful preparation, and respect for the individual qualities of each ingredient remain at the heart of the Maison.'
+  `Derived from the Swahili word asili, meaning "origin" or "roots", MAISON ASILI brings together Susan's more than two decades of entrepreneurial experience with the deep-rooted culinary traditions and botanical richness of the African continent.`,
+  'Conceived and crafted in Berlin, the house explores this heritage through a carefully curated collection of spices, specialty salts, teas, coffees and botanical oils.',
+  "Informed by decades of hands-on sourcing, artisanal production and market experience, the Maison's approach begins with respect for the ingredient itself: its origin, natural character, traditional uses and potential in contemporary gastronomy.",
+  'The aim is to honour the heritage of these ingredients while exploring their possibilities through thoughtful selection, balance and contemporary culinary creativity.'
 ];
 
 const legacy = [
-  'From the wood-fired ovens of Brandenburg and the vibrant markets of Berlin to African arts, traditional textiles, international retail, and the borderless digital world, Susan Kiruku-Klann\u2019s path has been shaped by connection, craftsmanship, cultural exchange, and a continuous pursuit of knowledge.',
-  'MAISON ASILI brings these experiences together in a new chapter\u2014one rooted in African heritage, enriched by more than two decades of entrepreneurial experience, and inspired by the extraordinary culinary diversity of a continent.'
+  "From Brandenburg's wood-fired ovens and Berlin's vibrant markets to African textiles, cultural collections and global digital commerce, Susan Kiruku-Klann brings her entrepreneurial journey together in MAISON ASILI.",
+  'A new chapter shaped by more than two decades of experience, rooted in African heritage and brought to life in Berlin.'
 ];
 
-const closing = [
-  'A continuing journey of discovery, craftsmanship, and origins.',
-  'MAISON ASILI',
-  'Origin. Identity. Heritage.',
-  'Rooted in Africa. Born in Berlin. For the World.'
-];
+const proseClass =
+  'space-y-5 text-[15px] font-light leading-[1.85] text-stone-muted sm:text-base sm:leading-[1.9]';
 
 function SectionHeading({ title }: { title: string }) {
   return (
@@ -61,7 +62,7 @@ function SectionHeading({ title }: { title: string }) {
 
 function Prose({ paragraphs }: { paragraphs: string[] }) {
   return (
-    <div className="space-y-5 text-[15px] font-light leading-[1.85] text-stone-muted sm:text-base sm:leading-[1.9]">
+    <div className={proseClass}>
       {paragraphs.map((paragraph) => (
         <p key={paragraph.slice(0, 60)}>{paragraph}</p>
       ))}
@@ -83,9 +84,9 @@ export default function HeritagePage() {
           </h1>
           <div className="mx-auto mt-10 h-px w-12 bg-gold" />
           <p className="mx-auto mt-10 max-w-2xl text-[15px] font-light leading-[1.9] text-stone-muted sm:text-base">
-            MAISON ASILI is born at the intersection of raw heritage and absolute culinary precision. Founded in Berlin
-            by Susan Kiruku-Klann, the house represents a sophisticated fusion of her African roots and over twenty years
-            of elite artisan food production, retail operations, and cross-border e-commerce.
+            MAISON ASILI was born at the intersection of African heritage and culinary craftsmanship. Founded in Berlin
+            by Susan Kiruku-Klann, the house brings together her African roots and more than two decades of experience in
+            artisanal food production, gourmet retail, sourcing and international commerce.
           </p>
         </div>
       </section>
@@ -93,7 +94,24 @@ export default function HeritagePage() {
       <div className="mx-auto max-w-3xl space-y-16 px-6 py-16 sm:space-y-24 sm:py-24">
         <section>
           <SectionHeading title="The Foundations of Craft" />
-          <Prose paragraphs={foundations} />
+          <div className={proseClass}>
+            {foundations.slice(0, 4).map((paragraph) => (
+              <p key={paragraph.slice(0, 60)}>{paragraph}</p>
+            ))}
+            <div className="py-1">
+              <Image
+                src="/assets/img/editorial/soluna-archive.jpg"
+                alt="SoLuna Brot und Oel business card and the 2005 DER FEINSCHMECKER feature from Ringenwalde, Brandenburg."
+                width={896}
+                height={1200}
+                sizes="(min-width: 768px) 720px, 100vw"
+                className="block h-auto w-full"
+              />
+            </div>
+            {foundations.slice(4).map((paragraph) => (
+              <p key={paragraph.slice(0, 60)}>{paragraph}</p>
+            ))}
+          </div>
         </section>
 
         <section className="border-t border-stone-border-light pt-14 sm:pt-16">
@@ -102,8 +120,16 @@ export default function HeritagePage() {
         </section>
 
         <section className="border-t border-stone-border-light pt-14 sm:pt-16">
-          <SectionHeading title="The African Terroir: A Continent of Rich Culinary Heritage" />
-          <Prose paragraphs={terroir} />
+          <SectionHeading title="A Continent of Rich Culinary Heritage" />
+          <div className={proseClass}>
+            <p>{terroirIntro}</p>
+            <ul className="list-disc space-y-2 pl-5 marker:text-gold/80">
+              {terroirRegions.map((region) => (
+                <li key={region.slice(0, 40)}>{region}</li>
+              ))}
+            </ul>
+            <p>{terroirOutro}</p>
+          </div>
         </section>
 
         <section className="border-t border-stone-border-light pt-14 sm:pt-16">
@@ -117,13 +143,14 @@ export default function HeritagePage() {
         </section>
 
         <section className="border-t border-stone-border-light pt-14 text-center sm:pt-20">
-          <p className="mx-auto max-w-xl font-serif text-xl font-normal leading-snug text-stone-dark sm:text-2xl">
-            {closing[0]}
+          <div className="mx-auto mt-2 h-px w-12 bg-gold" />
+          <p className="mt-10 text-[11px] font-semibold uppercase tracking-[0.42em] text-gold">MAISON ASILI</p>
+          <p className="mt-4 text-[10px] uppercase tracking-[0.3em] text-stone-muted sm:text-[11px]">
+            Origin. Identity. Heritage.
           </p>
-          <div className="mx-auto mt-10 h-px w-12 bg-gold" />
-          <p className="mt-10 text-[11px] font-semibold uppercase tracking-[0.42em] text-gold">{closing[1]}</p>
-          <p className="mt-4 text-[10px] uppercase tracking-[0.3em] text-stone-muted sm:text-[11px]">{closing[2]}</p>
-          <p className="mt-8 font-serif text-base italic tracking-wide text-tertiary sm:text-lg">{closing[3]}</p>
+          <p className="mt-8 font-serif text-base italic tracking-wide text-tertiary sm:text-lg">
+            Rooted in Africa. Born in Berlin. For the World.
+          </p>
         </section>
       </div>
     </main>

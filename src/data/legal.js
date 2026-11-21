@@ -78,8 +78,7 @@ module.exports = [
       {
         h: 'Products and information',
         p: [
-          'Product names, descriptions, ingredients, pack sizes and origins are provided in good faith. Product photography is illustrative; natural variation in botanical ingredients may occur.',
-          'Full allergen details are available on request.'
+          'Product names, descriptions, ingredients, pack sizes and origins are provided in good faith. Product photography is illustrative; natural variation in botanical ingredients may occur.'
         ]
       },
       {

@@ -5,7 +5,7 @@ import { InteractiveTravelCard } from '@/components/interactive-travel-card';
 import { collections, getProduct, assetPath } from '@/lib/catalog';
 
 const collectionImageSlugs: Record<string, string> = {
-  spices: 'savannah-fire',
+  spices: 'selim-and-paradise',
   salts: 'tropical-pink-pepper-salt',
   tea: 'royal-purple-elixir',
   oils: 'liquid-gold',
