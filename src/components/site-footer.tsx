@@ -11,8 +11,8 @@ export function SiteFooter() {
               Rooted in Africa. Born in Berlin. For the World.
             </p>
             <p className="max-w-sm text-[11px] leading-relaxed text-on-primary/70 sm:text-xs">
-              Purveyors of exceptional Afro-Gourmet botanical treasures, heritage spice blends, hand-harvested salts
-              and botanical teas curated for discerning culinary patrons.
+              Bringing together distinctive African ingredients, heritage flavours and contemporary gourmet
+              craftsmanship, Maison Asili celebrates the richness and diversity of Afro-Gourmet cuisine.
             </p>
           </div>
 

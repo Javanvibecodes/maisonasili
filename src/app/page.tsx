@@ -98,8 +98,8 @@ export default function HomePage() {
               A World of Flavour
             </h2>
             <p className="mx-auto max-w-2xl text-xs font-light leading-relaxed text-on-surface-variant sm:text-sm">
-              Conceived as a contemporary Afro-Gourmet dialogue, our ingredients are composed to inspire modern
-              Michelin gastronomy as seamlessly as the soulful home hearth.
+              Where African heritage ingredients meet contemporary culinary craft. Maison Asili brings distinctive
+              origins, unexpected flavours and a fresh perspective to the modern gourmet table.
             </p>
           </div>
         </section>
