@@ -49,7 +49,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Content layer ── */}
-      <div id="curtain-content" className="relative bg-surface-container-lowest text-on-surface">
+      <div id="curtain-content" className="relative bg-background text-on-surface">
         {/* Intro Editorial */}
         <section className="w-full px-5 pb-7 pt-14 sm:px-8 sm:py-20 lg:px-12">
           <div className="mx-auto max-w-4xl">

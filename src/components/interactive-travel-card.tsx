@@ -77,9 +77,9 @@ export const InteractiveTravelCard = React.forwardRef<
           transformStyle: "preserve-3d",
         }}
         className={cn(
-          // Portrait 3:4 card. The ratio only applies while the height is auto,
+          // Square 1:1 card. The ratio only applies while the height is auto,
           // so callers can still pin a fixed height through `className`.
-          "relative aspect-[3/4] w-full rounded-2xl bg-transparent shadow-2xl border border-border/30",
+          "relative aspect-square w-full rounded-2xl bg-transparent shadow-2xl border border-border/30",
           className ?? ''
         )}
       >

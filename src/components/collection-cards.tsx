@@ -11,11 +11,6 @@ const collectionCoverImages: Record<string, string> = {
   oils: 'assets/img/collections/oils.jpg',
 };
 
-// The tea banner photograph sits a little off-centre; nudge the crop 25px to
-// the right so the pouch clears the card edge. Safe with `object-cover`: the
-// square source overhangs the 3:4 card by ~50px per side.
-const teaImageStyle: React.CSSProperties = { objectPosition: 'calc(50% + 25px) center' };
-
 export function CollectionCards() {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = React.useState(0);
@@ -60,7 +55,6 @@ export function CollectionCards() {
                 imageUrl={imageUrl}
                 actionText="Explore"
                 href={`/collections/${collection.slug}`}
-                imageStyle={collection.slug === 'tea' ? teaImageStyle : undefined}
                 className="w-full"
               />
             </div>

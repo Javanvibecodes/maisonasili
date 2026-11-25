@@ -73,7 +73,7 @@ function Prose({ paragraphs }: { paragraphs: string[] }) {
 
 export default function HeritagePage() {
   return (
-    <main className="w-full bg-warm-ivory">
+    <main className="w-full bg-background">
       <section className="border-b border-stone-border-light px-6 pb-14 pt-16 text-center sm:pb-20 sm:pt-24">
         <div className="mx-auto max-w-3xl">
           <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.42em] text-gold">MAISON ASILI</p>
