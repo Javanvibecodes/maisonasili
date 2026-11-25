@@ -112,7 +112,22 @@ export default function HeritagePage() {
                           className="block h-auto w-full"
                         />
                         <figcaption className="mt-2.5 px-1 pb-1 text-[11px] italic leading-snug text-stone-muted">
-                          SoLuna Brot und Öl business card and the 2005 DER FEINSCHMECKER feature from Ringenwalde, Brandenburg.
+                          SoLuna Brot und Öl (Kiruku-Klann GbR) — First award in Ringenwalde, DER FEINSCHMECKER, Nov. 2004
+                          (2005 Edition)
+                        </figcaption>
+                      </figure>
+                      <figure className="relative mt-6 overflow-hidden border border-stone-border bg-surface-container-lowest p-2 shadow-sm">
+                        <Image
+                          src="/assets/img/editorial/soluna-founders.jpg"
+                          alt="Susan Kiruku-Klann alongside Horst Klann at work in the SoLuna bakery in 2006."
+                          width={1584}
+                          height={993}
+                          sizes="(min-width: 768px) 600px, 100vw"
+                          className="block h-auto w-full"
+                        />
+                        <figcaption className="mt-2.5 px-1 pb-1 text-[11px] italic leading-snug text-stone-muted">
+                          The founding legal owners of SoLuna at work — Susan Kiruku-Klann alongside Horst Klann
+                          (Peter's father) in the bakery, 2006.
                         </figcaption>
                       </figure>
                     </div>
@@ -121,7 +136,7 @@ export default function HeritagePage() {
               ))}
             </div>
 
-            <div className="hidden lg:col-span-5 lg:block lg:sticky lg:top-28">
+            <div className="hidden lg:col-span-5 lg:block lg:self-start">
               <figure className="relative overflow-hidden border border-stone-border bg-surface-container-lowest p-2 shadow-sm">
                 <Image
                   src="/assets/img/editorial/soluna-archive.jpg"
@@ -132,7 +147,22 @@ export default function HeritagePage() {
                   className="block h-auto w-full"
                 />
                 <figcaption className="mt-2.5 px-1 pb-1 text-[11px] italic leading-snug text-stone-muted">
-                  SoLuna Brot und Öl business card and the 2005 DER FEINSCHMECKER feature from Ringenwalde, Brandenburg.
+                  SoLuna Brot und Öl (Kiruku-Klann GbR) — First award in Ringenwalde, DER FEINSCHMECKER, Nov. 2004
+                  (2005 Edition)
+                </figcaption>
+              </figure>
+              <figure className="relative mt-6 overflow-hidden border border-stone-border bg-surface-container-lowest p-2 shadow-sm">
+                <Image
+                  src="/assets/img/editorial/soluna-founders.jpg"
+                  alt="Susan Kiruku-Klann alongside Horst Klann at work in the SoLuna bakery in 2006."
+                  width={1584}
+                  height={993}
+                  sizes="(min-width: 1024px) 420px, 100vw"
+                  className="block h-auto w-full"
+                />
+                <figcaption className="mt-2.5 px-1 pb-1 text-[11px] italic leading-snug text-stone-muted">
+                  The founding legal owners of SoLuna at work — Susan Kiruku-Klann alongside Horst Klann (Peter's
+                  father) in the bakery, 2006.
                 </figcaption>
               </figure>
             </div>

@@ -70,6 +70,10 @@ export default function HomePage() {
                 From familiar favourites to ingredients yet to be discovered, our collection invites you to explore new
                 dimensions of flavour, awaken the senses and experience the richness of Africa's culinary heritage.
               </p>
+              <p>
+                Asili is a Swahili word meaning origin, roots and essence. It speaks of where things begin — the
+                heritage, identity and essence that shape who we are.
+              </p>
               <p className="font-semibold text-primary">Rooted in Africa. Born in Berlin. For the World.</p>
             </div>
           </div>
