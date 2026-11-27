@@ -41,7 +41,7 @@ export function CartPageContent() {
           </p>
           <p className="mb-6 max-w-2xl text-xs leading-relaxed text-on-surface-variant">
             {submission.acknowledgementSent
-              ? 'A copy has been sent to the email address you provided. We will follow up to confirm availability, pricing, and collection or delivery options with you personally.'
+              ? 'A copy has been sent to the email address you provided. We will follow up to confirm availability, pricing, and shipping options with you personally.'
               : 'We could not send the acknowledgement email, but our team has your request and will follow up with you directly.'}
           </p>
 
@@ -105,8 +105,8 @@ export function CartPageContent() {
             Enquiry Selection
           </h1>
           <p className="mt-2 max-w-2xl text-xs leading-relaxed text-on-surface-variant">
-            Your selection is a direct order enquiry. We will confirm availability, pricing, and collection or delivery
-            options with you personally—or visit us at our Berlin market stalls. No payment is taken on this website.
+            Your selection is a direct order enquiry. We will confirm availability, pricing, and shipping options with you
+            personally—or visit our Berlin market stalls to shop in person. No payment is taken on this website.
           </p>
         </div>
         <p className="text-xs uppercase tracking-[0.2em] text-on-surface-variant">
@@ -242,22 +242,10 @@ export function CartPageContent() {
                 No products have been added yet.
               </p>
             )}
-            <p className="mb-5 border-t border-outline-variant pt-4 text-[11px] leading-relaxed text-on-surface-variant">
-              Your selection is a direct order enquiry. We will confirm availability, pricing, and collection or delivery
-              options with you personally—or visit us at our Berlin market stalls. No payment is taken on this website.
+            <p className="border-t border-outline-variant pt-4 text-[11px] leading-relaxed text-on-surface-variant">
+              Your selection is a direct order enquiry. We will confirm availability, pricing, and shipping options with you
+              personally—or visit our Berlin market stalls to shop in person. No payment is taken on this website.
             </p>
-            <a
-              href="#order-request"
-              aria-disabled={lines.length === 0}
-              tabIndex={lines.length === 0 ? -1 : undefined}
-              className={`block w-full py-4 text-center text-xs font-semibold uppercase tracking-[0.25em] transition-colors ${
-                lines.length > 0
-                  ? 'bg-on-surface text-surface-container-lowest sm:hover:bg-primary active:bg-on-surface'
-                  : 'pointer-events-none bg-on-surface/40 text-surface-container-lowest'
-              }`}
-            >
-              Submit Enquiry
-            </a>
             <div className="mt-5 flex items-start gap-3 border-t border-outline-variant pt-5">
               <span aria-hidden="true" className="material-symbols-outlined mt-0.5 text-base text-tertiary">
                 verified_user

@@ -63,17 +63,17 @@ export interface OrderItemInput {
 }
 
 export interface OrderRequestInput {
-  businessName: string;
   contactName: string;
   email: string;
-  phone: string;
-  country: string;
-  city: string;
-  businessType: string;
-  deliveryAddress: string;
-  website: string;
-  fulfilment: string;
-  notes: string;
+  notes?: string;
+  businessName?: string;
+  phone?: string;
+  country?: string;
+  city?: string;
+  businessType?: string;
+  deliveryAddress?: string;
+  website?: string;
+  fulfilment?: string;
   items: OrderItemInput[];
 }
 
@@ -155,28 +155,24 @@ export function validateOrderRequest(payload: unknown): ValidationResult<OrderRe
   }
 
   const source = payload as Record<string, unknown>;
-  const businessName = requiredText(errors, 'businessName', 'Business name', source.businessName, LIMITS.business);
-  const contactName = requiredText(errors, 'contactName', 'Contact name', source.contactName, LIMITS.name);
-  const country = requiredText(errors, 'country', 'Country', source.country, LIMITS.country);
-  const city = requiredText(errors, 'city', 'City', source.city, LIMITS.city);
+  const contactName = requiredText(errors, 'contactName', 'Full name', source.contactName, LIMITS.name);
 
   const email = cleanLine(source.email, LIMITS.email).toLowerCase();
-  if (!email) addError(errors, 'email', 'Business email is required.');
-  else if (!isValidEmail(email)) addError(errors, 'email', 'Enter a valid business email address.');
+  if (!email) addError(errors, 'email', 'Email address is required.');
+  else if (!isValidEmail(email)) addError(errors, 'email', 'Enter a valid email address.');
 
+  const notes = cleanMultiline(source.notes, LIMITS.notes);
+
+  const businessName = cleanLine(source.businessName, LIMITS.business);
+  const country = cleanLine(source.country, LIMITS.country);
+  const city = cleanLine(source.city, LIMITS.city);
   const businessType = cleanLine(source.businessType, 60);
-  if (!businessType) addError(errors, 'businessType', 'Business type is required.');
-  else if (!isBusinessType(businessType)) addError(errors, 'businessType', 'Choose a business type from the list.');
-
   const phone = cleanLine(source.phone, LIMITS.phone);
   if (phone && !isValidPhone(phone)) addError(errors, 'phone', 'Enter a valid phone number.');
-
   const website = cleanLine(source.website, LIMITS.website);
   if (website && !isValidWebsite(website)) addError(errors, 'website', 'Enter a valid website address.');
-
   const deliveryAddress = cleanMultiline(source.deliveryAddress, LIMITS.address);
   const fulfilment = cleanLine(source.fulfilment, LIMITS.fulfilment);
-  const notes = cleanMultiline(source.notes, LIMITS.notes);
 
   const rawItems = Array.isArray(source.items) ? source.items : [];
   if (rawItems.length === 0) addError(errors, 'items', 'Add at least one product to your order request.');

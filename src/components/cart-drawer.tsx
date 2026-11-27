@@ -147,8 +147,8 @@ export function CartDrawer() {
 
         <div className="mt-auto flex flex-col gap-4 border-t border-outline-variant bg-warm-sand p-6">
           <p className="text-[11px] leading-relaxed text-on-surface-variant">
-            Your selection is a direct order enquiry. We will confirm availability, pricing, and collection or delivery
-            options with you personally—or visit us at our Berlin market stalls. No payment is taken on this website.
+            Your selection is a direct order enquiry. We will confirm availability, pricing, and shipping options with
+            you personally—or visit our Berlin market stalls to shop in person. No payment is taken on this website.
           </p>
           <Link
             href="/cart"

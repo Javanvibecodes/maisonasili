@@ -128,32 +128,29 @@ export function buildOrderNotificationEmail(context: OrderEmailContext): {
 
   const body = `
     <p style="margin:0 0 18px;font-size:14px;line-height:1.7;color:${BRAND.ink};">
-      A retailer has submitted a wholesale order request through the Maison Asili website.
-      This message is a request for a trade quotation and availability check — it is not a confirmed sale.
+      A direct order enquiry has been submitted through the Maison Asili website.
+      This message is an enquiry for product availability, pricing, and shipping options — it is not a confirmed sale.
     </p>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 22px;border:1px solid ${BRAND.line};background:#FAF7F2;">
       <tr>
         <td style="padding:14px 16px;">
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
-            ${detailRow('Order reference', reference)}
+            ${detailRow('Enquiry reference', reference)}
             ${detailRow('Submitted', `${submitted} (Europe/Berlin)`)}
           </table>
         </td>
       </tr>
     </table>
 
-    <h2 style="margin:0 0 8px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:${BRAND.muted};">Retailer details</h2>
+    <h2 style="margin:0 0 8px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:${BRAND.muted};">Customer details</h2>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;">
-      ${detailRow('Business', request.businessName)}
-      ${detailRow('Contact', request.contactName)}
+      ${detailRow('Full name', request.contactName)}
       ${detailRow('Email', request.email)}
-      ${detailRow('Phone', request.phone)}
-      ${detailRow('Business type', request.businessType)}
-      ${detailRow('Country', request.country)}
-      ${detailRow('City', request.city)}
-      ${detailRow('Delivery address', request.deliveryAddress)}
-      ${detailRow('Website', request.website)}
-      ${detailRow('Preferred fulfilment', request.fulfilment)}
+      ${detailRow('Delivery city / Notes', request.notes || '')}
+      ${request.businessName ? detailRow('Business', request.businessName) : ''}
+      ${request.phone ? detailRow('Phone', request.phone) : ''}
+      ${request.country ? detailRow('Country', request.country) : ''}
+      ${request.city ? detailRow('City', request.city) : ''}
     </table>
 
     <h2 style="margin:0 0 8px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:${BRAND.muted};">Requested products</h2>
@@ -162,35 +159,23 @@ export function buildOrderNotificationEmail(context: OrderEmailContext): {
       ${lines.length} ${lines.length === 1 ? 'product line' : 'product lines'} requested. No prices were submitted with this request.
     </p>
 
-    ${
-      request.notes
-        ? `<h2 style="margin:0 0 8px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:${BRAND.muted};">Retailer notes</h2>
-           <div style="margin:0 0 8px;padding:14px 16px;border-left:3px solid ${BRAND.gold};background:#FAF7F2;font-size:14px;line-height:1.7;color:${BRAND.ink};white-space:pre-wrap;">${escapeHtml(request.notes)}</div>`
-        : ''
-    }
-
     <p style="margin:22px 0 0;font-size:12px;line-height:1.7;color:${BRAND.muted};">
-      Reply directly to this email to answer ${escapeHtml(request.contactName)} at ${escapeHtml(request.businessName)}.
+      Reply directly to this email to answer ${escapeHtml(request.contactName)}.
     </p>`;
 
   const text = [
-    'MAISON ASILI — WHOLESALE ORDER REQUEST',
-    'This is a request for a trade quotation, not a confirmed sale.',
+    'MAISON ASILI — DIRECT ORDER ENQUIRY',
+    'This is a request for availability, pricing, and shipping options, not a confirmed sale.',
     '',
-    `Order reference: ${reference}`,
+    `Enquiry reference: ${reference}`,
     `Submitted: ${submitted} (Europe/Berlin)`,
     '',
-    'RETAILER DETAILS',
-    `Business: ${request.businessName}`,
-    `Contact: ${request.contactName}`,
+    'CUSTOMER DETAILS',
+    `Full name: ${request.contactName}`,
     `Email: ${request.email}`,
+    request.notes ? `Delivery city / Notes: ${request.notes}` : '',
+    request.businessName ? `Business: ${request.businessName}` : '',
     request.phone ? `Phone: ${request.phone}` : '',
-    `Business type: ${request.businessType}`,
-    `Country: ${request.country}`,
-    `City: ${request.city}`,
-    request.deliveryAddress ? `Delivery address: ${request.deliveryAddress}` : '',
-    request.website ? `Website: ${request.website}` : '',
-    request.fulfilment ? `Preferred fulfilment: ${request.fulfilment}` : '',
     '',
     'REQUESTED PRODUCTS',
     ...lines.map(
@@ -198,20 +183,18 @@ export function buildOrderNotificationEmail(context: OrderEmailContext): {
         `- ${line.product.name} | ${collectionName(line.product.category)} | ${line.product.size} | qty ${line.qty}`
     ),
     '',
-    request.notes ? `RETAILER NOTES\n${request.notes}` : '',
-    '',
     `Reply directly to this email to reach ${request.contactName}.`
   ]
     .filter((line) => line !== '')
     .join('\n');
 
   return {
-    subject: `Wholesale Order Request ${reference} — ${request.businessName}`,
+    subject: `Order Enquiry ${reference} — ${request.contactName}${request.businessName ? ` (${request.businessName})` : ''}`,
     html: shell(
-      'New wholesale order request',
-      'Wholesale Order Request',
+      'New order enquiry',
+      'Order Enquiry',
       body,
-      `Internal notification from maisonasili.com. This request has not been commercially accepted. Trade pricing, availability and fulfilment must be confirmed directly with the retailer.`
+      `Notification from maisonasili.com. This request has not been commercially accepted. Pricing, availability and shipping options must be confirmed directly with the customer.`
     ),
     text
   };
@@ -229,12 +212,11 @@ export function buildOrderAcknowledgementEmail(context: OrderEmailContext): {
       Dear ${escapeHtml(request.contactName)},
     </p>
     <p style="margin:0 0 16px;font-size:14px;line-height:1.7;color:${BRAND.ink};">
-      Thank you for your interest in Maison Asili. We have received the wholesale order request from
-      <strong>${escapeHtml(request.businessName)}</strong>.
+      Thank you for your interest in Maison Asili. We have received your order enquiry.
     </p>
     <p style="margin:0 0 22px;font-size:14px;line-height:1.7;color:${BRAND.ink};">
-      This email acknowledges receipt of your request. It is not an order confirmation: availability, trade pricing
-      and fulfilment terms will be confirmed with you personally.
+      This email acknowledges receipt of your enquiry. It is not an order confirmation: availability, pricing
+      and shipping options will be confirmed with you personally.
     </p>
 
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;border:1px solid ${BRAND.line};background:#FAF7F2;">
@@ -246,14 +228,14 @@ export function buildOrderAcknowledgementEmail(context: OrderEmailContext): {
       </tr>
     </table>
 
-    <h2 style="margin:0 0 8px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:${BRAND.muted};">Your request</h2>
+    <h2 style="margin:0 0 8px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:${BRAND.muted};">Your selection</h2>
     ${productTable(lines)}
 
     <h2 style="margin:24px 0 8px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:${BRAND.muted};">What happens next</h2>
     <ol style="margin:0 0 8px;padding-left:20px;font-size:14px;line-height:1.8;color:${BRAND.ink};">
       <li>We review product availability for the quantities you requested.</li>
-      <li>We prepare trade pricing and fulfilment details for your business.</li>
-      <li>We contact you to confirm the commercial terms before anything is dispatched.</li>
+      <li>We confirm availability, pricing, and shipping options with you personally.</li>
+      <li>We contact you to confirm details before anything is dispatched.</li>
     </ol>
 
     <p style="margin:22px 0 0;font-size:13px;line-height:1.7;color:${BRAND.muted};">
@@ -266,21 +248,21 @@ export function buildOrderAcknowledgementEmail(context: OrderEmailContext): {
     '',
     `Dear ${request.contactName},`,
     '',
-    `Thank you for your interest in Maison Asili. We have received the wholesale order request from ${request.businessName}.`,
+    'Thank you for your interest in Maison Asili. We have received your order enquiry.',
     '',
-    'This email acknowledges receipt of your request. It is not an order confirmation: availability, trade pricing and fulfilment terms will be confirmed with you personally.',
+    'This email acknowledges receipt of your enquiry. It is not an order confirmation: availability, pricing and shipping options will be confirmed with you personally.',
     '',
     `Your reference: ${reference}`,
     '',
-    'YOUR REQUEST',
+    'YOUR SELECTION',
     ...lines.map(
       (line) => `- ${line.product.name} | ${line.product.size} | qty ${line.qty}`
     ),
     '',
     'WHAT HAPPENS NEXT',
     '1. We review product availability for the quantities you requested.',
-    '2. We prepare trade pricing and fulfilment details for your business.',
-    '3. We contact you to confirm the commercial terms before anything is dispatched.',
+    '2. We confirm availability, pricing, and shipping options with you personally.',
+    '3. We contact you to confirm details before anything is dispatched.',
     '',
     `If you did not submit this request, please write to ${CONTACT_EMAIL}.`,
     '',
@@ -288,12 +270,12 @@ export function buildOrderAcknowledgementEmail(context: OrderEmailContext): {
   ].join('\n');
 
   return {
-    subject: `We have received your wholesale order request — ${reference}`,
+    subject: `We have received your order enquiry — ${reference}`,
     html: shell(
-      'We have received your order request',
-      'Order Request Received',
+      'We have received your order enquiry',
+      'Order Enquiry Received',
       body,
-      `Maison Asili · Buyer enquiries: ${CONTACT_EMAIL}. This acknowledgement confirms receipt of a request only; no order has been accepted, dispatched or paid for.`
+      `Maison Asili · Enquiries: ${CONTACT_EMAIL}. This acknowledgement confirms receipt of an enquiry only; no order has been accepted, dispatched or paid for.`
     ),
     text
   };

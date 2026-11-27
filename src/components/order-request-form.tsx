@@ -3,7 +3,6 @@
 import * as React from 'react';
 import type { ResolvedCartLine } from '@/components/cart-provider';
 import {
-  BUSINESS_TYPES,
   LIMITS,
   validateOrderRequest,
   type FieldErrors
@@ -15,16 +14,8 @@ const labelClass = 'text-[11px] font-semibold uppercase tracking-[0.2em] text-on
 const errorClass = 'text-[11px] leading-relaxed text-error';
 
 const fieldIds: Record<string, string> = {
-  businessName: 'order-business-name',
   contactName: 'order-contact-name',
   email: 'order-email',
-  phone: 'order-phone',
-  country: 'order-country',
-  city: 'order-city',
-  businessType: 'order-business-type',
-  deliveryAddress: 'order-delivery-address',
-  website: 'order-website',
-  fulfilment: 'order-fulfilment',
   notes: 'order-notes',
   items: 'order-items-error'
 };
@@ -63,16 +54,8 @@ export function OrderRequestForm({ lines, onSubmitted }: OrderRequestFormProps) 
     const form = event.currentTarget;
     const data = new FormData(form);
     const payload = {
-      businessName: data.get('businessName'),
       contactName: data.get('contactName'),
       email: data.get('email'),
-      phone: data.get('phone'),
-      country: data.get('country'),
-      city: data.get('city'),
-      businessType: data.get('businessType'),
-      deliveryAddress: data.get('deliveryAddress'),
-      website: data.get('website'),
-      fulfilment: data.get('fulfilment'),
       notes: data.get('notes'),
       companyWebsiteConfirm: data.get('companyWebsiteConfirm'),
       items: lines.map((line) => ({ slug: line.slug, qty: line.qty }))
@@ -81,7 +64,7 @@ export function OrderRequestForm({ lines, onSubmitted }: OrderRequestFormProps) 
     const validated = validateOrderRequest(payload);
     if (!validated.ok) {
       setErrors(validated.errors);
-      setFormError('Please check the highlighted fields before submitting your order request.');
+      setFormError('Please check the highlighted fields before submitting your order enquiry.');
       const firstField = Object.keys(validated.errors)[0];
       const firstId = firstField ? fieldIds[firstField] : undefined;
       if (firstId) document.getElementById(firstId)?.focus();
@@ -159,32 +142,13 @@ export function OrderRequestForm({ lines, onSubmitted }: OrderRequestFormProps) 
 
       <fieldset className="flex flex-col gap-5" disabled={submitting}>
         <legend className="mb-4 border-b border-outline-variant pb-3 font-headline text-lg font-semibold text-on-surface">
-          Retailer information
+          Your details
         </legend>
 
-        <div className="grid grid-cols-2 gap-4 sm:gap-5">
+        <div className="flex flex-col gap-4 sm:gap-5">
           <label className="flex flex-col gap-2">
             <span className={labelClass}>
-              Business name <span className="text-tertiary">*</span>
-            </span>
-            <input
-              id="order-business-name"
-              name="businessName"
-              type="text"
-              required
-              maxLength={LIMITS.business}
-              autoComplete="organization"
-              placeholder="Company, venue or shop"
-              aria-invalid={Boolean(errors.businessName)}
-              aria-describedby={describedBy('businessName')}
-              className={inputClass}
-            />
-            <FieldError id="order-business-name-error" message={errors.businessName} />
-          </label>
-
-          <label className="flex flex-col gap-2">
-            <span className={labelClass}>
-              Contact person <span className="text-tertiary">*</span>
+              FULL NAME <span className="text-tertiary">*</span>
             </span>
             <input
               id="order-contact-name"
@@ -193,7 +157,7 @@ export function OrderRequestForm({ lines, onSubmitted }: OrderRequestFormProps) 
               required
               maxLength={LIMITS.name}
               autoComplete="name"
-              placeholder="Full name"
+              placeholder="Your full name"
               aria-invalid={Boolean(errors.contactName)}
               aria-describedby={describedBy('contactName')}
               className={inputClass}
@@ -203,7 +167,7 @@ export function OrderRequestForm({ lines, onSubmitted }: OrderRequestFormProps) 
 
           <label className="flex flex-col gap-2">
             <span className={labelClass}>
-              Business email <span className="text-tertiary">*</span>
+              EMAIL ADDRESS <span className="text-tertiary">*</span>
             </span>
             <input
               id="order-email"
@@ -212,7 +176,7 @@ export function OrderRequestForm({ lines, onSubmitted }: OrderRequestFormProps) 
               required
               maxLength={LIMITS.email}
               autoComplete="email"
-              placeholder="buyer@business.com"
+              placeholder="you@example.com"
               aria-invalid={Boolean(errors.email)}
               aria-describedby={describedBy('email')}
               className={inputClass}
@@ -222,165 +186,21 @@ export function OrderRequestForm({ lines, onSubmitted }: OrderRequestFormProps) 
 
           <label className="flex flex-col gap-2">
             <span className={labelClass}>
-              Phone{' '}
-              <span className="font-normal normal-case tracking-normal text-on-surface-variant">(optional)</span>
-            </span>
-            <input
-              id="order-phone"
-              name="phone"
-              type="tel"
-              maxLength={LIMITS.phone}
-              autoComplete="tel"
-              placeholder="+49 …"
-              aria-invalid={Boolean(errors.phone)}
-              aria-describedby={describedBy('phone')}
-              className={inputClass}
-            />
-            <FieldError id="order-phone-error" message={errors.phone} />
-          </label>
-
-          <label className="flex flex-col gap-2">
-            <span className={labelClass}>
-              Business type <span className="text-tertiary">*</span>
-            </span>
-            <select
-              id="order-business-type"
-              name="businessType"
-              required
-              defaultValue=""
-              aria-invalid={Boolean(errors.businessType)}
-              aria-describedby={describedBy('businessType')}
-              className={inputClass}
-            >
-              <option value="">Please select</option>
-              {BUSINESS_TYPES.map((type) => (
-                <option key={type} value={type}>
-                  {type}
-                </option>
-              ))}
-            </select>
-            <FieldError id="order-business-type-error" message={errors.businessType} />
-          </label>
-
-          <label className="flex flex-col gap-2">
-            <span className={labelClass}>
-              Country <span className="text-tertiary">*</span>
-            </span>
-            <input
-              id="order-country"
-              name="country"
-              type="text"
-              required
-              maxLength={LIMITS.country}
-              autoComplete="country-name"
-              placeholder="Country of operation"
-              aria-invalid={Boolean(errors.country)}
-              aria-describedby={describedBy('country')}
-              className={inputClass}
-            />
-            <FieldError id="order-country-error" message={errors.country} />
-          </label>
-
-          <label className="flex flex-col gap-2">
-            <span className={labelClass}>
-              City <span className="text-tertiary">*</span>
-            </span>
-            <input
-              id="order-city"
-              name="city"
-              type="text"
-              required
-              maxLength={LIMITS.city}
-              autoComplete="address-level2"
-              placeholder="City"
-              aria-invalid={Boolean(errors.city)}
-              aria-describedby={describedBy('city')}
-              className={inputClass}
-            />
-            <FieldError id="order-city-error" message={errors.city} />
-          </label>
-
-          <label className="flex flex-col gap-2">
-            <span className={labelClass}>
-              Website{' '}
-              <span className="font-normal normal-case tracking-normal text-on-surface-variant">(optional)</span>
-            </span>
-            <input
-              id="order-website"
-              name="website"
-              type="text"
-              inputMode="url"
-              maxLength={LIMITS.website}
-              autoComplete="url"
-              placeholder="yourbusiness.com"
-              aria-invalid={Boolean(errors.website)}
-              aria-describedby={describedBy('website')}
-              className={inputClass}
-            />
-            <FieldError id="order-website-error" message={errors.website} />
-          </label>
-
-          <label className="col-span-2 flex flex-col gap-2">
-            <span className={labelClass}>
-              Delivery address{' '}
+              DELIVERY CITY / NOTES{' '}
               <span className="font-normal normal-case tracking-normal text-on-surface-variant">(optional)</span>
             </span>
             <textarea
-              id="order-delivery-address"
-              name="deliveryAddress"
-              maxLength={LIMITS.address}
-              autoComplete="street-address"
-              placeholder="Street, number, postcode and city, if already known"
-              aria-invalid={Boolean(errors.deliveryAddress)}
-              aria-describedby={describedBy('deliveryAddress')}
-              className={`${inputClass} min-h-[90px] resize-y`}
+              id="order-notes"
+              name="notes"
+              maxLength={LIMITS.notes}
+              placeholder="Delivery city/address, phone number, or company name"
+              aria-invalid={Boolean(errors.notes)}
+              aria-describedby={describedBy('notes')}
+              className={`${inputClass} min-h-[110px] resize-y`}
             />
-            <FieldError id="order-delivery-address-error" message={errors.deliveryAddress} />
-          </label>
-
-          <label className="col-span-2 flex flex-col gap-2">
-            <span className={labelClass}>
-              Preferred fulfilment{' '}
-              <span className="font-normal normal-case tracking-normal text-on-surface-variant">(optional)</span>
-            </span>
-            <input
-              id="order-fulfilment"
-              name="fulfilment"
-              type="text"
-              maxLength={LIMITS.fulfilment}
-              placeholder="For example a preferred delivery window or collection preference"
-              aria-invalid={Boolean(errors.fulfilment)}
-              aria-describedby={describedBy('fulfilment')}
-              className={inputClass}
-            />
-            <FieldError id="order-fulfilment-error" message={errors.fulfilment} />
+            <FieldError id="order-notes-error" message={errors.notes} />
           </label>
         </div>
-      </fieldset>
-
-      <fieldset className="flex flex-col gap-4" disabled={submitting}>
-        <legend className="mb-4 border-b border-outline-variant pb-3 font-headline text-lg font-semibold text-on-surface">
-          Order notes
-        </legend>
-        <label className="flex flex-col gap-2">
-          <span className={labelClass}>
-            Anything we should know?{' '}
-            <span className="font-normal normal-case tracking-normal text-on-surface-variant">(optional)</span>
-          </span>
-          <textarea
-            id="order-notes"
-            name="notes"
-            maxLength={LIMITS.notes}
-            placeholder="Tell us about your business, how you intend to use the products, expected order frequency or any delivery considerations."
-            aria-invalid={Boolean(errors.notes)}
-            aria-describedby={describedBy('notes')}
-            className={`${inputClass} min-h-[140px] resize-y`}
-          />
-          <span className="text-[11px] text-on-surface-variant">
-            {LIMITS.notes} characters maximum. Do not include payment details.
-          </span>
-          <FieldError id="order-notes-error" message={errors.notes} />
-        </label>
       </fieldset>
 
       <div className="sr-only" aria-hidden="true">
@@ -400,17 +220,17 @@ export function OrderRequestForm({ lines, onSubmitted }: OrderRequestFormProps) 
         </p>
       ) : null}
 
-      <div className="flex flex-row items-center gap-3 border-t border-outline-variant pt-6 sm:gap-4">
+      <div className="flex flex-col gap-3 border-t border-outline-variant pt-6">
         <button
           type="submit"
           disabled={submitting || lines.length === 0}
-          className="bg-on-surface px-3 py-4 text-[9px] font-semibold uppercase leading-tight tracking-[0.1em] text-surface-container-lowest transition-colors sm:hover:bg-primary active:bg-on-surface disabled:cursor-not-allowed disabled:opacity-50 sm:px-8 sm:text-xs sm:tracking-[0.25em]"
+          className="w-full bg-on-surface py-4 text-center text-xs font-semibold uppercase tracking-[0.25em] text-surface-container-lowest transition-colors sm:hover:bg-primary active:bg-on-surface disabled:cursor-not-allowed disabled:opacity-50"
         >
           {submitting ? 'Submitting request…' : 'Submit Enquiry'}
         </button>
-        <p className="max-w-sm text-[11px] leading-relaxed text-on-surface-variant">
-          Submitting this form does not place an order. Maison Asili will confirm availability, trade pricing and
-          fulfilment with you.
+        <p className="text-center text-[11px] leading-relaxed text-on-surface-variant">
+          Submitting this form does not place a binding order. Maison Asili will confirm availability, pricing, and
+          shipping options with you personally.
         </p>
       </div>
     </form>
